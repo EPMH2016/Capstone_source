@@ -1,0 +1,38 @@
+2015-08-17T21:36:04.089917932 0.246527s notice: Recursively removing directory /home/pi/Desktop/capstone_source/rethinkdb_data/tmp
+2015-08-17T21:36:04.117666974 0.274218s notice: Initializing directory /home/pi/Desktop/capstone_source/rethinkdb_data
+2015-08-17T21:36:04.118255618 0.274802s info: Creating a default database for your convenience. (This is because you ran 'rethinkdb' without 'create', 'serve', or '--join', and the directory '/home/pi/Desktop/capstone_source/rethinkdb_data' did not already exist or is empty.)
+2015-08-17T21:36:04.118492805 0.275039s notice: Running rethinkdb 2.1.1 (GCC 4.6.3)...
+2015-08-17T21:36:04.129239599 0.285798s notice: Running on Linux 4.0.9-v7+ armv7l
+2015-08-17T21:36:04.129964493 0.286512s notice: Loading data from directory /home/pi/Desktop/capstone_source/rethinkdb_data
+2015-08-17T21:36:05.242514109 1.399071s info: Automatically using cache size of 100 MB
+2015-08-17T21:36:05.247974563 1.404522s warn: Cache size does not leave much memory for server and query overhead (available memory: 798 MB).
+2015-08-17T21:36:05.248011490 1.404555s warn: Cache size is very low and may impact performance.
+2015-08-17T21:36:05.250739296 1.407288s notice: Listening for intracluster connections on port 29015
+2015-08-17T21:36:05.307671906 1.464219s notice: Listening for client driver connections on port 28015
+2015-08-17T21:36:05.308818934 1.465367s notice: Listening for administrative HTTP connections on port 8080
+2015-08-17T21:36:05.308831590 1.465375s notice: Listening on addresses: 127.0.0.1, 127.0.1.1
+2015-08-17T21:36:05.308846538 1.465390s notice: To fully expose RethinkDB on the network, bind to all addresses by running rethinkdb with the `--bind all` command line option.
+2015-08-17T21:36:05.308851486 1.465394s notice: Server ready, "raspberrypi_n54" 4c118800-c184-4ffe-a035-5e3150f4dfee
+2015-08-17T21:36:24.209379920 20.365932s notice: Server got SIGINT from pid 0, uid 0; shutting down...
+2015-08-17T21:36:24.210266012 20.366848s notice: Shutting down client connections...
+2015-08-17T21:36:24.210939708 20.367488s notice: All client connections closed.
+2015-08-17T21:36:24.211217728 20.367764s notice: Shutting down storage engine... (This may take a while if you had a lot of unflushed data in the writeback cache.)
+2015-08-17T21:36:24.214104179 20.370655s notice: Storage engine shut down.
+2015-08-17T21:36:31.242036390 0.025661s notice: Running rethinkdb 2.1.1 (GCC 4.6.3)...
+2015-08-17T21:36:31.254095524 0.037716s notice: Running on Linux 4.0.9-v7+ armv7l
+2015-08-17T21:36:31.254929689 0.038540s notice: Loading data from directory /home/pi/Desktop/capstone_source/rethinkdb_data
+2015-08-17T21:36:31.309949179 0.093567s info: Automatically using cache size of 100 MB
+2015-08-17T21:36:31.317296816 0.100911s warn: Cache size does not leave much memory for server and query overhead (available memory: 798 MB).
+2015-08-17T21:36:31.317338795 0.100946s warn: Cache size is very low and may impact performance.
+2015-08-17T21:36:31.317382024 0.100988s error: Failed to create sockets for listener on port 29015, falling back to IPv4 only
+2015-08-17T21:36:31.363277424 0.146888s notice: Listening for intracluster connections on port 29015
+2015-08-17T21:36:31.375576038 0.159188s error: Failed to create sockets for listener on port 28015, falling back to IPv4 only
+2015-08-17T21:36:31.383258101 0.166868s notice: Listening for client driver connections on port 28015
+2015-08-17T21:36:31.385140752 0.168751s error: Failed to create sockets for listener on port 8080, falling back to IPv4 only
+2015-08-17T21:36:31.385245908 0.168852s notice: Listening for administrative HTTP connections on port 8080
+2015-08-17T21:36:31.412247087 0.195858s notice: Listening on addresses: 127.0.0.1, 127.0.1.1, 192.168.1.12, 192.168.1.29
+2015-08-17T21:36:31.412847450 0.196457s notice: Server ready, "raspberrypi_n54" 4c118800-c184-4ffe-a035-5e3150f4dfee
+2015-08-17T21:42:47.674586883 376.458198s info: Table 0b4766a8-5d94-4bb0-9bc7-28e555960978: Added replica on this server.
+2015-08-17T21:42:48.760564402 377.544173s info: Table 0b4766a8-5d94-4bb0-9bc7-28e555960978: Starting a new Raft election for term 1.
+2015-08-17T21:42:49.210838283 377.994447s info: Table 0b4766a8-5d94-4bb0-9bc7-28e555960978: This server is Raft leader for term 1. Latest log index is 0.
+2015-08-17T21:43:16.154395271 404.938005s info: Table 0b4766a8-5d94-4bb0-9bc7-28e555960978: Configuration is changing.
