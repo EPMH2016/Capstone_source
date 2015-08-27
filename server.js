@@ -3,13 +3,12 @@ var port = 8435;
 var express = require("express");
 var app = express();
 var path = require("path");
-<<<<<<< HEAD
 var r = require("rethinkdb");
 var connection = null;
 
 console.log("Connecting to rethinkdb");
 
-r.connect({host:'localhost', port:8435}, function(err, conn){
+r.connect({host:'localhost', port:28015}, function(err, conn){
     
    if(err) throw err; 
     
@@ -27,9 +26,9 @@ r.db('Sensor_data').table('Sensor1TempHumidity').run(connection, function(err, c
         console.log(JSON.stringify(result, null, 2));
     });
 });
-=======
 
->>>>>>> 88b5b9fef2d78ed25e43e138b2833c9e60664ba7
+
+
 
 app.use("/sensor1", express.static(__dirname));
 
@@ -37,11 +36,7 @@ app.use("/sensor1", express.static(__dirname));
 app.get("/index", function (request, response){
 
     response.send("This is the index page");
-<<<<<<< HEAD
-    
-    
-=======
->>>>>>> 88b5b9fef2d78ed25e43e138b2833c9e60664ba7
+
 });
 
 app.get("/sensor1", function(request,response){

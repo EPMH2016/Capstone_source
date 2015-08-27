@@ -36,3 +36,62 @@
 2015-08-17T21:42:48.760564402 377.544173s info: Table 0b4766a8-5d94-4bb0-9bc7-28e555960978: Starting a new Raft election for term 1.
 2015-08-17T21:42:49.210838283 377.994447s info: Table 0b4766a8-5d94-4bb0-9bc7-28e555960978: This server is Raft leader for term 1. Latest log index is 0.
 2015-08-17T21:43:16.154395271 404.938005s info: Table 0b4766a8-5d94-4bb0-9bc7-28e555960978: Configuration is changing.
+2015-08-26T10:11:17.193687761 0.085040s notice: Running rethinkdb 2.1.1 (GCC 4.6.3)...
+2015-08-26T10:11:17.208031259 0.099376s notice: Running on Linux 3.18.11-v7+ armv7l
+2015-08-26T10:11:17.208430687 0.099765s notice: Loading data from directory /home/pi/Desktop/capstone_source/rethinkdb_data
+2015-08-26T10:11:17.388286523 0.279629s info: Automatically using cache size of 100 MB
+2015-08-26T10:11:17.396451945 0.287788s warn: Cache size does not leave much memory for server and query overhead (available memory: 741 MB).
+2015-08-26T10:11:17.396505226 0.287834s warn: Cache size is very low and may impact performance.
+2015-08-26T10:11:17.396545434 0.287874s error: Failed to create sockets for listener on port 29015, falling back to IPv4 only
+2015-08-26T10:11:17.579719398 0.471052s notice: Listening for intracluster connections on port 29015
+2015-08-26T10:11:17.779099725 0.670434s error: Failed to create sockets for listener on port 28015, falling back to IPv4 only
+2015-08-26T10:11:17.788134626 0.679470s notice: Listening for client driver connections on port 28015
+2015-08-26T10:11:17.788807439 0.680140s error: Failed to create sockets for listener on port 8080, falling back to IPv4 only
+2015-08-26T10:11:17.788913637 0.680244s notice: Listening for administrative HTTP connections on port 8080
+2015-08-26T10:11:17.882826870 0.774160s notice: Listening on addresses: 127.0.0.1, 127.0.1.1, 192.168.1.28
+2015-08-26T10:11:17.882874370 0.774203s notice: Server ready, "raspberrypi_n54" 4c118800-c184-4ffe-a035-5e3150f4dfee
+2015-08-26T10:11:18.310766393 1.202099s notice: A newer version of the RethinkDB server is available: 2.1.2. You can read the changelog at <https://github.com/rethinkdb/rethinkdb/releases>.
+2015-08-26T10:11:19.239030474 2.130365s info: Table 0b4766a8-5d94-4bb0-9bc7-28e555960978: Starting a new Raft election for term 2.
+2015-08-26T10:11:19.275559558 2.166895s info: Table 0b4766a8-5d94-4bb0-9bc7-28e555960978: This server is Raft leader for term 2. Latest log index is 3.
+2015-08-26T20:17:36.708962031 36379.600299s notice: Server got SIGINT from pid 0, uid 0; shutting down...
+2015-08-26T20:17:36.709796820 36379.601129s notice: Shutting down client connections...
+2015-08-26T20:17:36.710333954 36379.601667s notice: All client connections closed.
+2015-08-26T20:17:36.710565932 36379.601896s notice: Shutting down storage engine... (This may take a while if you had a lot of unflushed data in the writeback cache.)
+2015-08-26T20:17:36.728731923 36379.620067s notice: Storage engine shut down.
+2015-08-26T20:24:41.700599760 0.138627s notice: Running rethinkdb 2.1.1 (GCC 4.6.3)...
+2015-08-26T20:24:41.720632516 0.158655s notice: Running on Linux 3.18.11-v7+ armv7l
+2015-08-26T20:24:41.721020120 0.159031s notice: Loading data from directory /home/pi/Desktop/capstone_source/rethinkdb_data
+2015-08-26T20:24:41.848627263 0.286651s info: Automatically using cache size of 100 MB
+2015-08-26T20:24:41.855872451 0.293890s warn: Cache size does not leave much memory for server and query overhead (available memory: 837 MB).
+2015-08-26T20:24:41.855904065 0.293913s warn: Cache size is very low and may impact performance.
+2015-08-26T20:24:41.855943857 0.293952s error: Failed to create sockets for listener on port 29015, falling back to IPv4 only
+2015-08-26T20:24:41.981330173 0.419343s notice: Listening for intracluster connections on port 29015
+2015-08-26T20:24:42.161915450 0.599929s error: Failed to create sockets for listener on port 28015, falling back to IPv4 only
+2015-08-26T20:24:42.180194044 0.618213s notice: Listening for client driver connections on port 28015
+2015-08-26T20:24:42.181357895 0.619372s error: Failed to create sockets for listener on port 8080, falling back to IPv4 only
+2015-08-26T20:24:42.181857998 0.619868s notice: Listening for administrative HTTP connections on port 8080
+2015-08-26T20:24:42.202473565 0.640484s notice: Listening on addresses: 127.0.0.1, 127.0.1.1, 192.168.1.28
+2015-08-26T20:24:42.203206115 0.641217s notice: Server ready, "raspberrypi_n54" 4c118800-c184-4ffe-a035-5e3150f4dfee
+2015-08-26T20:24:42.553955604 0.991968s notice: A newer version of the RethinkDB server is available: 2.1.2. You can read the changelog at <https://github.com/rethinkdb/rethinkdb/releases>.
+2015-08-26T20:24:43.205474355 1.643486s info: Table 0b4766a8-5d94-4bb0-9bc7-28e555960978: Starting a new Raft election for term 3.
+2015-08-26T20:24:43.210473873 1.648485s info: Table 0b4766a8-5d94-4bb0-9bc7-28e555960978: This server is Raft leader for term 3. Latest log index is 6.
+2015-08-26T20:50:06.376307189 1524.814323s notice: Server got SIGINT from pid 0, uid 0; shutting down...
+2015-08-26T20:50:06.376859633 1524.814876s notice: Shutting down client connections...
+2015-08-26T20:50:06.377283484 1524.815296s notice: All client connections closed.
+2015-08-26T20:50:06.377311401 1524.815321s notice: Shutting down storage engine... (This may take a while if you had a lot of unflushed data in the writeback cache.)
+2015-08-26T20:50:06.404776328 1524.842794s notice: Storage engine shut down.
+2015-08-26T20:50:15.329000732 0.095827s notice: Running rethinkdb 2.1.1 (GCC 4.6.3)...
+2015-08-26T20:50:15.348144722 0.114967s notice: Running on Linux 3.18.11-v7+ armv7l
+2015-08-26T20:50:15.348799145 0.115610s notice: Loading data from directory /home/pi/Desktop/capstone_source/rethinkdb_data
+2015-08-26T20:50:15.398996008 0.165821s info: Automatically using cache size of 100 MB
+2015-08-26T20:50:15.400217927 0.167032s warn: Cache size does not leave much memory for server and query overhead (available memory: 814 MB).
+2015-08-26T20:50:15.400256104 0.167063s warn: Cache size is very low and may impact performance.
+2015-08-26T20:50:15.403062596 0.169874s notice: Listening for intracluster connections on port 29015
+2015-08-26T20:50:15.493304459 0.260118s notice: Listening for client driver connections on port 28015
+2015-08-26T20:50:15.494982052 0.261794s notice: Listening for administrative HTTP connections on port 8080
+2015-08-26T20:50:15.495016740 0.261823s notice: Listening on addresses: 127.0.0.1, 127.0.1.1
+2015-08-26T20:50:15.495023667 0.261830s notice: To fully expose RethinkDB on the network, bind to all addresses by running rethinkdb with the `--bind all` command line option.
+2015-08-26T20:50:15.495043354 0.261850s notice: Server ready, "raspberrypi_n54" 4c118800-c184-4ffe-a035-5e3150f4dfee
+2015-08-26T20:50:16.544456241 1.311266s info: Table 0b4766a8-5d94-4bb0-9bc7-28e555960978: Starting a new Raft election for term 4.
+2015-08-26T20:50:16.548201373 1.315011s info: Table 0b4766a8-5d94-4bb0-9bc7-28e555960978: This server is Raft leader for term 4. Latest log index is 9.
+2015-08-26T20:50:16.560462961 1.327274s notice: A newer version of the RethinkDB server is available: 2.1.2. You can read the changelog at <https://github.com/rethinkdb/rethinkdb/releases>.
