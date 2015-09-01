@@ -1,0 +1,21 @@
+2015-08-31T10:12:29.613829934 0.161007s notice: Recursively removing directory /home/pi/Desktop/capstone_source/python/rethinkdb_data/tmp
+2015-08-31T10:12:29.639110308 0.186231s notice: Initializing directory /home/pi/Desktop/capstone_source/python/rethinkdb_data
+2015-08-31T10:12:29.639883578 0.187002s info: Creating a default database for your convenience. (This is because you ran 'rethinkdb' without 'create', 'serve', or '--join', and the directory '/home/pi/Desktop/capstone_source/python/rethinkdb_data' did not already exist or is empty.)
+2015-08-31T10:12:29.640124877 0.187240s notice: Running rethinkdb 2.1.1 (GCC 4.6.3)...
+2015-08-31T10:12:29.653524636 0.200654s notice: Running on Linux 3.18.11-v7+ armv7l
+2015-08-31T10:12:29.653900725 0.201017s notice: Loading data from directory /home/pi/Desktop/capstone_source/python/rethinkdb_data
+2015-08-31T10:12:29.829557887 0.376683s info: Automatically using cache size of 100 MB
+2015-08-31T10:12:29.836792629 0.383915s warn: Cache size does not leave much memory for server and query overhead (available memory: 814 MB).
+2015-08-31T10:12:29.836833201 0.383947s warn: Cache size is very low and may impact performance.
+2015-08-31T10:12:29.836871899 0.383986s error: Failed to create sockets for listener on port 29015, falling back to IPv4 only
+2015-08-31T10:12:29.860604950 0.407724s notice: Listening for intracluster connections on port 29015
+2015-08-31T10:12:29.922591473 0.469709s error: Failed to create sockets for listener on port 28015, falling back to IPv4 only
+2015-08-31T10:12:29.930533705 0.477649s notice: Listening for client driver connections on port 28015
+2015-08-31T10:12:29.931211196 0.478328s error: Failed to create sockets for listener on port 8080, falling back to IPv4 only
+2015-08-31T10:12:29.931296715 0.478411s notice: Listening for administrative HTTP connections on port 8080
+2015-08-31T10:12:29.948287778 0.495407s notice: Listening on addresses: 127.0.0.1, 127.0.1.1, 192.168.1.2
+2015-08-31T10:12:29.948711366 0.495826s notice: Server ready, "raspberrypi_ii2" d1185ae4-f3fd-4ff7-9861-74aa1770b360
+2015-08-31T10:12:30.310828305 0.857945s notice: A newer version of the RethinkDB server is available: 2.1.2. You can read the changelog at <https://github.com/rethinkdb/rethinkdb/releases>.
+2015-08-31T10:24:14.626490841 705.173608s info: Table 3701ddc2-c172-450c-aa5c-f3c1eb840abd: Added replica on this server.
+2015-08-31T10:24:16.401815476 706.948932s info: Table 3701ddc2-c172-450c-aa5c-f3c1eb840abd: Starting a new Raft election for term 1.
+2015-08-31T10:24:16.409686407 706.956802s info: Table 3701ddc2-c172-450c-aa5c-f3c1eb840abd: This server is Raft leader for term 1. Latest log index is 0.

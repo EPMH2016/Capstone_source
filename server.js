@@ -9,7 +9,7 @@ var sensorData = "";
 
 console.log("Connecting to rethinkdb");
 
-r.connect({host:'192.168.1.28', port:28015}, function(err, conn){
+r.connect({host:'localhost', port:28015}, function(err, conn){
     
    if(err) throw err; 
     
