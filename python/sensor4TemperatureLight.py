@@ -9,7 +9,7 @@ from time import strftime
 
 print 'The current time is ' + strftime('%H:%M:%S')
 
-r.connect("localhost", 28015)
+r.connect("localhost", 28015).repl()
 
 # Open SPI bus
 spi = spidev.SpiDev()
