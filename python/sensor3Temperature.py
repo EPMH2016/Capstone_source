@@ -36,5 +36,5 @@ while True:
 	if int(strftime('%M'))==30 or int(strftime('%M'))==0:
 		print 'Temperature: {0:0.3F}*C / {1:0.3F}*F'.format(temp, c_to_f(temp))
 		r.db("Sensor_data").table("Sensor3Temperature").insert({"TimeStamp":r.now(), 'Month':r.now().month(), 'Day':r.now().date().day(), 'Year':r.now().year(), "Temperature(C)":temp}).run()
+		time.sleep(70)
 	
-	time.sleep(70)

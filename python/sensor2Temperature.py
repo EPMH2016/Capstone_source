@@ -36,7 +36,7 @@ def read_temp():
         print 'Timestamp=' + strftime("%H:%M:%S")
 		r.db("Sensor_data").table("Sensor2Temperature").insert({"TimeStamp":r.now(), 'Month':r.now().month(), 'Day':r.now().date().day(), 'Year':r.now().year(), "Temperature(C)":temp_c}).run()
         print "Temperature:    {} *C      {} *F".format(temp_c,temp_f)
-
+        time.sleep(70)
 while True:
 	read_temp()	
-	time.sleep(70)
+	
