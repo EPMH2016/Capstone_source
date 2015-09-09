@@ -19,3 +19,4 @@
 2015-08-31T10:24:14.626490841 705.173608s info: Table 3701ddc2-c172-450c-aa5c-f3c1eb840abd: Added replica on this server.
 2015-08-31T10:24:16.401815476 706.948932s info: Table 3701ddc2-c172-450c-aa5c-f3c1eb840abd: Starting a new Raft election for term 1.
 2015-08-31T10:24:16.409686407 706.956802s info: Table 3701ddc2-c172-450c-aa5c-f3c1eb840abd: This server is Raft leader for term 1. Latest log index is 0.
+2015-09-02T10:12:29.963339649 172800.510458s warn: Problem when checking for new versions of RethinkDB: HTTP request to update.rethinkdb.com failed.
