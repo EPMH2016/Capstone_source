@@ -3,7 +3,14 @@
 import spidev
 import time
 import os
- 
+import rethinkdb as r 
+from time import strftime 
+
+
+print 'The current time is ' + strftime('%H:%M:%S')
+
+r.connect("localhost", 28015)
+
 # Open SPI bus
 spi = spidev.SpiDev()
 spi.open(0,0)
@@ -14,7 +21,7 @@ def ReadChannel(channel):
   adc = spi.xfer2([1,(8+channel)<<4,0])
   data = ((adc[1]&3) << 8) + adc[2]
   return data
- 
+  
 # Function to convert data to voltage level,
 # rounded to specified number of decimal places.
 def ConvertVolts(data,places):
@@ -47,7 +54,7 @@ light_channel = 0
 temp_channel  = 1
  
 # Define delay between readings
-delay = 1
+delay = 70
  
 while True:
  
@@ -60,10 +67,15 @@ while True:
   temp_volts = ConvertVolts(temp_level,2)
   temp       = ConvertTemp(temp_level,2)
  
-  # Print out results
-  print "--------------------------------------------"
-  print("Light: {} ({}V)".format(light_level,light_volts))
-  print("Temp : {} ({}V) {} deg C".format(temp_level,temp_volts,temp))
+ if int(strftime('%M'))==30 or int(strftime('%M'))==0:
+   r.db("Sensor_data").table("Sensor4TemperatureLight").insert({"TimeStamp":r.now(), 'Month':r.now().month(), 'Day':r.now().date().day(), 'Year':r.now().year(), "Temperature(C)":temp_level, "Light":light_level}).run()  
+   print "--------------------------------------------"
+   print("Light: {} ({}V)".format(light_level,light_volts))
+   print("Temp : {} ({}V) {} deg C".format(temp_level,temp_volts,temp))
+   #Wait before repeating loop
+   time.sleep(delay)
+  
  
-  # Wait before repeating loop
-  time.sleep(delay)
+  
+ 
+  

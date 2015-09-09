@@ -2,6 +2,12 @@ import os
 import glob
 import time
 import subprocess
+import rethinkdb as r
+from time import strftime
+
+print 'The current time is ' + strftime('%H:%M:%S')
+
+r.connect("localhost", 28015).repl()
 
 os.system('modprobe w1-gpio')
 os.system('modprobe w1-therm')
@@ -23,12 +29,14 @@ def read_temp():
         time.sleep(0.2)
         lines = read_temp_raw()
     equals_pos = lines[1].find('t=')
-    if equals_pos != -1:
+    if equals_pos != -1 and (int(strftime('%M'))==30 or int(strftime('%M'))==0):
         temp_string = lines[1][equals_pos+2:]
         temp_c = float(temp_string) / 1000.0
         temp_f = temp_c * 9.0 / 5.0 + 32.0
+        print 'Timestamp=' + strftime("%H:%M:%S")
+		r.db("Sensor_data").table("Sensor2Temperature").insert({"TimeStamp":r.now(), 'Month':r.now().month(), 'Day':r.now().date().day(), 'Year':r.now().year(), "Temperature(C)":temp_c}).run()
         print "Temperature:    {} *C      {} *F".format(temp_c,temp_f)
 
 while True:
 	read_temp()	
-	time.sleep(2)
+	time.sleep(70)

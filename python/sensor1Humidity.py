@@ -35,6 +35,6 @@ while True:
     
 		print 'Temp={0:0.1f}*C  Humidity={1:0.1f}%'.format(temperature, humidity)
 		print 'Timestamp=' + strftime("%H:%M:%S")
-		r.db("Sensor_data").table("Sensor1TemperatureHumidity").insert({"TimeStamp":r.now(), 'Month':r.now().month(), 'Day':r.now().date().day(), 'Year':r.now().year(), "Temperature":temperature, "Humidity":humidity}).run()
+		r.db("Sensor_data").table("Sensor1TemperatureHumidity").insert({"TimeStamp":r.now(), 'Month':r.now().month(), 'Day':r.now().date().day(), 'Year':r.now().year(), "Temperature(C)":temperature, "Humidity":humidity}).run()
 #	else:
 		#print 'Failed to get reading. Try again!'
