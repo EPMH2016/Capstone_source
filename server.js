@@ -19,23 +19,6 @@ r.connect({host:'localhost', port:28015}, function(err, conn){
 
 });
 
-function gatherdata(sensor){
-switch(sensor){
-    
-   case'sensor1': 
-r.db('Sensor_data').table('Sensor1TempHumidity').run(connection, function(err, cursor) {
-    if (err) throw err;
-    cursor.toArray(function(err, result) {
-        if (err) throw err;
-        console.log("The result for sensor1 is " + result);
-        sensorData=result;
-       // sensorData = JSON.stringify(result, null, 2);
-    });
-});
-
-}
-
-}
 
 console.log("Gathering data from sensor 1");
 
@@ -56,24 +39,24 @@ app.get("/sensor1", function(request,response){
 });
 
 app.get("/sensor2", function(request, response){
-
+    gatherdata("sensor2");
     response.send("This is the endpoint for sensor 2");
 
 });
 
 app.get("/sensor3", function(request, response){
-
+     gatherdata("sensor3");
     response.send("This is the endpoint for sensor 3");
 });
 
 app.get("/sensor4", function(request, response){
-
+     gatherdata("sensor4");
     response.send("This is the endpoint for sensor 4");
 
 });
 
 app.get("/sensor5", function(request, response){
-
+     gatherdata("sensor5");
     response.send("This is the endpoint for sensor5");
 
 });
@@ -81,3 +64,68 @@ app.get("/sensor5", function(request, response){
 
 app.listen(port, host);
 
+function gatherdata(sensor){
+switch(sensor){
+    
+   case'sensor1': 
+r.db('Sensor_data').table('Sensor1TemperatureHumidity').run(connection, function(err, cursor) {
+    if (err) throw err;
+    cursor.toArray(function(err, result) {
+        if (err) throw err;
+        console.log("The result for sensor1 is " + result);
+        sensorData=result;
+       // sensorData = JSON.stringify(result, null, 2);
+    });
+});
+    break;
+    
+    case 'sensor2':
+    r.db('Sensor_data').table('Sensor2Temperature').run(connection, function(err, cursor) {
+    if (err) throw err;
+    cursor.toArray(function(err, result) {
+        if (err) throw err;
+        console.log("The result for sensor1 is " + result);
+        sensorData=result;
+       // sensorData = JSON.stringify(result, null, 2);
+    });
+});
+    break;
+    
+    case 'sensor3':
+    r.db('Sensor_data').table('Sensor3Temperature').run(connection, function(err, cursor) {
+    if (err) throw err;
+    cursor.toArray(function(err, result) {
+        if (err) throw err;
+        console.log("The result for sensor1 is " + result);
+        sensorData=result;
+       // sensorData = JSON.stringify(result, null, 2);
+    });
+});
+    break;
+    
+    case 'sensor4':
+    r.db('Sensor_data').table('Sensor4TemperatureLight').run(connection, function(err, cursor) {
+    if (err) throw err;
+    cursor.toArray(function(err, result) {
+        if (err) throw err;
+        console.log("The result for sensor1 is " + result);
+        sensorData=result;
+       // sensorData = JSON.stringify(result, null, 2);
+    });
+});
+    break;
+    
+    case 'sensor5':
+    r.db('Sensor_data').table('Sensor5Temperature').run(connection, function(err, cursor) {
+    if (err) throw err;
+    cursor.toArray(function(err, result) {
+        if (err) throw err;
+        console.log("The result for sensor1 is " + result);
+        sensorData=result;
+    });
+});
+    break;
+
+}
+
+}

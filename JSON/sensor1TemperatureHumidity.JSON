@@ -1,44 +1,44 @@
 {
-"Day": 9 ,
-"Humidity": 58.20000076293945 ,
+"Day": "9" ,
+"Humidity": "58.20000076293945" ,
 "Month": 9 ,
-"Temperature(C)": 24.100000381469727 ,
-"TimeStamp": Wed Sep 09 2015 18:30:55 GMT+00:00 ,
-"Year": 2015
+"Temperature(C)": "24.100000381469727" ,
+"TimeStamp": "Wed Sep 09 2015 18:30:55 GMT+00:00" ,
+"Year": "2015"
 } {
-"Day": 9 ,
-"Humidity": 57.79999923706055 ,
+"Day": "9" ,
+"Humidity": "57.79999923706055" ,
 "Month": 9 ,
-"Temperature(C)": 24.100000381469727 ,
-"TimeStamp": Wed Sep 09 2015 20:00:35 GMT+00:00 ,
-"Year": 2015
+"Temperature(C)": "24.100000381469727" ,
+"TimeStamp": "Wed Sep 09 2015 20:00:35 GMT+00:00" ,
+"Year": "2015"
 } {
-"Day": 9 ,
-"Humidity": 57.099998474121094 ,
-"Month": 9 ,
-"Temperature(C)": 24.200000762939453 ,
-"TimeStamp": Wed Sep 09 2015 23:30:23 GMT+00:00 ,
-"Year": 2015
+"Day": "9" ,
+"Humidity": "57.099998474121094" ,
+"Month": "9",
+"Temperature(C)": "24.200000762939453" ,
+"TimeStamp": "Wed Sep 09 2015 23:30:23 GMT+00:00" ,
+"Year": "2015"
 } {
-"Day": 9 ,
-"Humidity": 57.79999923706055 ,
-"Month": 9 ,
-"Temperature(C)": 24.100000381469727 ,
-"TimeStamp": Wed Sep 09 2015 20:30:02 GMT+00:00 ,
-"Year": 2015
+"Day": "9" ,
+"Humidity": "57.79999923706055" ,
+"Month": "9" ,
+"Temperature(C)": "24.100000381469727" ,
+"TimeStamp": "Wed Sep 09 2015 20:30:02 GMT+00:00" ,
+"Year": "2015"
 } {
-"Day": 9 ,
-"Humidity": 58 ,
-"Month": 9 ,
-"Temperature(C)": 24.200000762939453 ,
-"TimeStamp": Wed Sep 09 2015 21:30:15 GMT+00:00 ,
-"Year": 2015
+"Day": "9" ,
+"Humidity": "58" ,
+"Month": "9" ,
+"Temperature(C)": "24.200000762939453" ,
+"TimeStamp": "Wed Sep 09 2015 21:30:15 GMT+00:00" ,
+"Year": "2015"
 } {
-"Day": 10 ,
-"Humidity": 57.20000076293945 ,
-"Month": 9 ,
-"Temperature(C)": 24 ,
-"TimeStamp": Thu Sep 10 2015 01:00:51 GMT+00:00 ,
+"Day": "10" ,
+"Humidity": "57.20000076293945" ,
+"Month": "9" ,
+"Temperature(C)": "24" ,
+"TimeStamp": "Thu Sep 10 2015 01:00:51 GMT+00:00" ,
 "Year": 2015
 } {
 "Day": 10 ,
