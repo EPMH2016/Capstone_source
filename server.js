@@ -40,24 +40,24 @@ app.get("/sensor1", function(request,response){
 
 app.get("/sensor2", function(request, response){
     gatherdata("sensor2");
-    response.send("This is the endpoint for sensor 2");
+     response.send(sensorData);
 
 });
 
 app.get("/sensor3", function(request, response){
      gatherdata("sensor3");
-    response.send("This is the endpoint for sensor 3");
+     response.send(sensorData);
 });
 
 app.get("/sensor4", function(request, response){
      gatherdata("sensor4");
-    response.send("This is the endpoint for sensor 4");
+     response.send(sensorData);
 
 });
 
 app.get("/sensor5", function(request, response){
      gatherdata("sensor5");
-    response.send("This is the endpoint for sensor5");
+     response.send(sensorData);
 
 });
 
