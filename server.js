@@ -84,7 +84,7 @@ r.db('Sensor_data').table('Sensor1TemperatureHumidity').run(connection, function
     if (err) throw err;
     cursor.toArray(function(err, result) {
         if (err) throw err;
-        console.log("The result for sensor1 is " + result);
+        console.log("The result for sensor 2 is " + result);
         sensorData=result;
        // sensorData = JSON.stringify(result, null, 2);
     });
