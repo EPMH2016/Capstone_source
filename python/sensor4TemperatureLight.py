@@ -68,7 +68,7 @@ while True:
   temp       = ConvertTemp(temp_level,2)
  
  if int(strftime('%M'))==30 or int(strftime('%M'))==0:
-   r.db("Sensor_data").table("Sensor4TemperatureLight").insert({"TimeStamp":r.now(), 'Month':r.now().month(), 'Day':r.now().date().day(), 'Year':r.now().year(), "Temperature(C)":temp, "Light":light_level}).run()  
+   r.db("Sensor_data").table("Sensor4TemperatureLight").insert({"TimeStamp":r.now().inTimezone('-07:00'), 'Month':r.now().month(), 'Day':r.now().date().day(), 'Year':r.now().year(), "Temperature(C)":temp, "Light":light_level}).run()  
    print "--------------------------------------------"
    print("Light: {} ({}V)".format(light_level,light_volts))
    print("Temp : {} ({}V) {} deg C".format(temp_level,temp_volts,temp))

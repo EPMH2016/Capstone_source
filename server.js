@@ -1,5 +1,8 @@
 var host = "0.0.0.0";
 var port = 8435;
+var appPort = 9000
+
+//Node express module for server admin
 var express = require("express");
 var app = express();
 var path = require("path");
@@ -9,22 +12,18 @@ var sensorData = "";
 
 console.log("Connecting to rethinkdb");
 
-r.connect({host:'localhost', port:28015}, function(err, conn){
+//Attempt to connect to rethinkDB server
+//Note: server must be started on the raspberry pi
+//r.connect({host:'localhost', port:28015}, function(err, conn){
     
-   if(err) throw err; 
+//   if(err) throw err; 
     
-    console.log("Connection success!");
-    connection = conn;
-  //  gatherdata("sensor1");
+ //   console.log("Connection success!");
+  //  connection = conn;
+  
+//});
 
-});
-
-
-console.log("Gathering data from sensor 1");
-
-
-app.use("/sensor1", express.static(__dirname));
-
+app.use("/", express.static(__dirname));
 
 app.get("/index", function (request, response){
 
@@ -32,6 +31,7 @@ app.get("/index", function (request, response){
 
 });
 
+//API requests
 app.get("/sensor1", function(request,response){
     gatherdata("sensor1");
     response.send(sensorData);
@@ -61,9 +61,15 @@ app.get("/sensor5", function(request, response){
 
 });
 
-
+//Establish server params
 app.listen(port, host);
 
+/*
+*gatherData
+* Description: Acquire data from rethinkdb based on the GET request
+* Params:
+* sensor (String) - The sensor to gather data from 
+*/
 function gatherdata(sensor){
 switch(sensor){
     

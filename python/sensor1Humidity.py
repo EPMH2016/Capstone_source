@@ -29,12 +29,9 @@ while True:
 # guarantee the timing of calls to read the sensor).  
 # If this happens try again!
 	if humidity is not None and temperature is not None and (int(strftime('%M'))==30 or int(strftime('%M'))==0):
-		
-		#if (int(strftime('%M'))/30)==1:
-		#	print "At 30 minute mark"
-    
+	
 		print 'Temp={0:0.1f}*C  Humidity={1:0.1f}%'.format(temperature, humidity)
 		print 'Timestamp=' + strftime("%H:%M:%S")
-		r.db("Sensor_data").table("Sensor1TemperatureHumidity").insert({"TimeStamp":r.now(), 'Month':r.now().month(), 'Day':r.now().date().day(), 'Year':r.now().year(), "Temperature(C)":temperature, "Humidity":humidity}).run()
+		r.db("Sensor_data").table("Sensor1TemperatureHumidity").insert({"TimeStamp":r.now().inTimezone('-07:00'), 'Month':r.now().month(), 'Day':r.now().date().day(), 'Year':r.now().year(), "Temperature(C)":temperature, "Humidity":humidity}).run()
 #	else:
 		#print 'Failed to get reading. Try again!'
