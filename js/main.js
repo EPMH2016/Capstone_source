@@ -9,7 +9,7 @@ $(function () {
         },
         title: {
             renderTo: 'container',
-            text: 'Sensor temperatures'
+            text: 'DAQ temperatures'
         },
         xAxis: {
             categories: ['9am', '10am', '11am', '12pm', '1pm', '2pm','3pm','4pm','5pm']
@@ -20,21 +20,21 @@ $(function () {
             }
         },
         series: [{
-            name: 'Sensor 1',
+            name: 'DAQ 1',
             data: [70, 60, 65, 67, 70, 75, 90, 85, 80]
         }, {
-            name: 'Sensor 2',
+            name: 'DAQ 2',
             data: [75, 64, 62, 69, 75, 80, 96, 89, 81]
         },
         {
-            name: 'Sensor 3',
+            name: 'DAQ 3',
             data: [85, 62, 67, 75, 75, 89, 99, 73, 74]
         },
         {
-            name: 'Sensor 4',
+            name: 'DAQ 4',
             data: [55, 60, 62, 76, 79, 85,65, 76, 89]},
             {
-            name: 'Sensor 5',
+            name: 'DAQ 5',
             data: [60, 69, 85, 76, 69, 83, 75, 65, 60]
         }
         
