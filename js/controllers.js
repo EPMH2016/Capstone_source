@@ -258,3 +258,13 @@ app.controller("DAQGraphController", function($scope){
 	}
 	
 })
+
+app.controller("homePageController", function($scope){
+    
+    $scope.style = {
+        
+        background:'url(images/HotWaterSystemImage.png) no-repeat'
+        
+    };
+    
+});
