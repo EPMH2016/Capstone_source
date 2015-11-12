@@ -24,29 +24,33 @@
             <div layout="row" ng-controller="DAQGraphController">
          			 
 					 <nav class="navbar navbar-default" flex="50">
-				 	 <md-button class="pinkbutton" ng-click="DAQ1()" >DAQ 1</md-button>
-					 <md-button class="pinkbutton" ng-click="DAQ2()" >DAQ 2</md-button>
-					 <md-button class="pinkbutton" ng-click="DAQ3()" >DAQ 3</md-button>
-					 <md-button class="pinkbutton" ng-click="DAQ4()" >DAQ 4</md-button>
-					 <md-button class="pinkbutton" ng-click="DAQ5()" >DAQ 5</md-button>
-        			</nav>
-				 	 <md-radio-group layout="row" layout-align="end" flex="50">
-      					<md-radio-button value="Ambient Temp" aria-label="Label 1">Ambient Temp</md-radio-button>
-      					<md-radio-button value="Pipe Temp"> Pipe Temp </md-radio-button>
-      					<md-radio-button value="Light" aria-label="Label 3">Light</md-radio-button>
-					</md-radio-group>
+						<md-button class="pinkbutton" ng-click="DAQ1()" >DAQ 1</md-button>
+						<md-button class="pinkbutton" ng-click="DAQ2()" >DAQ 2</md-button>
+						<md-button class="pinkbutton" ng-click="DAQ3()" >DAQ 3</md-button>
+						<md-button class="pinkbutton" ng-click="DAQ4()" >DAQ 4</md-button>
+						<md-button class="pinkbutton" ng-click="DAQ5()" >DAQ 5</md-button>
+        			 </nav>
+				 	 <md-radio-group layout="row" ng-model="selectedType"layout-align="end" flex="50">
+						  Selected: {{selected}}
+      					<md-radio-button ng-click="changeGraphType('Ambient Temp (F)')" value="Ambient Temp (F)" aria-label="Label 1">Ambient Temp</md-radio-button>
+      					<md-radio-button ng-click="changeGraphType('Pipe Temp (F)')" value="Pipe Temp (F)"> Pipe Temp </md-radio-button>
+						  <md-radio-button ng-click="changeGraphType('Thermocouple 1 (F)')" value="Thermocouple 1 (F)" aria-label="Label 3">T 1 (F)</md-radio-button>
+						  <md-radio-button ng-click="changeGraphType('Thermocouple 2 (F)')" value="Thermocouple 2 (F)" aria-label="Label 3">T 2 (F)</md-radio-button>
+						  <md-radio-button ng-click="changeGraphType('Thermocouple 3 (F)')" value="Thermocouple 3 (F)" aria-label="Label 3">T 3 (F)</md-radio-button>
+      					<md-radio-button ng-click="changeGraphType('Light')" value="Light" aria-label="Label 3">Light</md-radio-button>
+					 </md-radio-group>
       		</div>
 			  
 			  <div layout="row">
 				  	<div flex="50">
-					<md-button class="md-fab" aria-label="FAB" style="background:dodgerblue;">
-  						<ng-md-icon icon="arrow_back" size="52" ></ng-md-icon> 
-					</md-button>
+						<md-button class="md-fab" aria-label="FAB" style="background:dodgerblue;">
+							<ng-md-icon icon="arrow_back" size="52" ></ng-md-icon> 
+						</md-button>
 					</div>
 					<div flex="50" layout="row" layout-align="end end">
-					<md-button class="md-fab" aria-label="FAB" style="background:dodgerblue;">
-  						<ng-md-icon icon="home" size="48" ></ng-md-icon> 
-					</md-button>
+						<md-button class="md-fab" aria-label="FAB" style="background:dodgerblue;">
+							<ng-md-icon icon="home" size="48" ></ng-md-icon> 
+						</md-button>
 					</div>
 			  </div>
 			  

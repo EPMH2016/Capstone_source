@@ -3,13 +3,68 @@ app.controller("DAQGraphController", function($scope){
 	$scope.message="This is the message variable in the controller";
 	$scope.data  = "This is the data!";
 	
+    $scope.selectedType="Ambient Temp";
+    $scope.selectedDAQ="DAQ1";
 
+    
+    $scope.changeGraphType = function(typeSelected){
+        $scope.selectedType = typeSelected;  
+        console.log("you selected" + $scope.selectedType)
+        $scope.selectedType = typeSelected;      
+       
+       
+       switch ($scope.selectedDAQ){
+       case "DAQ1":
+       
+       $scope.DAQ1();
+       break;
+       case "DAQ2":
+       $scope.DAQ2();
+       break;
+       case "DAQ3":
+       $scope.DAQ3();
+       break;
+       case "DAQ4":
+       $scope.DAQ4();
+       break;
+       case "DAQ5":
+       $scope.DAQ5();
+       break;
+       }
+        
+    }
+    
 	$scope.hello = function(){
 		console.log("Hello, world!");
 	}
 	
+    
+    
 	$scope.DAQ1 = function(){
+        $scope.selectedDAQ = "DAQ1";
         console.log("Clicked DAQ 1");
+        
+        switch($scope.selectedType){
+        case "Ambient Temp (F)":
+       console.log ("Ambient Temp (F) selected");
+        break;
+        case "Pipe temp (F)":
+        console.log ("Pipe Temp (F) selected");
+        break;
+        case "Thermocouple 1 (F)":
+        console.log ("Thermocouple 1 (F) selected");
+        break;
+        case "Thermocouple 2 (F)":
+        console.log ("Thermocouple 2 (F) selected");
+        break;
+        case "Thermocouple 3 (F)":
+        console.log ("Thermocouple 3 (F) selected");
+        break;
+        case "Light":
+        console.log("Light selected");
+        break;
+        }
+        
 		var chart = new Highcharts.Chart({
             credits: {
             enabled: false
@@ -26,7 +81,7 @@ app.controller("DAQGraphController", function($scope){
         },
         yAxis: {
             title: {
-                text: 'Temperature (F)'
+                text: $scope.selectedType
             }
         },
         series: [{
@@ -58,7 +113,31 @@ app.controller("DAQGraphController", function($scope){
 	}
 	
     $scope.DAQ2 = function(){
+        $scope.selectedDAQ = "DAQ2";
         console.log("Clicked DAQ 2");
+        
+        switch($scope.selectedType){
+        case "Ambient Temp (F)":
+       console.log ("Ambient Temp (F) selected");
+        break;
+        case "Pipe temp (F)":
+        console.log ("Pipe Temp (F) selected");
+        break;
+        case "Thermocouple 1 (F)":
+        console.log ("Thermocouple 1 (F) selected");
+        break;
+        case "Thermocouple 2 (F)":
+        console.log ("Thermocouple 2 (F) selected");
+        break;
+        case "Thermocouple 3 (F)":
+        console.log ("Thermocouple 3 (F) selected");
+        break;
+        case "Light":
+        console.log("Light selected");
+        break;
+        }
+         
+         
 		var chart = new Highcharts.Chart({
             credits: {
             enabled: false
@@ -75,7 +154,7 @@ app.controller("DAQGraphController", function($scope){
         },
         yAxis: {
             title: {
-                text: 'Temperature (F)'
+                text: $scope.selectedType
             }
         },
         series: [{
@@ -108,7 +187,30 @@ app.controller("DAQGraphController", function($scope){
 	}
     
     $scope.DAQ3 = function(){
+        $scope.selectedDAQ = "DAQ3";
         console.log("Clicked DAQ 3");
+        
+        switch($scope.selectedType){
+        case "Ambient Temp (F)":
+       console.log ("Ambient Temp (F) selected");
+        break;
+        case "Pipe temp (F)":
+        console.log ("Pipe Temp (F) selected");
+        break;
+        case "Thermocouple 1 (F)":
+        console.log ("Thermocouple 1 (F) selected");
+        break;
+        case "Thermocouple 2 (F)":
+        console.log ("Thermocouple 2 (F) selected");
+        break;
+        case "Thermocouple 3 (F)":
+        console.log ("Thermocouple 3 (F) selected");
+        break;
+        case "Light":
+        console.log("Light selected");
+        break;
+        }
+        
 		var chart = new Highcharts.Chart({
             credits: {
             enabled: false
@@ -125,7 +227,7 @@ app.controller("DAQGraphController", function($scope){
         },
         yAxis: {
             title: {
-                text: 'Temperature (F)'
+                text: $scope.selectedType
             }
         },
         series: [{
@@ -158,7 +260,30 @@ app.controller("DAQGraphController", function($scope){
 	}
     
     $scope.DAQ4 = function(){
+        $scope.selectedDAQ = "DAQ4";
         console.log("Clicked DAQ 4");
+        
+        switch($scope.selectedType){
+        case "Ambient Temp (F)":
+       console.log ("Ambient Temp (F) selected");
+        break;
+        case "Pipe temp (F)":
+        console.log ("Pipe Temp (F) selected");
+        break;
+        case "Thermocouple 1 (F)":
+        console.log ("Thermocouple 1 (F) selected");
+        break;
+        case "Thermocouple 2 (F)":
+        console.log ("Thermocouple 2 (F) selected");
+        break;
+        case "Thermocouple 3 (F)":
+        console.log ("Thermocouple 3 (F) selected");
+        break;
+        case "Light":
+        console.log("Light selected");
+        break;
+        }
+        
 		var chart = new Highcharts.Chart({
             credits: {
             enabled: false
@@ -175,7 +300,7 @@ app.controller("DAQGraphController", function($scope){
         },
         yAxis: {
             title: {
-                text: 'Temperature (F)'
+                text: $scope.selectedType
             }
         },
         series: [{
@@ -208,7 +333,30 @@ app.controller("DAQGraphController", function($scope){
 	}
     
     $scope.DAQ5 = function(){
+        $scope.selectedDAQ = "DAQ5";
         console.log("Clicked DAQ 5");
+        
+        switch($scope.selectedType){
+        case "Ambient Temp (F)":
+       console.log ("Ambient Temp (F) selected");
+        break;
+        case "Pipe temp (F)":
+        console.log ("Pipe Temp (F) selected");
+        break;
+        case "Thermocouple 1 (F)":
+        console.log ("Thermocouple 1 (F) selected");
+        break;
+        case "Thermocouple 2 (F)":
+        console.log ("Thermocouple 2 (F) selected");
+        break;
+        case "Thermocouple 3 (F)":
+        console.log ("Thermocouple 3 (F) selected");
+        break;
+        case "Light":
+        console.log("Light selected");
+        break;
+        }
+        
 		var chart = new Highcharts.Chart({
             credits: {
             enabled: false
@@ -225,7 +373,7 @@ app.controller("DAQGraphController", function($scope){
         },
         yAxis: {
             title: {
-                text: 'Temperature (F)'
+                text: $scope.selectedType
             }
         },
         series: [{
@@ -257,7 +405,7 @@ app.controller("DAQGraphController", function($scope){
 		
 	}
 	
-})
+});
 
 app.controller("homePageController", function($scope){
     
