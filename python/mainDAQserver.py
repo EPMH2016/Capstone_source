@@ -21,7 +21,7 @@ print "Successfully connected to database."
 
 timeInterval = 70
 
-print "Collecting data on time interval: " + timeInterval
+print "Collecting data on time interval: " + str(timeInterval)
 
 while True:
    
