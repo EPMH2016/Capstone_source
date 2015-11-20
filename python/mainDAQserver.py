@@ -17,15 +17,16 @@ from time import strftime
 
 r.connect('localhost', port=28015, db='HDMI').repl()
 
+print "Successfully connected to database."
 
-#r.table('DAQ1').insert({'message':'This has been inserted from the main DAQ server'}).run()
+timeInterval = 70
+
+print "Collecting data on time interval: " + timeInterval
 
 while True:
    
-    time.sleep(10)
+    time.sleep(timeInterval)
 
-    
-    
     #get temperature in F
     print("Thermocouple 1 is " + str(json.load(urllib2.urlopen("http://10.17.160.120/T1"))))
 
