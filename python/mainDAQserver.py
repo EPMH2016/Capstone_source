@@ -22,7 +22,7 @@ r.table('DAQ1').insert({'message':'This has been inserted from the main DAQ serv
 
 while True:
    
-    time.sleep(70)
+    time.sleep(10)
 
     
     
