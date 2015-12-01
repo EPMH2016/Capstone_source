@@ -33,8 +33,9 @@ app.get("/index", function (request, response){
 
 });
 
-app.get("/DAQ1", function(request, response){
-    gatherdata("DAQ1");
+app.get("/DAQ1/T1", function(request, response){
+   // gatherdata("DAQ1");
+    getDAQData("DAQ1","T1")
     response.send(sensorData);
 });
 
@@ -72,22 +73,23 @@ app.get("/sensor5", function(request, response){
 app.listen(port, host);
 
 
-getDAQData(DAQ, sensorType){
+function getDAQData(DAQ, sensorType){
 
-r.db('HDMI').table('DAQ1').filter({'Sensor Type':'T1'}).orderBy(r.desc('Timestamp')).limit(50)
+//r.db('HDMI').table('DAQ1').filter({'Sensor Type':'T1'}).orderBy(r.desc('Timestamp')).limit(50)
 
-r.db('HDMI').table(DAQ).run(connection, function(err, cursor) {
+    r.db('HDMI').table(DAQ).filter({'Sensor Type':sensorType}).orderBy(r.desc('Timestamp')).limit(50).run(connection, function(err, cursor) {
     if (err) throw err;
     cursor.toArray(function(err, result) {
         if (err) throw err;
-        console.log("The result for sensor1 is " + result);
+        console.log("The result for sensor T1 is " + result);
         sensorData=result;
        // sensorData = JSON.stringify(result, null, 2);
     });
 });
 
-
 }
+
+
 
 /*
 *gatherData
