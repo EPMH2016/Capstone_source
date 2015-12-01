@@ -71,6 +71,24 @@ app.get("/sensor5", function(request, response){
 //Establish server params
 app.listen(port, host);
 
+
+getDAQData(DAQ, sensorType){
+
+r.db('HDMI').table('DAQ1').filter({'Sensor Type':'T1'}).orderBy(r.desc('Timestamp')).limit(50)
+
+r.db('HDMI').table(DAQ).run(connection, function(err, cursor) {
+    if (err) throw err;
+    cursor.toArray(function(err, result) {
+        if (err) throw err;
+        console.log("The result for sensor1 is " + result);
+        sensorData=result;
+       // sensorData = JSON.stringify(result, null, 2);
+    });
+});
+
+
+}
+
 /*
 *gatherData
 * Description: Acquire data from rethinkdb based on the GET request
