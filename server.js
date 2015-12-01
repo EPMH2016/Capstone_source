@@ -35,38 +35,49 @@ app.get("/index", function (request, response){
 
 app.get("/DAQ1/T1", function(request, response){
    // gatherdata("DAQ1");
-    var sensorData = getDAQData("DAQ1","T1")
+   var sensorData = "";
+   while(sensorData == ""){
+    sensorData = getDAQData("DAQ1","T1");
+  }
     response.send(sensorData);
 });
 
 app.get("/DAQ1/T2", function(request, response){
    // gatherdata("DAQ1");
-    var sensorData = getDAQData("DAQ1","T2")
+    var sensorData = "";
+    while(sensorData == ""){
+    getDAQData("DAQ1","T2");
+  }
     response.send(sensorData);
 });
 
 app.get("/DAQ1/T3", function(request, response){
    // gatherdata("DAQ1");
-    var sensorData = getDAQData("DAQ1","T3")
+    var sensorData = "";
+    while(sensorData == ""){
+    getDAQData("DAQ1","T3");
+  }
     response.send(sensorData);
 });
 
 app.get("/DAQ1/T4", function(request, response){
    // gatherdata("DAQ1");
-    var sensorData = getDAQData("DAQ1","T4")
-
+    var sensorData = "";
+    while(sensorData == ""){
+    getDAQData("DAQ1","T4");
+  }
     response.send(sensorData);
 });
 
 app.get("/DAQ1/AmbientTemp", function(request, response){
    // gatherdata("DAQ1");
-    var sensorData = getDAQData("DAQ1","AmbientTemp")
+    var sensorData = getDAQData("DAQ1","AmbientTemp");
     response.send(sensorData);
 });
 
 app.get("/DAQ1/Light", function(request, response){
    // gatherdata("DAQ1");
-    var sensorData = getDAQData("DAQ1","Light")
+    var sensorData = getDAQData("DAQ1","Light");
     response.send(sensorData);
 });
 
