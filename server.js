@@ -8,7 +8,7 @@ var app = express();
 var path = require("path");
 var r = require("rethinkdb");
 var connection = null;
-var sensorData = "";
+//var sensorData = "";
 
 console.log("Connecting to rethinkdb");
 
