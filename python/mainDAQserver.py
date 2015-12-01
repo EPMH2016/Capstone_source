@@ -3,7 +3,7 @@ import urllib2
 import time
 import rethinkdb as r
 from time import strftime
-
+import datetime
 
 
 # 7 pages:
@@ -26,6 +26,8 @@ print "Collecting data on time interval: " + str(timeInterval)
 while True:
    
     time.sleep(timeInterval)
+
+    print "Timestamp: " + str(datetime.datetime.now())
 
     #get temperature in F
     print("Thermocouple 1 is " + str(json.load(urllib2.urlopen("http://10.17.160.120/T1"))))
@@ -62,5 +64,37 @@ while True:
 
     Light = float(json.load(urllib2.urlopen("http://10.17.160.120/Light")))
 
-    r.table('DAQ1').insert({'Sensor Type': 'Light', 'DAQ ID':'DAQ1f', 'Sensor ID': 'D1L', 'Data Value': Light, 'Units': 'lux', 'Timestamp': r.now().in_timezone('-09:00')}).run()
+    print "DAQ2"
 
+     #get temperature in F
+    print("Thermocouple 1 is " + str(json.load(urllib2.urlopen("http://10.17.43.121/T1"))))
+
+    T1 = float(json.load(urllib2.urlopen("http://10.17.160.120/T1")))
+
+    print ("Thermocouple 2  is " + str(json.load(urllib2.urlopen("http://10.17.43.121/T2"))))
+    
+ 
+    T2 = float(json.load(urllib2.urlopen("http://10.17.43.121/T2")))
+
+ 
+
+    print ('Thermocouple 3 is ' +  str(json.load(urllib2.urlopen("http://10.17.43.121/T3"))))
+
+    T3 = float(json.load(urllib2.urlopen("http://10.17.160.120/T3")))
+    
+ 
+    print ('Thermocouple 4 is ' +  str(json.load(urllib2.urlopen("http://10.17.43.121/T4"))))
+
+    T4 = float(json.load(urllib2.urlopen("http://10.17.160.120/T4")))
+
+ 
+    print ('Ambient Temperature is ' +  str(json.load(urllib2.urlopen("http://10.17.43.121/AmbientTemp"))))
+
+    AmbientTemp = float(json.load(urllib2.urlopen("http://10.17.160.120/AmbientTemp")))
+
+  
+    print ('Light is ' +  str(json.load(urllib2.urlopen("http://10.17.43.121/Light")))) 
+
+    Light = float(json.load(urllib2.urlopen("http://10.17.160.120/Light")))
+
+ 

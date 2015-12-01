@@ -14,14 +14,16 @@ console.log("Connecting to rethinkdb");
 
 //Attempt to connect to rethinkDB server
 //Note: server must be started on the raspberry pi
-//r.connect({host:'localhost', port:28015}, function(err, conn){
+r.connect({host:'localhost', port:28015}, function(err, conn){
     
-//   if(err) throw err; 
+   if(err) throw err; 
     
- //   console.log("Connection success!");
-  //  connection = conn;
+    console.log("Connection success!");
+    connection = conn;
   
-//});
+});
+
+console.log("Successfully connected to database");
 
 app.use("/", express.static(__dirname));
 
@@ -31,12 +33,17 @@ app.get("/index", function (request, response){
 
 });
 
-//API requests
-app.get("/sensor1", function(request,response){
-    gatherdata("sensor1");
+app.get("/DAQ1", function(request, response){
+    gatherdata("DAQ1");
     response.send(sensorData);
-
 });
+
+//API requests
+//app.get("/sensor1", function(request,response){
+//    gatherdata("sensor1");
+//    response.send(sensorData);
+
+//});
 
 app.get("/sensor2", function(request, response){
     gatherdata("sensor2");
@@ -129,6 +136,17 @@ r.db('Sensor_data').table('Sensor1TemperatureHumidity').run(connection, function
         console.log("The result for sensor1 is " + result);
         sensorData=result;
     });
+});
+    
+    break;
+    case 'DAQ1':
+    r.db('HDMI').table('DAQ1').run(connection, function(err, cursor) {
+   if (err) throw err;
+    cursor.toArray(function(err, result) {
+        if (err) throw err;
+       console.log("The result for DAQ1 is " + result);
+       sensorData=result;
+   });
 });
     break;
 
