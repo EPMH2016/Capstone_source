@@ -38,9 +38,9 @@ app.get("/index", function (request, response){
 app.get("/DAQ1/T1", function(request, response){
    // gatherdata("DAQ1");
   async.parallel([
-   getDAQData("DAQ1","T1")
+   getDAQData("DAQ1","T1");
   ],
-    response.send(sensorData));
+    response.send(sensorData);
 });
 
 app.get("/DAQ1/T2", function(request, response){
