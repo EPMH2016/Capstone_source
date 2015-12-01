@@ -35,7 +35,7 @@ app.get("/index", function (request, response){
 
 app.get("/DAQ1/T1", function(request, response){
    // gatherdata("DAQ1");
-    var sensorData =  = getDAQData("DAQ1","T1")
+    var sensorData = getDAQData("DAQ1","T1")
     response.send(sensorData);
 });
 
