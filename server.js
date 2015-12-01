@@ -35,38 +35,39 @@ app.get("/index", function (request, response){
 
 app.get("/DAQ1/T1", function(request, response){
    // gatherdata("DAQ1");
-    getDAQData("DAQ1","T1")
-    response.send(sensorData);
+    
+    response.send(getDAQData("DAQ1","T1"));
 });
 
 app.get("/DAQ1/T2", function(request, response){
    // gatherdata("DAQ1");
-    getDAQData("DAQ1","T2")
-    response.send(sensorData);
+    
+    response.send(getDAQData("DAQ1","T2"));
 });
 
 app.get("/DAQ1/T3", function(request, response){
    // gatherdata("DAQ1");
-    getDAQData("DAQ1","T3")
-    response.send(sensorData);
+    
+    response.send(getDAQData("DAQ1","T3"));
 });
 
 app.get("/DAQ1/T4", function(request, response){
    // gatherdata("DAQ1");
-    getDAQData("DAQ1","T4")
-    response.send(sensorData);
+    
+
+    response.send(getDAQData("DAQ1","T4"));
 });
 
 app.get("/DAQ1/AmbientTemp", function(request, response){
    // gatherdata("DAQ1");
-    getDAQData("DAQ1","AmbientTemp")
-    response.send(sensorData);
+    
+    response.send(getDAQData("DAQ1","AmbientTemp"));
 });
 
 app.get("/DAQ1/Light", function(request, response){
    // gatherdata("DAQ1");
-    getDAQData("DAQ1","Light")
-    response.send(sensorData);
+    
+    response.send(getDAQData("DAQ1","Light"));
 });
 
 //API requests
@@ -112,7 +113,8 @@ function getDAQData(DAQ, sensorType){
     cursor.toArray(function(err, result) {
         if (err) throw err;
         console.log("The result for sensor T1 is " + result);
-        sensorData=result;
+        //sensorData=result;
+        return result
        // sensorData = JSON.stringify(result, null, 2);
     });
 });
