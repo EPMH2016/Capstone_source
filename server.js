@@ -38,8 +38,8 @@ app.get("/index", function (request, response){
 app.get("/DAQ1/T1", function(request, response){
 //    gatherdata("DAQ1");
   async.parallel([
-   function(callback){getDAQData("DAQ1","T1");},
-   function(callback){response.send(sensorData);}
+   function(callback){getDAQData("DAQ1","T1"); console.log("Finished executing function 1");},
+   function(callback){response.send(sensorData); console.log("Finished executing function 2");}
   ]    
 );
 });
@@ -47,8 +47,8 @@ app.get("/DAQ1/T1", function(request, response){
 app.get("/DAQ1/T2", function(request, response){
    // gatherdata("DAQ1");
    async.parallel([
-   function(callback){getDAQData("DAQ1","T2");},
-   function(callback){response.send(sensorData);}
+   function(callback){getDAQData("DAQ1","T2"); console.log("Finished executing function 1");},
+   function(callback){response.send(sensorData); console.log("Finished executing function 2");}
   ]    
 );
    });
