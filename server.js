@@ -54,7 +54,7 @@ app.get("/DAQ1/T2", function(request, response){
 //   ]    
 // );
 
-   getDAQData("DAQ1","T2");
+   getDAQData("DAQ1","T2", response);
    });
 
 
