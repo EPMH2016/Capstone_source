@@ -37,20 +37,24 @@ app.get("/index", function (request, response){
 
 app.get("/DAQ1/T1", function(request, response){
 //    gatherdata("DAQ1");
-  async.parallel([
-   function(callback){getDAQData("DAQ1","T1"); console.log("Finished executing function 1");},
-   function(callback){response.send(sensorData); console.log("Finished executing function 2");}
-  ]    
-);
+//   async.parallel([
+//    function(callback){getDAQData("DAQ1","T1"); console.log("Finished executing function 1");},
+//    function(callback){response.send(sensorData); console.log("Finished executing function 2");}
+//   ]    
+// );
+
+  getDAQData("DAQ1","T1")
 });
 
 app.get("/DAQ1/T2", function(request, response){
    // gatherdata("DAQ1");
-   async.parallel([
-   function(callback){getDAQData("DAQ1","T2"); console.log("Finished executing function 1");},
-   function(callback){response.send(sensorData); console.log("Finished executing function 2");}
-  ]    
-);
+//    async.parallel([
+//    function(callback){getDAQData("DAQ1","T2"); console.log("Finished executing function 1");},
+//    function(callback){response.send(sensorData); console.log("Finished executing function 2");}
+//   ]    
+// );
+
+   getDAQData("DAQ1","T2");
    });
 
 
@@ -126,6 +130,7 @@ function getDAQData(DAQ, sensorType){
     cursor.toArray(function(err, result) {
         if (err) throw err;
         console.log("The result for sensor" + sensorType + "  is " + result);
+        response.send(result);
         sensorData=result;
         return result
        // sensorData = JSON.stringify(result, null, 2);
