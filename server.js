@@ -43,7 +43,7 @@ app.get("/DAQ1/T1", function(request, response){
 //   ]    
 // );
 
-  getDAQData("DAQ1","T1")
+  getDAQData("DAQ1","T1", response)
 });
 
 app.get("/DAQ1/T2", function(request, response){
@@ -120,7 +120,7 @@ app.get("/sensor5", function(request, response){
 app.listen(port, host);
 
 
-function getDAQData(DAQ, sensorType){
+function getDAQData(DAQ, sensorType, response){
 
 //r.db('HDMI').table('DAQ1').filter({'Sensor Type':'T1'}).orderBy(r.desc('Timestamp')).limit(50)
 
