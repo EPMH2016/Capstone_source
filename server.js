@@ -125,7 +125,7 @@ function getDAQData(DAQ, sensorType){
     sensorData = "";
     cursor.toArray(function(err, result) {
         if (err) throw err;
-        console.log("The result for sensor T1 is " + result);
+        console.log("The result for sensor" + sensorType + "  is " + result);
         sensorData=result;
         return result
        // sensorData = JSON.stringify(result, null, 2);
