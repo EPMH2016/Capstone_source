@@ -36,20 +36,23 @@ app.get("/index", function (request, response){
 });
 
 app.get("/DAQ1/T1", function(request, response){
-   // gatherdata("DAQ1");
+//    gatherdata("DAQ1");
   async.parallel([
-   getDAQData("DAQ1","T1");
-  ],
-    response.send(sensorData);
+   function(callback){getDAQData("DAQ1","T1");},
+   function(callback){response.send(sensorData);}
+  ]    
+);
 });
 
 app.get("/DAQ1/T2", function(request, response){
    // gatherdata("DAQ1");
+   async.parallel([
+   function(callback){getDAQData("DAQ1","T2");},
+   function(callback){response.send(sensorData);}
+  ]    
+);
+   });
 
-    getDAQData("DAQ1","T2");
-  
-    response.send(sensorData);
-});
 
 app.get("/DAQ1/T3", function(request, response){
    // gatherdata("DAQ1");
@@ -213,5 +216,5 @@ r.db('Sensor_data').table('Sensor1TemperatureHumidity').run(connection, function
     break;
 
 }
-
 }
+
