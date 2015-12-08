@@ -194,3 +194,45 @@
 2015-11-05T10:16:34.876138532 2974.465177s info: Table 388e37ef-447d-4c3c-bc03-dd937d2d77c6: Added replica on this server.
 2015-11-05T10:16:36.487043531 2976.076081s info: Table 388e37ef-447d-4c3c-bc03-dd937d2d77c6: Starting a new Raft election for term 1.
 2015-11-05T10:16:36.523845875 2976.112882s info: Table 388e37ef-447d-4c3c-bc03-dd937d2d77c6: This server is Raft leader for term 1. Latest log index is 0.
+2015-11-30T22:09:22.501566779 9.871681s notice: Running rethinkdb 2.1.1 (GCC 4.6.3)...
+2015-11-30T22:09:22.525686805 9.895799s notice: Running on Linux 3.18.11-v7+ armv7l
+2015-11-30T22:09:22.526625764 9.896717s notice: Loading data from directory /home/pi/Desktop/capstone_source/rethinkdb_data
+2015-11-30T22:09:22.672131185 10.042229s info: Automatically using cache size of 100 MB
+2015-11-30T22:09:22.684043490 10.054136s warn: Cache size does not leave much memory for server and query overhead (available memory: 827 MB).
+2015-11-30T22:09:22.684117657 10.054204s warn: Cache size is very low and may impact performance.
+2015-11-30T22:09:22.684160573 10.054246s error: Failed to create sockets for listener on port 29015, falling back to IPv4 only
+2015-11-30T22:09:22.742503502 10.112594s notice: Listening for intracluster connections on port 29015
+2015-11-30T22:09:23.165843343 10.535932s error: Failed to create sockets for listener on port 28015, falling back to IPv4 only
+2015-11-30T22:09:23.175510072 10.545600s notice: Listening for client driver connections on port 28015
+2015-11-30T22:09:23.176120854 10.546208s error: Failed to create sockets for listener on port 8080, falling back to IPv4 only
+2015-11-30T22:09:23.176204396 10.546290s notice: Listening for administrative HTTP connections on port 8080
+2015-11-30T22:09:24.748178105 12.118268s info: Table 388e37ef-447d-4c3c-bc03-dd937d2d77c6: Starting a new Raft election for term 2.
+2015-11-30T22:09:24.757439261 12.127531s info: Table 388e37ef-447d-4c3c-bc03-dd937d2d77c6: This server is Raft leader for term 2. Latest log index is 2.
+2015-11-30T22:09:24.839423466 12.209515s info: Table 0b4766a8-5d94-4bb0-9bc7-28e555960978: Starting a new Raft election for term 9.
+2015-11-30T22:09:24.847658684 12.217750s info: Table 0b4766a8-5d94-4bb0-9bc7-28e555960978: This server is Raft leader for term 9. Latest log index is 24.
+2015-11-30T22:09:24.941570193 12.311660s info: Table 3299971b-c7d4-4eb6-9f59-d7913b9b7d34: Starting a new Raft election for term 4.
+2015-11-30T22:09:24.950663693 12.320756s info: Table 3299971b-c7d4-4eb6-9f59-d7913b9b7d34: This server is Raft leader for term 4. Latest log index is 8.
+2015-11-30T22:09:28.194240284 15.564331s notice: Listening on addresses: 127.0.0.1, 127.0.1.1, 10.17.177.164
+2015-11-30T22:09:28.194924816 15.565014s notice: Server ready, "raspberrypi_n54" 4c118800-c184-4ffe-a035-5e3150f4dfee
+2015-11-30T22:09:28.411085001 15.781176s notice: A newer version of the RethinkDB server is available: 2.2.1. You can read the changelog at <https://github.com/rethinkdb/rethinkdb/releases>.
+2015-12-07T19:28:57.014502539 0.070689s notice: Running rethinkdb 2.1.1 (GCC 4.6.3)...
+2015-12-07T19:28:57.027105827 0.083289s notice: Running on Linux 3.18.11-v7+ armv7l
+2015-12-07T19:28:57.027481815 0.083653s notice: Loading data from directory /home/pi/Desktop/capstone_source/rethinkdb_data
+2015-12-07T19:28:57.114608896 0.170791s info: Automatically using cache size of 100 MB
+2015-12-07T19:28:57.125900574 0.182076s warn: Cache size does not leave much memory for server and query overhead (available memory: 834 MB).
+2015-12-07T19:28:57.125954168 0.182122s warn: Cache size is very low and may impact performance.
+2015-12-07T19:28:57.125998959 0.182166s error: Failed to create sockets for listener on port 29015, falling back to IPv4 only
+2015-12-07T19:28:57.147343049 0.203515s notice: Listening for intracluster connections on port 29015
+2015-12-07T19:28:57.675786192 0.731960s error: Failed to create sockets for listener on port 28015, falling back to IPv4 only
+2015-12-07T19:28:57.684534441 0.740709s notice: Listening for client driver connections on port 28015
+2015-12-07T19:28:57.685431625 0.741602s error: Failed to create sockets for listener on port 8080, falling back to IPv4 only
+2015-12-07T19:28:57.685521469 0.741690s notice: Listening for administrative HTTP connections on port 8080
+2015-12-07T19:28:57.934732704 0.990901s notice: Listening on addresses: 127.0.0.1, 127.0.1.1, 10.17.177.164
+2015-12-07T19:28:57.934780047 0.990947s notice: Server ready, "raspberrypi_n54" 4c118800-c184-4ffe-a035-5e3150f4dfee
+2015-12-07T19:28:58.229368931 1.285540s notice: A newer version of the RethinkDB server is available: 2.2.1. You can read the changelog at <https://github.com/rethinkdb/rethinkdb/releases>.
+2015-12-07T19:28:58.375716162 1.431886s info: Table 0b4766a8-5d94-4bb0-9bc7-28e555960978: Starting a new Raft election for term 10.
+2015-12-07T19:28:58.384672484 1.440844s info: Table 0b4766a8-5d94-4bb0-9bc7-28e555960978: This server is Raft leader for term 10. Latest log index is 27.
+2015-12-07T19:28:58.700402802 1.756572s info: Table 388e37ef-447d-4c3c-bc03-dd937d2d77c6: Starting a new Raft election for term 3.
+2015-12-07T19:28:58.718244456 1.774415s info: Table 388e37ef-447d-4c3c-bc03-dd937d2d77c6: This server is Raft leader for term 3. Latest log index is 5.
+2015-12-07T19:28:59.385305379 2.441475s info: Table 3299971b-c7d4-4eb6-9f59-d7913b9b7d34: Starting a new Raft election for term 5.
+2015-12-07T19:28:59.392872383 2.449042s info: Table 3299971b-c7d4-4eb6-9f59-d7913b9b7d34: This server is Raft leader for term 5. Latest log index is 11.
