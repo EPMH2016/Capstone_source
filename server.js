@@ -14,6 +14,8 @@ var async = require("async");
 
 console.log("Connecting to rethinkdb");
 
+
+
 //Attempt to connect to rethinkDB server
 //Note: server must be started on the raspberry pi
 r.connect({host:'localhost', port:28015}, function(err, conn){
@@ -36,24 +38,12 @@ app.get("/index", function (request, response){
 });
 
 app.get("/DAQ1/T1", function(request, response){
-//    gatherdata("DAQ1");
-//   async.parallel([
-//    function(callback){getDAQData("DAQ1","T1"); console.log("Finished executing function 1");},
-//    function(callback){response.send(sensorData); console.log("Finished executing function 2");}
-//   ]    
-// );
+
 
   getDAQData("DAQ1","T1", response)
 });
 
 app.get("/DAQ1/T2", function(request, response){
-   // gatherdata("DAQ1");
-//    async.parallel([
-//    function(callback){getDAQData("DAQ1","T2"); console.log("Finished executing function 1");},
-//    function(callback){response.send(sensorData); console.log("Finished executing function 2");}
-//   ]    
-// );
-
    getDAQData("DAQ1","T2", response);
    });
 
@@ -63,7 +53,7 @@ app.get("/DAQ1/T3", function(request, response){
 
     getDAQData("DAQ1","T3", response);
   
-   // response.send(sensorData);
+
 });
 
 app.get("/DAQ1/T4", function(request, response){
@@ -71,49 +61,46 @@ app.get("/DAQ1/T4", function(request, response){
 
     getDAQData("DAQ1","T4", response);
   
-  // response.send(sensorData);
+
 });
 
 app.get("/DAQ1/AmbientTemp", function(request, response){
    // gatherdata("DAQ1");
     getDAQData("DAQ1","AmbientTemp", response);
+<<<<<<< HEAD
    // response.send(sensorData);
+=======
+
+>>>>>>> e99dc3e647ff8cb94b687631b7e6a5bdd35574ac
 });
 
 app.get("/DAQ1/Light", function(request, response){
    // gatherdata("DAQ1");
+
     getDAQData("DAQ1","Light", response);
    // response.send(sensorData);
-});
-
-//API requests
-//app.get("/sensor1", function(request,response){
-//    gatherdata("sensor1");
-//    response.send(sensorData);
-
-//});
-
-app.get("/sensor2", function(request, response){
-    gatherdata("sensor2");
-     response.send(sensorData);
 
 });
 
-app.get("/sensor3", function(request, response){
-     gatherdata("sensor3");
-     response.send(sensorData);
-});
 
-app.get("/sensor4", function(request, response){
-     gatherdata("sensor4");
-     response.send(sensorData);
+// Add headers
+app.use(function (req, res, next) {
 
-});
+    // Website you wish to allow to connect
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8888');
 
-app.get("/sensor5", function(request, response){
-     gatherdata("sensor5");
-     response.send(sensorData);
+    // Request methods you wish to allow
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
 
+    // Request headers you wish to allow
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+
+    // Set to true if you need the website to include cookies in the requests sent
+    // to the API (e.g. in case you use sessions)
+    res.setHeader('Access-Control-Allow-Credentials', true);
+
+    // Pass to next layer of middleware
+    next();
 });
 
 //Establish server params
@@ -121,9 +108,6 @@ app.listen(port, host);
 
 
 function getDAQData(DAQ, sensorType, response){
-
-//r.db('HDMI').table('DAQ1').filter({'Sensor Type':'T1'}).orderBy(r.desc('Timestamp')).limit(50)
-
     r.db('HDMI').table(DAQ).filter({'Sensor Type':sensorType}).orderBy(r.desc('Timestamp')).limit(50).run(connection, function(err, cursor) {
     if (err) throw err;
     sensorData = "";
@@ -133,7 +117,6 @@ function getDAQData(DAQ, sensorType, response){
         response.send(result);
         sensorData=result;
         return result
-       // sensorData = JSON.stringify(result, null, 2);
     });
 });
 
@@ -157,7 +140,6 @@ r.db('Sensor_data').table('Sensor1TemperatureHumidity').run(connection, function
         if (err) throw err;
         console.log("The result for sensor1 is " + result);
         sensorData=result;
-       // sensorData = JSON.stringify(result, null, 2);
     });
 });
     break;
@@ -169,7 +151,6 @@ r.db('Sensor_data').table('Sensor1TemperatureHumidity').run(connection, function
         if (err) throw err;
         console.log("The result for sensor 2 is " + result);
         sensorData=result;
-       // sensorData = JSON.stringify(result, null, 2);
     });
 });
     break;
@@ -181,7 +162,6 @@ r.db('Sensor_data').table('Sensor1TemperatureHumidity').run(connection, function
         if (err) throw err;
         console.log("The result for sensor1 is " + result);
         sensorData=result;
-       // sensorData = JSON.stringify(result, null, 2);
     });
 });
     break;
@@ -193,7 +173,6 @@ r.db('Sensor_data').table('Sensor1TemperatureHumidity').run(connection, function
         if (err) throw err;
         console.log("The result for sensor1 is " + result);
         sensorData=result;
-       // sensorData = JSON.stringify(result, null, 2);
     });
 });
     break;

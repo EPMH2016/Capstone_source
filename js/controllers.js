@@ -1,4 +1,4 @@
-app.controller("DAQGraphController", function($scope){
+app.controller("DAQGraphController", function($scope, $http){
 	
 	$scope.message="This is the message variable in the controller";
 	$scope.data  = "This is the data!";
@@ -41,6 +41,20 @@ app.controller("DAQGraphController", function($scope){
     
     
 	$scope.DAQ1 = function(){
+
+
+        $http.jsonp('http://10.17.177.164:8435/DAQ1/T1')
+     .success(function(d){ console.log("The data is " + d); })
+     .error(function(d){console.log("nope"); });
+
+        // $http.get('http://10.17.177.164:8435/DAQ1/T1')
+        // .success(function(data, status, headers, config){
+        //     console.log("Data is " + data);
+        // })
+        // .error(function(data, status, headers, config){
+        //     console.log("Error, data not found.");
+        // });
+
         $scope.selectedDAQ = "DAQ1";
         console.log("Clicked DAQ 1");
         
