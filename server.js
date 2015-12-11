@@ -67,11 +67,7 @@ app.get("/DAQ1/T4", function(request, response){
 app.get("/DAQ1/AmbientTemp", function(request, response){
    // gatherdata("DAQ1");
     getDAQData("DAQ1","AmbientTemp", response);
-<<<<<<< HEAD
-   // response.send(sensorData);
-=======
 
->>>>>>> e99dc3e647ff8cb94b687631b7e6a5bdd35574ac
 });
 
 app.get("/DAQ1/Light", function(request, response){
