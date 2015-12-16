@@ -1,10 +1,11 @@
-app.controller("DAQGraphController", function($scope, $http){
-	
+app.controller("DAQGraphController", function($scope, $http, $q){
+	console.log("controller initialized");
 	$scope.message="This is the message variable in the controller";
 	$scope.data  = "This is the data!";
-	
-    $scope.selectedType="Ambient Temp";
+    $scope.selectedType="T1";
     $scope.selectedDAQ="DAQ1";
+    //upon initialization collected all data for each sensor on each DAQ
+    $scope.selectedType = "Thermocouple 1 (F)";
 
     
     $scope.changeGraphType = function(typeSelected){
@@ -16,7 +17,7 @@ app.controller("DAQGraphController", function($scope, $http){
        switch ($scope.selectedDAQ){
        case "DAQ1":
        
-       $scope.DAQ1();
+       $scope.DAQ1($scope.selectedType);
        break;
        case "DAQ2":
        $scope.DAQ2();
@@ -40,16 +41,13 @@ app.controller("DAQGraphController", function($scope, $http){
 	
     
     
-	$scope.DAQ1 = function(){
+	$scope.DAQ1 = function(sensorType){
 
-
-     //    $http.jsonp('http://10.17.177.164:8435/DAQ1/T1')
-     // .success(function(d){ console.log("The data is " + d); })
-     // .error(function(d){console.log("nope"); });
-
+        console.log("The selected sensor is " + sensorType)
         $http.get('http://10.17.177.164:8435/DAQ1/T1')
         .success(function(data, status, headers, config){
-            console.log("Data is " + data);
+            console.log("Data is ");
+            console.log(data);
         })
         .error(function(data, status, headers, config){
             console.log("Error, data not found.");
@@ -91,36 +89,84 @@ app.controller("DAQGraphController", function($scope, $http){
             text: 'DAQ 1 Data'
         },
         xAxis: {
-            categories: ['9am', '10am', '11am', '12pm', '1pm', '2pm','3pm','4pm','5pm']
+            type: "datetime"
+           // categories: ['9am', '10am', '11am', '12pm', '1pm', '2pm','3pm','4pm','5pm']
         },
         yAxis: {
             title: {
                 text: $scope.selectedType
             }
         },
-        series: [{
-            name: 'DAQ 1',
-            data: [Math.random()*70+30, Math.random()*70+30, Math.random()*70+30, Math.random()*70+30, Math.random()*70+30, Math.random()*70+30, Math.random()*70+30, Math.random()*70+30, Math.random()*70+30]
-        }, {
-            name: 'DAQ 2',
-            data: [75, 64, 62, 69, 75, 80, 96, 89, 81],
-            visible:false
-        },
+        series: [
         {
-            name: 'DAQ 3',
-            data: [85, 62, 67, 75, 75, 89, 99, 73, 74],
-            visible:false
+          name: 'DAQ1',
+          data: [
+                //Javascript date object: (Year, Month, Day, hours, minutes)
+                [Date.UTC(2010, 11, 1, 6, 15), 29.9],
+                [Date.UTC(2010, 11, 1, 6, 30), 71.5],
+                [Date.UTC(2010, 11, 1, 6, 40), 106.4],
+                [Date.UTC(2010, 11, 1, 7, 45), 129.2],
+                [Date.UTC(2010, 11, 1, 7, 55), 144.0],
+                [Date.UTC(2010, 11, 1, 8, 56), 176.0]
+                ]
         },
-        {
-            name: 'DAQ 4',
-            data: [55, 60, 62, 76, 79, 85,65, 76, 89],
-            visible:false},
-            {
-            name: 'DAQ 5',
-            data: [60, 69, 85, 76, 69, 83, 75, 65, 60],
-            visible:false
-        }
 
+        {
+            name: 'DAQ2',
+            data: [
+                [Date.UTC(2010, 11, 1, 1, 35), 29.9],
+                [Date.UTC(2010, 11, 1, 1, 45), 71.5],
+                [Date.UTC(2010, 11, 1, 4, 13), 106.4],
+                [Date.UTC(2010, 11, 1, 5, 11), 129.2],
+                [Date.UTC(2010, 11, 1, 6, 12), 144.0],
+                [Date.UTC(2010, 11, 1, 6, 52), 176.0]
+                ]
+        },
+        {
+            name: 'DAQ3',
+            data: [
+                [Date.UTC(2010, 11, 1, 1, 35), 34.4],
+                [Date.UTC(2010, 11, 1, 1, 36), 65.7],
+                [Date.UTC(2010, 11, 1, 4, 37), 23.5],
+                [Date.UTC(2010, 11, 1, 5, 9), 67.8],
+                [Date.UTC(2010, 11, 1, 6, 10), 78.8],
+                [Date.UTC(2010, 11, 1, 6, 51), 78.9]
+                ]
+        },
+        {
+            name: 'DAQ4',
+            data: [
+                [Date.UTC(2010, 11, 1, 4, 35), 29.9],
+                [Date.UTC(2010, 11, 1, 5, 35), 71.5],
+                [Date.UTC(2010, 11, 1, 6, 35), 106.4],
+                [Date.UTC(2010, 11, 1, 7, 35), 129.2],
+                [Date.UTC(2010, 11, 1, 8, 35), 144.0],
+                [Date.UTC(2010, 11, 1, 9, 35), 176.0]
+                ]
+        }
+        // {
+        //     name: 'DAQ 1',
+        //     data: [Math.random()*70+30, Math.random()*70+30, Math.random()*70+30, Math.random()*70+30, Math.random()*70+30, Math.random()*70+30, Math.random()*70+30, Math.random()*70+30, Math.random()*70+30]
+        // }, {
+        //     name: 'DAQ 2',
+        //     data: [75, 64, 62, 69, 75, 80, 96, 89, 81],
+        //     visible:false
+        // },
+        // {
+        //     name: 'DAQ 3',
+        //     data: [85, 62, 67, 75, 75, 89, 99, 73, 74],
+        //     visible:false
+        // },
+        // {
+        //     name: 'DAQ 4',
+        //     data: [55, 60, 62, 76, 79, 85,65, 76, 89],
+        //     visible:false},
+        //     {
+        //     name: 'DAQ 5',
+        //     data: [60, 69, 85, 76, 69, 83, 75, 65, 60],
+        //     visible:false
+        // }
+    
         ]
     });
 		
@@ -419,6 +465,8 @@ app.controller("DAQGraphController", function($scope, $http){
 		
 	}
 	
+    $scope.DAQ1($scope.selectedType);
+
 });
 
 app.controller("homePageController", function($scope){

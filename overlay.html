@@ -32,12 +32,12 @@
         			 </nav>
 				 	 <md-radio-group layout="row" ng-model="selectedType"layout-align="end" flex="50">
 						  Selected: {{selected}}
-      					<md-radio-button ng-click="changeGraphType('Ambient Temp (F)')" value="Ambient Temp (F)" aria-label="Label 1">Ambient Temp</md-radio-button>
-      					<md-radio-button ng-click="changeGraphType('Pipe Temp (F)')" value="Pipe Temp (F)"> Pipe Temp </md-radio-button>
-						  <md-radio-button ng-click="changeGraphType('Thermocouple 1 (F)')" value="Thermocouple 1 (F)" aria-label="Label 3">T 1 (F)</md-radio-button>
-						  <md-radio-button ng-click="changeGraphType('Thermocouple 2 (F)')" value="Thermocouple 2 (F)" aria-label="Label 3">T 2 (F)</md-radio-button>
-						  <md-radio-button ng-click="changeGraphType('Thermocouple 3 (F)')" value="Thermocouple 3 (F)" aria-label="Label 3">T 3 (F)</md-radio-button>
-      					<md-radio-button ng-click="changeGraphType('Light')" value="Light" aria-label="Label 3">Light</md-radio-button>
+      					<md-radio-button ng-click="changeGraphType('T1')" value="Thermocouple 1 (F)" aria-label="Label 1">T1 (F)</md-radio-button>
+      					<md-radio-button ng-click="changeGraphType('T2')" value="Thermocouple 2(F)"> T2 (F) </md-radio-button>
+						  <md-radio-button ng-click="changeGraphType('T3')" value="Thermocouple 3 (F)" aria-label="Label 3">T3 (F)</md-radio-button>
+						  <md-radio-button ng-click="changeGraphType('T4')" value="Thermocouple 4 (F)" aria-label="Label 3">T4 (F)</md-radio-button>
+						  <md-radio-button ng-click="changeGraphType('Light')" value="Light (lux)" aria-label="Label 3">Light (lux)</md-radio-button>
+      					<md-radio-button ng-click="changeGraphType('Ambient')" value="Ambient (F)" aria-label="Label 3">Ambient (F)</md-radio-button>
 					 </md-radio-group>
       		</div>
 			  
