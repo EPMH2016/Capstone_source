@@ -7,6 +7,17 @@ app.controller("DAQGraphController", function($scope, $http, $q){
     //upon initialization collected all data for each sensor on each DAQ
     $scope.selectedType = "Thermocouple 1 (F)";
 
+        $http.get('http://10.17.177.164:8435/DAQ1/T1')
+
+        .success(function(data, status, headers, config){
+            console.log("Data is ");
+            console.log(data);
+            $scope.DAQ1($scope.selectedType);
+        })
+        .error(function(data, status, headers, config){
+            console.log("Error, data not found.");
+        });
+
     
     $scope.changeGraphType = function(typeSelected){
         $scope.selectedType = typeSelected;  
@@ -465,7 +476,7 @@ app.controller("DAQGraphController", function($scope, $http, $q){
 		
 	}
 	
-    $scope.DAQ1($scope.selectedType);
+   // $scope.DAQ1($scope.selectedType);
 
 });
 

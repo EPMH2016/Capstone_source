@@ -23,22 +23,26 @@
 			
             <div layout="row" ng-controller="DAQGraphController">
          			 
-					 <nav class="navbar navbar-default" flex="50">
+					 <!-- <nav class="navbar navbar-default" flex="10">
 						<md-button class="pinkbutton" ng-click="DAQ1()" >DAQ 1</md-button>
 						<md-button class="pinkbutton" ng-click="DAQ2()" >DAQ 2</md-button>
 						<md-button class="pinkbutton" ng-click="DAQ3()" >DAQ 3</md-button>
 						<md-button class="pinkbutton" ng-click="DAQ4()" >DAQ 4</md-button>
 						<md-button class="pinkbutton" ng-click="DAQ5()" >DAQ 5</md-button>
-        			 </nav>
-				 	 <md-radio-group layout="row" ng-model="selectedType"layout-align="end" flex="50">
-						  Selected: {{selected}}
-      					<md-radio-button ng-click="changeGraphType('T1')" value="Thermocouple 1 (F)" aria-label="Label 1">T1 (F)</md-radio-button>
-      					<md-radio-button ng-click="changeGraphType('T2')" value="Thermocouple 2(F)"> T2 (F) </md-radio-button>
-						  <md-radio-button ng-click="changeGraphType('T3')" value="Thermocouple 3 (F)" aria-label="Label 3">T3 (F)</md-radio-button>
-						  <md-radio-button ng-click="changeGraphType('T4')" value="Thermocouple 4 (F)" aria-label="Label 3">T4 (F)</md-radio-button>
+        			 </nav> -->
+        			 
+				 	 <md-radio-group layout="row" ng-model="selectedType"layout-align="end" flex="80">
+						  Selected: {{selectedType}}
+      					<md-radio-button ng-click="changeGraphType('T1')" value="Thermocouple 1 (F)" aria-label="Label 1">T1 (C)</md-radio-button>
+      					<md-radio-button ng-click="changeGraphType('T2')" value="Thermocouple 2(F)"> T2 (C) </md-radio-button>
+						  <md-radio-button ng-click="changeGraphType('T3')" value="Thermocouple 3 (F)" aria-label="Label 3">T3 (C)</md-radio-button>
+						  <md-radio-button ng-click="changeGraphType('T4')" value="Thermocouple 4 (F)" aria-label="Label 3">T4 (C)</md-radio-button>
 						  <md-radio-button ng-click="changeGraphType('Light')" value="Light (lux)" aria-label="Label 3">Light (lux)</md-radio-button>
-      					<md-radio-button ng-click="changeGraphType('Ambient')" value="Ambient (F)" aria-label="Label 3">Ambient (F)</md-radio-button>
+      					<md-radio-button ng-click="changeGraphType('Ambient')" value="Ambient (F)" aria-label="Label 3">Ambient (C)</md-radio-button>
 					 </md-radio-group>
+					 <div flex="20">
+					 </div>
+					 
       		</div>
 			  
 			  <div layout="row">
