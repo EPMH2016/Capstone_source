@@ -5,11 +5,11 @@ app.controller("DAQGraphController", function($scope, $http, $q){
     $scope.selectedType="T1";
     $scope.selectedDAQ="DAQ1";
     //upon initialization collected all data for each sensor on each DAQ
+    //Can be Thermocouple 1 (F), Thermocouple 2 (F), Thermocouple 3(F), Thermocouple 4(F), Light (lux), Ambient (F)
     $scope.selectedType = "Thermocouple 1 (F)";
 
         $http.get('http://10.17.177.164:8435/DAQ1/T1')
-
-        .success(function(data, status, headers, config){
+.success(function(data, status, headers, config){
             console.log("Data is ");
             console.log(data);
             $scope.DAQ1($scope.selectedType);
@@ -21,28 +21,98 @@ app.controller("DAQGraphController", function($scope, $http, $q){
     
     $scope.changeGraphType = function(typeSelected){
         $scope.selectedType = typeSelected;  
-        console.log("you selected" + $scope.selectedType)
+        console.log("you selected " + $scope.selectedType)
         $scope.selectedType = typeSelected;      
        
-       
-       switch ($scope.selectedDAQ){
-       case "DAQ1":
-       
-       $scope.DAQ1($scope.selectedType);
-       break;
-       case "DAQ2":
-       $scope.DAQ2();
-       break;
-       case "DAQ3":
-       $scope.DAQ3();
-       break;
-       case "DAQ4":
-       $scope.DAQ4();
-       break;
-       case "DAQ5":
-       $scope.DAQ5();
-       break;
+       //Get data types of each DAQ and draw graphs
+       switch ($scope.selectedType){
+        case "T1":
+        $http.get('http://10.17.177.164:8435/DAQ1/T1')
+        .success(function(data, status, headers, config){
+            console.log("Data is ");
+            console.log(data);
+            $scope.DAQ1($scope.selectedType);
+        })
+        .error(function(data, status, headers, config){
+            console.log("Error, data not found.");
+        });
+        break;
+        case "T2":
+        $http.get('http://10.17.177.164:8435/DAQ1/T2')
+        .success(function(data, status, headers, config){
+            console.log("Data is ");
+            console.log(data);
+            $scope.DAQ1($scope.selectedType);
+        })
+        .error(function(data, status, headers, config){
+            console.log("Error, data not found.");
+        });
+        break;
+        case "T3":
+        $http.get('http://10.17.177.164:8435/DAQ1/T3')
+        .success(function(data, status, headers, config){
+            console.log("Data is ");
+            console.log(data);
+            $scope.DAQ1($scope.selectedType);
+        })
+        .error(function(data, status, headers, config){
+            console.log("Error, data not found.");
+        });        
+        break;
+        case "T4":
+        $http.get('http://10.17.177.164:8435/DAQ1/T4')
+        .success(function(data, status, headers, config){
+            console.log("Data is ");
+            console.log(data);
+            $scope.DAQ1($scope.selectedType);
+        })
+        .error(function(data, status, headers, config){
+            console.log("Error, data not found.");
+        });        
+        break;
+        case "Light":
+        $http.get('http://10.17.177.164:8435/DAQ1/Light')
+        .success(function(data, status, headers, config){
+            console.log("Data is ");
+            console.log(data);
+            $scope.DAQ1($scope.selectedType);
+        })
+        .error(function(data, status, headers, config){
+            console.log("Error, data not found.");
+        });        
+        break;
+        case "Ambient":
+        $http.get('http://10.17.177.164:8435/DAQ1/AmbientTemp')
+        .success(function(data, status, headers, config){
+            console.log("Data is ");
+            console.log(data);
+            $scope.DAQ1($scope.selectedType);
+        })
+        .error(function(data, status, headers, config){
+            console.log("Error, data not found.");
+        });
+        break;
+
        }
+       
+       // switch ($scope.selectedDAQ){
+       // case "DAQ1":
+       
+       // $scope.DAQ1($scope.selectedType);
+       // break;
+       // case "DAQ2":
+       // $scope.DAQ2();
+       // break;
+       // case "DAQ3":
+       // $scope.DAQ3();
+       // break;
+       // case "DAQ4":
+       // $scope.DAQ4();
+       // break;
+       // case "DAQ5":
+       // $scope.DAQ5();
+       // break;
+       // }
         
     }
     
@@ -52,7 +122,7 @@ app.controller("DAQGraphController", function($scope, $http, $q){
 	
     
     
-	$scope.DAQ1 = function(sensorType){
+	$scope.DAQ1 = function(sensorType, data){
 
         console.log("The selected sensor is " + sensorType)
         $http.get('http://10.17.177.164:8435/DAQ1/T1')
