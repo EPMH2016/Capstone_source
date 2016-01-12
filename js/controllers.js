@@ -1,13 +1,34 @@
+
+
 app.controller("DAQGraphController", function($scope, $http, $q){
 	console.log("controller initialized");
 	$scope.message="This is the message variable in the controller";
 	$scope.data  = "This is the data!";
     $scope.selectedType="T1";
     $scope.selectedDAQ="DAQ1";
+
+    var data_array = [];
+    var date_array = [];
     //upon initialization collected all data for each sensor on each DAQ
     $scope.selectedType = "Thermocouple 1 (F)";
 
-    
+        $http.get('http://10.17.177.164:8435/DAQ1/T1')
+
+        .success(function(data, status, headers, config){
+            $scope.DAQ1($scope.selectedType, data);
+            // put all the data values in the data_array 
+            for(i = 0; i < data.length; i++)
+            {
+                data_array.push(data[i]["Data Value"]);
+                date_array.push(data[i]["Timestamp"])
+            }
+            //console.log(data_array);
+        })
+        .error(function(data, status, headers, config){
+            console.log("Error, data not found.");
+        });
+
+
     $scope.changeGraphType = function(typeSelected){
         $scope.selectedType = typeSelected;  
         console.log("you selected" + $scope.selectedType)
@@ -41,7 +62,24 @@ app.controller("DAQGraphController", function($scope, $http, $q){
 	
     
     
-	$scope.DAQ1 = function(sensorType){
+	$scope.DAQ1 = function(sensorType, data){
+        for(i = 0; i < data.length; i++)
+        {
+                data_array.push(data[i]["Data Value"]);
+                date_array.push(data[i]["Timestamp"])
+        }
+
+        //console.log(data_array);
+
+        var graph_array = [];
+
+        for(i = 0; i < data.length; i++)
+        {
+            graph_array.push([Date.parse(date_array[i]), data_array[i]]);
+        }
+
+        console.log(graph_array);
+        console.log(Date.UTC(2010, 11, 1, 1, 35));
 
         console.log("The selected sensor is " + sensorType)
         $http.get('http://10.17.177.164:8435/DAQ1/T1')
@@ -100,15 +138,9 @@ app.controller("DAQGraphController", function($scope, $http, $q){
         series: [
         {
           name: 'DAQ1',
-          data: [
+          data: graph_array
                 //Javascript date object: (Year, Month, Day, hours, minutes)
-                [Date.UTC(2010, 11, 1, 6, 15), 29.9],
-                [Date.UTC(2010, 11, 1, 6, 30), 71.5],
-                [Date.UTC(2010, 11, 1, 6, 40), 106.4],
-                [Date.UTC(2010, 11, 1, 7, 45), 129.2],
-                [Date.UTC(2010, 11, 1, 7, 55), 144.0],
-                [Date.UTC(2010, 11, 1, 8, 56), 176.0]
-                ]
+                
         },
 
         {
@@ -465,7 +497,7 @@ app.controller("DAQGraphController", function($scope, $http, $q){
 		
 	}
 	
-    $scope.DAQ1($scope.selectedType);
+   // $scope.DAQ1($scope.selectedType);
 
 });
 
