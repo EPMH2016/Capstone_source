@@ -11,57 +11,12 @@ from xml.dom import minidom
 #Attempt to connect to server database
 r.connect('localhost', port=28015, db='HDMI').repl()
 
-<<<<<<< HEAD
+
 print "Successfully connected to database."
 
 timeInterval = 3
 
 print "Collecting data on time interval: " + str(timeInterval)
-
-while True:
-   
-    time.sleep(timeInterval)
-
-    print "Timestamp: " + str(datetime.datetime.now())
-
-    #get temperature in F
-    print("Thermocouple 1 is " + str(json.load(urllib2.urlopen("http://10.17.176.147/T1"))))
-
-    T1 = float(json.load(urllib2.urlopen("http://10.17.176.147/T1")))
-
-    print ("Thermocouple 2  is " + str(json.load(urllib2.urlopen("http://10.17.176.147/T2"))))
-    
-    r.table('DAQ1').insert({'Sensor Type': 'T1', 'DAQ ID':'DAQ1f', 'Sensor ID': 'D1T1', 'Data Value': T1, 'Units': 'C', 'Timestamp': r.now().in_timezone('-08:00')}).run()
-
-    T2 = float(json.load(urllib2.urlopen("http://10.17.176.147/T2")))
-
-    r.table('DAQ1').insert({'Sensor Type': 'T2', 'DAQ ID':'DAQ1f', 'Sensor ID': 'D1T2', 'Data Value': T2, 'Units': 'C', 'Timestamp': r.now().in_timezone('-08:00')}).run()
-
-    print ('Thermocouple 3 is ' +  str(json.load(urllib2.urlopen("http://10.17.176.147/T3"))))
-
-    T3 = float(json.load(urllib2.urlopen("http://10.17.176.147/T3")))
-    
-    r.table('DAQ1').insert({'Sensor Type': 'T3', 'DAQ ID':'DAQ1f', 'Sensor ID': 'D1T3', 'Data Value': T3, 'Units': 'C', 'Timestamp': r.now().in_timezone('-08:00')}).run()
-
-    print ('Thermocouple 4 is ' +  str(json.load(urllib2.urlopen("http://10.17.176.147/T4"))))
-
-    T4 = float(json.load(urllib2.urlopen("http://10.17.176.147/T4")))
-    r.table('DAQ1').insert({'Sensor Type': 'T4', 'DAQ ID':'DAQ1f', 'Sensor ID': 'D1T4', 'Data Value': T4, 'Units': 'C', 'Timestamp': r.now().in_timezone('-08:00')}).run()
-
-    print ('Ambient Temperature is ' +  str(json.load(urllib2.urlopen("http://10.17.176.147/AmbientTemp"))))
-
-    AmbientTemp = float(json.load(urllib2.urlopen("http://10.17.176.147/AmbientTemp")))
-
-    r.table('DAQ1').insert({'Sensor Type': 'AmbientTemp', 'DAQ ID':'DAQ1f', 'Sensor ID': 'D1AT', 'Data Value': AmbientTemp, 'Units': 'C', 'Timestamp': r.now().in_timezone('-08:00')}).run()
-
-    print ('Light is ' +  str(json.load(urllib2.urlopen("http://10.17.176.147/Light")))) 
-
-    Light = float(json.load(urllib2.urlopen("http://10.17.176.147/Light")))
-
-    
-
-=======
->>>>>>> 0b9f67d69ab007fc00d96088abbb2c806507ed11
 
 #Parse through XML configuration file
 print "Parsing through XML config"
@@ -84,7 +39,7 @@ for daq in DAQlist:
 def DAQ1():
 	while True:
 		#Get time interval
-		time.sleep(timeIntervals['DAQ1'])
+		time.sleep(float(timeIntervals['DAQ1']))
 		print ("Collecting data for DAQ1")
     	T1 = float(json.load(urllib2.urlopen("http://10.17.160.120/T1")))
     	r.table('DAQ1').insert({'Sensor Type': 'T1', 'DAQ ID':'DAQ1f', 'Sensor ID': 'D1T1', 'Data Value': T1, 'Units': 'C', 'Timestamp': r.now().in_timezone('-08:00')}).run()
@@ -100,15 +55,15 @@ def DAQ1():
 
 def DAQ2():
 	while True:
-		time.sleep(timeIntervals['DAQ2'])
+		time.sleep(float(timeIntervals['DAQ2']))
 		print "Collecting data for DAQ2"
 
 def DAQ3():
 	while True:
-		time.sleep(timeIntervals['DAQ3'])
+		time.sleep(float(timeIntervals['DAQ3']))
 		print "Collecting data for DAQ3"
 
-if __name__ == "main":
+if __name__ == "__main__":
 	Thread(target = DAQ1).start()
 	Thread(target=DAQ2).start()
 	Thread(target=DAQ3).start()
