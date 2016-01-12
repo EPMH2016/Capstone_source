@@ -236,3 +236,10 @@
 2015-12-07T19:28:58.718244456 1.774415s info: Table 388e37ef-447d-4c3c-bc03-dd937d2d77c6: This server is Raft leader for term 3. Latest log index is 5.
 2015-12-07T19:28:59.385305379 2.441475s info: Table 3299971b-c7d4-4eb6-9f59-d7913b9b7d34: Starting a new Raft election for term 5.
 2015-12-07T19:28:59.392872383 2.449042s info: Table 3299971b-c7d4-4eb6-9f59-d7913b9b7d34: This server is Raft leader for term 5. Latest log index is 11.
+2016-01-11T20:06:07.316126650 0.030408s notice: Running rethinkdb 2.1.1 (GCC 4.6.3)...
+2016-01-11T20:06:07.328813788 0.043091s notice: Running on Linux 3.18.11-v7+ armv7l
+2016-01-11T20:06:07.329349771 0.043614s notice: Loading data from directory /home/pi/Desktop/capstone_source/rethinkdb_data
+2016-01-11T20:06:07.406625756 0.120898s info: Automatically using cache size of 100 MB
+2016-01-11T20:06:07.407645327 0.121912s warn: Cache size does not leave much memory for server and query overhead (available memory: 790 MB).
+2016-01-11T20:06:07.407666889 0.121928s warn: Cache size is very low and may impact performance.
+2016-01-11T20:06:07.410110037 0.124377s error: TCP socket creation failed for port 29015: Address already in use.
