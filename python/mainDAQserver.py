@@ -71,21 +71,21 @@ def DAQ2():
         print ("DAQ2:")
         T1 = float(json.load(urllib2.urlopen("http://10.17.160.120/T1")))
         print ("T1: " + str(T1))
-        r.table('DAQ1').insert({'Sensor Type': 'T1', 'DAQ ID':'DAQ2f', 'Sensor ID': 'D2T1', 'Data Value': T1, 'Units': 'C', 'Timestamp': r.now().in_timezone('-08:00')}).run()
+        r.table('DAQ2').insert({'Sensor Type': 'T1', 'DAQ ID':'DAQ2f', 'Sensor ID': 'D2T1', 'Data Value': T1, 'Units': 'C', 'Timestamp': r.now().in_timezone('-08:00')}).run()
         T2 = float(json.load(urllib2.urlopen("http://10.17.160.120/T2")))
         print "T2: " + str(T2)
-        r.table('DAQ1').insert({'Sensor Type': 'T2', 'DAQ ID':'DAQ2f', 'Sensor ID': 'D2T1', 'Data Value': T2, 'Units': 'C', 'Timestamp': r.now().in_timezone('-08:00')}).run()
+        r.table('DAQ2').insert({'Sensor Type': 'T2', 'DAQ ID':'DAQ2f', 'Sensor ID': 'D2T1', 'Data Value': T2, 'Units': 'C', 'Timestamp': r.now().in_timezone('-08:00')}).run()
         T3 = float(json.load(urllib2.urlopen("http://10.17.160.120/T3")))
         print "T3: " + str(T3)
-        r.table('DAQ1').insert({'Sensor Type': 'T3', 'DAQ ID':'DAQ2f', 'Sensor ID': 'D2T1', 'Data Value': T3, 'Units': 'C', 'Timestamp': r.now().in_timezone('-08:00')}).run()
+        r.table('DAQ2').insert({'Sensor Type': 'T3', 'DAQ ID':'DAQ2f', 'Sensor ID': 'D2T1', 'Data Value': T3, 'Units': 'C', 'Timestamp': r.now().in_timezone('-08:00')}).run()
         T4 = float(json.load(urllib2.urlopen("http://10.17.160.120/T4")))
         print "T4: " + str(T4)
-        r.table('DAQ1').insert({'Sensor Type': 'T4', 'DAQ ID':'DAQ2f', 'Sensor ID': 'D2T1', 'Data Value': T4, 'Units': 'C', 'Timestamp': r.now().in_timezone('-08:00')}).run()
+        r.table('DAQ2').insert({'Sensor Type': 'T4', 'DAQ ID':'DAQ2f', 'Sensor ID': 'D2T1', 'Data Value': T4, 'Units': 'C', 'Timestamp': r.now().in_timezone('-08:00')}).run()
         AmbientTemp = float(json.load(urllib2.urlopen("http://10.17.160.120/AmbientTemp")))
         print "AmbientTemp: " + str(AmbientTemp)
-        r.table('DAQ1').insert({'Sensor Type': 'AmbientTemp', 'DAQ ID':'DAQ2f', 'Sensor ID': 'D2T1', 'Data Value': AmbientTemp, 'Units': 'C', 'Timestamp': r.now().in_timezone('-08:00')}).run()
+        r.table('DAQ2').insert({'Sensor Type': 'AmbientTemp', 'DAQ ID':'DAQ2f', 'Sensor ID': 'D2T1', 'Data Value': AmbientTemp, 'Units': 'C', 'Timestamp': r.now().in_timezone('-08:00')}).run()
         Light = float(json.load(urllib2.urlopen("http://10.17.160.120/Light")))
-        r.table('DAQ1').insert({'Sensor Type': 'Light', 'DAQ ID':'DAQ2f', 'Sensor ID': 'D2T1', 'Data Value': Light, 'Units': 'lux', 'Timestamp': r.now().in_timezone('-08:00')}).run()
+        r.table('DAQ2').insert({'Sensor Type': 'Light', 'DAQ ID':'DAQ2f', 'Sensor ID': 'D2T1', 'Data Value': Light, 'Units': 'lux', 'Timestamp': r.now().in_timezone('-08:00')}).run()
         print "Light:" + str(Light)
 
 def DAQ3():
@@ -93,9 +93,9 @@ def DAQ3():
  		time.sleep(float(timeIntervals['DAQ3']))
  		print "Collecting data for DAQ3"
 
-# if __name__ == "__main__":
-# 	Thread(target = DAQ1).start()
-# 	#Thread(target=DAQ2).start()
-# 	Thread(target=DAQ3).start()
+if __name__ == "__main__":
+	Thread(target = DAQ1).start()
+	#Thread(target=DAQ2).start()
+	Thread(target=DAQ3).start()
 
-DAQ1()
+
