@@ -44,6 +44,7 @@ def DAQ1():
 		time.sleep(float(timeIntervals['DAQ1']))
 		print ("DAQ1:")
     	T1 = float(json.load(urllib2.urlopen("http://10.17.160.120/T1")))
+        print "collected T1"
         print ("T1: " + str(T1))
     	r.table('DAQ1').insert({'Sensor Type': 'T1', 'DAQ ID':'DAQ1f', 'Sensor ID': 'D1T1', 'Data Value': T1, 'Units': 'C', 'Timestamp': r.now().in_timezone('-08:00')}).run()
     	T2 = float(json.load(urllib2.urlopen("http://10.17.160.120/T2")))
