@@ -62,7 +62,7 @@ def DAQ1():
 
 def DAQ2():
 	while True:
-		      #Get time interval
+		#Get time interval
         time.sleep(float(timeIntervals['DAQ2']))
         print ("Collecting data for DAQ2")
         T1 = float(json.load(urllib2.urlopen("http://10.17.160.120/T1")))
