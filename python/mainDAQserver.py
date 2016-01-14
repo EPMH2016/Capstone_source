@@ -37,7 +37,7 @@ for daq in DAQlist:
 
 #ENSURE THAT EACH DAQ IN config.xml has a function
 def DAQ1():
-
+    r.connect('localhost', port=28015, db='HDMI').repl()
 	while True:
 
 		#Get time interval
@@ -64,6 +64,7 @@ def DAQ1():
                 print "Light:" + str(Light)
 
 def DAQ2():
+    r.connect('localhost', port=28015, db='HDMI').repl()
     while True:
 
         #Get time interval
@@ -95,7 +96,7 @@ def DAQ3():
 
 if __name__ == "__main__":
 	Thread(target = DAQ1).start()
-	#Thread(target=DAQ2).start()
+	Thread(target=DAQ2).start()
 	Thread(target=DAQ3).start()
 
 
