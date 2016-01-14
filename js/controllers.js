@@ -510,3 +510,46 @@ app.controller("homePageController", function($scope){
     };
     
 });
+
+app.controller("navController", function($scope, $timeout, $mdSidenav, $log){
+
+    $scope.test = function(){
+
+        console.log("It works!");
+
+    }
+
+    $scope.toggleRight = buildToggler('right');
+
+    $scope.close = function () {
+      $mdSidenav('right').close()
+        .then(function () {
+          $log.debug("close RIGHT is done");
+        });
+    };
+
+      /**
+     * Build handler to open/close a SideNav; when animation finishes
+     * report completion in console
+     */
+    function buildDelayedToggler(navID) {
+      return debounce(function() {
+        $mdSidenav(navID)
+          .toggle()
+          .then(function () {
+            $log.debug("toggle " + navID + " is done");
+          });
+      }, 200);
+    }
+    function buildToggler(navID) {
+      return function() {
+        $mdSidenav(navID)
+          .toggle()
+          .then(function () {
+            $log.debug("toggle " + navID + " is done");
+          });
+      }
+    }
+
+
+});

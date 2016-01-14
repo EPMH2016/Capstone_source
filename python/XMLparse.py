@@ -1,6 +1,8 @@
 
 from xml.dom import minidom
 
+#XML file parsing demo
+
 print "Parsing through XML config"
 
 configdoc = minidom.parse('../xml/config.xml')

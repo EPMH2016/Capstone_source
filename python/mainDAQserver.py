@@ -57,7 +57,7 @@ def DAQ3():
 		time.sleep(timeIntervals['DAQ3'])
 		print "Collecting data for DAQ3"
 
-if __name__ == "main":
+if __name__ == "__main__":
 	Thread(target = DAQ1).start()
 	Thread(target=DAQ2).start()
 	Thread(target=DAQ3).start()
