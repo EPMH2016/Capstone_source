@@ -67,7 +67,7 @@ def DAQ2():
 
         #Get time interval
         time.sleep(float(timeIntervals['DAQ2']))
-        print ("DAQ2")
+        print ("DAQ2:")
         T1 = float(json.load(urllib2.urlopen("http://10.17.160.120/T1")))
         print ("T1: " + str(T1))
         r.table('DAQ1').insert({'Sensor Type': 'T1', 'DAQ ID':'DAQ2f', 'Sensor ID': 'D2T1', 'Data Value': T1, 'Units': 'C', 'Timestamp': r.now().in_timezone('-08:00')}).run()
@@ -94,5 +94,5 @@ def DAQ3():
 
 if __name__ == "__main__":
 	Thread(target = DAQ1).start()
-	Thread(target=DAQ2).start()
+	#Thread(target=DAQ2).start()
 	Thread(target=DAQ3).start()
