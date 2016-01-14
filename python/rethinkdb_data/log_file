@@ -59,3 +59,25 @@
 2015-11-05T09:58:29.960890821 0.116160s warn: Cache size does not leave much memory for server and query overhead (available memory: 644 MB).
 2015-11-05T09:58:29.960931706 0.116194s warn: Cache size is very low and may impact performance.
 2015-11-05T09:58:29.963296550 0.118563s error: TCP socket creation failed for port 29015: Address already in use.
+2016-01-11T20:03:46.413467442 0.034699s notice: Running rethinkdb 2.1.1 (GCC 4.6.3)...
+2016-01-11T20:03:46.431125017 0.052351s notice: Running on Linux 3.18.11-v7+ armv7l
+2016-01-11T20:03:46.431610270 0.052822s notice: Loading data from directory /home/pi/Desktop/capstone_source/python/rethinkdb_data
+2016-01-11T20:03:46.495786563 0.117005s info: Automatically using cache size of 100 MB
+2016-01-11T20:03:46.502524005 0.123735s warn: Cache size does not leave much memory for server and query overhead (available memory: 762 MB).
+2016-01-11T20:03:46.502565723 0.123772s warn: Cache size is very low and may impact performance.
+2016-01-11T20:03:46.504896310 0.126107s error: TCP socket creation failed for port 29015: Address already in use.
+2016-01-11T20:05:48.385796372 0.030512s notice: Running rethinkdb 2.1.1 (GCC 4.6.3)...
+2016-01-11T20:05:48.397476432 0.042186s notice: Running on Linux 3.18.11-v7+ armv7l
+2016-01-11T20:05:48.397822938 0.042521s notice: Loading data from directory /home/pi/Desktop/capstone_source/python/rethinkdb_data
+2016-01-11T20:05:48.452189175 0.096896s info: Automatically using cache size of 100 MB
+2016-01-11T20:05:48.453777801 0.098480s warn: Cache size does not leave much memory for server and query overhead (available memory: 773 MB).
+2016-01-11T20:05:48.453886237 0.098583s warn: Cache size is very low and may impact performance.
+2016-01-11T20:05:48.456188708 0.100889s error: TCP socket creation failed for port 29015: Address already in use.
+2016-01-11T20:23:22.865788093 0.024204s notice: Running rethinkdb 2.1.1 (GCC 4.6.3)...
+2016-01-11T20:23:22.878364652 0.036777s notice: Running on Linux 3.18.11-v7+ armv7l
+2016-01-11T20:23:22.878729444 0.037130s notice: Loading data from directory /home/pi/Desktop/capstone_source/python/rethinkdb_data
+2016-01-11T20:23:22.936943177 0.095355s info: Automatically using cache size of 100 MB
+2016-01-11T20:23:22.946007706 0.104412s warn: Cache size does not leave much memory for server and query overhead (available memory: 757 MB).
+2016-01-11T20:23:22.946569476 0.104970s warn: Cache size is very low and may impact performance.
+2016-01-11T20:23:22.946623331 0.105021s error: Failed to create sockets for listener on port 29015, falling back to IPv4 only
+2016-01-11T20:23:22.949743590 0.108148s error: TCP socket creation failed for port 29015: Address already in use.
