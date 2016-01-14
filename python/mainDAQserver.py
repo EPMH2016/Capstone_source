@@ -38,7 +38,7 @@ for daq in DAQlist:
 #ENSURE THAT EACH DAQ IN config.xml has a function
 def DAQ1():
     r.connect('localhost', port=28015, db='HDMI').repl()
-	while True:
+    while True:
 
 		#Get time interval
 		time.sleep(float(timeIntervals['DAQ1']))
