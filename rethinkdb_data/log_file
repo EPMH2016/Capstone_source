@@ -347,3 +347,6 @@
 2016-01-13T22:07:10.650795473 2.230377s info: Table 388e37ef-447d-4c3c-bc03-dd937d2d77c6: This server is Raft leader for term 7. Latest log index is 17.
 2016-01-13T22:07:10.736210732 2.315792s info: Table 0b4766a8-5d94-4bb0-9bc7-28e555960978: Starting a new Raft election for term 14.
 2016-01-13T22:07:10.749384882 2.328968s info: Table 0b4766a8-5d94-4bb0-9bc7-28e555960978: This server is Raft leader for term 14. Latest log index is 39.
+2016-01-13T22:44:48.896559446 2260.476142s info: Table 24c714be-4b5c-4529-8b2c-330445e29fe8: Added replica on this server.
+2016-01-13T22:44:50.139759892 2261.719340s info: Table 24c714be-4b5c-4529-8b2c-330445e29fe8: Starting a new Raft election for term 1.
+2016-01-13T22:44:50.147555080 2261.727136s info: Table 24c714be-4b5c-4529-8b2c-330445e29fe8: This server is Raft leader for term 1. Latest log index is 0.
