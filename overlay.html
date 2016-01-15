@@ -48,12 +48,9 @@
       		</div>
 			  
 			  <div layout="row" ng-controller="navController">
-				  	<div flex="50">
-						<md-button onclick="window.open('manage_data.html')" class="md-fab" aria-label="FAB" style="background:dodgerblue;">
-							<ng-md-icon icon="arrow_back" size="52" ></ng-md-icon> 
-						</md-button>
-					</div>
-					<div flex="50" layout="row" layout-align="end end">
+<!-- 				  	<div flex="50">
+					</div> -->
+					<div flex layout="row" layout-align="end end">
 					
 					<md-button ng-click="toggleRight()"
             		ng-hide="isOpenRight()" class="md-icon-button md-accent" aria-label="Nav">
@@ -63,17 +60,26 @@
 					</div>
 			  </div>
 
-			  <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right">
+		<md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right">
       <md-toolbar class="md-theme-light">
         <h1 class="md-toolbar-tools">Navigation</h1>
       </md-toolbar>
       <md-content ng-controller="navController" layout-padding>
         <form>
-          <md-input-container>
-            <label for="testInput">Test input</label>
-            <input type="text" id="testInput"
-                   ng-model="data" md-autofocus>
-          </md-input-container>
+
+          <md-button onclick="window.open('overlay.html', '_self');" ng-click="close()" class="md-primary">
+          View Data
+          </md-button>
+          <md-button onclick="window.open('manage_data.html', '_self');" ng-click="close()" class="md-primary">
+          Manage Data 
+          </md-button>
+          <md-button onclick="window.open('system_config.html','_self');" ng-click="close()" class="md-primary">
+          System Configuration
+          </md-button>
+          <md-button onclick="window.open('configure_DAQ.html','_self');" ng-click="close()" class="md-primary">
+          Configure DAQs
+          </md-button>
+
         </form>
         <md-button ng-click="close()" class="md-primary">
           Close Navigation
