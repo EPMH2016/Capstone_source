@@ -20,29 +20,59 @@
 		
 		<body layout="column" layout-align="center center">
 			
-			<div layout="row">
-				  	<div flex="50">
-					<md-button class="md-fab" aria-label="FAB" style="background:dodgerblue;">
-  						<ng-md-icon icon="arrow_back" size="52" ></ng-md-icon> 
-					</md-button>
-					</div>
-					<div flex="50" layout="row" layout-align="end end">
-					<md-button class="md-fab" aria-label="FAB" style="background:dodgerblue;">
-  						<ng-md-icon icon="home" size="48" ></ng-md-icon> 
-					</md-button>
-					</div>
+			 <div layout="row" ng-controller="navController">
+				  	
+				  	<md-button ng-click="toggleRight()"
+            		ng-hide="isOpenRight()" class="md-icon-button md-accent" aria-label="Nav">
+        				<md-icon  md-svg-icon="images/navIcon.svg"></md-icon>
+      				</md-button>
+					
 			  </div>
+
+
+		<md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right">
+      <md-toolbar class="md-theme-light">
+        <h1 class="md-toolbar-tools">Navigation</h1>
+      </md-toolbar>
+      <md-content ng-controller="navController" layout-padding>
+        <form>
+          
+          <md-button onclick="window.open('overlay.html', '_self');" ng-click="close()" class="md-primary">
+          View Data
+          </md-button>
+          <md-button onclick="window.open('manage_data.html', '_self');" ng-click="close()" class="md-primary">
+          Manage Data 
+          </md-button>
+          <md-button onclick="window.open('system_config.html','_self');" ng-click="close()" class="md-primary">
+          System Configuration
+          </md-button>
+          <md-button onclick="window.open('configure_DAQ.html','_self');" ng-click="close()" class="md-primary">
+          Configure DAQs
+          </md-button>
+
+        </form>
+        <md-button ng-click="close()" class="md-primary">
+          Close Navigation
+        </md-button>
+      </md-content>
+    </md-sidenav>
 			  
 			<h2 class="md-display-3">Configure DAQs</h2>
             
-			<div layout="row" layout-align="center start" class="colorNested" flex>
+			<div layout="row" layout-align="center start" class="colorNested" >
  			<div><md-button class="pinkbutton" flex="10" > DAQ 1 </md-button></div>
 			<div><md-button class="pinkbutton" flex="10"> DAQ 2 </md-button></div>
 			<div><md-button class="pinkbutton" flex="10"> DAQ 3 </md-button></div>
   			</div>
-            
-            <div><h3>ID: 12345</h3></div>
-            <div><h3>Location: Basement</h3></div>
+
+            <!-- <div><h4>ID: 12345</h4></div>
+            <div><h4>Location: Basement</h4></div> -->
+
+            <div layout="column" layout-align="center center">
+            	<h4>ID: 12345</h4>
+            	<h4>Location: Basement</h4>
+            </div>
+
             <div>
 				 	 <md-radio-group layout="row" ng-model="selectedType"layout-align="end" flex="50">
       					<div><md-radio-button value="Ambient Temp (F)" aria-label="Label 1">Ambient Temp</md-radio-button></div>
