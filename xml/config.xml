@@ -1,7 +1,7 @@
 <config>
 
 <DAQ id="DAQ1" TimeInterval="3"></DAQ>
-<DAQ id="DAQ2" TimeInterval="15"></DAQ>
+<DAQ id="DAQ2" TimeInterval="4"></DAQ>
 <DAQ id="DAQ3" TimeInterval="60"></DAQ>
 
 </config>

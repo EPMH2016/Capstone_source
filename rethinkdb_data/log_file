@@ -350,3 +350,174 @@
 2016-01-13T22:44:48.896559446 2260.476142s info: Table 24c714be-4b5c-4529-8b2c-330445e29fe8: Added replica on this server.
 2016-01-13T22:44:50.139759892 2261.719340s info: Table 24c714be-4b5c-4529-8b2c-330445e29fe8: Starting a new Raft election for term 1.
 2016-01-13T22:44:50.147555080 2261.727136s info: Table 24c714be-4b5c-4529-8b2c-330445e29fe8: This server is Raft leader for term 1. Latest log index is 0.
+2016-01-13T23:15:20.799881529 4092.379469s notice: Server got SIGINT from pid 0, uid 0; shutting down...
+2016-01-13T23:15:20.800529651 4092.380113s notice: Shutting down client connections...
+2016-01-13T23:15:20.801082565 4092.380664s notice: All client connections closed.
+2016-01-13T23:15:20.801112774 4092.380691s notice: Shutting down storage engine... (This may take a while if you had a lot of unflushed data in the writeback cache.)
+2016-01-13T23:15:20.855568909 4092.435158s notice: Storage engine shut down.
+2016-01-15T12:52:37.730810639 0.119003s notice: Running rethinkdb 2.2.3-1 (GCC 4.6.3)...
+2016-01-15T12:52:37.750073974 0.138249s notice: Running on Linux 3.18.11-v7+ armv7l
+2016-01-15T12:52:37.750658502 0.138821s notice: Loading data from directory /home/pi/Desktop/capstone_source/rethinkdb_data
+2016-01-15T12:52:37.879193130 0.267365s info: Automatically using cache size of 100 MB
+2016-01-15T12:52:37.886047416 0.274216s warn: Cache size does not leave much memory for server and query overhead (available memory: 809 MB).
+2016-01-15T12:52:37.886078979 0.274239s warn: Cache size is very low and may impact performance.
+2016-01-15T12:52:37.886118041 0.274278s error: Failed to create sockets for listener on port 29015, falling back to IPv4 only
+2016-01-15T12:52:37.906903347 0.295069s notice: Listening for intracluster connections on port 29015
+2016-01-15T12:52:38.513352410 0.901517s error: Failed to create sockets for listener on port 28015, falling back to IPv4 only
+2016-01-15T12:52:38.522904078 0.911069s notice: Listening for client driver connections on port 28015
+2016-01-15T12:52:38.523720011 0.911883s error: Failed to create sockets for listener on port 8080, falling back to IPv4 only
+2016-01-15T12:52:38.523808865 0.911970s notice: Listening for administrative HTTP connections on port 8080
+2016-01-15T12:52:38.539349251 0.927514s notice: Listening on addresses: 127.0.0.1, 127.0.1.1, 10.17.191.41
+2016-01-15T12:52:38.539943831 0.928107s notice: Server ready, "raspberrypi_n54" 4c118800-c184-4ffe-a035-5e3150f4dfee
+2016-01-15T12:52:39.180519171 1.568681s info: Table 0b4766a8-5d94-4bb0-9bc7-28e555960978: Starting a new Raft election for term 15.
+2016-01-15T12:52:39.188915324 1.577079s info: Table 0b4766a8-5d94-4bb0-9bc7-28e555960978: This server is Raft leader for term 15. Latest log index is 42.
+2016-01-15T12:52:39.346967348 1.735130s info: Table 24c714be-4b5c-4529-8b2c-330445e29fe8: Starting a new Raft election for term 2.
+2016-01-15T12:52:39.355067252 1.743231s info: Table 24c714be-4b5c-4529-8b2c-330445e29fe8: This server is Raft leader for term 2. Latest log index is 2.
+2016-01-15T12:52:39.901677207 2.289840s info: Table 388e37ef-447d-4c3c-bc03-dd937d2d77c6: Starting a new Raft election for term 8.
+2016-01-15T12:52:39.910175756 2.298339s info: Table 388e37ef-447d-4c3c-bc03-dd937d2d77c6: This server is Raft leader for term 8. Latest log index is 20.
+2016-01-15T12:52:40.161482335 2.549649s info: Table 3299971b-c7d4-4eb6-9f59-d7913b9b7d34: Starting a new Raft election for term 10.
+2016-01-15T12:52:40.181227802 2.569391s info: Table 3299971b-c7d4-4eb6-9f59-d7913b9b7d34: This server is Raft leader for term 10. Latest log index is 26.
+2016-01-15T12:53:06.497344742 28.885509s notice: Server got SIGINT from pid 0, uid 0; shutting down...
+2016-01-15T12:53:06.497660209 28.885822s notice: Shutting down client connections...
+2016-01-15T12:53:06.498305414 28.886470s notice: All client connections closed.
+2016-01-15T12:53:06.498326820 28.886487s notice: Shutting down storage engine... (This may take a while if you had a lot of unflushed data in the writeback cache.)
+2016-01-15T12:53:06.543153769 28.931322s notice: Storage engine shut down.
+2016-01-15T12:53:29.764278122 0.042313s notice: Running rethinkdb 2.2.3-1 (GCC 4.6.3)...
+2016-01-15T12:53:29.778172528 0.056196s notice: Running on Linux 3.18.11-v7+ armv7l
+2016-01-15T12:53:29.778549140 0.056553s notice: Loading data from directory /home/pi/Desktop/capstone_source/rethinkdb_data
+2016-01-15T12:53:29.830294490 0.108308s info: Automatically using cache size of 100 MB
+2016-01-15T12:53:29.837120495 0.115130s warn: Cache size does not leave much memory for server and query overhead (available memory: 809 MB).
+2016-01-15T12:53:29.837153151 0.115154s warn: Cache size is very low and may impact performance.
+2016-01-15T12:53:29.837193828 0.115195s error: Failed to create sockets for listener on port 29015, falling back to IPv4 only
+2016-01-15T12:53:29.859203555 0.137209s notice: Listening for intracluster connections on port 29015
+2016-01-15T12:53:30.319122929 0.597130s error: Failed to create sockets for listener on port 28015, falling back to IPv4 only
+2016-01-15T12:53:30.328739441 0.606749s notice: Listening for client driver connections on port 28015
+2016-01-15T12:53:30.329875580 0.607884s error: Failed to create sockets for listener on port 8080, falling back to IPv4 only
+2016-01-15T12:53:30.335718622 0.613728s notice: Listening for administrative HTTP connections on port 8080
+2016-01-15T12:53:30.362968842 0.640976s notice: Listening on addresses: 127.0.0.1, 127.0.1.1, 10.17.191.41
+2016-01-15T12:53:30.363449933 0.641454s notice: Server ready, "raspberrypi_n54" 4c118800-c184-4ffe-a035-5e3150f4dfee
+2016-01-15T12:53:31.185651285 1.463656s info: Table 0b4766a8-5d94-4bb0-9bc7-28e555960978: Starting a new Raft election for term 16.
+2016-01-15T12:53:31.195350869 1.473355s info: Table 0b4766a8-5d94-4bb0-9bc7-28e555960978: This server is Raft leader for term 16. Latest log index is 45.
+2016-01-15T12:53:31.666119300 1.944123s info: Table 3299971b-c7d4-4eb6-9f59-d7913b9b7d34: Starting a new Raft election for term 11.
+2016-01-15T12:53:31.673615823 1.951620s info: Table 3299971b-c7d4-4eb6-9f59-d7913b9b7d34: This server is Raft leader for term 11. Latest log index is 29.
+2016-01-15T12:53:31.711074061 1.989079s info: Table 388e37ef-447d-4c3c-bc03-dd937d2d77c6: Starting a new Raft election for term 9.
+2016-01-15T12:53:31.739759846 2.017763s info: Table 388e37ef-447d-4c3c-bc03-dd937d2d77c6: This server is Raft leader for term 9. Latest log index is 23.
+2016-01-15T12:53:31.948538213 2.226542s info: Table 24c714be-4b5c-4529-8b2c-330445e29fe8: Starting a new Raft election for term 3.
+2016-01-15T12:53:31.967220562 2.245227s info: Table 24c714be-4b5c-4529-8b2c-330445e29fe8: This server is Raft leader for term 3. Latest log index is 5.
+2016-01-15T12:54:40.890834903 0.028714s notice: Running rethinkdb 2.2.3-1 (GCC 4.6.3)...
+2016-01-15T12:54:40.902730465 0.040591s notice: Running on Linux 3.18.11-v7+ armv7l
+2016-01-15T12:54:40.903108796 0.040956s notice: Loading data from directory /home/pi/Desktop/capstone_source/rethinkdb_data
+2016-01-15T12:54:40.957893921 0.095752s info: Automatically using cache size of 100 MB
+2016-01-15T12:54:40.965972316 0.103830s warn: Cache size does not leave much memory for server and query overhead (available memory: 816 MB).
+2016-01-15T12:54:40.966011639 0.103856s warn: Cache size is very low and may impact performance.
+2016-01-15T12:54:40.966053618 0.103899s error: Failed to create sockets for listener on port 29015, falling back to IPv4 only
+2016-01-15T12:54:41.007864749 0.145717s notice: Listening for intracluster connections on port 29015
+2016-01-15T12:54:41.602124450 0.739974s error: Failed to create sockets for listener on port 28015, falling back to IPv4 only
+2016-01-15T12:54:41.613705847 0.751558s notice: Listening for client driver connections on port 28015
+2016-01-15T12:54:41.615162350 0.753016s error: Failed to create sockets for listener on port 8080, falling back to IPv4 only
+2016-01-15T12:54:41.615271047 0.753117s notice: Listening for administrative HTTP connections on port 8080
+2016-01-15T12:54:41.641023097 0.778870s notice: Listening on addresses: 127.0.0.1, 127.0.1.1, 10.17.191.41
+2016-01-15T12:54:41.641102680 0.778948s notice: Server ready, "raspberrypi_n54" 4c118800-c184-4ffe-a035-5e3150f4dfee
+2016-01-15T12:54:42.868508855 2.006358s info: Table 24c714be-4b5c-4529-8b2c-330445e29fe8: Starting a new Raft election for term 4.
+2016-01-15T12:54:42.877185840 2.015035s info: Table 24c714be-4b5c-4529-8b2c-330445e29fe8: This server is Raft leader for term 4. Latest log index is 8.
+2016-01-15T12:54:42.887456827 2.025305s info: Table 0b4766a8-5d94-4bb0-9bc7-28e555960978: Starting a new Raft election for term 17.
+2016-01-15T12:54:42.889586503 2.027435s info: Table 3299971b-c7d4-4eb6-9f59-d7913b9b7d34: Starting a new Raft election for term 12.
+2016-01-15T12:54:42.904687725 2.042538s info: Table 0b4766a8-5d94-4bb0-9bc7-28e555960978: This server is Raft leader for term 17. Latest log index is 48.
+2016-01-15T12:54:42.905393710 2.043240s info: Table 3299971b-c7d4-4eb6-9f59-d7913b9b7d34: This server is Raft leader for term 12. Latest log index is 32.
+2016-01-15T12:54:43.300272025 2.438122s info: Table 388e37ef-447d-4c3c-bc03-dd937d2d77c6: Starting a new Raft election for term 10.
+2016-01-15T12:54:43.314937520 2.452787s info: Table 388e37ef-447d-4c3c-bc03-dd937d2d77c6: This server is Raft leader for term 10. Latest log index is 26.
+2016-01-15T13:08:01.451852344 800.589704s notice: Server got SIGTERM from pid 3364, uid 1000; shutting down...
+2016-01-15T13:08:01.452156466 800.590004s notice: Shutting down client connections...
+2016-01-15T13:08:01.455323939 800.593176s notice: All client connections closed.
+2016-01-15T13:08:01.455350815 800.593195s notice: Shutting down storage engine... (This may take a while if you had a lot of unflushed data in the writeback cache.)
+2016-01-15T13:08:01.503354063 800.641207s notice: Storage engine shut down.
+2016-01-15T13:08:01.509086077 800.646940s error: Failed to shutdown worker process: 'failed to send job function to worker'.  Killing it.
+2016-01-15T13:11:03.638660158 0.099694s notice: Running rethinkdb 2.2.3-1 (GCC 4.6.3)...
+2016-01-15T13:11:03.651210514 0.112230s notice: Running on Linux 3.18.11-v7+ armv7l
+2016-01-15T13:11:03.651647502 0.112648s notice: Loading data from directory /home/pi/Desktop/capstone_source/rethinkdb_data
+2016-01-15T13:11:03.753346263 0.214359s info: Automatically using cache size of 100 MB
+2016-01-15T13:11:03.761100325 0.222108s warn: Cache size does not leave much memory for server and query overhead (available memory: 804 MB).
+2016-01-15T13:11:03.761138242 0.222133s warn: Cache size is very low and may impact performance.
+2016-01-15T13:11:03.761178660 0.222174s error: Failed to create sockets for listener on port 29015, falling back to IPv4 only
+2016-01-15T13:11:03.794665582 0.255671s notice: Listening for intracluster connections on port 29015
+2016-01-15T13:11:04.336212230 0.797214s error: Failed to create sockets for listener on port 28015, falling back to IPv4 only
+2016-01-15T13:11:04.355474961 0.816480s notice: Listening for client driver connections on port 28015
+2016-01-15T13:11:04.356805664 0.817809s error: Failed to create sockets for listener on port 8080, falling back to IPv4 only
+2016-01-15T13:11:04.356921031 0.817916s notice: Listening for administrative HTTP connections on port 8080
+2016-01-15T13:11:04.381416366 0.842416s notice: Listening on addresses: 127.0.0.1, 127.0.1.1, 10.17.191.41
+2016-01-15T13:11:04.381934085 0.842934s notice: Server ready, "raspberrypi_n54" 4c118800-c184-4ffe-a035-5e3150f4dfee
+2016-01-15T13:11:05.300456934 1.761457s info: Table 0b4766a8-5d94-4bb0-9bc7-28e555960978: Starting a new Raft election for term 18.
+2016-01-15T13:11:05.343274980 1.804273s info: Table 0b4766a8-5d94-4bb0-9bc7-28e555960978: This server is Raft leader for term 18. Latest log index is 51.
+2016-01-15T13:11:05.591415058 2.052416s info: Table 388e37ef-447d-4c3c-bc03-dd937d2d77c6: Starting a new Raft election for term 11.
+2016-01-15T13:11:05.614165566 2.075164s info: Table 24c714be-4b5c-4529-8b2c-330445e29fe8: Starting a new Raft election for term 5.
+2016-01-15T13:11:05.703529492 2.164529s info: Table 388e37ef-447d-4c3c-bc03-dd937d2d77c6: This server is Raft leader for term 11. Latest log index is 29.
+2016-01-15T13:11:05.725279772 2.186283s info: Table 24c714be-4b5c-4529-8b2c-330445e29fe8: This server is Raft leader for term 5. Latest log index is 11.
+2016-01-15T13:11:05.960863713 2.421863s info: Table 3299971b-c7d4-4eb6-9f59-d7913b9b7d34: Starting a new Raft election for term 13.
+2016-01-15T13:11:06.149321916 2.610321s info: Table 3299971b-c7d4-4eb6-9f59-d7913b9b7d34: This server is Raft leader for term 13. Latest log index is 35.
+2016-01-15T13:18:40.905256928 0.061848s notice: Running rethinkdb 2.2.3-1 (GCC 4.6.3)...
+2016-01-15T13:18:40.923292041 0.079861s notice: Running on Linux 3.18.11-v7+ armv7l
+2016-01-15T13:18:40.923688445 0.080244s notice: Loading data from directory /home/pi/Desktop/capstone_source/rethinkdb_data
+2016-01-15T13:18:41.109749798 0.266327s info: Automatically using cache size of 100 MB
+2016-01-15T13:18:41.118161212 0.274724s warn: Cache size does not leave much memory for server and query overhead (available memory: 839 MB).
+2016-01-15T13:18:41.118201420 0.274753s warn: Cache size is very low and may impact performance.
+2016-01-15T13:18:41.118244649 0.274796s error: Failed to create sockets for listener on port 29015, falling back to IPv4 only
+2016-01-15T13:18:41.123773369 0.280331s notice: Listening for intracluster connections on port 29015
+2016-01-15T13:18:41.821213355 0.977770s error: Failed to create sockets for listener on port 28015, falling back to IPv4 only
+2016-01-15T13:18:41.833655945 0.990214s notice: Listening for client driver connections on port 28015
+2016-01-15T13:18:41.835609580 0.992170s error: Failed to create sockets for listener on port 8080, falling back to IPv4 only
+2016-01-15T13:18:41.835847235 0.992402s notice: Listening for administrative HTTP connections on port 8080
+2016-01-15T13:18:41.840030234 0.996587s notice: Listening on addresses: 127.0.0.1, 127.0.1.1
+2016-01-15T13:18:41.840114556 0.996667s notice: Server ready, "raspberrypi_n54" 4c118800-c184-4ffe-a035-5e3150f4dfee
+2016-01-15T13:18:41.911184699 1.067740s warn: Problem when checking for new versions of RethinkDB: HTTP request to update.rethinkdb.com failed.
+2016-01-15T13:18:42.880316675 2.036873s info: Table 0b4766a8-5d94-4bb0-9bc7-28e555960978: Starting a new Raft election for term 19.
+2016-01-15T13:18:42.892155727 2.048712s info: Table 0b4766a8-5d94-4bb0-9bc7-28e555960978: This server is Raft leader for term 19. Latest log index is 54.
+2016-01-15T13:18:43.031156081 2.187711s info: Table 388e37ef-447d-4c3c-bc03-dd937d2d77c6: Starting a new Raft election for term 12.
+2016-01-15T13:18:43.039546817 2.196102s info: Table 388e37ef-447d-4c3c-bc03-dd937d2d77c6: This server is Raft leader for term 12. Latest log index is 32.
+2016-01-15T13:18:43.085431260 2.241986s info: Table 24c714be-4b5c-4529-8b2c-330445e29fe8: Starting a new Raft election for term 6.
+2016-01-15T13:18:43.110503262 2.267061s info: Table 24c714be-4b5c-4529-8b2c-330445e29fe8: This server is Raft leader for term 6. Latest log index is 14.
+2016-01-15T13:18:43.478084952 2.634641s info: Table 3299971b-c7d4-4eb6-9f59-d7913b9b7d34: Starting a new Raft election for term 14.
+2016-01-15T13:18:43.493553671 2.650109s info: Table 3299971b-c7d4-4eb6-9f59-d7913b9b7d34: This server is Raft leader for term 14. Latest log index is 38.
+2016-01-18T18:40:04.605180708 0.114366s notice: Running rethinkdb 2.2.3-1 (GCC 4.6.3)...
+2016-01-18T18:40:04.631720492 0.140856s notice: Running on Linux 3.18.11-v7+ armv7l
+2016-01-18T18:40:04.632133043 0.141255s notice: Loading data from directory /home/pi/Desktop/capstone_source/rethinkdb_data
+2016-01-18T18:40:04.788426285 0.297559s info: Automatically using cache size of 100 MB
+2016-01-18T18:40:04.796144601 0.305273s warn: Cache size does not leave much memory for server and query overhead (available memory: 824 MB).
+2016-01-18T18:40:04.796175851 0.305296s warn: Cache size is very low and may impact performance.
+2016-01-18T18:40:04.796215851 0.305336s error: Failed to create sockets for listener on port 29015, falling back to IPv4 only
+2016-01-18T18:40:04.810771652 0.319900s notice: Listening for intracluster connections on port 29015
+2016-01-18T18:40:05.501698121 1.010985s error: Failed to create sockets for listener on port 28015, falling back to IPv4 only
+2016-01-18T18:40:05.524762913 1.033886s notice: Listening for client driver connections on port 28015
+2016-01-18T18:40:05.526286295 1.035413s error: Failed to create sockets for listener on port 8080, falling back to IPv4 only
+2016-01-18T18:40:05.526404159 1.035525s notice: Listening for administrative HTTP connections on port 8080
+2016-01-18T18:40:05.547362914 1.056492s notice: Listening on addresses: 127.0.0.1, 127.0.1.1, 10.17.191.41
+2016-01-18T18:40:05.548160048 1.057286s notice: Server ready, "raspberrypi_n54" 4c118800-c184-4ffe-a035-5e3150f4dfee
+2016-01-18T18:40:06.415210342 1.924338s info: Table 0b4766a8-5d94-4bb0-9bc7-28e555960978: Starting a new Raft election for term 20.
+2016-01-18T18:40:06.425219955 1.934344s info: Table 0b4766a8-5d94-4bb0-9bc7-28e555960978: This server is Raft leader for term 20. Latest log index is 57.
+2016-01-18T18:40:06.511943511 2.021067s info: Table 388e37ef-447d-4c3c-bc03-dd937d2d77c6: Starting a new Raft election for term 13.
+2016-01-18T18:40:06.520757606 2.029884s info: Table 388e37ef-447d-4c3c-bc03-dd937d2d77c6: This server is Raft leader for term 13. Latest log index is 35.
+2016-01-18T18:40:06.850221920 2.359345s info: Table 24c714be-4b5c-4529-8b2c-330445e29fe8: Starting a new Raft election for term 7.
+2016-01-18T18:40:06.856525395 2.365652s info: Table 24c714be-4b5c-4529-8b2c-330445e29fe8: This server is Raft leader for term 7. Latest log index is 17.
+2016-01-18T18:40:06.937347349 2.446472s info: Table 3299971b-c7d4-4eb6-9f59-d7913b9b7d34: Starting a new Raft election for term 15.
+2016-01-18T18:40:06.944889520 2.454014s info: Table 3299971b-c7d4-4eb6-9f59-d7913b9b7d34: This server is Raft leader for term 15. Latest log index is 41.
+2016-01-20T19:37:11.966357347 0.115167s notice: Running rethinkdb 2.2.3-1 (GCC 4.6.3)...
+2016-01-20T19:37:11.992022018 0.140813s notice: Running on Linux 3.18.11-v7+ armv7l
+2016-01-20T19:37:11.992652433 0.141430s notice: Loading data from directory /home/pi/Desktop/capstone_source/rethinkdb_data
+2016-01-20T19:37:12.136557202 0.285345s info: Automatically using cache size of 100 MB
+2016-01-20T19:37:12.144504577 0.293289s warn: Cache size does not leave much memory for server and query overhead (available memory: 836 MB).
+2016-01-20T19:37:12.144541035 0.293315s warn: Cache size is very low and may impact performance.
+2016-01-20T19:37:12.144583223 0.293357s error: Failed to create sockets for listener on port 29015, falling back to IPv4 only
+2016-01-20T19:37:12.167589150 0.316369s notice: Listening for intracluster connections on port 29015
+2016-01-20T19:37:12.827085295 0.975867s error: Failed to create sockets for listener on port 28015, falling back to IPv4 only
+2016-01-20T19:37:12.839047085 0.987834s notice: Listening for client driver connections on port 28015
+2016-01-20T19:37:12.840424478 0.989207s error: Failed to create sockets for listener on port 8080, falling back to IPv4 only
+2016-01-20T19:37:12.840532446 0.989307s notice: Listening for administrative HTTP connections on port 8080
+2016-01-20T19:37:12.864302799 1.013085s notice: Listening on addresses: 127.0.0.1, 127.0.1.1, 10.17.191.41
+2016-01-20T19:37:12.864378163 1.013156s notice: Server ready, "raspberrypi_n54" 4c118800-c184-4ffe-a035-5e3150f4dfee
+2016-01-20T19:37:13.358331784 1.507109s info: Table 0b4766a8-5d94-4bb0-9bc7-28e555960978: Starting a new Raft election for term 21.
+2016-01-20T19:37:13.365264369 1.514044s info: Table 0b4766a8-5d94-4bb0-9bc7-28e555960978: This server is Raft leader for term 21. Latest log index is 60.
+2016-01-20T19:37:13.691759794 1.840538s info: Table 24c714be-4b5c-4529-8b2c-330445e29fe8: Starting a new Raft election for term 8.
+2016-01-20T19:37:13.697903111 1.846681s info: Table 24c714be-4b5c-4529-8b2c-330445e29fe8: This server is Raft leader for term 8. Latest log index is 20.
+2016-01-20T19:37:13.926358226 2.075135s info: Table 388e37ef-447d-4c3c-bc03-dd937d2d77c6: Starting a new Raft election for term 14.
+2016-01-20T19:37:13.937142624 2.085921s info: Table 388e37ef-447d-4c3c-bc03-dd937d2d77c6: This server is Raft leader for term 14. Latest log index is 38.
+2016-01-20T19:37:14.689575862 2.838354s info: Table 3299971b-c7d4-4eb6-9f59-d7913b9b7d34: Starting a new Raft election for term 16.
+2016-01-20T19:37:14.695435170 2.844215s info: Table 3299971b-c7d4-4eb6-9f59-d7913b9b7d34: This server is Raft leader for term 16. Latest log index is 44.
