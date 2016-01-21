@@ -35,11 +35,7 @@ app.use("/", express.static(__dirname));
 
 app.get("/archive", function(request, response){
 
-    exec("sample.php", "/usr/bin/php",     
-        php.my_own_php_function(arg1, arg2, function(error, result, output, printed){
-        // `result` is return value of `my_own_php_function` php function.
-        
-    });)
+    exec("sample.php", "/usr/bin/php");
     response.send("success!");
 
 })
