@@ -8,6 +8,7 @@ var express = require("express");
 var app = express();
 var path = require("path");
 var r = require("rethinkdb");
+var exec = require("exec-php");
 var connection = null;
 var sensorData = "";
 
@@ -31,6 +32,17 @@ r.connect({host:'localhost', port:28015}, function(err, conn){
 console.log("Successfully connected to database");
 
 app.use("/", express.static(__dirname));
+
+app.get("/archive", function(request, response){
+
+    exec("sample.php", "/usr/bin/php",     
+        php.my_own_php_function(arg1, arg2, function(error, result, output, printed){
+        // `result` is return value of `my_own_php_function` php function.
+        
+    });)
+    response.send("success!");
+
+})
 
 app.get("/index", function (request, response){
 
