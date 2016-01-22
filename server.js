@@ -46,6 +46,7 @@ app.get("/index", function (request, response){
 
 });
 
+//DAQ1
 app.get("/DAQ1/T1", function(request, response){
 
 
@@ -87,6 +88,47 @@ app.get("/DAQ1/Light", function(request, response){
 
 });
 
+//DAQ2
+app.get("/DAQ2/T1", function(request, response){
+
+
+  getDAQData("DAQ2","T1", response)
+});
+
+app.get("/DAQ2/T2", function(request, response){
+   getDAQData("DAQ2","T2", response);
+   });
+
+
+app.get("/DAQ2/T3", function(request, response){
+   // gatherdata("DAQ1");
+
+    getDAQData("DAQ2","T3", response);
+  
+
+});
+
+app.get("/DAQ2/T4", function(request, response){
+   // gatherdata("DAQ1");
+
+    getDAQData("DAQ2","T4", response);
+  
+
+});
+
+app.get("/DAQ2/AmbientTemp", function(request, response){
+   // gatherdata("DAQ1");
+    getDAQData("DAQ2","AmbientTemp", response);
+
+});
+
+app.get("/DAQ2/Light", function(request, response){
+   // gatherdata("DAQ1");
+
+    getDAQData("DAQ2","Light", response);
+   // response.send(sensorData);
+
+});
 
 // Add headers
 // app.use(function (req, res, next) {
