@@ -1,7 +1,7 @@
 <?php
 
 echo "hello world!";
-
-exec ("mkdir newdir");
+exec('touch phpwashere.txt');
+mail("olivar16@up.edu", "hello", "hello");
 
 ?>
