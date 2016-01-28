@@ -553,3 +553,15 @@ app.controller("navController", function($scope, $timeout, $mdSidenav, $log){
 
 
 });
+
+app.controller("DMController", function($scope, $timeout, $mdSidenav, $log){
+
+    $scope.archiveData = function(){
+        $.get("http://10.17.191.41:8435/archive", function(data){
+            console.log("Data returned is " + data);
+
+        });
+    }
+
+});
+
