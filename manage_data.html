@@ -61,8 +61,8 @@
 
 			  
 			<h2 class="md-display-3">Manage Data </h2>
-			<div layout="column" layout-align="begin" class="colorNested" flex>
- 			<md-button class="pinkbutton" flex="10" > Archive Data </md-button>
+			<div layout="column" ng-controller="DMController" layout-align="begin" class="colorNested" flex>
+ 			<md-button ng-click="archiveData()" class="pinkbutton" flex="10" > Archive Data </md-button>
 			 <md-button class="pinkbutton" flex="10"> Purge Data </md-button>
 			</div>
 			
