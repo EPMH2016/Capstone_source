@@ -4,11 +4,11 @@ from email.mime.application import MIMEApplication
 from email.mime.multipart import MIMEMultipart
 from smtplib import SMTP
 
-msg = MIMEText('Hello Mr Reed, \n attached is your backup')
+#msg = MIMEText('Hello Mr Reed, \n attached is your backup')
 msg = MIMEMultipart()
 msg['Subject'] = "HDMI Data backup"
 msg['From']    = "University of Portland"
-msg['To']      = "paul_ryanvper@yahoo.com"
+msg['To']      = "olivar16@up.edu"
 msg.preamble = "Your data backup"
 
 part = MIMEText("Attached is your data backup")
