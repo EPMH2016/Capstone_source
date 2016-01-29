@@ -8,7 +8,7 @@ from smtplib import SMTP
 msg = MIMEMultipart()
 msg['Subject'] = "HDMI Data backup"
 msg['From']    = "University of Portland"
-msg['To']      = "olivar16@up.edu"
+msg['To']      = "paul.olivar12@gmail.com"
 msg.preamble = "Your data backup"
 
 part = MIMEText("Attached is your data backup")
