@@ -40,11 +40,19 @@ app.get("/archive", function(request, response){
 	
       php.archivedata(function(err, result, output, printed){
         console.log("RESULT IS " + result);
+        if(result==1){
+          res.send("Success");
+        }
+        else{
+          res.send("Failure");
+        }
+
       });
 
     }
 );
-    response.send("success!");
+
+
 
 })
 
