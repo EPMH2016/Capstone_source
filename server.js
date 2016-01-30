@@ -35,7 +35,11 @@ app.use("/", express.static(__dirname));
 
 app.get("/archive", function(request, response){
 
-    exec("php/backup.php", "/usr/bin/php");
+    exec("php/backup.php", "/usr/bin/php", function(error, php, output){
+	
+
+    }
+);
     response.send("success!");
 
 })
