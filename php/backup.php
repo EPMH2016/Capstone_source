@@ -2,9 +2,12 @@
 
 echo "hello world!";
 
+function archiveData(){
 exec("rm -r backup.tar.tgz");
 exec ("rethinkdb dump -f backup.tar.tgz");
-exec("pythonasjkldfhasjkfnhjkasdhfasdf backupNotification.py");
-exec("asdfasdfasdf");
+exec("python backupNotification.py");
+return 1;
+
+}
 
 ?>

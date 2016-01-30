@@ -35,8 +35,12 @@ app.use("/", express.static(__dirname));
 
 app.get("/archive", function(request, response){
 
+    //second arg was /usr/bin/php
     exec("php/backup.php", "/usr/bin/php", function(error, php, output){
 	
+      php.archiveData(function(err, result, output, printed){
+        console.log("RESULT IS " + result);
+      });
 
     }
 );
