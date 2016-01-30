@@ -35,11 +35,9 @@ app.use("/", express.static(__dirname));
 
 app.get("/archive", function(request, response){
 
-    //second arg was /usr/bin/php
     exec("php/backup.php", function(error, php, output){
 	
       php.archivedata(function(err, result, output, printed){
-        console.log("RESULT IS " + result);
         if(result==1){
           response.send("Success");
         }
