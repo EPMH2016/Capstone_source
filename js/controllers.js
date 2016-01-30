@@ -554,12 +554,35 @@ app.controller("navController", function($scope, $timeout, $mdSidenav, $log){
 
 });
 
-app.controller("DMController", function($scope, $timeout, $mdSidenav, $log){
+app.controller("DMController", function($scope, $timeout, $mdSidenav, $log, $mdDialog){
 
     $scope.archiveData = function(){
+        var wait = $mdDialog.alert()
+        .title("Please wait.")
+        .ok('Sure');
+        var backupSuccess = $mdDialog.alert()
+        .title("Archive Success!")
+        .content("Data file has been sent to your email.")
+        .ok('Great!');
+            $mdDialog
+          .show( wait )
+          .finally(function() {
+            alert = undefined;
+          });
+
         $.get("http://10.17.191.41:8435/archive", function(data){
             console.log("Data returned is " + data);
 
+            if(data=="Success"){
+                $mdDialog.hide(wait);
+        
+
+            $mdDialog
+            .show( backupSuccess )
+            .finally(function() {
+            alert = undefined;
+                });
+            }
         });
     }
 
