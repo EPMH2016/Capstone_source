@@ -38,7 +38,7 @@ app.get("/archive", function(request, response){
     //second arg was /usr/bin/php
     exec("php/backup.php", function(error, php, output){
 	
-      php.archiveData(function(err, result, output, printed){
+      php.archivedata(function(err, result, output, printed){
         console.log("RESULT IS " + result);
       });
 
