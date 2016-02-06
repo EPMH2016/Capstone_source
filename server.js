@@ -1,25 +1,23 @@
 var host = "0.0.0.0";
 var port = 8435;
 var appPort = 9000
-
-//Node express module for server admin
 var cors = require("cors");
 var express = require("express");
 var app = express();
 var path = require("path");
 var r = require("rethinkdb");
 var exec = require("exec-php");
+var async = require("async");
 var connection = null;
 var sensorData = "";
 
-var async = require("async");
+//Set of all DAQs
+var DAQset = ["DAQ1", "DAQ2"];
 
 console.log("Connecting to rethinkdb");
 
 app.use(cors());
 
-//Set of all DAQs
-var DAQset = ["DAQ1", "DAQ2"];
 
 //Attempt to connect to rethinkDB server
 //Note: server must be started on the raspberry pi
@@ -34,8 +32,14 @@ r.connect({host:'localhost', port:28015}, function(err, conn){
 
 console.log("Successfully connected to database");
 
+/*
+ * Server routes
+ */
+
 app.use("/", express.static(__dirname));
 
+
+//Archive - Email the data to the client in JSON format
 app.get("/archive", function(request, response){
 
     exec("php/backup.php", function(error, php, output){
@@ -54,6 +58,7 @@ app.get("/archive", function(request, response){
 );
 });
 
+//Purge - Delete all data from every table in the database
 app.get("/purge", function(request, response){
 // for (daq in DAQset){
 //   r.db('HDMI').table(DAQset[daq]).delete().run(connection, function(err){
@@ -83,6 +88,8 @@ app.get("/index", function (request, response){
 
 });
 
+//DAQ sensor routes
+
 //DAQ1
 app.get("/DAQ1/T1", function(request, response){
 
@@ -96,39 +103,23 @@ app.get("/DAQ1/T2", function(request, response){
 
 
 app.get("/DAQ1/T3", function(request, response){
-   // gatherdata("DAQ1");
-
     getDAQData("DAQ1","T3", response);
-  
-
 });
 
 app.get("/DAQ1/T4", function(request, response){
-   // gatherdata("DAQ1");
-
     getDAQData("DAQ1","T4", response);
-  
-
 });
 
 app.get("/DAQ1/AmbientTemp", function(request, response){
-   // gatherdata("DAQ1");
     getDAQData("DAQ1","AmbientTemp", response);
-
 });
 
 app.get("/DAQ1/Light", function(request, response){
-   // gatherdata("DAQ1");
-
     getDAQData("DAQ1","Light", response);
-   // response.send(sensorData);
-
 });
 
 //DAQ2
 app.get("/DAQ2/T1", function(request, response){
-
-
   getDAQData("DAQ2","T1", response)
 });
 
@@ -138,59 +129,33 @@ app.get("/DAQ2/T2", function(request, response){
 
 
 app.get("/DAQ2/T3", function(request, response){
-   // gatherdata("DAQ1");
-
     getDAQData("DAQ2","T3", response);
-  
-
 });
 
 app.get("/DAQ2/T4", function(request, response){
-   // gatherdata("DAQ1");
-
     getDAQData("DAQ2","T4", response);
-  
-
 });
 
 app.get("/DAQ2/AmbientTemp", function(request, response){
-   // gatherdata("DAQ1");
     getDAQData("DAQ2","AmbientTemp", response);
-
 });
 
 app.get("/DAQ2/Light", function(request, response){
-   // gatherdata("DAQ1");
-
     getDAQData("DAQ2","Light", response);
-   // response.send(sensorData);
-
 });
 
-// Add headers
-// app.use(function (req, res, next) {
 
-//     // Website you wish to allow to connect
-//     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8888');
-
-//     // Request methods you wish to allow
-//     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-
-//     // Request headers you wish to allow
-//     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-
-//     // Set to true if you need the website to include cookies in the requests sent
-//     // to the API (e.g. in case you use sessions)
-//     res.setHeader('Access-Control-Allow-Credentials', true);
-
-//     // Pass to next layer of middleware
-//     next();
-// });
-
-//Establish server params
 app.listen(port, host);
 
-
+/*
+ *getDAQData
+ * Description: Acquired data from rethinkDB 
+ * based on the DAQ and sensor type given in the route
+ * Params:
+ * DAQ (String) - Name of the DAQ
+ * sensorType(String) - The sensor to gather data from
+ * response (response) - The response object used to return data to the API
+ */
 function getDAQData(DAQ, sensorType, response){
     r.db('HDMI').table(DAQ).filter({'Sensor Type':sensorType}).orderBy(r.desc('Timestamp')).limit(50).run(connection, function(err, cursor) {
     if (err) throw err;
@@ -213,6 +178,7 @@ function getDAQData(DAQ, sensorType, response){
 * Description: Acquire data from rethinkdb based on the GET request
 * Params:
 * sensor (String) - The sensor to gather data from 
+* DEPRECATED
 */
 function gatherdata(sensor){
 switch(sensor){
