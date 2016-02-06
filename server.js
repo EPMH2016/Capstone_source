@@ -60,6 +60,9 @@ app.get("/purge", function(request, response){
 //     if(err){console.log("Cannot be found")}
 //   });
 // }
+
+  //!!FOR TESTING PURPOSES, THE FOR LOOP HAS BEEN COMMENTED OUT AND PURGED DATA IS FROM A 
+  //  DEPRECATED TABLE
   //for (daq in DAQset){
   r.db('Sensor_data').table("Sensor1TempHumidity").delete().run(connection, function(err){
     if(err){
