@@ -60,6 +60,7 @@ app.get("/purge", function(request, response){
 //     if(err){console.log("Cannot be found")}
 //   });
 // }
+  //for (daq in DAQset){
   r.db('Sensor_data').table("Sensor1TempHumidity").delete().run(connection, function(err){
     if(err){
     console.log("Cannot be found");
@@ -68,6 +69,7 @@ app.get("/purge", function(request, response){
       response.send("success");
     }
   });
+  //}
 
 });
 
