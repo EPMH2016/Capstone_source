@@ -55,15 +55,15 @@ app.get("/archive", function(request, response){
 });
 
 app.get("/purge", function(request, response){
-// for (daq in DAQset){
-//   r.db('HDMI').table(DAQset[daq]).delete().run(connection, function(err){
-//     if(err){console.log("Cannot be found")}
-//   });
-// }
-  response.send("purge!");
-  r.db('Sensor_data').table("Sensor1TempHumidity").delete().run(connection, function(err){
+
+for (daq in DAQset){
+  r.db('HDMI').table(DAQset[daq]).delete().run(connection, function(err){
     if(err){console.log("Cannot be found")}
+    else{
+      respond.send(1);
+    }
   });
+}
 
 });
 
