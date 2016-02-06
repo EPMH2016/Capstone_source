@@ -60,7 +60,6 @@ app.get("/purge", function(request, response){
 //     if(err){console.log("Cannot be found")}
 //   });
 // }
-  response.send("purge!");
   r.db('Sensor_data').table("Sensor1TempHumidity").delete().run(connection, function(err){
     if(err){
     console.log("Cannot be found");
