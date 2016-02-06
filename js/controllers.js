@@ -403,7 +403,7 @@ app.controller("DMController", function($scope, $timeout, $mdSidenav, $log, $mdD
                 .title("Success!")
                 .content("Your data is now forever lost.")
                 .ok("Thanks")
-                confirm.show(wait);
+                $mdDialog.show(confirm);
             }
             });
 
