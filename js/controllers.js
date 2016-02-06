@@ -394,6 +394,12 @@ app.controller("DMController", function($scope, $timeout, $mdSidenav, $log, $mdD
         .ok("Yes")
         .cancel("No");
 
+        confirm = $mdDialog.alert()
+                .title("Please wait")
+                .content("Your data is being purged.")
+                .ok("ok")
+                $mdDialog.show(confirm);
+
         $mdDialog.show(confirm).then(function(){
             console.log("You have chosen to delete your data.");
             $.get("http://10.17.191.41:8435/archive", function(data){
