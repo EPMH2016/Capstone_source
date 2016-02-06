@@ -390,7 +390,7 @@ app.controller("DMController", function($scope, $timeout, $mdSidenav, $log, $mdD
         console.log("Purging data..");
         var confirm = $mdDialog.confirm()
         .title("Are you sure?")
-        .textContent("Wanna purge?")
+        .content("All your data will be forever lost.")
         .ok("Yes")
         .cancel("No");
 

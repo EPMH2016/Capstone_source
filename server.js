@@ -18,6 +18,9 @@ console.log("Connecting to rethinkdb");
 
 app.use(cors());
 
+//Set of all DAQs
+var DAQset = ["DAQ1", "DAQ2"];
+
 //Attempt to connect to rethinkDB server
 //Note: server must be started on the raspberry pi
 r.connect({host:'localhost', port:28015}, function(err, conn){
@@ -50,6 +53,18 @@ app.get("/archive", function(request, response){
     }
 );
 
+app.get("/purge", function(request, response){
+// for (daq in DAQset){
+//   r.db('HDMI').table(DAQset[daq]).delete().run(connection, function(err){
+//     if(err){console.log("Cannot be found")}
+//   });
+// }
+
+  r.db('Sensor_data').table("Sensor1TempHumidity").delete().run(connection, function(err){
+    if(err){console.log("Cannot be found")}
+  });
+
+});
 
 
 })
