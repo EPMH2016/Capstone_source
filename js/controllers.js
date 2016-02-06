@@ -397,8 +397,8 @@ app.controller("DMController", function($scope, $timeout, $mdSidenav, $log, $mdD
         $mdDialog.show(confirm).then(function(){
             console.log("You have chosen to delete your data.");
             $.get("http://10.17.191.41:8435/archive", function(data){
-            console.log("Data returned is " + data);
-            if(data == "success"){
+            if(data == "Success"){
+                console.log("Data returned is " + data);
                 confirm = $mdDialog.alert()
                 .title("Success!")
                 .content("Your data is now forever lost.")
