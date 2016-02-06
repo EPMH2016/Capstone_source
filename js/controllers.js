@@ -402,7 +402,8 @@ app.controller("DMController", function($scope, $timeout, $mdSidenav, $log, $mdD
                 confirm = $mdDialog.alert()
                 .title("Success!")
                 .content("Your data is now forever lost.")
-                .ok("Thanks");
+                .ok("Thanks")
+                confirm.show(wait);
             }
             });
 
