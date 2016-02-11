@@ -163,7 +163,7 @@ function getDAQData(DAQ, sensorType, response){
     cursor.toArray(function(err, result) {
         if (err) throw err;
         console.log("The result for sensor" + sensorType + "  is " + result);
-        console.log("The result for the first element is " + result['Timestamp']);
+        console.log("The result for the first element is " + result[0]['Timestamp']);
         response.send(result);
         sensorData=result;
         return result
