@@ -82,21 +82,30 @@ def DAQ2():
         #Get time interval
         time.sleep(float(timeIntervals['DAQ2']))
         print ("DAQ2:")
-        T1 = float(json.load(urllib2.urlopen("http://10.17.176.147/T1")))
-        print ("T1: " + str(T1))
-        r.table('DAQ2').insert({'Sensor Type': 'T1', 'DAQ ID':'DAQ2f', 'Sensor ID': 'D2T1', 'Data Value': T1, 'Units': 'C', 'Timestamp': r.now().in_timezone('-08:00')}).run()
-        T2 = float(json.load(urllib2.urlopen("http://10.17.176.147/T2")))
-        print "T2: " + str(T2)
-        r.table('DAQ2').insert({'Sensor Type': 'T2', 'DAQ ID':'DAQ2f', 'Sensor ID': 'D2T1', 'Data Value': T2, 'Units': 'C', 'Timestamp': r.now().in_timezone('-08:00')}).run()
-        T3 = float(json.load(urllib2.urlopen("http://10.17.176.147/T3")))
-        print "T3: " + str(T3)
-        r.table('DAQ2').insert({'Sensor Type': 'T3', 'DAQ ID':'DAQ2f', 'Sensor ID': 'D2T1', 'Data Value': T3, 'Units': 'C', 'Timestamp': r.now().in_timezone('-08:00')}).run()
-        AmbientTemp = float(json.load(urllib2.urlopen("http://10.17.176.147/AmbientTemp")))
-        print "AmbientTemp: " + str(AmbientTemp)
-        r.table('DAQ2').insert({'Sensor Type': 'AmbientTemp', 'DAQ ID':'DAQ2f', 'Sensor ID': 'D2T1', 'Data Value': AmbientTemp, 'Units': 'C', 'Timestamp': r.now().in_timezone('-08:00')}).run()
-        Light = float(json.load(urllib2.urlopen("http://10.17.176.147/Light")))
-        r.table('DAQ2').insert({'Sensor Type': 'Light', 'DAQ ID':'DAQ2f', 'Sensor ID': 'D2T1', 'Data Value': Light, 'Units': 'lux', 'Timestamp': r.now().in_timezone('-08:00')}).run()
-        print "Light:" + str(Light)
+        #T1 = float(json.load(urllib2.urlopen("http://10.17.176.147/T1")))
+        sensorCollect("http://10.17.176.147", "DAQ2", "T1", "DAQ2f", "D2T1", "C")
+       # print ("T1: " + str(T1))
+       # r.table('DAQ2').insert({'Sensor Type': 'T1', 'DAQ ID':'DAQ2f', 'Sensor ID': 'D2T1', 'Data Value': T1, 'Units': 'C', 'Timestamp': r.now().in_timezone('-08:00')}).run()
+       # T2 = float(json.load(urllib2.urlopen("http://10.17.176.147/T2")))
+        sensorCollect("http://10.17.176.147", "DAQ2", "T2", "DAQ2f", "D2T2", "C")
+        #print "T2: " + str(T2)
+        #r.table('DAQ2').insert({'Sensor Type': 'T2', 'DAQ ID':'DAQ2f', 'Sensor ID': 'D2T1', 'Data Value': T2, 'Units': 'C', 'Timestamp': r.now().in_timezone('-08:00')}).run()
+        
+        #T3 = float(json.load(urllib2.urlopen("http://10.17.176.147/T3")))
+        sensorCollect("http://10.17.176.147", "DAQ2", "T3", "DAQ2f", "D2T3", "C")
+        #print "T3: " + str(T3)
+        #r.table('DAQ2').insert({'Sensor Type': 'T3', 'DAQ ID':'DAQ2f', 'Sensor ID': 'D2T3', 'Data Value': T3, 'Units': 'C', 'Timestamp': r.now().in_timezone('-08:00')}).run()
+        
+        #AmbientTemp = float(json.load(urllib2.urlopen("http://10.17.176.147/AmbientTemp")))
+        sensorCollect("http://10.17.176.147", "DAQ2", "AmbientTemp", "DAQ2f", "D2AT", "C")
+        #print "AmbientTemp: " + str(AmbientTemp)
+        #r.table('DAQ2').insert({'Sensor Type': 'AmbientTemp', 'DAQ ID':'DAQ2f', 'Sensor ID': 'D2T1', 'Data Value': AmbientTemp, 'Units': 'C', 'Timestamp': r.now().in_timezone('-08:00')}).run()
+        
+        #Light = float(json.load(urllib2.urlopen("http://10.17.176.147/Light")))
+        sensorCollect("http://10.17.176.147", "DAQ2", "Light", "DAQ2f", "D2L", "lux")
+        #r.table('DAQ2').insert({'Sensor Type': 'Light', 'DAQ ID':'DAQ2f', 'Sensor ID': 'D2T1', 'Data Value': Light, 'Units': 'lux', 'Timestamp': r.now().in_timezone('-08:00')}).run()
+        #print "Light:" + str(Light)
+        print "====================================="
 
 def DAQ3():
  	while True:
