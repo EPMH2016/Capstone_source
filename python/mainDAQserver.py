@@ -112,6 +112,7 @@ def sensorCollect(url, DAQ, sensorType, DAQid, sensorId,  units):
     print "Entered sensor collection" 
     finalData = "empty"
     try:
+        print "In try"
         finalData = float(json.load(urllib2.urlopen(url+"/"+sensorType)))
     except urllib2.URLError:
         print "Error collecting: " + DAQ + " " + sensorType
