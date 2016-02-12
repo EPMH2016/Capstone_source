@@ -43,7 +43,7 @@ def DAQ1():
     while True:
         #Get time interval
         time.sleep(float(timeIntervals['DAQ1']))
-        print ("DAQ1:")
+
         # sensorCollect(url, DAQ, sensorType, DAQid, sensorId, units)
         #T1 = float(json.load(urllib2.urlopen("http://10.17.160.120/T1")))
         #T1 = sensorCollect("http://10.17.160.120", "DAQ1", "T1", "DAQ1f", "D1T1", "C")
@@ -81,7 +81,6 @@ def DAQ2():
 
         #Get time interval
         time.sleep(float(timeIntervals['DAQ2']))
-        print ("DAQ2:")
         #T1 = float(json.load(urllib2.urlopen("http://10.17.176.147/T1")))
         sensorCollect("http://10.17.176.147", "DAQ2", "T1", "DAQ2f", "D2T1", "C")
        # print ("T1: " + str(T1))
