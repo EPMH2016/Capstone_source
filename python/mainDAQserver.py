@@ -109,18 +109,15 @@ if __name__ == "__main__":
 	Thread(target=DAQ3).start()
 
 def sensorCollect(url, DAQ, sensorType, DAQid, sensorId,  units):
-    print "Entered sensor collection" 
     finalData = "empty"
     try:
-        print "In try"
         finalData = float(json.load(urllib2.urlopen(url+"/"+sensorType)))
     except urllib2.URLError:
-        print "Error collecting: " + DAQ + " " + sensorType
         finalData = float(json.load(urllib2.urlopen(url+"/"+sensorType)))
     if finalData != "empty":
         print DAQ + "-" + sensorId + ":" + " " + str(finalData)
         r.table(DAQ).insert({'Sensor Type': sensorType, 'DAQ ID':DAQid, 'Sensor ID': sensorId, 'Data Value': finalData, 'Units': units, 'Timestamp': r.now().in_timezone('-08:00')}).run()
-    print "Exiting sensor collection"
+
     #r.table(DAQ).insert({'Sensor Type': sensorType, 'DAQ ID':'DAQ1f', 'Sensor ID': 'D1T1', 'Data Value': T1, 'Units': 'C', 'Timestamp': r.now().in_timezone('-08:00')}).run()
 
     
