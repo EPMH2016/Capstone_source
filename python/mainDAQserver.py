@@ -6,7 +6,7 @@ from time import strftime
 import datetime
 import threading
 from threading import Thread
-from xml.dom import minidomfrom
+from xml.dom import minidom
 from httplib import BadStatusLine
 
 #Attempt to connect to server database
