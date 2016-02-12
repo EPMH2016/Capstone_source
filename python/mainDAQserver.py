@@ -109,6 +109,7 @@ if __name__ == "__main__":
 	Thread(target=DAQ3).start()
 
 def sensorCollect(url, DAQ, sensorType, DAQid, sensorId,  units):
+    print("Entered sensor collection")
     finalData = "empty"
     try:
         finalData = float(json.load(urllib2.urlopen(url+"/"+sensorType)))
