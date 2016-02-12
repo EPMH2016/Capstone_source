@@ -163,7 +163,6 @@ function getDAQData(DAQ, sensorType, response){
     cursor.toArray(function(err, result) {
         if (err) throw err;
         console.log("The result for sensor" + sensorType + "  is " + result);
-        console.log("The result for the first element is " + result[0]['Timestamp']);
         response.send(result);
         sensorData=result;
         return result
@@ -174,82 +173,5 @@ function getDAQData(DAQ, sensorType, response){
 
 
 
-/*
-*gatherData
-* Description: Acquire data from rethinkdb based on the GET request
-* Params:
-* sensor (String) - The sensor to gather data from 
-* DEPRECATED
-*/
-function gatherdata(sensor){
-switch(sensor){
-    
-   case'sensor1': 
-r.db('Sensor_data').table('Sensor1TemperatureHumidity').run(connection, function(err, cursor) {
-    if (err) throw err;
-    cursor.toArray(function(err, result) {
-        if (err) throw err;
-        console.log("The result for sensor1 is " + result);
-        sensorData=result;
-    });
-});
-    break;
-    
-    case 'sensor2':
-    r.db('Sensor_data').table('Sensor2Temperature').run(connection, function(err, cursor) {
-    if (err) throw err;
-    cursor.toArray(function(err, result) {
-        if (err) throw err;
-        console.log("The result for sensor 2 is " + result);
-        sensorData=result;
-    });
-});
-    break;
-    
-    case 'sensor3':
-    r.db('Sensor_data').table('Sensor3Temperature').run(connection, function(err, cursor) {
-    if (err) throw err;
-    cursor.toArray(function(err, result) {
-        if (err) throw err;
-        console.log("The result for sensor1 is " + result);
-        sensorData=result;
-    });
-});
-    break;
-    
-    case 'sensor4':
-    r.db('Sensor_data').table('Sensor4TemperatureLight').run(connection, function(err, cursor) {
-    if (err) throw err;
-    cursor.toArray(function(err, result) {
-        if (err) throw err;
-        console.log("The result for sensor1 is " + result);
-        sensorData=result;
-    });
-});
-    break;
-    
-    case 'sensor5':
-    r.db('Sensor_data').table('Sensor5Temperature').run(connection, function(err, cursor) {
-    if (err) throw err;
-    cursor.toArray(function(err, result) {
-        if (err) throw err;
-        console.log("The result for sensor1 is " + result);
-        sensorData=result;
-    });
-});
-    
-    break;
-    case 'DAQ1':
-    r.db('HDMI').table('DAQ1').run(connection, function(err, cursor) {
-   if (err) throw err;
-    cursor.toArray(function(err, result) {
-        if (err) throw err;
-       console.log("The result for DAQ1 is " + result);
-       sensorData=result;
-   });
-});
-    break;
 
-}
-}
 
