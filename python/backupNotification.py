@@ -4,7 +4,8 @@ from email.mime.application import MIMEApplication
 from email.mime.multipart import MIMEMultipart
 from smtplib import SMTP
 
-#msg = MIMEText('Hello Mr Reed, \n attached is your backup')
+#Send backup of data to client through mailgun API
+
 msg = MIMEMultipart()
 msg['Subject'] = "HDMI Data backup"
 msg['From']    = "University of Portland"
@@ -18,7 +19,7 @@ part = MIMEApplication(open("backup.tar.tgz", "rb").read())
 part.add_header('Content-Disposition','attachment',filename="backup.tar.tgz")
 msg.attach(part)
 
-#smtp.mailgun.org                                                                                                                                                              
+
 s = smtplib.SMTP('smtp.mailgun.org', 587)
 
 s.login('postmaster@sandbox0343569143484bd0ac8ec34da054003a.mailgun.org', 'epmh2016')
