@@ -74,7 +74,6 @@ def DAQ1():
         sensorCollect("http://10.17.160.120", "DAQ1", "Light", "DAQ1f", "D1L", "lux")
         #r.table('DAQ1').insert({'Sensor Type': 'Light', 'DAQ ID':'DAQ1f', 'Sensor ID': 'D1L', 'Data Value': Light, 'Units': 'lux', 'Timestamp': r.now().in_timezone('-08:00')}).run()
         #print "Light:" + str(Light)
-        print "====================================="
 
 def DAQ2():
     r.connect('localhost', port=28015, db='HDMI').repl()
@@ -106,7 +105,6 @@ def DAQ2():
         sensorCollect("http://10.17.176.147", "DAQ2", "Light", "DAQ2f", "D2L", "lux")
         #r.table('DAQ2').insert({'Sensor Type': 'Light', 'DAQ ID':'DAQ2f', 'Sensor ID': 'D2T1', 'Data Value': Light, 'Units': 'lux', 'Timestamp': r.now().in_timezone('-08:00')}).run()
         #print "Light:" + str(Light)
-        print "====================================="
 
 def DAQ3():
  	while True:
@@ -126,6 +124,7 @@ def sensorCollect(url, DAQ, sensorType, DAQid, sensorId,  units):
         finalData = float(json.load(urllib2.urlopen(url+"/"+sensorType)))
     if finalData != "empty":
         print DAQ + "-" + sensorType + ":" + " " + str(finalData)
+        print "====================================="
         r.table(DAQ).insert({'Sensor Type': sensorType, 'DAQ ID':DAQid, 'Sensor ID': sensorId, 'Data Value': finalData, 'Units': units, 'Timestamp': r.now().in_timezone('-08:00')}).run()
 
     #r.table(DAQ).insert({'Sensor Type': sensorType, 'DAQ ID':'DAQ1f', 'Sensor ID': 'D1T1', 'Data Value': T1, 'Units': 'C', 'Timestamp': r.now().in_timezone('-08:00')}).run()
