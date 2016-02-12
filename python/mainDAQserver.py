@@ -73,7 +73,7 @@ def DAQ1():
         sensorCollect("http://10.17.160.120", "DAQ1", "Light", "DAQ1f", "D1L", "lux")
         #r.table('DAQ1').insert({'Sensor Type': 'Light', 'DAQ ID':'DAQ1f', 'Sensor ID': 'D1L', 'Data Value': Light, 'Units': 'lux', 'Timestamp': r.now().in_timezone('-08:00')}).run()
         #print "Light:" + str(Light)
-        print "Ended period collection"
+        print "====================================="
 
 def DAQ2():
     r.connect('localhost', port=28015, db='HDMI').repl()
