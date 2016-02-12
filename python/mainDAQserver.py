@@ -6,7 +6,8 @@ from time import strftime
 import datetime
 import threading
 from threading import Thread
-from xml.dom import minidom
+from xml.dom import minidomfrom
+from httplib import BadStatusLine
 
 #Attempt to connect to server database
 r.connect('localhost', port=28015, db='HDMI').repl()
@@ -121,7 +122,7 @@ def sensorCollect(url, DAQ, sensorType, DAQid, sensorId,  units):
     finalData = "empty"
     try:
         finalData = float(json.load(urllib2.urlopen(url+"/"+sensorType)))
-    except urllib2.URLError:
+    except (urllib2.URLError,BadStatusLine):
         finalData = float(json.load(urllib2.urlopen(url+"/"+sensorType)))
     if finalData != "empty":
         print DAQ + "-" + sensorType + ":" + " " + str(finalData)
