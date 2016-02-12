@@ -115,7 +115,7 @@ def sensorCollect(url, DAQ, sensorType, DAQid, sensorId,  units):
     except urllib2.URLError:
         finalData = float(json.load(urllib2.urlopen(url+"/"+sensorType)))
     if finalData != "empty":
-        print DAQ + "-" + sensorId + ":" + " " + str(finalData)
+        print DAQ + "-" + sensorType + ":" + " " + str(finalData)
         r.table(DAQ).insert({'Sensor Type': sensorType, 'DAQ ID':DAQid, 'Sensor ID': sensorId, 'Data Value': finalData, 'Units': units, 'Timestamp': r.now().in_timezone('-08:00')}).run()
 
     #r.table(DAQ).insert({'Sensor Type': sensorType, 'DAQ ID':'DAQ1f', 'Sensor ID': 'D1T1', 'Data Value': T1, 'Units': 'C', 'Timestamp': r.now().in_timezone('-08:00')}).run()
