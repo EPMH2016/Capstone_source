@@ -9,6 +9,9 @@ from threading import Thread
 from xml.dom import minidom
 from httplib import BadStatusLine
 
+EXIT_SUCCESS = 0
+EXIT_FAILURE = 1
+
 #Attempt to connect to server database
 r.connect('localhost', port=28015, db='HDMI').repl()
 
@@ -29,33 +32,37 @@ for daq in DAQlist:
 #@description: Collects data from DAQ1.
 def DAQ1():
     r.connect('localhost', port=28015, db='HDMI').repl()
+    if checkConnection("http://10.17.160.120") == EXIT_SUCCESS:
+        while True:
+            #Get time interval
+            time.sleep(float(timeIntervals['DAQ1']))
 
-    while True:
-        #Get time interval
-        time.sleep(float(timeIntervals['DAQ1']))
-
-        #Collect the dataz
-        sensorCollect("http://10.17.160.120", "DAQ1", "T1", "DAQ1f", "D1T1", "C")
-        sensorCollect("http://10.17.160.120", "DAQ1", "T2", "DAQ1f", "D1T2", "C")
-        sensorCollect("http://10.17.160.120", "DAQ1", "T3", "DAQ1f", "D1T3", "C")
-        sensorCollect("http://10.17.160.120", "DAQ1", "AmbientTemp", "DAQ1f", "D1AT", "C")
-        sensorCollect("http://10.17.160.120", "DAQ1", "Light", "DAQ1f", "D1L", "lux")
+            #Collect the dataz
+            sensorCollect("http://10.17.160.120", "DAQ1", "T1", "DAQ1f", "D1T1", "C")
+            sensorCollect("http://10.17.160.120", "DAQ1", "T2", "DAQ1f", "D1T2", "C")
+            sensorCollect("http://10.17.160.120", "DAQ1", "T3", "DAQ1f", "D1T3", "C")
+            sensorCollect("http://10.17.160.120", "DAQ1", "AmbientTemp", "DAQ1f", "D1AT", "C")
+            sensorCollect("http://10.17.160.120", "DAQ1", "Light", "DAQ1f", "D1L", "lux")
+    print "Failure to connect to DAQ 1. Ending Thread."
+    return EXIT_FAILURE
 
 #@name: DAQ1=2
 #@description: Collects data from DAQ2.
 def DAQ2():
     r.connect('localhost', port=28015, db='HDMI').repl()
-    while True:
+    if checkConnection("http://10.17.176.147") == EXIT_SUCCESS:
+        while True:
+            #Get time interval
+            time.sleep(float(timeIntervals['DAQ2']))
 
-        #Get time interval
-        time.sleep(float(timeIntervals['DAQ2']))
-
-        #Collect the dataz
-        sensorCollect("http://10.17.176.147", "DAQ2", "T1", "DAQ2f", "D2T1", "C")
-        sensorCollect("http://10.17.176.147", "DAQ2", "T2", "DAQ2f", "D2T2", "C")
-        sensorCollect("http://10.17.176.147", "DAQ2", "T3", "DAQ2f", "D2T3", "C")
-        sensorCollect("http://10.17.176.147", "DAQ2", "AmbientTemp", "DAQ2f", "D2AT", "C")
-        sensorCollect("http://10.17.176.147", "DAQ2", "Light", "DAQ2f", "D2L", "lux")
+            #Collect the dataz
+            sensorCollect("http://10.17.176.147", "DAQ2", "T1", "DAQ2f", "D2T1", "C")
+            sensorCollect("http://10.17.176.147", "DAQ2", "T2", "DAQ2f", "D2T2", "C")
+            sensorCollect("http://10.17.176.147", "DAQ2", "T3", "DAQ2f", "D2T3", "C")
+            sensorCollect("http://10.17.176.147", "DAQ2", "AmbientTemp", "DAQ2f", "D2AT", "C")
+            sensorCollect("http://10.17.176.147", "DAQ2", "Light", "DAQ2f", "D2L", "lux")
+    print "Failure to connect to DAQ 2. Ending Thread."
+    return EXIT_FAILURE
 
 #@name: DAQ3
 #@description: Collects data from DAQ3.
@@ -77,6 +84,14 @@ def sensorCollect(url, DAQ, sensorType, DAQid, sensorId,  units):
         print "====================================="
         r.table(DAQ).insert({'Sensor Type': sensorType, 'DAQ ID':DAQid, 'Sensor ID': sensorId, 'Data Value': finalData, 'Units': units, 'Timestamp': r.now().in_timezone('-08:00')}).run()
 
+
+def checkConnection(url):
+    try:
+        urllib2.urlopen(url, timeout = 8)
+    except urllib2.URLError:
+        #Cannot connect
+        return EXIT_FAILURE
+    return EXIT_SUCCESS
 
 #Collect data in separate threads, each having their own time interval
 if __name__ == "__main__":
