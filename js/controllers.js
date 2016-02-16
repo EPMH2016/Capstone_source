@@ -24,7 +24,7 @@ app.controller("DAQGraphController", function($scope, $http, $q){
     $scope.selectedDAQ="DAQ1";
 
 
-    $scope.selectedType = "Thermocouple 1 (F)";
+    $scope.selectedType = "Thermocouple 1 (C)";
 
     //  make this a different function that simply collects and allocates the data  
     $scope.collect_data = function(sensorType, data_daq1, data_daq2, data_daq3, data_daq4, print_graph){
