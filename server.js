@@ -47,6 +47,7 @@ app.use(bodyParser.json());
 app.post("/postSample", function(request, response){
 console.log("The body name is " + request.body.name);
 //console.log("The name is " + request.body.name);
+response.send("Post success");
 
 });
 
