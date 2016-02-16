@@ -39,7 +39,7 @@ console.log("Successfully connected to database");
 app.use("/", express.static(__dirname));
 
 //app.use(express.bodyParser());
-var bodyParser = require("bodyParser");
+var bodyParser = require("body-parser");
 
  app.use(bodyParser.urlencoded({extended: false}));
  app.use(bodyParser.json());
