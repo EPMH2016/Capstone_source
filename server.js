@@ -41,7 +41,7 @@ app.use("/", express.static(__dirname));
 
 app.use("/postSample", function(request, response){
 console.log("The request is " + request);
-
+console.log("The name is " + request.paul);
 });
 
 //Archive - Email the data to the client in JSON format
