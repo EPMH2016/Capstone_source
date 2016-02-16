@@ -39,11 +39,15 @@ console.log("Successfully connected to database");
 app.use("/", express.static(__dirname));
 
 //app.use(express.bodyParser());
+var bodyParser = require(bodyParser);
 
-app.use("/postSample", function(request, response){
-console.log("The request is " + request);
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
+
+app.post("/postSample", function(request, response){
+console.log("The body name is " + request.body.name);
 //console.log("The name is " + request.body.name);
-response.send(request.body);
+
 });
 
 //Archive - Email the data to the client in JSON format
