@@ -60,9 +60,6 @@ app.controller("DAQGraphController", function($scope, $http, $q){
                 data_array_daq1.unshift(data_daq1[i]["Data Value"]);
                 var date = new Date(data_daq1[i]["Timestamp"]);
                 date_array_daq1.unshift(data_daq1[i]["Timestamp"]);
-                //console.log(date.getTime());
-                //console.log(date);
-                console.log(Date.parse(date_array_daq1[i]));
         }
 
         for(i = 0; i < data_daq2.length; i++)
@@ -113,18 +110,22 @@ app.controller("DAQGraphController", function($scope, $http, $q){
             graph_array_daq4.push([Date.parse(date_array_daq4[i]), data_array_daq4[i]]);
         }
 
+        
 
-
-
+        Highcharts.setOptions({
+            global: {
+                useUTC: false
+            }
+        });
         
         var chart = new Highcharts.Chart({
             credits: {
             enabled: false
         },
 
-        global: {
-                useUTC: false
-        },
+        // global: {
+        //     useUTC: false
+        // },
 
         chart: {
             renderTo: 'container',
