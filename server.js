@@ -48,7 +48,7 @@ app.post("/postSample", function(request, response){
 console.log("The body name is " + request.body.name);
 //console.log("The name is " + request.body.name);
 //response.send("Post success");
-getDAQInfo(name, response);
+getDAQInfo("DAQ1", response);
 });
 
 //Archive - Email the data to the client in JSON format
