@@ -47,8 +47,8 @@ app.use(bodyParser.json());
 app.post("/postSample", function(request, response){
 console.log("The body name is " + request.body.name);
 //console.log("The name is " + request.body.name);
-response.send("Post success");
-
+//response.send("Post success");
+getDAQInfo(name, response);
 });
 
 //Archive - Email the data to the client in JSON format
@@ -183,6 +183,21 @@ function getDAQData(DAQ, sensorType, response){
 
 }
 
+function getDAQInfo(DAQname, response){
+
+r.db('HDMI').table('DAQInformation').filter({'Name':DAQname}).run(connection, function(err, cursor) {
+    if (err) throw err;
+    daqData = "";
+    cursor.toArray(function(err, result) {
+        if (err) throw err;
+        console.log("The result for sensor" + sensorType + "  is " + result);
+        response.send(result);
+        daqData=result;
+        return result
+    });
+});
+
+}
 
 
 
