@@ -41,11 +41,11 @@ app.use("/", express.static(__dirname));
 //app.use(express.bodyParser());
 var bodyParser = require("body-parser");
 
- app.use(bodyParser.urlencoded({extended: false}));
- app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
 
 app.post("/postSample", function(request, response){
-console.log("The body name is " + request.body.name);
+console.log("The body name is " + request.body);
 //console.log("The name is " + request.body.name);
 
 });
