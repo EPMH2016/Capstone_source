@@ -36,6 +36,11 @@ button:hover{
   text-decoration: none;
 }
 
+md-radio-button{
+  outline: none;
+}
+
+
 .pinkbutton{
   
   background: dodgerblue;
