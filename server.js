@@ -184,7 +184,7 @@ function getDAQData(DAQ, sensorType, response){
 }
 
 function getDAQInfo(DAQname, response){
-
+console.log("ENTERED GETDAQINFO");
 r.db('HDMI').table('DAQInformation').filter({'Name':DAQname}).run(connection, function(err, cursor) {
     if (err) throw err;
     daqData = "";
