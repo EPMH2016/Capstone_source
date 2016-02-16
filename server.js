@@ -42,7 +42,7 @@ app.use("/", express.static(__dirname));
 
 app.use("/postSample", function(request, response){
 console.log("The request is " + request);
-console.log("The name is " + request.body.name);
+//console.log("The name is " + request.body.name);
 response.send(request.body);
 });
 
