@@ -38,9 +38,9 @@ console.log("Successfully connected to database");
 
 app.use("/", express.static(__dirname));
 
+app.use(express.bodyParser());
 
-
-app.use("/postSample", function(request, response){
+app.post("/postSample", function(request, response){
 console.log("The request is " + request);
 console.log("The name is " + request.body.name);
 });
