@@ -39,6 +39,11 @@ console.log("Successfully connected to database");
 app.use("/", express.static(__dirname));
 
 
+app.use("/postSample", function(request, response){
+console.log("The request is " + request);
+
+});
+
 //Archive - Email the data to the client in JSON format
 app.get("/archive", function(request, response){
 
