@@ -38,8 +38,7 @@ console.log("Successfully connected to database");
 
 app.use("/", express.static(__dirname));
 
-app.use(express.urlencoded());
-app.use(express.json());  
+
 
 app.use("/postSample", function(request, response){
 console.log("The request is " + request);
