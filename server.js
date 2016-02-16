@@ -44,12 +44,16 @@ var bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
-app.post("/postSample", function(request, response){
+
+//DAQinfo - Retrieve info the given DAQ in the database
+//Request bodies should contain DAQ name
+app.post("/DAQinfo", function(request, response){
 console.log("The body name is " + request.body.name);
-//console.log("The name is " + request.body.name);
-//response.send("Post success");
+
 getDAQInfo("DAQ1", response);
 });
+
+
 
 //Archive - Email the data to the client in JSON format
 app.get("/archive", function(request, response){
