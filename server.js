@@ -192,7 +192,9 @@ r.db('HDMI').table('DAQInformation').filter({'Name':DAQname}).run(connection, fu
     daqData = "";
     cursor.toArray(function(err, result) {
         if (err) throw err;
-        console.log("The Name of data being returned is " + result[0].Name);
+        console.log("The type of result is " + typeof result);
+        console.log("The type of result 0 is " + typeof result[0]);
+        console.log("The Name of data being returned is " + result[0][0]);
         response.send(result);
         daqData=result;
         return result
