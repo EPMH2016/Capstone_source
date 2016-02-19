@@ -48,8 +48,7 @@ app.use(bodyParser.json());
 //DAQinfo - Retrieve info the given DAQ in the database
 //Request bodies should contain DAQ name
 app.post("/DAQinfo", function(request, response){
-console.log("The body name is " + request.body.name);
-
+console.log("The body name is " + request.body.Name);
 getDAQInfo("DAQ1", response);
 });
 
