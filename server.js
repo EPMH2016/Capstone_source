@@ -49,7 +49,7 @@ app.use(bodyParser.json());
 //Request bodies should contain DAQ name
 app.post("/DAQinfo", function(request, response){
 console.log("The body name is " + request.body.Name);
-getDAQInfo("DAQ1", response);
+getDAQInfo(request.body.Name, response);
 });
 
 
