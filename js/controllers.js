@@ -381,24 +381,28 @@ app.controller("navController", function($scope, $timeout, $mdSidenav, $log){
 
 
 app.controller("CDController", function($scope, $timeout, $mdSidenav, $log, $mdDialog){
-    $scope.daq_ID = "DAQ ID";
+    $scope.daq_ID = "initial ID";
     $scope.daq_location = "DAQ Location"; 
+    
     $scope.daq_ID = "hello";
+
 
     $scope.getDAQInfo = function(name, daq_ID){
         console.log("Retrieving data for " + name);
-
-        $scope.daq_ID = "testing";
-
+        $scope.daq_location = "updated";
+        $scope.daq_ID = "updated";
+        console.log("DAQ id is now " + $scope.daq_ID);
         $.post("http://10.17.191.41:8435/DAQinfo", {Name: name}, function( data ){
             console.log("data is " + data[0].DAQID);
             $scope.daq_ID = data[0].DAQID;
             $scope.daq_location = data[0].Location;
             console.log("daq_ID: " + $scope.daq_ID);
         }, "json");
+
+        console.log("Exited funct");
     }
 
-
+    
 
 });
 
