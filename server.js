@@ -48,9 +48,8 @@ app.use(bodyParser.json());
 //DAQinfo - Retrieve info the given DAQ in the database
 //Request bodies should contain DAQ name
 app.post("/DAQinfo", function(request, response){
-console.log("The body name is " + request.body.name);
-
-getDAQInfo("DAQ1", response);
+console.log("The body name is " + request.body.Name);
+getDAQInfo(request.body.Name, response);
 });
 
 
@@ -193,6 +192,7 @@ r.db('HDMI').table('DAQInformation').filter({'Name':DAQname}).run(connection, fu
     daqData = "";
     cursor.toArray(function(err, result) {
         if (err) throw err;
+
         response.send(result);
         daqData=result;
         return result

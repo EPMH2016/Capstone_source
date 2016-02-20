@@ -56,11 +56,11 @@ def DAQ2():
             time.sleep(float(timeIntervals['DAQ2']))
 
             #Collect the dataz
-            sensorCollect("http://10.17.176.147", "DAQ2", "T1", "DAQ2f", "D2T1", "C")
-            sensorCollect("http://10.17.176.147", "DAQ2", "T2", "DAQ2f", "D2T2", "C")
-            sensorCollect("http://10.17.176.147", "DAQ2", "T3", "DAQ2f", "D2T3", "C")
-            sensorCollect("http://10.17.176.147", "DAQ2", "AmbientTemp", "DAQ2f", "D2AT", "C")
-            sensorCollect("http://10.17.176.147", "DAQ2", "Light", "DAQ2f", "D2L", "lux")
+            sensorCollect("http://10.17.131.190", "DAQ2", "T1", "DAQ2f", "D2T1", "C")
+            sensorCollect("http://10.17.131.190", "DAQ2", "T2", "DAQ2f", "D2T2", "C")
+            sensorCollect("http://10.17.131.190", "DAQ2", "T3", "DAQ2f", "D2T3", "C")
+            sensorCollect("http://10.17.131.190", "DAQ2", "AmbientTemp", "DAQ2f", "D2AT", "C")
+            sensorCollect("http://10.17.131.190", "DAQ2", "Light", "DAQ2f", "D2L", "lux")
     print "Failure to connect to DAQ 2. Ending Thread."
     return EXIT_FAILURE
 
