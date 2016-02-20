@@ -387,10 +387,8 @@ app.controller("CDController", function($scope, $timeout, $mdSidenav, $log, $mdD
     $scope.daq_ID = "hello";
 
 
-    $scope.getDAQInfo = function(name, daq_ID){
+    $scope.getDAQInfo = function(name){
         console.log("Retrieving data for " + name);
-        $scope.daq_location = "updated";
-        $scope.daq_ID = "updated";
         console.log("DAQ id is now " + $scope.daq_ID);
         $.post("http://10.17.191.41:8435/DAQinfo", {Name: name}, function( data ){
             console.log("data is " + data[0].DAQID);

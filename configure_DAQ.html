@@ -61,14 +61,14 @@
             
           <div ng-controller="CDController">
 			<div layout="row" layout-align="center start" class="colorNested" >
- 			<div><md-button class="pinkbutton" ng-click="getDAQInfo('DAQ1', $scope.daq_ID)" flex="10" > DAQ 1 </md-button></div>
-			<div><md-button class="pinkbutton" flex="10"> DAQ 2 </md-button></div>
-			<div><md-button class="pinkbutton" flex="10"> DAQ 3 </md-button></div>
+ 			<div><md-button class="pinkbutton" ng-click="getDAQInfo('DAQ1')" flex="10" > DAQ 1 </md-button></div>
+			<div><md-button class="pinkbutton" ng-click="getDAQInfo('DAQ2')" flex="10"> DAQ 2 </md-button></div>
+			<div><md-button class="pinkbutton" ng-click="getDAQInfo('DAQ3')" flex="10"> DAQ 3 </md-button></div>
   		</div>
 
-            <!-- <div><h4>ID: 12345</h4></div>
-            <div><h4>Location: Basement</h4></div> -->
-            <h3> {{ hello }} </h3>
+<!--             <div><h4>ID: 12345</h4></div>
+            <div><h4>Location: Basement</h4></div>
+            <h3> {{ hello }} </h3> -->
             <div layout="column" layout-align="center center">
             	<h4>ID: {{ daq_ID }} </h4>
             	<h4>Location: {{ daq_location }}</h4>
