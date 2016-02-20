@@ -59,8 +59,8 @@
 			  
 			<h2 class="md-display-3">Configure DAQs</h2>
             
-			<div layout="row" layout-align="center start" class="colorNested" >
- 			<div><md-button class="pinkbutton" flex="10" > DAQ 1 </md-button></div>
+			<div ng-controller="CDController" layout="row" layout-align="center start" class="colorNested" >
+ 			<div><md-button class="pinkbutton" ng-click="getDAQInfo('DAQ1', $scope.daq_ID)" flex="10" > DAQ 1 </md-button></div>
 			<div><md-button class="pinkbutton" flex="10"> DAQ 2 </md-button></div>
 			<div><md-button class="pinkbutton" flex="10"> DAQ 3 </md-button></div>
   			</div>
@@ -68,9 +68,9 @@
             <!-- <div><h4>ID: 12345</h4></div>
             <div><h4>Location: Basement</h4></div> -->
 
-            <div layout="column" layout-align="center center">
-            	<h4>ID: 12345</h4>
-            	<h4>Location: Basement</h4>
+            <div ng-controller="CDController" layout="column" layout-align="center center">
+            	<h4>ID: {{daq_ID}}</h4>
+            	<h4>Location: {{daq_location}}</h4>
             </div>
 
             <div>
