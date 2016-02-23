@@ -192,7 +192,7 @@ app.listen(port, host);
  */
 function getDAQData(DAQ, sensorType, response){
   console.log("pulling from DB");
-    r.db('HDMI').table(DAQ).filter({'Sensor Type':sensorType}).orderBy(r.desc('Timestamp')).limit(50).run(connection, function(err, cursor) {
+    r.db('HDMI').table(DAQ).filter({'Sensor Type':sensorType}).orderBy(r.desc('Timestamp')).limit(20).run(connection, function(err, cursor) {
     if (err) throw err;
     sensorData = "";
     cursor.toArray(function(err, result) {
