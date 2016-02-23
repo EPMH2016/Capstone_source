@@ -52,7 +52,24 @@ console.log("The body name is " + request.body.Name);
 getDAQInfo(request.body.Name, response);
 });
 
+app.post("/updateLocation" function(request, response){
 
+//{Location: "", ID: ""}
+var location = request.body.Location;
+var id = request.body.id;
+
+r.db('HDMI').table('DAQinfo').filter({'DAQID': id}).update({'Location': location}).run(connection, function(err){
+  if (err){
+    response.send("Failure");
+  }
+  else{
+    response.send("Success");
+  }
+})
+
+
+
+})
 
 //Archive - Email the data to the client in JSON format
 app.get("/archive", function(request, response){
@@ -75,23 +92,25 @@ app.get("/archive", function(request, response){
 
 //Purge - Delete all data from every table in the database
 app.get("/purge", function(request, response){
-// for (daq in DAQset){
-//   r.db('HDMI').table(DAQset[daq]).delete().run(connection, function(err){
-//     if(err){console.log("Cannot be found")}
-//   });
-// }
+for (daq in DAQset){
+  r.db('HDMI').table(DAQset[daq]).delete().run(connection, function(err){
+    if(err){console.log("Cannot be found")}
+  });
+}
+
+  response.send("success!");
 
   //!!FOR TESTING PURPOSES, THE FOR LOOP HAS BEEN COMMENTED OUT AND PURGED DATA IS FROM A 
   //  DEPRECATED TABLE
   //for (daq in DAQset){
-  r.db('Sensor_data').table("Sensor1TempHumidity").delete().run(connection, function(err){
-    if(err){
-    console.log("Cannot be found");
-    response.send("fail");}
-    else{
-      response.send("success");
-    }
-  });
+  // r.db('Sensor_data').table("Sensor1TempHumidity").delete().run(connection, function(err){
+  //   if(err){
+  //   console.log("Cannot be found");
+  //   response.send("fail");}
+  //   else{
+  //     response.send("success");
+  //   }
+  // });
   //}
 
 });
@@ -200,6 +219,8 @@ r.db('HDMI').table('DAQInformation').filter({'Name':DAQname}).run(connection, fu
 });
 
 }
+
+
 
 
 
