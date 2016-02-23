@@ -69,7 +69,7 @@ r.db('HDMI').table('DAQinfo').filter({'DAQID': id}).update({'Location': location
 
 
 
-})
+});
 
 //Archive - Email the data to the client in JSON format
 app.get("/archive", function(request, response){
