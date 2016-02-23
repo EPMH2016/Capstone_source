@@ -52,7 +52,7 @@ console.log("The body name is " + request.body.Name);
 getDAQInfo(request.body.Name, response);
 });
 
-app.post("/updateLocation" function(request, response){
+app.post("/updateLocation", function(request, response){
 
 //{Location: "", ID: ""}
 var location = request.body.Location;
