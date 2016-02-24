@@ -178,10 +178,6 @@ app.controller("DAQGraphController", function($scope, $http, $q){
        switch ($scope.selectedType){
         case "T1":
 
-            $.get("http://10.17.191.41:8435/DAQ1/T1", function(data){
-                console.log("DAQ1 collection using JQuery complete");
-                console.log("Data is " + data);
-            })
 
             $http.get('http://10.17.191.41:8435/DAQ1/T1')
 
@@ -193,10 +189,6 @@ app.controller("DAQGraphController", function($scope, $http, $q){
                 console.log("Error, data not found.");
             });
 
-            $.get("http://10.17.191.41:8435/DAQ2/T1", function(data){
-                console.log("DAQ 2 collection using JQuery complete");
-                console.log("Data is " + data);
-            })
 
             $http.get('http://10.17.191.41:8435/DAQ2/T1')
 

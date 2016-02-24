@@ -127,7 +127,6 @@ app.get("/index", function (request, response){
 //DAQ1
 app.get("/DAQ1/T1", function(request, response){
 
-
   getDAQData("DAQ1","T1", response)
 });
 
@@ -191,8 +190,9 @@ app.listen(port, host);
  * response (response) - The response object used to return data to the API
  */
 function getDAQData(DAQ, sensorType, response){
-  console.log("pulling from DB");
-    r.db('HDMI').table(DAQ).filter({'Sensor Type':sensorType}).orderBy(r.desc('Timestamp')).limit(20).run(connection, function(err, cursor) {
+  console.log("pulling from DB DAQ1 T1");
+  //r.db('HDMI').table(DAQ).filter({'Sensor Type':sensorType}).orderBy(r.desc('Timestamp')).limit(20)
+    r.db('HDMI').table("DAQ1").filter({'Sensor Type':"T1"}).orderBy(r.desc("Timestamp")).limit(20).run(connection, function(err, cursor) {
     if (err) throw err;
     sensorData = "";
     console.log("Queried");
