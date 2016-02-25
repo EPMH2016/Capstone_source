@@ -52,6 +52,25 @@ console.log("The body name is " + request.body.Name);
 getDAQInfo(request.body.Name, response);
 });
 
+//DAQinfo - Retrieve info the given DAQ in the database
+//Request bodies should contain DAQ name
+app.get("/DAQInfoAll", function(request, response){
+
+
+r.db('HDMI').table('DAQInformation').run(connection, function(err, cursor) {
+    if (err) throw err;
+    daqData = "";
+    cursor.toArray(function(err, result) {
+        if (err) throw err;
+
+        response.send(result);
+        daqData=result;
+        return result
+    });
+});
+
+});
+
 app.post("/updateLocation", function(request, response){
 
 //{Location: "", ID: ""}
