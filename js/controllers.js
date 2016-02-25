@@ -177,18 +177,23 @@ app.controller("DAQGraphController", function($scope, $http, $q){
 
        switch ($scope.selectedType){
         case "T1":
+
+
             $http.get('http://10.17.191.41:8435/DAQ1/T1')
 
             .success(function(data_daq1, status, headers, config){
+                console.log("DAQ1 collection complete");
                 $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, data_daq4, false);
             })
             .error(function(data_daq1, status, headers, config){
                 console.log("Error, data not found.");
             });
 
+
             $http.get('http://10.17.191.41:8435/DAQ2/T1')
 
             .success(function(data_daq2, status, headers, config){
+                console.log("DAQ2 collection complete");
                 $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, data_daq4, true);
             })
             .error(function(data_daq2, status, headers, config){

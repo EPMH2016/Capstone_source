@@ -52,7 +52,24 @@ console.log("The body name is " + request.body.Name);
 getDAQInfo(request.body.Name, response);
 });
 
+app.post("/updateLocation", function(request, response){
 
+//{Location: "", ID: ""}
+var location = request.body.Location;
+var id = request.body.id;
+
+r.db('HDMI').table('DAQinfo').filter({'DAQID': id}).update({'Location': location}).run(connection, function(err){
+  if (err){
+    response.send("Failure");
+  }
+  else{
+    response.send("Success");
+  }
+})
+
+
+
+});
 
 //Archive - Email the data to the client in JSON format
 app.get("/archive", function(request, response){
@@ -75,23 +92,25 @@ app.get("/archive", function(request, response){
 
 //Purge - Delete all data from every table in the database
 app.get("/purge", function(request, response){
-// for (daq in DAQset){
-//   r.db('HDMI').table(DAQset[daq]).delete().run(connection, function(err){
-//     if(err){console.log("Cannot be found")}
-//   });
-// }
+for (daq in DAQset){
+  r.db('HDMI').table(DAQset[daq]).delete().run(connection, function(err){
+    if(err){console.log("Cannot be found")}
+  });
+}
+
+  response.send("success!");
 
   //!!FOR TESTING PURPOSES, THE FOR LOOP HAS BEEN COMMENTED OUT AND PURGED DATA IS FROM A 
   //  DEPRECATED TABLE
   //for (daq in DAQset){
-  r.db('Sensor_data').table("Sensor1TempHumidity").delete().run(connection, function(err){
-    if(err){
-    console.log("Cannot be found");
-    response.send("fail");}
-    else{
-      response.send("success");
-    }
-  });
+  // r.db('Sensor_data').table("Sensor1TempHumidity").delete().run(connection, function(err){
+  //   if(err){
+  //   console.log("Cannot be found");
+  //   response.send("fail");}
+  //   else{
+  //     response.send("success");
+  //   }
+  // });
   //}
 
 });
@@ -107,7 +126,6 @@ app.get("/index", function (request, response){
 
 //DAQ1
 app.get("/DAQ1/T1", function(request, response){
-
 
   getDAQData("DAQ1","T1", response)
 });
@@ -172,14 +190,17 @@ app.listen(port, host);
  * response (response) - The response object used to return data to the API
  */
 function getDAQData(DAQ, sensorType, response){
-    r.db('HDMI').table(DAQ).filter({'Sensor Type':sensorType}).orderBy(r.desc('Timestamp')).limit(50).run(connection, function(err, cursor) {
+  
+    r.db('HDMI').table(DAQ).filter({'Sensor Type':sensorType}).orderBy(r.desc("Timestamp")).limit(20).run(connection, function(err, cursor) {
     if (err) throw err;
     sensorData = "";
+    console.log("Queried");
     cursor.toArray(function(err, result) {
         if (err) throw err;
-        console.log("The result for sensor" + sensorType + "  is " + result);
+        console.log("The result for sensor" + sensorType + " DAQ " + DAQ +"  is " + result);
         response.send(result);
         sensorData=result;
+        console.log("returning result")
         return result
     });
 });
@@ -200,6 +221,8 @@ r.db('HDMI').table('DAQInformation').filter({'Name':DAQname}).run(connection, fu
 });
 
 }
+
+
 
 
 
