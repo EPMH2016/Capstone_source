@@ -77,6 +77,8 @@ app.post("/updateLocation", function(request, response){
 var location = request.body.Location;
 var id = request.body.id;
 
+console.log("this is the location you are trying to update" location);
+
 r.db('HDMI').table('DAQinfo').filter({'DAQID': id}).update({'Location': location}).run(connection, function(err){
   if (err){
     response.send("Failure");

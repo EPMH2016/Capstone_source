@@ -413,14 +413,21 @@ app.controller("CDController", function($scope, $timeout, $mdSidenav, $log, $mdD
 app.controller("SystemConfigController", function($scope, $timeout, $mdSidenav, $log, $mdDialog){
 
     $scope.moveDAQClicked = function(){
-        console.log("check this");
-        $.get("http://10.17.191.41:8435/DAQinfo", function( data ){
+
+        $.get("http://10.17.191.41:8435/DAQInfoAll", function( data ){
+            console.log("data is " + data[0].Location);
             console.log("data is " + data[0].DAQID);
-            //$scope.daq_ID = data[0].DAQID;
-            //$scope.daq_location = data[0].Location;
-            //console.log("daq_ID: " + $scope.daq_ID);
         });
-        console.log("and this");
+
+    }
+
+    $scope.submitClicked = function(){
+        //console.log("submit clicked");
+        //console.log(document.getElementById("inputLocation").value);
+        
+        $.post("http://10.17.191.41:8435/updateLocation", {Location: "check this", id: "DAQ1f"}, function(data){
+            console.log("update location post request return is " + data);
+        });
     }
 
 
