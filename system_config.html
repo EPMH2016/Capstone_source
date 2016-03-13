@@ -15,46 +15,6 @@
 			<script src = "js/app.js"></script>
 			<script src = "js/controllers.js"></script>
 			<script src="js/main.js"></script>
-			<style>
-				/* The Modal (background) */
-				.modal {
-				    display: none; /* Hidden by default */
-				    position: fixed; /* Stay in place */
-				    z-index: 1; /* Sit on top */
-				    padding-top: 100px; /* Location of the box */
-				    left: 0;
-				    top: 0;
-				    width: 100%; /* Full width */
-				    height: 100%; /* Full height */
-				    overflow: auto; /* Enable scroll if needed */
-				    background-color: rgb(0,0,0); /* Fallback color */
-				    background-color: rgba(0,0,0,0.2); /* Black w/ opacity */
-				}
-
-				/* Modal Content */
-				.modal-content {
-				    background-color: #fefefe;
-				    margin: auto;
-				    padding: 20px;
-				    border: 1px solid #888;
-				    width: 80%;
-				}
-
-				/* The Close Button */
-				.close {
-				    color: #aaaaaa;
-				    float: right;
-				    font-size: 28px;
-				    font-weight: bold;
-				}
-
-				.close:hover,
-				.close:focus {
-				    color: #000;
-				    text-decoration: none;
-				    cursor: pointer;
-				}
-			</style>
 			
         </head>
 		
@@ -112,20 +72,14 @@
  			 <div class="modal-content">
    			 <span class="close">x</span>
    			 <h3>List of DAQs</h3>
-   			 	<table style="width:100%">
-				  <tr>
-				    <td>Jill</td>
-				    <td>Smith</td> 
-				    <td>50</td>
-				  </tr>
-				  <tr>
-				    <td>Eve</td>
-				    <td>Jackson</td> 
-				    <td>94</td>
-				  </tr>
-				</table>
 
-			<input type="text" value="Location" id="inputLocation"></input>
+   			 		<md-radio-group layout="row" ng-model="selectedDAQ" layout-align="center-none" flex="80">
+   			 			Selected: {{selectedDAQ}}
+   			 			<md-radio-button ng-repeat="daq in daq_array" ng-model="selectedDAQ" value= "{{daq.Name}}"> {{daq.Name}} </md-radio-button>
+
+   			 		</md-radio-group>
+
+			New Location:   <input type="text" value="" id="inputLocation"></input>
 			<md-button class="pinkbutton" flex="10" ng-click="submitClicked()" id="submitBtn"> Submit </md-button>
   			</div>
 

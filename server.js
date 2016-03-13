@@ -73,7 +73,7 @@ r.db('HDMI').table('DAQInformation').run(connection, function(err, cursor) {
 
 app.post("/updateLocation", function(request, response){
 
-//{Location: "", ID: ""}
+//{Location: "", id: ""}
 var location = request.body.Location;
 var id = request.body.id;
 

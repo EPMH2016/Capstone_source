@@ -412,22 +412,25 @@ app.controller("CDController", function($scope, $timeout, $mdSidenav, $log, $mdD
 
 app.controller("SystemConfigController", function($scope, $timeout, $mdSidenav, $log, $mdDialog){
 
-    $scope.moveDAQClicked = function(){
+    $scope.selectedDAQ; /* holds the name of the selected daq */
+    $scope.daq_id;      /* used for the update location post request */
+    $scope.daq_array;   /* stores all daq information from DAQInfoAll request */
 
-        $.get("http://10.17.191.41:8435/DAQInfoAll", function( data ){
-            console.log("data is " + data[0].Location);
-            console.log("data is " + data[0].DAQID);
-        });
-
-    }
+    $.get("http://10.17.191.41:8435/DAQInfoAll", function( data ){
+        $scope.daq_array = data;
+    });
 
     $scope.submitClicked = function(){
-        //console.log("submit clicked");
-        //console.log(document.getElementById("inputLocation").value);
-        
-        $.post("http://10.17.191.41:8435/updateLocation", {Location: "check this", id: "DAQ1f"}, function(data){
-            console.log("update location post request return is " + data);
-        });
+ 
+        $.post("http://10.17.191.41:8435/DAQinfo", {Name: $scope.selectedDAQ}, function( data ){
+            $scope.daq_id = data[0].DAQID;
+            
+
+            $.post("http://10.17.191.41:8435/updateLocation", {Location: document.getElementById("inputLocation").value, id: $scope.daq_id}, function(data){
+                console.log("Update location post request return is " + data);
+            });
+
+        }, "json");
     }
 
 
