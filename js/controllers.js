@@ -58,7 +58,6 @@ app.controller("DAQGraphController", function($scope, $http, $q){
        for(i = 0; i < data_daq1.length; i++)
         {
                 data_array_daq1.unshift(data_daq1[i]["Data Value"]);
-                var date = new Date(data_daq1[i]["Timestamp"]);
                 date_array_daq1.unshift(data_daq1[i]["Timestamp"]);
         }
 
@@ -178,137 +177,84 @@ app.controller("DAQGraphController", function($scope, $http, $q){
        switch ($scope.selectedType){
         case "T1":
 
-
-            $http.get('http://10.17.191.41:8435/DAQ1/T1')
-
-            .success(function(data_daq1, status, headers, config){
-                console.log("DAQ1 collection complete");
+            $.get("http://10.17.191.41:8435/DAQ1/T1", function( data ){
+                data_daq1 = data;
                 $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, data_daq4, false);
-            })
-            .error(function(data_daq1, status, headers, config){
-                console.log("Error, data not found.");
             });
 
-
-            $http.get('http://10.17.191.41:8435/DAQ2/T1')
-
-            .success(function(data_daq2, status, headers, config){
-                console.log("DAQ2 collection complete");
+            $.get("http://10.17.191.41:8435/DAQ2/T1", function( data ){
+                data_daq2 = data;
                 $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, data_daq4, true);
-            })
-            .error(function(data_daq2, status, headers, config){
-                console.log("Error, data not found.");
             });
 
 
         break;
         case "T2":
-            $http.get('http://10.17.191.41:8435/DAQ1/T2')
-
-            .success(function(data_daq1, status, headers, config){
+            $.get("http://10.17.191.41:8435/DAQ1/T2", function( data ){
+                data_daq1 = data;
                 $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, data_daq4, false);
-            })
-            .error(function(data_daq1, status, headers, config){
-                console.log("Error, data not found.");
             });
 
-            $http.get('http://10.17.191.41:8435/DAQ2/T2')
-
-            .success(function(data_daq2, status, headers, config){
+            $.get("http://10.17.191.41:8435/DAQ2/T2", function( data ){
+                data_daq2 = data;
                 $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, data_daq4, true);
-            })
-            .error(function(data_daq2, status, headers, config){
-                console.log("Error, data not found.");
             });
 
 
         break;
         case "T3":
         
-            $http.get('http://10.17.191.41:8435/DAQ1/T3')
-
-            .success(function(data_daq1, status, headers, config){
+            $.get("http://10.17.191.41:8435/DAQ1/T3", function( data ){
+                data_daq1 = data;
                 $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, data_daq4, false);
-            })
-            .error(function(data_daq1, status, headers, config){
-                console.log("Error, data not found.");
             });
 
-            $http.get('http://10.17.191.41:8435/DAQ2/T3')
-
-            .success(function(data_daq2, status, headers, config){
+            $.get("http://10.17.191.41:8435/DAQ2/T3", function( data ){
+                data_daq2 = data;
                 $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, data_daq4, true);
-            })
-            .error(function(data_daq2, status, headers, config){
-                console.log("Error, data not found.");
             });
 
 
         break;
         case "T4":
         
-            $http.get('http://10.17.191.41:8435/DAQ1/T4')
-
-            .success(function(data_daq1, status, headers, config){
+            $.get("http://10.17.191.41:8435/DAQ1/T4", function( data ){
+                data_daq1 = data;
                 $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, data_daq4, false);
-            })
-            .error(function(data_daq1, status, headers, config){
-                console.log("Error, data not found.");
             });
 
-            $http.get('http://10.17.191.41:8435/DAQ2/T4')
-
-            .success(function(data_daq2, status, headers, config){
+            $.get("http://10.17.191.41:8435/DAQ2/T4", function( data ){
+                data_daq2 = data;
                 $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, data_daq4, true);
-            })
-            .error(function(data_daq2, status, headers, config){
-                console.log("Error, data not found.");
             });
 
 
         break;
         case "Light":
 
-            $http.get('http://10.17.191.41:8435/DAQ1/Light')
-
-            .success(function(data_daq1, status, headers, config){
+            $.get("http://10.17.191.41:8435/DAQ1/Light", function( data ){
+                data_daq1 = data;
                 $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, data_daq4, false);
-            })
-            .error(function(data_daq1, status, headers, config){
-                console.log("Error, data not found.");
             });
 
-            $http.get('http://10.17.191.41:8435/DAQ2/Light')
-
-            .success(function(data_daq2, status, headers, config){
+            $.get("http://10.17.191.41:8435/DAQ2/Light", function( data ){
+                data_daq2 = data;
                 $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, data_daq4, true);
-            })
-            .error(function(data_daq2, status, headers, config){
-                console.log("Error, data not found.");
             });
 
 
         break;
         case "Ambient":
                       
-            $http.get('http://10.17.191.41:8435/DAQ1/AmbientTemp')
-
-            .success(function(data_daq1, status, headers, config){
+            $.get("http://10.17.191.41:8435/DAQ1/AmbientTemp", function( data ){
+                data_daq1 = data;
                 $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, data_daq4, false);
-            })
-            .error(function(data_daq1, status, headers, config){
-                console.log("Error, data not found.");
             });
 
-            $http.get('http://10.17.191.41:8435/DAQ2/AmbientTemp')
-
-            .success(function(data_daq2, status, headers, config){
+            $.get("http://10.17.191.41:8435/DAQ2/AmbientTemp", function( data ){
+                data_daq2 = data;
                 $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, data_daq4, true);
-            })
-            .error(function(data_daq2, status, headers, config){
-                console.log("Error, data not found.");
             });
-
 
         break;
         default:
@@ -358,7 +304,7 @@ app.controller("navController", function($scope, $timeout, $mdSidenav, $log){
         });
     };
 
-      /**
+    /*
      * Build handler to open/close a SideNav; when animation finishes
      * report completion in console
      */
@@ -410,7 +356,7 @@ app.controller("CDController", function($scope, $timeout, $mdSidenav, $log, $mdD
 });
 
 
-app.controller("SystemConfigController", function($scope, $timeout, $mdSidenav, $log, $mdDialog){
+app.controller("SystemConfigController", function($scope, $timeout, $mdSidenav, $log, $mdDialog, $http){
 
     $scope.selectedDAQ; /* holds the name of the selected daq */
     $scope.daq_id;      /* used for the update location post request */
@@ -431,6 +377,23 @@ app.controller("SystemConfigController", function($scope, $timeout, $mdSidenav, 
             });
 
         }, "json");
+    }
+
+    $scope.convertClicked = function(){
+
+        $.get("http://10.17.191.41:8435/DAQInfoAll", function( data ){
+            console.log("no http data: " + data);
+        });
+
+        $.get("http://10.17.191.41:8435/DAQ2/T1", function( data ){
+            console.log("DAQ2 data: " + data[0]["Data Value"]);
+        });
+
+        $.get("http://10.17.191.41:8435/DAQ1/T1", function( data ){
+            console.log("DAQ1 data: " + data[0]["Data Value"]);
+        });
+
+
     }
 
 

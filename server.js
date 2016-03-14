@@ -202,7 +202,7 @@ app.get("/DAQ2/Light", function(request, response){
 app.listen(port, host);
 
 /*
- *getDAQData
+ * getDAQData
  * Description: Acquired data from rethinkDB 
  * based on the DAQ and sensor type given in the route
  * Params:
@@ -211,20 +211,26 @@ app.listen(port, host);
  * response (response) - The response object used to return data to the API
  */
 function getDAQData(DAQ, sensorType, response){
-  
+    console.log("check 1");
     r.db('HDMI').table(DAQ).filter({'Sensor Type':sensorType}).orderBy(r.desc("Timestamp")).limit(20).run(connection, function(err, cursor) {
+    console.log("check 2");
     if (err) throw err;
     sensorData = "";
     console.log("Queried");
+    console.log("check 3");
     cursor.toArray(function(err, result) {
         if (err) throw err;
         console.log("The result for sensor" + sensorType + " DAQ " + DAQ +"  is " + result);
+        console.log("check 4");
         response.send(result);
+        console.log("check 5");
         sensorData=result;
         console.log("returning result")
         return result
     });
+    console.log("check 6");
 });
+    console.log("check 7");
 
 }
 
