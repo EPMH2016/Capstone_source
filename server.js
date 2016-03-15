@@ -212,7 +212,7 @@ app.listen(port, host);
  */
 function getDAQData(DAQ, sensorType, response){
     console.log("check 1");
-    r.db('HDMI').table(DAQ).filter({'Sensor Type':sensorType}).limit(20).run(connection, function(err, cursor) {
+    r.db('HDMI').table('DAQ1').orderBy({index:r.desc('Timestamp')}).filter({'Sensor Type':sensorType}).limit(20).run(connection, function(err, cursor) {
     console.log("check 2");
     if (err) throw err;
     sensorData = "";
