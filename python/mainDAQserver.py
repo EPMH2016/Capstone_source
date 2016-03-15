@@ -13,7 +13,7 @@ EXIT_SUCCESS = 0
 EXIT_FAILURE = 1
 
 #Attempt to connect to server database
-r.connect('rethinkdb://x:8uv1Ok3YhAVpXWZvRKDfxbVEEDlalJS8AuxvedfV05E@aws-us-east-1-portal.14.dblayer.com', port=10032, db='HDMI').repl()
+#r.connect('rethinkdb://x:8uv1Ok3YhAVpXWZvRKDfxbVEEDlalJS8AuxvedfV05E@aws-us-east-1-portal.14.dblayer.com', port=10032, db='HDMI').repl()
 #r.connect('localhost', port=28015, db='HDMI').repl()
 #Parse through XML configuration file
 print "Acquiring time intervals from config.xml"
