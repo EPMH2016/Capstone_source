@@ -32,9 +32,9 @@ for daq in DAQlist:
     # print "Time Interval: " + daq.attributes['TimeInterval'].value
     # print "Status: " + daq.attributes['Status'].value
     print "DAQ ID: " + daq['Name']
-    print "Time Interval: " + daq['TimeInterval']
+    print "Time Interval: " + daq['Time Interval']
     print "Status: " + daq['Status']
-    timeIntervals[daq['Name']] = daq['TimeInterval']
+    timeIntervals[daq['Name']] = daq['Time Interval']
     # timeIntervals[daq.attributes['id'].value] = daq.attributes['TimeInterval'].value
 
 #@name: DAQ1
