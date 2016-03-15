@@ -56,7 +56,6 @@ getDAQInfo(request.body.Name, response);
 //Request bodies should contain DAQ name
 app.get("/DAQInfoAll", function(request, response){
 
-
 r.db('HDMI').table('DAQInformation').run(connection, function(err, cursor) {
     if (err) throw err;
     daqData = "";

@@ -19,14 +19,23 @@ r.connect('rethinkdb://x:8uv1Ok3YhAVpXWZvRKDfxbVEEDlalJS8AuxvedfV05E@aws-us-east
 print "Acquiring time intervals from config.xml"
 
 configdoc = minidom.parse('../xml/config.xml')
-DAQlist = configdoc.getElementsByTagName('DAQ')
+#DAQlist = configdoc.getElementsByTagName('DAQ')
 timeIntervals = {}
+
+r.connect('localhost', port=28015, db='HDMI').repl()
+
+DAQlist = r.table("DAQInformation").run()
 
 #Iterate through configurations for each daq
 for daq in DAQlist:
-    print "DAQ ID: " + daq.attributes['id'].value
-    print "Time Interval: " + daq.attributes['TimeInterval'].value
-    timeIntervals[daq.attributes['id'].value] = daq.attributes['TimeInterval'].value
+    # print "DAQ ID: " + daq.attributes['id'].value
+    # print "Time Interval: " + daq.attributes['TimeInterval'].value
+    # print "Status: " + daq.attributes['Status'].value
+    print "DAQ ID: " + daq['Name']
+    print "Time Interval: " + daq['TimeInterval']
+    print "Status: " + daq['Status']
+    timeIntervals[daq['Name']] = daq['TimeInterval']
+    # timeIntervals[daq.attributes['id'].value] = daq.attributes['TimeInterval'].value
 
 #@name: DAQ1
 #@description: Collects data from DAQ1.
@@ -95,7 +104,7 @@ def checkConnection(url):
 
 #Collect data in separate threads, each having their own time interval
 if __name__ == "__main__":
-	Thread(target = DAQ1).start()
+	Thread(target=DAQ1).start()
 	Thread(target=DAQ2).start()
 	Thread(target=DAQ3).start()
 

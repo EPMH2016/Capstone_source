@@ -1,5 +1,4 @@
 #!/bin/bash
 
-echo "hello test"
 rethinkdb --bind all &
 node server.js &
