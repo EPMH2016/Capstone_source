@@ -97,7 +97,7 @@ app.post("/updateDAQStatus", function(request, response){
 //{Location: "", id: ""}
 
 
-console.log("POST: " + request.body);
+console.log("POST: " + request.body.statuses);
 
 
 // r.db('HDMI').table('DAQInformation').filter({'DAQID': id}).update({'Location': location}).run(connection, function(err){
