@@ -94,10 +94,25 @@ r.db('HDMI').table('DAQInformation').filter({'DAQID': id}).update({'Location': l
 
 app.post("/updateDAQStatus", function(request, response){
 
-//{Location: "", id: ""}
 
 
 console.log("POST: " + request.body.statuses);
+
+
+//get all DAQS
+daqData = [];
+r.db('HDMI').table('DAQInformation').run(connection, function(err, cursor) {
+    if (err) throw err;
+    cursor.toArray(function(err, result) {
+        if (err) throw err;
+        daqData=result;
+    });
+});
+
+for (int i = -; i < daqData.length; i++){
+  console.log("DAQ name: " + daqData[i].Name);
+}
+
 
 
 // r.db('HDMI').table('DAQInformation').filter({'DAQID': id}).update({'Location': location}).run(connection, function(err){
