@@ -109,7 +109,7 @@ r.db('HDMI').table('DAQInformation').run(connection, function(err, cursor) {
     });
 });
 
-for (int i = 0; i < daqData.length; i++){
+for (var i = 0; i < daqData.length; i++){
   console.log("DAQ name: " + daqData[i].Name);
 }
 
