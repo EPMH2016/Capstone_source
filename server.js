@@ -91,6 +91,28 @@ r.db('HDMI').table('DAQInformation').filter({'DAQID': id}).update({'Location': l
 
 });
 
+
+app.post("/updateDAQStatus", function(request, response){
+
+//{Location: "", id: ""}
+
+
+console.log("POST: " + request.body);
+
+
+// r.db('HDMI').table('DAQInformation').filter({'DAQID': id}).update({'Location': location}).run(connection, function(err){
+//   if (err){
+//     response.send("Failure");
+//   }
+//   else{
+//     response.send("Success");
+//   }
+// });
+
+
+
+});
+
 //Archive - Email the data to the client in JSON format
 app.get("/archive", function(request, response){
 
