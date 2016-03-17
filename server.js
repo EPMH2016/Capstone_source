@@ -108,7 +108,16 @@ r.db('HDMI').table('DAQInformation').run(connection, function(err, cursor) {
         daqData=result;
         for (var i = 0; i < result.length; i++){
     console.log("DAQ name: " + daqData[i].Name);
+    r.db('HDMI').table('DAQInformation').filter({'Name': daqData[i].Name}).update({'Status': request.body[daqData[i].Name]}).run(connection, function(err){
+  if (err){
+    response.send("Failure");
+  }
+  
+});
 }
+  response.send("Success");
+  
+
     return result;
     });
 });
