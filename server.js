@@ -106,12 +106,14 @@ r.db('HDMI').table('DAQInformation').run(connection, function(err, cursor) {
     cursor.toArray(function(err, result) {
         if (err) throw err;
         daqData=result;
+        for (var i = 0; i < result.length; i++){
+    console.log("DAQ name: " + daqData[i].Name);
+}
+    return result;
     });
 });
 
-for (var i = 0; i < daqData.length; i++){
-  console.log("DAQ name: " + daqData[i].Name);
-}
+
 
 
 
