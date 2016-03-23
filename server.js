@@ -113,8 +113,8 @@ r.db('HDMI').table('DAQInformation').run(connection, function(err, cursor) {
     response.send("Failure");
   }
   
-});
-}
+  });
+  }
   response.send("Success");
   
 
