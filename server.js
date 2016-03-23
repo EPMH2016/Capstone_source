@@ -205,10 +205,6 @@ app.get("/DAQ1/T3", function(request, response){
     getDAQData("DAQ1","T3", response);
 });
 
-app.get("/DAQ1/T4", function(request, response){
-    getDAQData("DAQ1","T4", response);
-});
-
 app.get("/DAQ1/AmbientTemp", function(request, response){
     getDAQData("DAQ1","AmbientTemp", response);
 });
@@ -233,10 +229,6 @@ app.get("/DAQ2/T2", function(request, response){
 
 app.get("/DAQ2/T3", function(request, response){
     getDAQData("DAQ2","T3", response);
-});
-
-app.get("/DAQ2/T4", function(request, response){
-    getDAQData("DAQ2","T4", response);
 });
 
 app.get("/DAQ2/AmbientTemp", function(request, response){
