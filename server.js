@@ -194,21 +194,15 @@ app.get("/index", function (request, response){
 
 //DAQ1
 app.get("/DAQ1/T1", function(request, response){
-
   getDAQData("DAQ1","T1", response)
 });
 
 app.get("/DAQ1/T2", function(request, response){
    getDAQData("DAQ1","T2", response);
-   });
-
+});
 
 app.get("/DAQ1/T3", function(request, response){
     getDAQData("DAQ1","T3", response);
-});
-
-app.get("/DAQ1/T4", function(request, response){
-    getDAQData("DAQ1","T4", response);
 });
 
 app.get("/DAQ1/AmbientTemp", function(request, response){
@@ -219,6 +213,11 @@ app.get("/DAQ1/Light", function(request, response){
     getDAQData("DAQ1","Light", response);
 });
 
+app.get("/DAQ1/Humidity", function(request, response){
+    getDAQData("DAQ1","Humidity", response);
+});
+
+
 //DAQ2
 app.get("/DAQ2/T1", function(request, response){
   getDAQData("DAQ2","T1", response)
@@ -226,15 +225,10 @@ app.get("/DAQ2/T1", function(request, response){
 
 app.get("/DAQ2/T2", function(request, response){
    getDAQData("DAQ2","T2", response);
-   });
-
+});
 
 app.get("/DAQ2/T3", function(request, response){
     getDAQData("DAQ2","T3", response);
-});
-
-app.get("/DAQ2/T4", function(request, response){
-    getDAQData("DAQ2","T4", response);
 });
 
 app.get("/DAQ2/AmbientTemp", function(request, response){
@@ -243,6 +237,36 @@ app.get("/DAQ2/AmbientTemp", function(request, response){
 
 app.get("/DAQ2/Light", function(request, response){
     getDAQData("DAQ2","Light", response);
+});
+
+app.get("/DAQ2/Humidity", function(request, response){
+    getDAQData("DAQ2","Humidity", response);
+});
+
+
+//DAQ3
+app.get("/DAQ3/T1", function(request, response){
+  getDAQData("DAQ3","T1", response)
+});
+
+app.get("/DAQ3/T2", function(request, response){
+   getDAQData("DAQ3","T2", response);
+});
+
+app.get("/DAQ3/T3", function(request, response){
+    getDAQData("DAQ3","T3", response);
+});
+
+app.get("/DAQ3/AmbientTemp", function(request, response){
+    getDAQData("DAQ3","AmbientTemp", response);
+});
+
+app.get("/DAQ3/Light", function(request, response){
+    getDAQData("DAQ3","Light", response);
+});
+
+app.get("/DAQ3/Humidity", function(request, response){
+    getDAQData("DAQ3","Humidity", response);
 });
 
 
@@ -258,26 +282,19 @@ app.listen(port, host);
  * response (response) - The response object used to return data to the API
  */
 function getDAQData(DAQ, sensorType, response){
-    console.log("check 1");
     r.db('HDMI').table('DAQ1').orderBy({index:r.desc('Timestamp')}).filter({'Sensor Type':sensorType}).limit(50).run(connection, function(err, cursor) {
-    console.log("check 2");
     if (err) throw err;
     sensorData = "";
     console.log("Queried");
-    console.log("check 3");
     cursor.toArray(function(err, result) {
         if (err) throw err;
         console.log("The result for sensor" + sensorType + " DAQ " + DAQ +"  is " + result);
-        console.log("check 4");
         response.send(result);
-        console.log("check 5");
         sensorData=result;
         console.log("returning result")
         return result
     });
-    console.log("check 6");
 });
-    console.log("check 7");
 
 }
 

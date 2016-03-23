@@ -7,27 +7,23 @@
     var data_array_daq3 = [];
     var date_array_daq3 = [];
 
-    var data_array_daq4 = [];
-    var date_array_daq4 = [];
-
     var data_daq1 = [];
     var data_daq2 = [];
     var data_daq3 = [];
-    var data_daq4 = [];
 
 
 app.controller("DAQGraphController", function($scope, $http, $q){
     console.log("controller initialized");
     $scope.message="This is the message variable in the controller";
     $scope.data  = "This is the data!";
-    $scope.selectedType="T1";
+    $scope.selectedType="Thermocouple 1 (C)";
     $scope.selectedDAQ="DAQ1";
 
 
     $scope.selectedType = "Thermocouple 1 (C)";
 
     //  make this a different function that simply collects and allocates the data  
-    $scope.collect_data = function(sensorType, data_daq1, data_daq2, data_daq3, data_daq4, print_graph){
+    $scope.collect_data = function(sensorType, data_daq1, data_daq2, data_daq3, print_graph){
         if(data_daq1.length != 0)
         {
             data_array_daq1 = [];
@@ -46,13 +42,7 @@ app.controller("DAQGraphController", function($scope, $http, $q){
             date_array_daq3 = [];
         }
 
-        if(data_daq4.length != 0)
-        {
-            data_array_daq4 = [];
-            date_array_daq4 = [];
-        }
-
-        // console.log(data_array_daq1)
+        //console.log(data_array_daq1.length)
 
 
        for(i = 0; i < data_daq1.length; i++)
@@ -73,12 +63,6 @@ app.controller("DAQGraphController", function($scope, $http, $q){
                 date_array_daq3.push(data_daq3[i]["Timestamp"])
         }
 
-        for(i = 0; i < data_daq4.length; i++)
-        {
-                data_array_daq4.push(data_daq4[i]["Data Value"]);
-                date_array_daq4.push(data_daq4[i]["Timestamp"])
-        }
-
         if(print_graph)
         {
             $scope.print_graph();
@@ -96,8 +80,6 @@ app.controller("DAQGraphController", function($scope, $http, $q){
         
         var graph_array_daq3 = [];
 
-        var graph_array_daq4 = [];
-
         for(i = 0; i < date_array_daq1.length; i++)
         {
             graph_array_daq1.push([Date.parse(date_array_daq1[i]), data_array_daq1[i]]);
@@ -105,9 +87,9 @@ app.controller("DAQGraphController", function($scope, $http, $q){
             graph_array_daq2.push([Date.parse(date_array_daq2[i]), data_array_daq2[i]]);
 
             graph_array_daq3.push([Date.parse(date_array_daq3[i]), data_array_daq3[i]]);
-
-            graph_array_daq4.push([Date.parse(date_array_daq4[i]), data_array_daq4[i]]);
         }
+
+        graph_array_daq1 = $scope.trim_array(graph_array_daq1);
 
         
 
@@ -122,9 +104,6 @@ app.controller("DAQGraphController", function($scope, $http, $q){
             enabled: false
         },
 
-        // global: {
-        //     useUTC: false
-        // },
 
         chart: {
             renderTo: 'container',
@@ -152,18 +131,13 @@ app.controller("DAQGraphController", function($scope, $http, $q){
         {
             name: 'DAQ2',
             data: graph_array_daq2,
-            visible: false
+            visible: false,
+            showInLegend: true
         },
         {
             name: 'DAQ3',
             data: graph_array_daq3,
             visible: false
-        },
-        {
-            name: 'DAQ4',
-            data: graph_array_daq4,
-            visible: false
-
         }
         ]
     });
@@ -171,20 +145,24 @@ app.controller("DAQGraphController", function($scope, $http, $q){
     }
 
     $scope.changeGraphType = function(typeSelected){
-        $scope.selectedType = typeSelected;
-        console.log("you selected " + $scope.selectedType)     
+        console.log("you selected " + typeSelected)     
 
-       switch ($scope.selectedType){
+       switch (typeSelected){
         case "T1":
 
             $.get("http://10.17.191.41:8435/DAQ1/T1", function( data ){
                 data_daq1 = data;
-                $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, data_daq4, false);
+                $scope.collect_data(typeSelected, data_daq1, data_daq2, data_daq3, false);
             });
 
             $.get("http://10.17.191.41:8435/DAQ2/T1", function( data ){
                 data_daq2 = data;
-                $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, data_daq4, true);
+                $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, true);
+            });
+
+            $.get("http://10.17.191.41:8435/DAQ3/T1", function( data ){
+                data_daq3 = data;
+                $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, true);
             });
 
 
@@ -192,12 +170,17 @@ app.controller("DAQGraphController", function($scope, $http, $q){
         case "T2":
             $.get("http://10.17.191.41:8435/DAQ1/T2", function( data ){
                 data_daq1 = data;
-                $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, data_daq4, false);
+                $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, false);
             });
 
             $.get("http://10.17.191.41:8435/DAQ2/T2", function( data ){
                 data_daq2 = data;
-                $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, data_daq4, true);
+                $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, true);
+            });
+
+            $.get("http://10.17.191.41:8435/DAQ3/T2", function( data ){
+                data_daq3 = data;
+                $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, true);
             });
 
 
@@ -206,26 +189,17 @@ app.controller("DAQGraphController", function($scope, $http, $q){
         
             $.get("http://10.17.191.41:8435/DAQ1/T3", function( data ){
                 data_daq1 = data;
-                $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, data_daq4, false);
+                $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, false);
             });
 
             $.get("http://10.17.191.41:8435/DAQ2/T3", function( data ){
                 data_daq2 = data;
-                $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, data_daq4, true);
+                $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, true);
             });
 
-
-        break;
-        case "T4":
-        
-            $.get("http://10.17.191.41:8435/DAQ1/T4", function( data ){
-                data_daq1 = data;
-                $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, data_daq4, false);
-            });
-
-            $.get("http://10.17.191.41:8435/DAQ2/T4", function( data ){
-                data_daq2 = data;
-                $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, data_daq4, true);
+            $.get("http://10.17.191.41:8435/DAQ3/T3", function( data ){
+                data_daq3 = data;
+                $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, true);
             });
 
 
@@ -234,26 +208,52 @@ app.controller("DAQGraphController", function($scope, $http, $q){
 
             $.get("http://10.17.191.41:8435/DAQ1/Light", function( data ){
                 data_daq1 = data;
-                $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, data_daq4, false);
+                $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, false);
             });
 
             $.get("http://10.17.191.41:8435/DAQ2/Light", function( data ){
                 data_daq2 = data;
-                $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, data_daq4, true);
+                $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, true);
             });
 
+            $.get("http://10.17.191.41:8435/DAQ3/Light", function( data ){
+                data_daq2 = data;
+                $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, true);
+            });
 
         break;
         case "Ambient":
                       
             $.get("http://10.17.191.41:8435/DAQ1/AmbientTemp", function( data ){
                 data_daq1 = data;
-                $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, data_daq4, false);
+                $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, false);
             });
 
             $.get("http://10.17.191.41:8435/DAQ2/AmbientTemp", function( data ){
                 data_daq2 = data;
-                $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, data_daq4, true);
+                $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, true);
+            });
+
+            $.get("http://10.17.191.41:8435/DAQ3/AmbientTemp", function( data ){
+                data_daq2 = data;
+                $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, true);
+            });
+
+        case "Humidity":
+
+            $.get("http://10.17.191.41:8435/DAQ1/Humidity", function( data ){
+                data_daq1 = data;
+                $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, false);
+            });
+
+            $.get("http://10.17.191.41:8435/DAQ2/Humidity", function( data ){
+                data_daq2 = data;
+                $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, true);
+            });
+
+            $.get("http://10.17.191.41:8435/DAQ3/Humidity", function( data ){
+                data_daq2 = data;
+                $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, true);
             });
 
         break;
@@ -264,6 +264,41 @@ app.controller("DAQGraphController", function($scope, $http, $q){
         break;
        }
         
+    }
+
+    $scope.trim_array = function(array)
+    {
+        /* check the difference between the first two values in the array (probably the last two values in the array)
+           and save that in average, then check the next difference and update average, if at anytime the next difference
+           is greater than 4 times the average, truncate everything including and after that data point, looking at the times */ 
+        var average = 0; // array[array.length - 1][0] - array[array.length - 2][0];
+        var count = 0;
+        var difference = 0;
+
+        for(i = array.length - 1; i > 0; i--)
+        {
+            difference = array[i][0] - array[i-1][0];
+            console.log("i: " + i + " difference: " + difference + " average: " + average);
+            if( count != 0 && (difference > (4*average) || difference < (average/4)) )
+            {
+                console.log("had to trim the array");
+                /* the difference is too large or is too small, we only want the array above index i-1 */
+                /* get array we want */
+                /* return the array */
+                return array.slice(i);
+            }
+            else
+            {
+                /* calculate new average */
+                average = ((average * count) + difference) / (count + 1);
+                count++;
+            }
+             
+        }
+
+        /* if we get to the end with no trims needed, return the original array */
+        return array;
+
     }
     
 
@@ -358,12 +393,19 @@ app.controller("CDController", function($scope, $timeout, $mdSidenav, $log, $mdD
 
 app.controller("SystemConfigController", function($scope, $timeout, $mdSidenav, $log, $mdDialog, $http){
 
-    $scope.selectedDAQ; /* holds the name of the selected daq */
+    $scope.selectedDAQ = 'DAQ1'; /* holds the name of the selected daq */
     $scope.daq_id;      /* used for the update location post request */
     $scope.daq_array;   /* stores all daq information from DAQInfoAll request */
+    $scope.daq_1_enabled;
+    $scope.daq_2_enabled;
+    $scope.daq_3_enabled;
+
 
     $.get("http://10.17.191.41:8435/DAQInfoAll", function( data ){
         $scope.daq_array = data;
+        $scope.daq_1_enabled = data[0].Status;
+        $scope.daq_2_enabled = data[1].Status;
+        $scope.daq_3_enabled = data[2].Status;
     });
 
     $scope.submitClicked = function(){
@@ -374,52 +416,108 @@ app.controller("SystemConfigController", function($scope, $timeout, $mdSidenav, 
 
             $.post("http://10.17.191.41:8435/updateLocation", {Location: document.getElementById("inputLocation").value, id: $scope.daq_id}, function(data){
                 console.log("Update location post request return is " + data);
+                        var success = $mdDialog.alert()
+                        .title("Archive Success!")
+                        .content("Data file has been sent to your email.")
+                        .ok('Great!');
+                            $mdDialog
+                          .show( success )
+                          .finally(function() {
+                            alert = undefined;
+                          });
             });
 
         }, "json");
     }
 
+    $scope.enableDAQClicked = function(){
+        /* don't need this */
+    }
+
+    $scope.enableSubmitClicked = function(){
+        $.post("http://10.17.191.41:8435/updateDAQStatus", {"DAQ1": $scope.daq_1_enabled, 
+                                                            "DAQ2": $scope.daq_2_enabled, 
+                                                            "DAQ3": $scope.daq_3_enabled}, function(data){
+            console.log("Update Daq Status post request return is " + data);
+            var success = $mdDialog.alert()
+            .title("Success!")
+            .content("DAQ statuses have been updated.")
+            .ok('Great!');
+            if(data == 'Success')
+            {
+                $mdDialog
+              .show( success )
+              .finally(function() {
+                alert = undefined;
+              });
+            }
+        });
+    }
+
     $scope.convertClicked = function(){
-
-        $.get("http://10.17.191.41:8435/DAQInfoAll", function( data ){
-            console.log("no http data: " + data);
-        });
-
-        $.get("http://10.17.191.41:8435/DAQ2/T1", function( data ){
-            console.log("DAQ2 data: " + data[0]["Data Value"]);
-        });
-
-        $.get("http://10.17.191.41:8435/DAQ1/T1", function( data ){
-            console.log("DAQ1 data: " + data[0]["Data Value"]);
-        });
-
-
+       
     }
 
 
+    /****************************/
+    /* EnableModalInformation */
+    /****************************/
+
     // Get the modal
-    var modal = document.getElementById('myModal');
+    var EnableModal = document.getElementById('EnableModal');
 
     // Get the button that opens the modal
-    var btn = document.getElementById("MoveDAQBtn");
+    var EnableDAQBtn = document.getElementById("EnableDAQBtn");
 
     // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close")[0];
+    var EnableSpan = document.getElementById("EnableSpan");
 
     // When the user clicks on the button, open the modal 
-    btn.onclick = function() {
-        modal.style.display = "block";
+    EnableDAQBtn.onclick = function() {
+        EnableModal.style.display = "block";
     }
 
     // When the user clicks on <span> (x), close the modal
-    span.onclick = function() {
-        modal.style.display = "none";
+    EnableSpan.onclick = function() {
+        EnableModal.style.display = "none";
     }
 
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
+        if (event.target == EnableModal) {
+            EnableModal.style.display = "none";
+        }
+    }
+
+
+
+    /****************************/
+    /* LocationModalInformation */
+    /****************************/
+
+    // Get the modal
+    var LocationModal = document.getElementById('LocationModal');
+
+    // Get the button that opens the modal
+    var MoveDAQBtn = document.getElementById("MoveDAQBtn");
+
+    // Get the <span> element that closes the modal
+    var LocationSpan = document.getElementById("LocationSpan");
+
+    // When the user clicks on the button, open the modal 
+    MoveDAQBtn.onclick = function() {
+        LocationModal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    LocationSpan.onclick = function() {
+        LocationModal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == LocationModal) {
+            LocationModal.style.display = "none";
         }
     }
 });

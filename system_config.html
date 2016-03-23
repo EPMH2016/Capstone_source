@@ -59,18 +59,37 @@
 			  
 			<h2 class="md-display-3">Configure System </h2>
 			<div ng-controller="SystemConfigController"layout="column" layout-align="begin" class="colorNested" flex>
- 			<md-button class="pinkbutton" flex="10" > Add DAQ </md-button>
-			 <md-button class="pinkbutton" flex="10"> Delete DAQ</md-button>
-			 <md-button id="MoveDAQBtn" ng-click="moveDAQClicked()" class="pinkbutton" flex="10"> Move DAQ </md-button>
+ 			<md-button id="EnableDAQBtn" class="pinkbutton" ng-click="enableDAQClicked()" flex="10" > Disable/Enable DAQ </md-button>
+			 <md-button id="MoveDAQBtn" ng-click="moveDAQClicked()" class="pinkbutton" flex="10"> Update DAQ Location </md-button>
   			<md-button class="pinkbutton" ng-click="convertClicked()" flex="10"> Convert Unit </md-button>
 			</div>
 			
 
-			<div ng-controller="SystemConfigController" id="myModal" class="modal">
+       <div ng-controller="SystemConfigController" id="EnableModal" class="modal">
+
+        <!--  Modal content -->
+       <div class="modal-content">
+         <span id="EnableSpan" class="close">x</span>
+         <h3 align="center">List of DAQs</h3>
+            <div>
+              <md-switch aria-label="DAQ1" ng-model="daq_1_enabled" ng-true-value="'ON'" ng-false-value="'OFF'"> {{daq_array[0].Name}} </md-switch>
+              <md-switch aria-label="DAQ2" ng-model="daq_2_enabled" ng-true-value="'ON'" ng-false-value="'OFF'"> {{daq_array[1].Name}} </md-switch>
+              <md-switch aria-label="DAQ3" ng-model="daq_3_enabled" ng-true-value="'ON'" ng-false-value="'OFF'"> {{daq_array[2].Name}} </md-switch>
+            </div>
+
+          <md-button class="pinkbutton" flex="10" ng-click="enableSubmitClicked()" id="enableSubmitBtn"> Submit </md-button>
+
+        </div>
+
+      </div> 
+
+
+
+			<div ng-controller="SystemConfigController" id="LocationModal" class="modal">
 
   			<!-- Modal content -->
  			 <div class="modal-content">
-   			 <span class="close">x</span>
+   			 <span id="LocationSpan" class="close">x</span>
    			 <h3>List of DAQs</h3>
 
    			 		<md-radio-group layout="row" ng-model="selectedDAQ" layout-align="center-none" flex="80">
