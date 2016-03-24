@@ -282,7 +282,7 @@ app.listen(port, host);
  * response (response) - The response object used to return data to the API
  */
 function getDAQData(DAQ, sensorType, response){
-    r.db('HDMI').table('DAQ1').orderBy({index:r.desc('Timestamp')}).filter({'Sensor Type':sensorType}).limit(50).run(connection, function(err, cursor) {
+    r.db('HDMI').table(DAQ).orderBy({index:r.desc('Timestamp')}).filter({'Sensor Type':sensorType}).limit(50).run(connection, function(err, cursor) {
     if (err) throw err;
     sensorData = "";
     console.log("Queried");

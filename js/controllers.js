@@ -90,6 +90,8 @@ app.controller("DAQGraphController", function($scope, $http, $q){
         }
 
         graph_array_daq1 = $scope.trim_array(graph_array_daq1);
+        graph_array_daq2 = $scope.trim_array(graph_array_daq2);
+        graph_array_daq3 = $scope.trim_array(graph_array_daq3);
 
         
 
@@ -152,11 +154,13 @@ app.controller("DAQGraphController", function($scope, $http, $q){
 
             $.get("http://10.17.191.41:8435/DAQ1/T1", function( data ){
                 data_daq1 = data;
+                console.log(data[0]);
                 $scope.collect_data(typeSelected, data_daq1, data_daq2, data_daq3, false);
             });
 
             $.get("http://10.17.191.41:8435/DAQ2/T1", function( data ){
                 data_daq2 = data;
+                console.log(data[0]);
                 $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, true);
             });
 
@@ -278,13 +282,12 @@ app.controller("DAQGraphController", function($scope, $http, $q){
         for(i = array.length - 1; i > 0; i--)
         {
             difference = array[i][0] - array[i-1][0];
-            console.log("i: " + i + " difference: " + difference + " average: " + average);
             if( count != 0 && (difference > (4*average) || difference < (average/4)) )
             {
-                console.log("had to trim the array");
-                /* the difference is too large or is too small, we only want the array above index i-1 */
+                /* the difference is too large or too small, we only want the array above index i-1 */
                 /* get array we want */
                 /* return the array */
+                console.log("trimmed array at index: " + i);
                 return array.slice(i);
             }
             else
