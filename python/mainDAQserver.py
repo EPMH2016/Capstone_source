@@ -41,23 +41,41 @@ for daq in DAQlist:
 #@description: Collects data from DAQ1.
 def DAQ1():
     r.connect('localhost', port=28015, db='HDMI').repl()
-    if checkConnection("http://10.17.160.120") == EXIT_SUCCESS:
+    if checkConnection("http://10.17.0.92") == EXIT_SUCCESS:
         while True:
             #Get time interval
             time.sleep(float(timeIntervals['DAQ1']))
 
             #Collect the dataz
-            sensorCollect("http://10.17.160.120", "DAQ1", "T1", "DAQ1f", "D1T1", "C")
-            sensorCollect("http://10.17.160.120", "DAQ1", "T2", "DAQ1f", "D1T2", "C")
-            sensorCollect("http://10.17.160.120", "DAQ1", "T3", "DAQ1f", "D1T3", "C")
-            sensorCollect("http://10.17.160.120", "DAQ1", "AmbientTemp", "DAQ1f", "D1AT", "C")
-            sensorCollect("http://10.17.160.120", "DAQ1", "Light", "DAQ1f", "D1L", "lux")
+            sensorCollect("http://10.17.0.92", "DAQ1", "T1", "DAQ1f", "D1T1", "C")
+            sensorCollect("http://10.17.0.92", "DAQ1", "T2", "DAQ1f", "D1T2", "C")
+            sensorCollect("http://10.17.0.92", "DAQ1", "T3", "DAQ1f", "D1T3", "C")
+            sensorCollect("http://10.17.0.92", "DAQ1", "AmbientTemp", "DAQ1f", "D1AT", "C")
+            sensorCollect("http://10.17.0.92", "DAQ1", "Light", "DAQ1f", "D1L", "lux")
     print "Failure to connect to DAQ 1. Ending Thread."
     return EXIT_FAILURE
 
 #@name: DAQ1=2
 #@description: Collects data from DAQ2.
 def DAQ2():
+    r.connect('localhost', port=28015, db='HDMI').repl()
+    if checkConnection("http://10.17.0.165") == EXIT_SUCCESS:
+        while True:
+            #Get time interval
+            time.sleep(float(timeIntervals['DAQ2']))
+
+            #Collect the dataz
+            sensorCollect("http://10.17.0.165", "DAQ2", "T1", "DAQ2f", "D2T1", "C")
+            sensorCollect("http://10.17.0.165", "DAQ2", "T2", "DAQ2f", "D2T2", "C")
+            sensorCollect("http://10.17.0.165", "DAQ2", "T3", "DAQ2f", "D2T3", "C")
+            sensorCollect("http://10.17.0.165", "DAQ2", "AmbientTemp", "DAQ2f", "D2AT", "C")
+            sensorCollect("http://10.17.0.165", "DAQ2", "Light", "DAQ2f", "D2L", "lux")
+    print "Failure to connect to DAQ 2. Ending Thread."
+    return EXIT_FAILURE
+
+#@name: DAQ3
+#@description: Collects data from DAQ3.
+def DAQ3():
     r.connect('localhost', port=28015, db='HDMI').repl()
     if checkConnection("http://10.17.176.147") == EXIT_SUCCESS:
         while True:
@@ -72,13 +90,6 @@ def DAQ2():
             sensorCollect("http://10.17.131.190", "DAQ2", "Light", "DAQ2f", "D2L", "lux")
     print "Failure to connect to DAQ 2. Ending Thread."
     return EXIT_FAILURE
-
-#@name: DAQ3
-#@description: Collects data from DAQ3.
-def DAQ3():
- 	while True:
- 		time.sleep(float(timeIntervals['DAQ3']))
- 		#print "Collecting data for DAQ3"
 
 #@name: sensorCollect
 #@description: Function that collects data from the given DAQ.
