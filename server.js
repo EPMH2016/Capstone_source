@@ -76,7 +76,7 @@ var timeInterval = request.body.timeInterval;
 var Name = request.body.Name;
 
 console.log("Updating time interval for " + id + ": " + timeInterval);
-r.db('HDMI').table('DAQInformation').filter({'DAQID': Name}).update({'Time Interval': timeInterval}).run(connection, function(err){
+r.db('HDMI').table('DAQInformation').filter({'Name': Name}).update({'Time Interval': timeInterval}).run(connection, function(err){
   if (err){
     response.send("Failure");
   }

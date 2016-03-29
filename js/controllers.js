@@ -370,23 +370,39 @@ app.controller("navController", function($scope, $timeout, $mdSidenav, $log){
 
 
 app.controller("CDController", function($scope, $timeout, $mdSidenav, $log, $mdDialog){
-    $scope.daq_ID = "initial ID";
+    $scope.daq_ID = "DAQ ID";
     $scope.daq_location = "DAQ Location"; 
-    
-    $scope.daq_ID = "hello";
 
 
     $scope.getDAQInfo = function(name){
-        console.log("Retrieving data for " + name);
-        console.log("DAQ id is now " + $scope.daq_ID);
         $.post("http://10.17.191.41:8435/DAQinfo", {Name: name}, function( data ){
-            console.log("data is " + data[0].DAQID);
             $scope.daq_ID = data[0].DAQID;
             $scope.daq_location = data[0].Location;
-            console.log("daq_ID: " + $scope.daq_ID);
+        }, "json");
+    }
+
+
+    $scope.newTimeInterval = "";
+    $scope.currentDAQ = "";
+    $scope.updateTimeInterval = function(){
+        console.log("update time interval");
+        console.log("currentDAQ: " + $scope.currentDAQ);
+        console.log("newTimeInterval: " + $scope.newTimeInterval);
+
+        /* get the id for the selected sensor */
+        var daqId = -34;
+
+        $.post("http://10.17.191.41:8435/DAQinfo", {Name: $scope.currentDAQ}, function( data ){
+            daqId = data[0].DAQID;
+
+            /* send post request to server to update time interval */
+            $.post("http://10.17.191.41:8435/updateTimeInterval", {timeInterval: $scope.newTimeInterval, id: daqId}, function(data){
+                console.log("return is: " + data);
+                console.log("daqId is: " + daqId);
+            });
+
         }, "json");
 
-        console.log("Exited funct");
     }
 
     
