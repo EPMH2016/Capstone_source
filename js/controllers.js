@@ -382,20 +382,47 @@ app.controller("CDController", function($scope, $timeout, $mdSidenav, $log, $mdD
     }
 
 
-    $scope.newTimeInterval = "";
+    $scope.newTimeInterval = "5";
     $scope.currentDAQ = "DAQ1";
     $scope.updateTimeInterval = function(){
-        console.log("update time interval");
-        console.log("currentDAQ: " + $scope.currentDAQ);
-        console.log("newTimeInterval: " + $scope.newTimeInterval);
 
-        /* get the id for the selected sensor */
-        var daqId = -34;
+        /* send post request to server to update time interval */
+        var numTime = Number($scope.newTimeInterval);
 
-        $.post("http://10.17.191.41:8435/updateTimeInterval", {timeInterval: $scope.newTimeInterval, Name: $scope.currentDAQ}, function(data){
-            console.log("return is: " + data);
-            console.log("daqId is: " + daqId);
-        });
+        if(isNaN(numTime))
+        {
+            console.log("Value in text field is not a number.");
+        }
+        else
+        {
+            $.post("http://10.17.191.41:8435/updateTimeInterval", {timeInterval: $scope.newTimeInterval, Name: $scope.currentDAQ}, function(data){
+               console.log("Update Time Interval return is: " + data);
+               if(data == "Success")
+               {
+                   var success = $mdDialog.alert()
+                            .title("Update Success!")
+                            .content("The DAQ's Time Interval has been updated in the database.")
+                            .ok('Great!');
+                    $mdDialog.show( success )
+                             .finally(function() 
+                             {
+                                alert = undefined;
+                             });
+                }
+                else
+                {
+                    var failure = $mdDialog.alert()
+                            .title("Server Error!")
+                            .content("The DAQ's Time Interval was not updated.")
+                            .ok('OK');
+                    $mdDialog.show( failure )
+                             .finally(function() 
+                             {
+                                alert = undefined;
+                             });
+                }
+            });
+        }       
 
     }
 
@@ -430,8 +457,8 @@ app.controller("SystemConfigController", function($scope, $timeout, $mdSidenav, 
             $.post("http://10.17.191.41:8435/updateLocation", {Location: document.getElementById("inputLocation").value, id: $scope.daq_id}, function(data){
                 console.log("Update location post request return is " + data);
                         var success = $mdDialog.alert()
-                        .title("Archive Success!")
-                        .content("Data file has been sent to your email.")
+                        .title("Update Success!")
+                        .content("The DAQ's location has been updated in the database.")
                         .ok('Great!');
                             $mdDialog
                           .show( success )
