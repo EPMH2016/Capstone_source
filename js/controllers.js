@@ -383,7 +383,7 @@ app.controller("CDController", function($scope, $timeout, $mdSidenav, $log, $mdD
 
 
     $scope.newTimeInterval = "";
-    $scope.currentDAQ = "";
+    $scope.currentDAQ = "DAQ1";
     $scope.updateTimeInterval = function(){
         console.log("update time interval");
         console.log("currentDAQ: " + $scope.currentDAQ);
@@ -392,16 +392,10 @@ app.controller("CDController", function($scope, $timeout, $mdSidenav, $log, $mdD
         /* get the id for the selected sensor */
         var daqId = -34;
 
-        $.post("http://10.17.191.41:8435/DAQinfo", {Name: $scope.currentDAQ}, function( data ){
-            daqId = data[0].DAQID;
-
-            /* send post request to server to update time interval */
-            $.post("http://10.17.191.41:8435/updateTimeInterval", {timeInterval: $scope.newTimeInterval, id: daqId}, function(data){
-                console.log("return is: " + data);
-                console.log("daqId is: " + daqId);
-            });
-
-        }, "json");
+        $.post("http://10.17.191.41:8435/updateTimeInterval", {timeInterval: $scope.newTimeInterval, Name: $scope.currentDAQ}, function(data){
+            console.log("return is: " + data);
+            console.log("daqId is: " + daqId);
+        });
 
     }
 
