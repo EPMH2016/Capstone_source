@@ -71,13 +71,12 @@ r.db('HDMI').table('DAQInformation').run(connection, function(err, cursor) {
 });
 
 app.post("/updateTimeInterval", function(request, response){
-
-//Body: {'timeInterval': '3', id:'DAQ1'}
+//Body: {'timeInterval': '3', 'Name':'DAQ1'}
 var timeInterval = request.body.timeInterval;
-var id = request.body.id;
+var Name = request.body.Name;
 
 console.log("Updating time interval for " + id ": " + timeInterval);
-r.db('HDMI').table('DAQInformation').filter({'DAQID': id}).update({'Time Interval': timeInterval}).run(connection, function(err){
+r.db('HDMI').table('DAQInformation').filter({'DAQID': Name}).update({'Time Interval': timeInterval}).run(connection, function(err){
   if (err){
     response.send("Failure");
   }
@@ -85,7 +84,6 @@ r.db('HDMI').table('DAQInformation').filter({'DAQID': id}).update({'Time Interva
     response.send("Success");
   }
 });
-
 });
 
 app.post("/updateLocation", function(request, response){

@@ -595,6 +595,15 @@ app.controller("DMController", function($scope, $timeout, $mdSidenav, $log, $mdD
 
 });
 
+app.controller("HomeController", function($scope, $timeout, $mdSidenav, $log, $mdDialog){
+    $scope.T1 = 0;
+    var i = 0;
+
+    while(i<10000){
+        $scope.T1 = i;
+    }
+
+});
 
 
 
