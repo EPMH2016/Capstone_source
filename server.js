@@ -77,7 +77,7 @@ app.get("/getUnits", function(request, response){
     cursor.toArray(function(err, result) {
         if (err) throw err;
 
-        response.send("Success");
+        response.send(result);
         console.log(result);
         return result;
     });

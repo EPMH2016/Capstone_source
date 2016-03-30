@@ -513,6 +513,10 @@ app.controller("SystemConfigController", function($scope, $timeout, $mdSidenav, 
             convertSubmit.style.display = "none";
             hidden = true;
        }
+
+       $.get("http://10.17.191.41:8435/getUnits", function( data ){
+            console.log(data.Units);
+       });
     }
 
     $scope.unitSubmitClicked = function(){
