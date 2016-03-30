@@ -11,8 +11,6 @@
     var data_daq2 = [];
     var data_daq3 = [];
 
-    var units = 'C';
-
 app.controller("DAQGraphController", function($scope, $http, $q){
     console.log("controller initialized");
     $scope.message="This is the message variable in the controller";
@@ -441,7 +439,12 @@ app.controller("SystemConfigController", function($scope, $timeout, $mdSidenav, 
     $scope.daq_2_enabled;
     $scope.daq_3_enabled;
 
-    $scope.selectedUnit = units; /* connected to the convert units radio buttons */
+    $scope.selectedUnit; /* connected to the convert units radio buttons */
+
+    $.get("http://10.17.191.41:8435/getUnits", function( data ){
+            $scope.selectedUnit = data[0].Units;
+    });
+
     var hidden = true; /* indicates if the convert units elements are hidden */
 
 
@@ -513,17 +516,13 @@ app.controller("SystemConfigController", function($scope, $timeout, $mdSidenav, 
             convertSubmit.style.display = "none";
             hidden = true;
        }
-
-       $.get("http://10.17.191.41:8435/getUnits", function( data ){
-            console.log(data.Units);
-       });
     }
 
     $scope.unitSubmitClicked = function(){
         $.post("http://10.17.191.41:8435/convertUnits", {"Units": $scope.selectedUnit}, function(data){
             var success = $mdDialog.alert()
                                    .title("Success!")
-                                   .content("Units have been converted to " + units + ".")
+                                   .content("Units have been converted to " + $scope.selectedUnit + ".")
                                    .ok('Great!');
             if(data == "Success")
             {
