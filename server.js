@@ -74,7 +74,13 @@ app.get("/getUnits", function(request, response){
 
   r.db('HDMI').table('Units').run(connection, function(err, cursor){
     if (err) throw err;
-    console.log(cursor);
+    cursor.toArray(function(err, result) {
+        if (err) throw err;
+
+        response.send("Success");
+        console.log(result);
+        return result;
+    });
   });
 });
 
