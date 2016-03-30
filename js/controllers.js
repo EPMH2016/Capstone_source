@@ -11,6 +11,7 @@
     var data_daq2 = [];
     var data_daq3 = [];
 
+    var units = 'C';
 
 app.controller("DAQGraphController", function($scope, $http, $q){
     console.log("controller initialized");
@@ -440,6 +441,8 @@ app.controller("SystemConfigController", function($scope, $timeout, $mdSidenav, 
     $scope.daq_2_enabled;
     $scope.daq_3_enabled;
 
+    $scope.selectedUnit = units; /* connected to the convert units radio buttons */
+
 
     $.get("http://10.17.191.41:8435/DAQInfoAll", function( data ){
         $scope.daq_array = data;
@@ -495,7 +498,29 @@ app.controller("SystemConfigController", function($scope, $timeout, $mdSidenav, 
     }
 
     $scope.convertClicked = function(){
-       
+        console.log($scope.selectedUnit);
+       var convertSubmit = document.getElementById('ConvertSubmit');
+       var convertRadioGroup = document.getElementById('ConvertRadioGroup');
+       convertRadioGroup.style.display = "";
+       convertSubmit.style.display = "block";
+    }
+
+    $scope.unitSubmitClicked = function(){
+        console.log("unitSubmitClicked");
+        units = $scope.selectedUnit;
+        var success = $mdDialog.alert()
+                               .title("Success!")
+                               .content("Units have been converted to " + units + ".")
+                               .ok('Great!');
+        $mdDialog.show( success )
+                 .finally(function() {
+                    alert = undefined;
+                    var convertSubmit = document.getElementById('ConvertSubmit');
+                    var convertRadioGroup = document.getElementById('ConvertRadioGroup');
+                    convertRadioGroup.style.display = "none";
+                    convertSubmit.style.display = "none";
+                 });
+
     }
 
 

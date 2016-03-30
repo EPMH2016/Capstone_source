@@ -1,4 +1,4 @@
- <!DOCTYPE HTML>
+<!DOCTYPE HTML>
 <html ng-app = "WebApp">
 		
 		<head>
@@ -63,7 +63,14 @@
  			<md-button id="EnableDAQBtn" class="pinkbutton" ng-click="enableDAQClicked()" flex="10" > Disable/Enable DAQ </md-button>
 			 <md-button id="MoveDAQBtn" ng-click="moveDAQClicked()" class="pinkbutton" flex="10"> Update DAQ Location </md-button>
   			<md-button class="pinkbutton" ng-click="convertClicked()" flex="10"> Convert Unit </md-button>
-			</div>
+			
+
+        <md-radio-group style="display: none"  id="ConvertRadioGroup" layout="row" ng-model="selectedUnit" layout-align="center center" flex="80">
+              <md-radio-button value='C'> C </md-radio-button>
+              <md-radio-button value='F'> F </md-radio-button>
+        </md-radio-group>
+        <md-button class="pinkbutton" style="display: none" id="ConvertSubmit" ng-click="unitSubmitClicked()"> Submit </md-button>
+    </div>
 			
 
        <div ng-controller="SystemConfigController" id="EnableModal" class="modal">
