@@ -70,6 +70,23 @@ r.db('HDMI').table('DAQInformation').run(connection, function(err, cursor) {
 
 });
 
+app.post("/convertUnits", function(request, response){
+  //Body: {'Units': units}
+
+  var units = request.body.Units;
+
+  console.log("Converting Units to " + units + ".");
+
+  r.db('HDMI').table('Units').update({'Units': units}).run(connection, function(err){
+    if(err){
+      response.send("Failure");
+    }
+    else{
+      response.send("Success");
+    }
+  });
+});
+
 app.post("/updateTimeInterval", function(request, response){
 //Body: {'timeInterval': '3', 'Name':'DAQ1'}
 var timeInterval = request.body.timeInterval;

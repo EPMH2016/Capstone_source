@@ -507,19 +507,24 @@ app.controller("SystemConfigController", function($scope, $timeout, $mdSidenav, 
 
     $scope.unitSubmitClicked = function(){
         console.log("unitSubmitClicked");
-        units = $scope.selectedUnit;
-        var success = $mdDialog.alert()
-                               .title("Success!")
-                               .content("Units have been converted to " + units + ".")
-                               .ok('Great!');
-        $mdDialog.show( success )
-                 .finally(function() {
-                    alert = undefined;
-                    var convertSubmit = document.getElementById('ConvertSubmit');
-                    var convertRadioGroup = document.getElementById('ConvertRadioGroup');
-                    convertRadioGroup.style.display = "none";
-                    convertSubmit.style.display = "none";
-                 });
+        $.post("http://10.17.191.41:8435/convertUnits", {"Units": $scope.selectedUnit}, function(data){
+            console.log("data is: " + data);
+            var success = $mdDialog.alert()
+                                   .title("Success!")
+                                   .content("Units have been converted to " + units + ".")
+                                   .ok('Great!');
+            if(data = "Success")
+            {
+                $mdDialog.show( success )
+                         .finally(function() {
+                            alert = undefined;
+                            var convertSubmit = document.getElementById('ConvertSubmit');
+                            var convertRadioGroup = document.getElementById('ConvertRadioGroup');
+                            convertRadioGroup.style.display = "none";
+                            convertSubmit.style.display = "none";
+                         });
+            }
+        });
 
     }
 
