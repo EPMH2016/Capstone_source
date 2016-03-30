@@ -657,10 +657,25 @@ app.controller("DMController", function($scope, $timeout, $mdSidenav, $log, $mdD
 
 });
 
-app.controller("HomeController", function($scope, $timeout, $mdSidenav, $log, $mdDialog){
+app.controller("HomeController", function($scope, $interval, $timeout, $mdSidenav, $log, $mdDialog){
     $scope.T1 = 0;
-    var i = 0;
+    $scope.push = function(){
+        $scope.T1 += 1;
+    }
 
+
+   
+//     setTimeout(function(){
+//     $scope.T1 +=1;
+//     alert("changed!");
+// }, 200);
+    //works
+    $interval(updateData, 90);
+    
+    function updateData(){
+        $scope.T1+=1;
+        console.log("Data changed!");
+    }
 
 });
 
