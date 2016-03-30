@@ -67,33 +67,32 @@
 			<div><md-button class="pinkbutton" ng-click="getDAQInfo('DAQ3')" flex="10"> DAQ 3 </md-button></div>
   		</div>
 
-<!--             <div><h4>ID: 12345</h4></div>
-            <div><h4>Location: Basement</h4></div>
-            <h3> {{ hello }} </h3> -->
             <div layout="column" layout-align="center center">
             	<h4>ID: {{ daq_ID }} </h4>
             	<h4>Location: {{ daq_location }}</h4>
             </div>
           </div>
 
+          <div ng-controller="CDController">
             <div>
-				 	 <md-radio-group layout="row" ng-model="selectedType"layout-align="end" flex="50">
-      					<div><md-radio-button value="Ambient Temp (F)" aria-label="Label 1">Ambient Temp</md-radio-button></div>
-						<div>  <md-radio-button value="Thermocouple 1 (F)" aria-label="Label 3">T 1 (F)</md-radio-button></div>
-						<div>  <md-radio-button value="Thermocouple 2 (F)" aria-label="Label 3">T 2 (F)</md-radio-button></div>
-						<div>  <md-radio-button value="Thermocouple 3 (F)" aria-label="Label 3">T 3 (F)</md-radio-button></div>
-      					<div><md-radio-button ng-click="changeGraphType('Light')" value="Light" aria-label="Label 3">Light</md-radio-button></div>
-					 </md-radio-group>
+              <md-radio-group layout="row" ng-model="currentDAQ"layout-align="end" flex="50">
+                 <div>  <md-radio-button value="DAQ1" aria-label="Label 1">DAQ1</md-radio-button></div>
+                 <div>  <md-radio-button value="DAQ2" aria-label="Label 3">DAQ2</md-radio-button></div>
+                 <div>  <md-radio-button value="DAQ3" aria-label="Label 3">DAQ3</md-radio-button></div>
+              </md-radio-group>
             </div>
+            
             <div>
-            <form layout = "column" layout-align="start" action="demo_form.asp">
-                Lower Threshold: <input type="text" name="fname"><br>
-                Upper Threshold: <input type="text" name="lname"><br>
-                <div layout="row" layout-align="center center"><md-button class="pinkbutton" flex="10"> SUBMIT </md-button></div>
-                <!--<input type="submit" value="Submit">-->
-            </form>
+           
+              <form layout = "column" layout-align="start">
+                  New Time Interval: <input type="text" name="fname" ng-model="newTimeInterval"><br>
+                  <div layout="row" layout-align="center center">
+                    <md-button class="pinkbutton" ng-click="updateTimeInterval()" flex="10"> SUBMIT </md-button>
+                  </div>
+              </form>
             
             </div>
+          </div>
 
            
         
