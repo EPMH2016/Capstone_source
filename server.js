@@ -70,6 +70,14 @@ r.db('HDMI').table('DAQInformation').run(connection, function(err, cursor) {
 
 });
 
+app.get("/getUnits", function(request, response){
+
+  r.db('HDMI').table('Units').run(connection, function(err, cursor){
+    if (err) throw err;
+    console.log(cursor);
+  });
+});
+
 app.post("/convertUnits", function(request, response){
   //Body: {'Units': units}
 

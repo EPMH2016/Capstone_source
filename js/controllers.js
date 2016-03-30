@@ -442,6 +442,7 @@ app.controller("SystemConfigController", function($scope, $timeout, $mdSidenav, 
     $scope.daq_3_enabled;
 
     $scope.selectedUnit = units; /* connected to the convert units radio buttons */
+    var hidden = true; /* indicates if the convert units elements are hidden */
 
 
     $.get("http://10.17.191.41:8435/DAQInfoAll", function( data ){
@@ -498,22 +499,29 @@ app.controller("SystemConfigController", function($scope, $timeout, $mdSidenav, 
     }
 
     $scope.convertClicked = function(){
-        console.log($scope.selectedUnit);
        var convertSubmit = document.getElementById('ConvertSubmit');
        var convertRadioGroup = document.getElementById('ConvertRadioGroup');
-       convertRadioGroup.style.display = "";
-       convertSubmit.style.display = "block";
+       if(hidden)
+       {
+           convertRadioGroup.style.display = "";
+           convertSubmit.style.display = "block";
+           hidden = false;
+       }
+       else
+       {
+            convertRadioGroup.style.display = "none";
+            convertSubmit.style.display = "none";
+            hidden = true;
+       }
     }
 
     $scope.unitSubmitClicked = function(){
-        console.log("unitSubmitClicked");
         $.post("http://10.17.191.41:8435/convertUnits", {"Units": $scope.selectedUnit}, function(data){
-            console.log("data is: " + data);
             var success = $mdDialog.alert()
                                    .title("Success!")
                                    .content("Units have been converted to " + units + ".")
                                    .ok('Great!');
-            if(data = "Success")
+            if(data == "Success")
             {
                 $mdDialog.show( success )
                          .finally(function() {
@@ -522,6 +530,7 @@ app.controller("SystemConfigController", function($scope, $timeout, $mdSidenav, 
                             var convertRadioGroup = document.getElementById('ConvertRadioGroup');
                             convertRadioGroup.style.display = "none";
                             convertSubmit.style.display = "none";
+                            hidden = true;
                          });
             }
         });
