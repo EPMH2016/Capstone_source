@@ -93,9 +93,7 @@ app.controller("DAQGraphController", function($scope, $http, $q){
         graph_array_daq2 = $scope.trim_array(graph_array_daq2);
         graph_array_daq3 = $scope.trim_array(graph_array_daq3);
 
-<<<<<<< HEAD
-        
-=======
+
         /* check if the graph is for a temperature sensor */
         if($scope.selectedType == "Thermocouple 1" || $scope.selectedType == "Thermocouple 2" || 
             $scope.selectedType == "Thermocouple 3" || $scope.selectedType == "Ambient")
@@ -113,7 +111,7 @@ app.controller("DAQGraphController", function($scope, $http, $q){
         {
             units = "";
         }
->>>>>>> c755a4191c72b7b5d873c1bd54a126424d129456
+
 
         Highcharts.setOptions({
             global: {
@@ -140,11 +138,7 @@ app.controller("DAQGraphController", function($scope, $http, $q){
         },
         yAxis: {
             title: {
-<<<<<<< HEAD
-                text: $scope.selectedType
-=======
                 text: $scope.selectedType + " " + units
->>>>>>> c755a4191c72b7b5d873c1bd54a126424d129456
             }
         },
         series: [
@@ -776,7 +770,7 @@ app.controller("HomeController", function($scope, $interval, $timeout, $mdSidena
             $scope.D3L = data;
             });
             });
-
+        //indicate data has changed
         console.log("Data changed!");
     }
 
