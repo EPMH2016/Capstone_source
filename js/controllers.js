@@ -92,17 +92,22 @@ app.controller("DAQGraphController", function($scope, $http, $q){
         graph_array_daq2 = $scope.trim_array(graph_array_daq2);
         graph_array_daq3 = $scope.trim_array(graph_array_daq3);
 
-        /* check if current units are F and if so convert all graph data */
-        if(units == 'F')
+        /* check if the graph is for a temperature sensor */
+        if($scope.selectedType == "Thermocouple 1" || $scope.selectedType == "Thermocouple 2" || 
+            $scope.selectedType == "Thermocouple 3" || $scope.selectedType == "Ambient")
         {
-            /* check if the graph is for a temperature sensor */
-            if($scope.selectedType == "Thermocouple 1" || $scope.selectedType == "Thermocouple 2" || 
-                $scope.selectedType == "Thermocouple 3" || $scope.selectedType == "Ambient")
+            /* check if current units are F and if so convert all graph data */
+            if(units == 'F')
             {
                 $scope.convertArrayToF(graph_array_daq1);
                 $scope.convertArrayToF(graph_array_daq2);
                 $scope.convertArrayToF(graph_array_daq3);
             }
+            units = "(" + units + ")";
+        }
+        else
+        {
+            units = "";
         }
 
         Highcharts.setOptions({
@@ -130,7 +135,7 @@ app.controller("DAQGraphController", function($scope, $http, $q){
         },
         yAxis: {
             title: {
-                text: $scope.selectedType + " (" + units + ")"
+                text: $scope.selectedType + " " + units
             }
         },
         series: [
@@ -229,7 +234,7 @@ app.controller("DAQGraphController", function($scope, $http, $q){
             });
 
             $.get("http://10.17.191.41:8435/DAQ3/Light", function( data ){
-                data_daq2 = data;
+                data_daq3 = data;
                 $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, true);
             });
 
@@ -247,7 +252,7 @@ app.controller("DAQGraphController", function($scope, $http, $q){
             });
 
             $.get("http://10.17.191.41:8435/DAQ3/AmbientTemp", function( data ){
-                data_daq2 = data;
+                data_daq3 = data;
                 $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, true);
             });
 
@@ -264,7 +269,7 @@ app.controller("DAQGraphController", function($scope, $http, $q){
             });
 
             $.get("http://10.17.191.41:8435/DAQ3/Humidity", function( data ){
-                data_daq2 = data;
+                data_daq3 = data;
                 $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, true);
             });
 
@@ -283,7 +288,7 @@ app.controller("DAQGraphController", function($scope, $http, $q){
             });
 
             $.get("http://10.17.191.41:8435/DAQ3/Current", function( data ){
-                data_daq2 = data;
+                data_daq3 = data;
                 $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, true);
             });
 
