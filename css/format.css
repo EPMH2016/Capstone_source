@@ -46,6 +46,10 @@ md-radio-button{
   background: dodgerblue;
 }
 
+/* the hide class */
+.hide {
+  display: none;
+}
 
 /* The Modal (background) */
 .modal {
