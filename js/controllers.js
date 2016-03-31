@@ -11,12 +11,16 @@
     var data_daq2 = [];
     var data_daq3 = [];
 
+
 app.controller("DAQGraphController", function($scope, $http, $q){
     console.log("controller initialized");
     $scope.message="This is the message variable in the controller";
     $scope.data  = "This is the data!";
-    $scope.selectedType="Thermocouple 1";
+    $scope.selectedType="Thermocouple 1 (C)";
     $scope.selectedDAQ="DAQ1";
+
+
+    $scope.selectedType = "Thermocouple 1 (C)";
 
     //  make this a different function that simply collects and allocates the data  
     $scope.collect_data = function(sensorType, data_daq1, data_daq2, data_daq3, print_graph){
@@ -61,17 +65,14 @@ app.controller("DAQGraphController", function($scope, $http, $q){
 
         if(print_graph)
         {
-            /* send get request to server to get current units, then pass the units to the graph function */
-            $.get("http://10.17.191.41:8435/getUnits", function( data ){
-                $scope.print_graph(data[0].Units);
-            });
+            $scope.print_graph();
         }
     }
             
 
 
 // make a function here with the only purpose to be printing the graph
-    $scope.print_graph = function(units){
+    $scope.print_graph = function(){
 
         var graph_array_daq1 = [];
 
@@ -92,18 +93,7 @@ app.controller("DAQGraphController", function($scope, $http, $q){
         graph_array_daq2 = $scope.trim_array(graph_array_daq2);
         graph_array_daq3 = $scope.trim_array(graph_array_daq3);
 
-        /* check if current units are F and if so convert all graph data */
-        if(units == 'F')
-        {
-            /* check if the graph is for a temperature sensor */
-            if($scope.selectedType == "Thermocouple 1" || $scope.selectedType == "Thermocouple 2" || 
-                $scope.selectedType == "Thermocouple 3" || $scope.selectedType == "Ambient")
-            {
-                $scope.convertArrayToF(graph_array_daq1);
-                $scope.convertArrayToF(graph_array_daq2);
-                $scope.convertArrayToF(graph_array_daq3);
-            }
-        }
+        
 
         Highcharts.setOptions({
             global: {
@@ -130,7 +120,7 @@ app.controller("DAQGraphController", function($scope, $http, $q){
         },
         yAxis: {
             title: {
-                text: $scope.selectedType + " (" + units + ")"
+                text: $scope.selectedType
             }
         },
         series: [
@@ -164,12 +154,14 @@ app.controller("DAQGraphController", function($scope, $http, $q){
 
             $.get("http://10.17.191.41:8435/DAQ1/T1", function( data ){
                 data_daq1 = data;
-                $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, false);
+                console.log(data[0]);
+                $scope.collect_data(typeSelected, data_daq1, data_daq2, data_daq3, false);
             });
 
             $.get("http://10.17.191.41:8435/DAQ2/T1", function( data ){
                 data_daq2 = data;
-                $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, false);
+                console.log(data[0]);
+                $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, true);
             });
 
             $.get("http://10.17.191.41:8435/DAQ3/T1", function( data ){
@@ -187,7 +179,7 @@ app.controller("DAQGraphController", function($scope, $http, $q){
 
             $.get("http://10.17.191.41:8435/DAQ2/T2", function( data ){
                 data_daq2 = data;
-                $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, false);
+                $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, true);
             });
 
             $.get("http://10.17.191.41:8435/DAQ3/T2", function( data ){
@@ -206,7 +198,7 @@ app.controller("DAQGraphController", function($scope, $http, $q){
 
             $.get("http://10.17.191.41:8435/DAQ2/T3", function( data ){
                 data_daq2 = data;
-                $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, false);
+                $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, true);
             });
 
             $.get("http://10.17.191.41:8435/DAQ3/T3", function( data ){
@@ -225,7 +217,7 @@ app.controller("DAQGraphController", function($scope, $http, $q){
 
             $.get("http://10.17.191.41:8435/DAQ2/Light", function( data ){
                 data_daq2 = data;
-                $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, false);
+                $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, true);
             });
 
             $.get("http://10.17.191.41:8435/DAQ3/Light", function( data ){
@@ -243,7 +235,7 @@ app.controller("DAQGraphController", function($scope, $http, $q){
 
             $.get("http://10.17.191.41:8435/DAQ2/AmbientTemp", function( data ){
                 data_daq2 = data;
-                $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, false);
+                $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, true);
             });
 
             $.get("http://10.17.191.41:8435/DAQ3/AmbientTemp", function( data ){
@@ -260,7 +252,7 @@ app.controller("DAQGraphController", function($scope, $http, $q){
 
             $.get("http://10.17.191.41:8435/DAQ2/Humidity", function( data ){
                 data_daq2 = data;
-                $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, false);
+                $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, true);
             });
 
             $.get("http://10.17.191.41:8435/DAQ3/Humidity", function( data ){
@@ -310,15 +302,6 @@ app.controller("DAQGraphController", function($scope, $http, $q){
         /* if we get to the end with no trims needed, return the original array */
         return array;
 
-    }
-
-    $scope.convertArrayToF = function(array)
-    {
-        /* go through all the temperture values and convert them from celcius to farenheit */
-        for(i = 0; i < array.length; i++)
-        {
-            array[i][1] = array[i][1] * 1.8 + 32;
-        }
     }
     
 
@@ -457,14 +440,6 @@ app.controller("SystemConfigController", function($scope, $timeout, $mdSidenav, 
     $scope.daq_2_enabled;
     $scope.daq_3_enabled;
 
-    $scope.selectedUnit; /* connected to the convert units radio buttons */
-
-    $.get("http://10.17.191.41:8435/getUnits", function( data ){
-            $scope.selectedUnit = data[0].Units;
-    });
-
-    var hidden = true; /* indicates if the convert units elements are hidden */
-
 
     $.get("http://10.17.191.41:8435/DAQInfoAll", function( data ){
         $scope.daq_array = data;
@@ -520,42 +495,7 @@ app.controller("SystemConfigController", function($scope, $timeout, $mdSidenav, 
     }
 
     $scope.convertClicked = function(){
-       var convertSubmit = document.getElementById('ConvertSubmit');
-       var convertRadioGroup = document.getElementById('ConvertRadioGroup');
-       if(hidden)
-       {
-           convertRadioGroup.style.display = "";
-           convertSubmit.style.display = "block";
-           hidden = false;
-       }
-       else
-       {
-            convertRadioGroup.style.display = "none";
-            convertSubmit.style.display = "none";
-            hidden = true;
-       }
-    }
-
-    $scope.unitSubmitClicked = function(){
-        $.post("http://10.17.191.41:8435/convertUnits", {"Units": $scope.selectedUnit}, function(data){
-            var success = $mdDialog.alert()
-                                   .title("Success!")
-                                   .content("Units have been converted to " + $scope.selectedUnit + ".")
-                                   .ok('Great!');
-            if(data == "Success")
-            {
-                $mdDialog.show( success )
-                         .finally(function() {
-                            alert = undefined;
-                            var convertSubmit = document.getElementById('ConvertSubmit');
-                            var convertRadioGroup = document.getElementById('ConvertRadioGroup');
-                            convertRadioGroup.style.display = "none";
-                            convertSubmit.style.display = "none";
-                            hidden = true;
-                         });
-            }
-        });
-
+       
     }
 
 
@@ -692,40 +632,67 @@ app.controller("DMController", function($scope, $timeout, $mdSidenav, $log, $mdD
 
 });
 
-app.controller("HomeController", function($scope, $interval, $timeout, $mdSidenav, $log, $mdDialog){
-        $scope.D1T1=(Math.random()*50).toFixed(2);
-        $scope.D1T2=(Math.random()*50).toFixed(2);
-        $scope.D1T3=(Math.random()*50).toFixed(2);
-        $scope.D1Amb=(Math.random()*50).toFixed(2);
-        $scope.D1L=(Math.random()*50).toFixed(2);
+app.controller("HomeController", function($scope, $interval, $timeout, $mdSidenav, $log, $mdDialog, $http){
+        // $scope.D1T1=(Math.random()*50).toFixed(2);
+        // $scope.D1T2=(Math.random()*50).toFixed(2);
+        // $scope.D1T3=(Math.random()*50).toFixed(2);
+        // $scope.D1Amb=(Math.random()*50).toFixed(2);
+        // $scope.D1L=(Math.random()*50).toFixed(2);
 
-        $scope.D2T1 = (Math.random()*50).toFixed(2);
-        $scope.D2T2 = (Math.random()*50).toFixed(2);
-        $scope.D2T3 = (Math.random()*50).toFixed(2);
-        $scope.D2Amb = (Math.random()*50).toFixed(2);
-        $scope.D2L = (Math.random()*50).toFixed(2);
+       updateData();
+        // $scope.D2T1 = (Math.random()*50).toFixed(2);
+        // $scope.D2T2 = (Math.random()*50).toFixed(2);
+        // $scope.D2T3 = (Math.random()*50).toFixed(2);
+        // $scope.D2Amb = (Math.random()*50).toFixed(2);
+        // $scope.D2L = (Math.random()*50).toFixed(2);
 
-        $scope.D3T1 = (Math.random()*50).toFixed(2);
-        $scope.D3T2 = (Math.random()*50).toFixed(2);
-        $scope.D3T3 = (Math.random()*50).toFixed(2);
-        $scope.D3Amb = (Math.random()*50).toFixed(2);
-        $scope.D3L = (Math.random()*50).toFixed(2);
+        // $scope.D3T1 = (Math.random()*50).toFixed(2);
+        // $scope.D3T2 = (Math.random()*50).toFixed(2);
+        // $scope.D3T3 = (Math.random()*50).toFixed(2);
+        // $scope.D3Amb = (Math.random()*50).toFixed(2);
+        // $scope.D3L = (Math.random()*50).toFixed(2);
+
 //     setTimeout(function(){
 //     $scope.T1 +=1;
 //     alert("changed!");
 // }, 200);
     //works
-    $interval(updateData, 90);
+    $interval(updateData, 10000);
     
     function updateData(){
 
+        // $scope.D1T1=(Math.random()*50).toFixed(2);
+        // $scope.D1T2=(Math.random()*50).toFixed(2);
+        // $scope.D1T3=(Math.random()*50).toFixed(2);
+        // $scope.D1Amb=(Math.random()*50).toFixed(2);
+        // $scope.D1L=(Math.random()*50).toFixed(2);
 
-
-        $scope.D1T1=(Math.random()*50).toFixed(2);
-        $scope.D1T2=(Math.random()*50).toFixed(2);
-        $scope.D1T3=(Math.random()*50).toFixed(2);
-        $scope.D1Amb=(Math.random()*50).toFixed(2);
-        $scope.D1L=(Math.random()*50).toFixed(2);
+         $.getJSON("http://10.17.0.92/T1", function success(data){
+            $scope.$apply(function () {
+            console.log("DAQ1 T1 data is " + data);
+            $scope.D1T1 = data;
+            });
+            });
+         $.getJSON("http://10.17.0.92/T2", function success(data){
+            $scope.$apply(function () {
+            $scope.D1T2 = data;
+            });
+            });
+         $.getJSON("http://10.17.0.92/T3", function success(data){
+            $scope.$apply(function () {
+            $scope.D1T3 = data;
+            });
+            });
+         $.getJSON("http://10.17.0.92/AmbientTemp", function success(data){
+            $scope.$apply(function () {
+            $scope.D1Amb = data;
+            });
+            }); 
+         $.getJSON("http://10.17.0.92/Light", function success(data){
+            $scope.$apply(function () {
+            $scope.D1L = data;
+            });
+            });
 
         $scope.D2T1 = (Math.random()*50).toFixed(2);
         $scope.D2T2 = (Math.random()*50).toFixed(2);
@@ -733,14 +700,43 @@ app.controller("HomeController", function($scope, $interval, $timeout, $mdSidena
         $scope.D2Amb = (Math.random()*50).toFixed(2);
         $scope.D2L = (Math.random()*50).toFixed(2);
 
-        $scope.D3T1 = (Math.random()*50).toFixed(2);
-        $scope.D3T2 = (Math.random()*50).toFixed(2);
-        $scope.D3T3 = (Math.random()*50).toFixed(2);
-        $scope.D3Amb = (Math.random()*50).toFixed(2);
-        $scope.D3L = (Math.random()*50).toFixed(2);
+        // $scope.D3T1 = (Math.random()*50).toFixed(2);
+        // $scope.D3T2 = (Math.random()*50).toFixed(2);
+        // $scope.D3T3 = (Math.random()*50).toFixed(2);
+        // $scope.D3Amb = (Math.random()*50).toFixed(2);
+        // $scope.D3L = (Math.random()*50).toFixed(2);
+
+         $.getJSON("http://10.17.10.246/T1", function success(data){
+            $scope.$apply(function () {
+            $scope.D3T1 = data;
+        });
+            });
+        $.getJSON("http://10.17.10.246/T2", function success(data){
+            $scope.$apply(function () {
+            $scope.D3T2 = data;
+        });
+            });
+        $.getJSON("http://10.17.10.246/T3", function success(data){
+            $scope.$apply(function () {
+            $scope.D3T3 = data;
+            });
+            });
+        $.getJSON("http://10.17.10.246/AmbientTemp", function success(data){
+            $scope.$apply(function () {
+            $scope.D3Amb = data;
+            });
+            });
+        $.getJSON("http://10.17.10.246/Light", function success(data){
+            $scope.$apply(function () {
+            $scope.D3L = data;
+            });
+            });
 
         console.log("Data changed!");
     }
+
+    
+    
 
 });
 
