@@ -633,13 +633,23 @@ app.controller("DMController", function($scope, $timeout, $mdSidenav, $log, $mdD
 });
 
 app.controller("HomeController", function($scope, $interval, $timeout, $mdSidenav, $log, $mdDialog){
-    $scope.T1 = 0;
-    $scope.push = function(){
-        $scope.T1 += 1;
-    }
+        $scope.D1T1=(Math.random()*50).toFixed(2);
+        $scope.D1T2=(Math.random()*50).toFixed(2);
+        $scope.D1T3=(Math.random()*50).toFixed(2);
+        $scope.D1Amb=(Math.random()*50).toFixed(2);
+        $scope.D1L=(Math.random()*50).toFixed(2);
 
+        $scope.D2T1 = (Math.random()*50).toFixed(2);
+        $scope.D2T2 = (Math.random()*50).toFixed(2);
+        $scope.D2T3 = (Math.random()*50).toFixed(2);
+        $scope.D2Amb = (Math.random()*50).toFixed(2);
+        $scope.D2L = (Math.random()*50).toFixed(2);
 
-   
+        $scope.D3T1 = (Math.random()*50).toFixed(2);
+        $scope.D3T2 = (Math.random()*50).toFixed(2);
+        $scope.D3T3 = (Math.random()*50).toFixed(2);
+        $scope.D3Amb = (Math.random()*50).toFixed(2);
+        $scope.D3L = (Math.random()*50).toFixed(2);
 //     setTimeout(function(){
 //     $scope.T1 +=1;
 //     alert("changed!");
@@ -648,7 +658,27 @@ app.controller("HomeController", function($scope, $interval, $timeout, $mdSidena
     $interval(updateData, 90);
     
     function updateData(){
-        $scope.T1+=1;
+
+
+
+        $scope.D1T1=(Math.random()*50).toFixed(2);
+        $scope.D1T2=(Math.random()*50).toFixed(2);
+        $scope.D1T3=(Math.random()*50).toFixed(2);
+        $scope.D1Amb=(Math.random()*50).toFixed(2);
+        $scope.D1L=(Math.random()*50).toFixed(2);
+
+        $scope.D2T1 = (Math.random()*50).toFixed(2);
+        $scope.D2T2 = (Math.random()*50).toFixed(2);
+        $scope.D2T3 = (Math.random()*50).toFixed(2);
+        $scope.D2Amb = (Math.random()*50).toFixed(2);
+        $scope.D2L = (Math.random()*50).toFixed(2);
+
+        $scope.D3T1 = (Math.random()*50).toFixed(2);
+        $scope.D3T2 = (Math.random()*50).toFixed(2);
+        $scope.D3T3 = (Math.random()*50).toFixed(2);
+        $scope.D3Amb = (Math.random()*50).toFixed(2);
+        $scope.D3L = (Math.random()*50).toFixed(2);
+
         console.log("Data changed!");
     }
 
