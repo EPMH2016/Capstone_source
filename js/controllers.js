@@ -110,7 +110,7 @@ app.controller("DAQGraphController", function($scope, $http, $q){
 
 
 // make a function here with the only purpose to be printing the graph
-    $scope.print_graph = function(){
+    $scope.print_graph = function(units){
 
         var graph_array_daq1 = [];
 
@@ -213,13 +213,11 @@ app.controller("DAQGraphController", function($scope, $http, $q){
 
             $.get(SERVER_URL + "/DAQ1/T1", function( data ){
                 data_daq1 = data;
-                console.log(data[0]);
                 $scope.collect_data(typeSelected, data_daq1, data_daq2, data_daq3, false);
             });
 
             $.get(SERVER_URL + "/DAQ2/T1", function( data ){
                 data_daq2 = data;
-                console.log(data[0]);
                 $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, true);
             });
 
@@ -380,6 +378,15 @@ app.controller("DAQGraphController", function($scope, $http, $q){
         /* if we get to the end with no trims needed, return the original array */
         return array;
 
+    }
+
+    $scope.convertArrayToF = function(array)
+    {
+        /* go through all the temperture values and convert them from celcius to farenheit */
+        for(i = 0; i < array.length; i++)
+        {
+            array[i][1] = array[i][1] * 1.8 + 32;
+        }
     }
     
 
