@@ -93,7 +93,27 @@ app.controller("DAQGraphController", function($scope, $http, $q){
         graph_array_daq2 = $scope.trim_array(graph_array_daq2);
         graph_array_daq3 = $scope.trim_array(graph_array_daq3);
 
+<<<<<<< HEAD
         
+=======
+        /* check if the graph is for a temperature sensor */
+        if($scope.selectedType == "Thermocouple 1" || $scope.selectedType == "Thermocouple 2" || 
+            $scope.selectedType == "Thermocouple 3" || $scope.selectedType == "Ambient")
+        {
+            /* check if current units are F and if so convert all graph data */
+            if(units == 'F')
+            {
+                $scope.convertArrayToF(graph_array_daq1);
+                $scope.convertArrayToF(graph_array_daq2);
+                $scope.convertArrayToF(graph_array_daq3);
+            }
+            units = "(" + units + ")";
+        }
+        else
+        {
+            units = "";
+        }
+>>>>>>> c755a4191c72b7b5d873c1bd54a126424d129456
 
         Highcharts.setOptions({
             global: {
@@ -112,7 +132,7 @@ app.controller("DAQGraphController", function($scope, $http, $q){
             type: 'line'
         },
         title: {
-            text: 'DAQ 1 Data'
+            text: $scope.selectedType + ' Data'
         },
         xAxis: {
             type: "datetime"
@@ -120,7 +140,11 @@ app.controller("DAQGraphController", function($scope, $http, $q){
         },
         yAxis: {
             title: {
+<<<<<<< HEAD
                 text: $scope.selectedType
+=======
+                text: $scope.selectedType + " " + units
+>>>>>>> c755a4191c72b7b5d873c1bd54a126424d129456
             }
         },
         series: [
@@ -221,7 +245,7 @@ app.controller("DAQGraphController", function($scope, $http, $q){
             });
 
             $.get("http://10.17.191.41:8435/DAQ3/Light", function( data ){
-                data_daq2 = data;
+                data_daq3 = data;
                 $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, true);
             });
 
@@ -239,7 +263,7 @@ app.controller("DAQGraphController", function($scope, $http, $q){
             });
 
             $.get("http://10.17.191.41:8435/DAQ3/AmbientTemp", function( data ){
-                data_daq2 = data;
+                data_daq3 = data;
                 $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, true);
             });
 
@@ -256,7 +280,26 @@ app.controller("DAQGraphController", function($scope, $http, $q){
             });
 
             $.get("http://10.17.191.41:8435/DAQ3/Humidity", function( data ){
+                data_daq3 = data;
+                $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, true);
+            });
+
+        break;
+
+        case "Current":
+
+            $.get("http://10.17.191.41:8435/DAQ1/Current", function( data ){
+                data_daq1 = data;
+                $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, false);
+            });
+
+            $.get("http://10.17.191.41:8435/DAQ2/Current", function( data ){
                 data_daq2 = data;
+                $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, false);
+            });
+
+            $.get("http://10.17.191.41:8435/DAQ3/Current", function( data ){
+                data_daq3 = data;
                 $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, true);
             });
 
@@ -658,6 +701,8 @@ app.controller("HomeController", function($scope, $interval, $timeout, $mdSidena
 // }, 200);
     //works
     $interval(updateData, 10000);
+
+
     
     function updateData(){
 

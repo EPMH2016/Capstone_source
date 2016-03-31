@@ -264,6 +264,10 @@ app.get("/DAQ1/Humidity", function(request, response){
     getDAQData("DAQ1","Humidity", response);
 });
 
+app.get("/DAQ1/Current", function(request, response){
+    getDAQData("DAQ1","Current", response);
+});
+
 
 //DAQ2
 app.get("/DAQ2/T1", function(request, response){
@@ -290,6 +294,10 @@ app.get("/DAQ2/Humidity", function(request, response){
     getDAQData("DAQ2","Humidity", response);
 });
 
+app.get("/DAQ2/Current", function(request, response){
+    getDAQData("DAQ2","Current", response);
+});
+
 
 //DAQ3
 app.get("/DAQ3/T1", function(request, response){
@@ -314,6 +322,10 @@ app.get("/DAQ3/Light", function(request, response){
 
 app.get("/DAQ3/Humidity", function(request, response){
     getDAQData("DAQ3","Humidity", response);
+});
+
+app.get("/DAQ3/Current", function(request, response){
+    getDAQData("DAQ3","Current", response);
 });
 
 
