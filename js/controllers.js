@@ -11,12 +11,20 @@
     var data_daq2 = [];
     var data_daq3 = [];
 
+    const SERVER_IP = "10.17.191.41";
+    const SERVER_PORT = "8435";
+    const SERVER_URL = "http://" + SERVER_IP + ":" + SERVER_PORT;
+
 app.controller("DAQGraphController", function($scope, $http, $q){
     console.log("controller initialized");
     $scope.message="This is the message variable in the controller";
     $scope.data  = "This is the data!";
     $scope.selectedType="Thermocouple 1";
     $scope.selectedDAQ="DAQ1";
+
+    $scope.daq1Enabled = true;
+    $scope.daq2Enabled = true;
+    $scope.daq3Enabled = true;
 
     //  make this a different function that simply collects and allocates the data  
     $scope.collect_data = function(sensorType, data_daq1, data_daq2, data_daq3, print_graph){
@@ -61,10 +69,41 @@ app.controller("DAQGraphController", function($scope, $http, $q){
 
         if(print_graph)
         {
-            /* send get request to server to get current units, then pass the units to the graph function */
-            $.get("http://10.17.191.41:8435/getUnits", function( data ){
-                $scope.print_graph(data[0].Units);
-            });
+            $.get("http://10.17.191.41:8435/DAQInfoAll", function( data ){
+                if(data[0]["Status"] == 'ON')
+                {
+                    $scope.daq1Enabled = true;
+                }
+                else
+                {
+                    $scope.daq1Enabled = false;
+                }
+                if(data[1]["Status"] == "ON")
+                {
+                    $scope.daq2Enabled = true;
+                }
+                else
+                {
+                    $scope.daq2Enabled = false;
+                }
+                if(data[2]["Status"] == "ON")
+                {
+                    $scope.daq3Enabled = true;
+                }
+                else
+                {
+                    $scope.daq3Enabled = false;
+                }
+
+
+                /* send get request to server to get current units, then pass the units to the graph function */
+                $.get(SERVER_URL + "/getUnits", function( data ){
+                    $scope.print_graph(data[0].Units);
+                });
+
+
+                }, "json"
+            );
         }
     }
             
@@ -141,20 +180,23 @@ app.controller("DAQGraphController", function($scope, $http, $q){
         series: [
         {
           name: 'DAQ1',
-          data: graph_array_daq1
+          data: graph_array_daq1,
+          visible: $scope.daq1Enabled,
+          showInLegend: $scope.daq1Enabled
                 
         },
 
         {
             name: 'DAQ2',
             data: graph_array_daq2,
-            visible: false,
-            showInLegend: true
+            visible: !($scope.daq1Enabled),
+            showInLegend: $scope.daq2Enabled
         },
         {
             name: 'DAQ3',
             data: graph_array_daq3,
-            visible: false
+            visible: !($scope.daq1Enabled || $scope.daq2Enabled),
+            showInLegend: $scope.daq3Enabled
         }
         ]
     });
@@ -167,17 +209,17 @@ app.controller("DAQGraphController", function($scope, $http, $q){
        switch (typeSelected){
         case "T1":
 
-            $.get("http://10.17.191.41:8435/DAQ1/T1", function( data ){
+            $.get(SERVER_URL + "/DAQ1/T1", function( data ){
                 data_daq1 = data;
                 $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, false);
             });
 
-            $.get("http://10.17.191.41:8435/DAQ2/T1", function( data ){
+            $.get(SERVER_URL + "/DAQ2/T1", function( data ){
                 data_daq2 = data;
                 $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, false);
             });
 
-            $.get("http://10.17.191.41:8435/DAQ3/T1", function( data ){
+            $.get(SERVER_URL + "/DAQ3/T1", function( data ){
                 data_daq3 = data;
                 $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, true);
             });
@@ -185,17 +227,17 @@ app.controller("DAQGraphController", function($scope, $http, $q){
 
         break;
         case "T2":
-            $.get("http://10.17.191.41:8435/DAQ1/T2", function( data ){
+            $.get(SERVER_URL + "/DAQ1/T2", function( data ){
                 data_daq1 = data;
                 $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, false);
             });
 
-            $.get("http://10.17.191.41:8435/DAQ2/T2", function( data ){
+            $.get(SERVER_URL + "/DAQ2/T2", function( data ){
                 data_daq2 = data;
                 $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, false);
             });
 
-            $.get("http://10.17.191.41:8435/DAQ3/T2", function( data ){
+            $.get(SERVER_URL + "/DAQ3/T2", function( data ){
                 data_daq3 = data;
                 $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, true);
             });
@@ -204,17 +246,17 @@ app.controller("DAQGraphController", function($scope, $http, $q){
         break;
         case "T3":
         
-            $.get("http://10.17.191.41:8435/DAQ1/T3", function( data ){
+            $.get(SERVER_URL + "/DAQ1/T3", function( data ){
                 data_daq1 = data;
                 $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, false);
             });
 
-            $.get("http://10.17.191.41:8435/DAQ2/T3", function( data ){
+            $.get(SERVER_URL + "/DAQ2/T3", function( data ){
                 data_daq2 = data;
                 $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, false);
             });
 
-            $.get("http://10.17.191.41:8435/DAQ3/T3", function( data ){
+            $.get(SERVER_URL + "/DAQ3/T3", function( data ){
                 data_daq3 = data;
                 $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, true);
             });
@@ -223,17 +265,17 @@ app.controller("DAQGraphController", function($scope, $http, $q){
         break;
         case "Light":
 
-            $.get("http://10.17.191.41:8435/DAQ1/Light", function( data ){
+            $.get(SERVER_URL + "/DAQ1/Light", function( data ){
                 data_daq1 = data;
                 $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, false);
             });
 
-            $.get("http://10.17.191.41:8435/DAQ2/Light", function( data ){
+            $.get(SERVER_URL + "/DAQ2/Light", function( data ){
                 data_daq2 = data;
                 $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, false);
             });
 
-            $.get("http://10.17.191.41:8435/DAQ3/Light", function( data ){
+            $.get(SERVER_URL + "/DAQ3/Light", function( data ){
                 data_daq3 = data;
                 $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, true);
             });
@@ -241,34 +283,34 @@ app.controller("DAQGraphController", function($scope, $http, $q){
         break;
         case "Ambient":
                       
-            $.get("http://10.17.191.41:8435/DAQ1/AmbientTemp", function( data ){
+            $.get(SERVER_URL + "/DAQ1/AmbientTemp", function( data ){
                 data_daq1 = data;
                 $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, false);
             });
 
-            $.get("http://10.17.191.41:8435/DAQ2/AmbientTemp", function( data ){
+            $.get(SERVER_URL + "/DAQ2/AmbientTemp", function( data ){
                 data_daq2 = data;
                 $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, false);
             });
 
-            $.get("http://10.17.191.41:8435/DAQ3/AmbientTemp", function( data ){
+            $.get(SERVER_URL + "/DAQ3/AmbientTemp", function( data ){
                 data_daq3 = data;
                 $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, true);
             });
 
         case "Humidity":
 
-            $.get("http://10.17.191.41:8435/DAQ1/Humidity", function( data ){
+            $.get(SERVER_URL + "/DAQ1/Humidity", function( data ){
                 data_daq1 = data;
                 $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, false);
             });
 
-            $.get("http://10.17.191.41:8435/DAQ2/Humidity", function( data ){
+            $.get(SERVER_URL + "/DAQ2/Humidity", function( data ){
                 data_daq2 = data;
                 $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, false);
             });
 
-            $.get("http://10.17.191.41:8435/DAQ3/Humidity", function( data ){
+            $.get(SERVER_URL + "/DAQ3/Humidity", function( data ){
                 data_daq3 = data;
                 $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, true);
             });
@@ -277,17 +319,17 @@ app.controller("DAQGraphController", function($scope, $http, $q){
 
         case "Current":
 
-            $.get("http://10.17.191.41:8435/DAQ1/Current", function( data ){
+            $.get(SERVER_URL + "/DAQ1/Current", function( data ){
                 data_daq1 = data;
                 $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, false);
             });
 
-            $.get("http://10.17.191.41:8435/DAQ2/Current", function( data ){
+            $.get(SERVER_URL + "/DAQ2/Current", function( data ){
                 data_daq2 = data;
                 $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, false);
             });
 
-            $.get("http://10.17.191.41:8435/DAQ3/Current", function( data ){
+            $.get(SERVER_URL + "/DAQ3/Current", function( data ){
                 data_daq3 = data;
                 $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, true);
             });
@@ -416,7 +458,7 @@ app.controller("CDController", function($scope, $timeout, $mdSidenav, $log, $mdD
 
 
     $scope.getDAQInfo = function(name){
-        $.post("http://10.17.191.41:8435/DAQinfo", {Name: name}, function( data ){
+        $.post(SERVER_URL + "/DAQinfo", {Name: name}, function( data ){
             $scope.daq_ID = data[0].DAQID;
             $scope.daq_location = data[0].Location;
         }, "json");
@@ -436,7 +478,7 @@ app.controller("CDController", function($scope, $timeout, $mdSidenav, $log, $mdD
         }
         else
         {
-            $.post("http://10.17.191.41:8435/updateTimeInterval", {timeInterval: $scope.newTimeInterval, Name: $scope.currentDAQ}, function(data){
+            $.post(SERVER_URL + "/updateTimeInterval", {timeInterval: $scope.newTimeInterval, Name: $scope.currentDAQ}, function(data){
                console.log("Update Time Interval return is: " + data);
                if(data == "Success")
                {
@@ -483,14 +525,14 @@ app.controller("SystemConfigController", function($scope, $timeout, $mdSidenav, 
 
     $scope.selectedUnit; /* connected to the convert units radio buttons */
 
-    $.get("http://10.17.191.41:8435/getUnits", function( data ){
+    $.get(SERVER_URL + "/getUnits", function( data ){
             $scope.selectedUnit = data[0].Units;
     });
 
     var hidden = true; /* indicates if the convert units elements are hidden */
 
 
-    $.get("http://10.17.191.41:8435/DAQInfoAll", function( data ){
+    $.get(SERVER_URL + "/DAQInfoAll", function( data ){
         $scope.daq_array = data;
         $scope.daq_1_enabled = data[0].Status;
         $scope.daq_2_enabled = data[1].Status;
@@ -499,11 +541,11 @@ app.controller("SystemConfigController", function($scope, $timeout, $mdSidenav, 
 
     $scope.submitClicked = function(){
  
-        $.post("http://10.17.191.41:8435/DAQinfo", {Name: $scope.selectedDAQ}, function( data ){
+        $.post(SERVER_URL + "/DAQinfo", {Name: $scope.selectedDAQ}, function( data ){
             $scope.daq_id = data[0].DAQID;
             
 
-            $.post("http://10.17.191.41:8435/updateLocation", {Location: document.getElementById("inputLocation").value, id: $scope.daq_id}, function(data){
+            $.post(SERVER_URL + "/updateLocation", {Location: document.getElementById("inputLocation").value, id: $scope.daq_id}, function(data){
                 console.log("Update location post request return is " + data);
                         var success = $mdDialog.alert()
                         .title("Update Success!")
@@ -524,7 +566,7 @@ app.controller("SystemConfigController", function($scope, $timeout, $mdSidenav, 
     }
 
     $scope.enableSubmitClicked = function(){
-        $.post("http://10.17.191.41:8435/updateDAQStatus", {"DAQ1": $scope.daq_1_enabled, 
+        $.post(SERVER_URL + "/updateDAQStatus", {"DAQ1": $scope.daq_1_enabled, 
                                                             "DAQ2": $scope.daq_2_enabled, 
                                                             "DAQ3": $scope.daq_3_enabled}, function(data){
             console.log("Update Daq Status post request return is " + data);
@@ -561,7 +603,7 @@ app.controller("SystemConfigController", function($scope, $timeout, $mdSidenav, 
     }
 
     $scope.unitSubmitClicked = function(){
-        $.post("http://10.17.191.41:8435/convertUnits", {"Units": $scope.selectedUnit}, function(data){
+        $.post(SERVER_URL + "/convertUnits", {"Units": $scope.selectedUnit}, function(data){
             var success = $mdDialog.alert()
                                    .title("Success!")
                                    .content("Units have been converted to " + $scope.selectedUnit + ".")
@@ -663,7 +705,7 @@ app.controller("DMController", function($scope, $timeout, $mdSidenav, $log, $mdD
             alert = undefined;
           });
 
-        $.get("http://10.17.191.41:8435/archive", function(data){
+        $.get(SERVER_URL + "/archive", function(data){
             console.log("Data returned is " + data);
 
             if(data=="Success"){
@@ -697,7 +739,7 @@ app.controller("DMController", function($scope, $timeout, $mdSidenav, $log, $mdD
                 .ok("ok")
                 $mdDialog.show(confirm);
 
-            $.get("http://10.17.191.41:8435/archive", function(data){
+            $.get(SERVER_URL + "/archive", function(data){
             if(data == "Success"){
                 console.log("Data returned is " + data);
                 confirm = $mdDialog.alert()
