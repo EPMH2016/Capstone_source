@@ -122,7 +122,7 @@ app.controller("DAQGraphController", function($scope, $http, $q){
             type: 'line'
         },
         title: {
-            text: 'DAQ 1 Data'
+            text: $scope.selectedType + ' Data'
         },
         xAxis: {
             type: "datetime"
@@ -264,6 +264,25 @@ app.controller("DAQGraphController", function($scope, $http, $q){
             });
 
             $.get("http://10.17.191.41:8435/DAQ3/Humidity", function( data ){
+                data_daq2 = data;
+                $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, true);
+            });
+
+        break;
+
+        case "Current":
+
+            $.get("http://10.17.191.41:8435/DAQ1/Current", function( data ){
+                data_daq1 = data;
+                $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, false);
+            });
+
+            $.get("http://10.17.191.41:8435/DAQ2/Current", function( data ){
+                data_daq2 = data;
+                $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, false);
+            });
+
+            $.get("http://10.17.191.41:8435/DAQ3/Current", function( data ){
                 data_daq2 = data;
                 $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, true);
             });
@@ -715,7 +734,7 @@ app.controller("HomeController", function($scope, $interval, $timeout, $mdSidena
 //     alert("changed!");
 // }, 200);
     //works
-    $interval(updateData, 90);
+    $interval(updateData, 2000);
     
     function updateData(){
 
