@@ -19,7 +19,7 @@
 		
 		<body layout="column" layout-align="start center">
 			
-			 <div layout="row" ng-controller="navController">
+			 <div flex="25" layout="row" ng-controller="navController">
 				  	
 				  	<md-button ng-click="toggleRight()"
             		ng-hide="isOpenRight()" class="md-icon-button md-accent" aria-label="Nav">
@@ -56,13 +56,13 @@
       </md-content>
     </md-sidenav>
 			  
-        <div flex>
+        <div flex="25">
 			<h2 class="md-display-3">DAQ Summary</h2>
         </div>      
 
-          <div flex layout="row" layout-align="space-around center" ng-controller="HomeController">
+          <div flex="50" width="100%" layout="row" layout-align="space-around center" ng-controller="HomeController">
 			
-			<div layout="column" flex="25">
+			<div layout="column" flex="33">
           		<h1>DAQ1</h1>
           		<h3>T1: <br>{{ D1T1 }} &deg F</h3>
           		<h3>T2: <br> {{ D1T2 }} &deg F</h3>
@@ -73,11 +73,7 @@
 
           	</div>
 
-          	<div layout="column" flex="12">
-          
-          	</div>
-
-          	<div layout="column" flex="25">
+          	<div layout="column" flex="33">
           		<h1>DAQ2</h1>
           		<h3>T1: <br> {{ D2T1 }} &deg F</h3>
               <h3>T2: <br> {{ D2T2 }} &deg F</h3>
@@ -87,11 +83,8 @@
               <h3> Humidity: <br> {{ D2H }} %</h3>
 
           	</div>
-          	<div layout="column" flex="12">
-          
-          	</div>
 
-          	<div layout="column" flex="25">
+          	<div layout="column" flex="33">
           		<h1>DAQ3</h1>
           		<h3>T1: <br> {{ D3T1 }} &deg F</h3>
               <h3>T2: <br> {{ D3T2 }} &deg F</h3>
