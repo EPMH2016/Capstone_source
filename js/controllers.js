@@ -802,74 +802,235 @@ app.controller("HomeController", function($scope, $interval, $timeout, $mdSidena
     
     function updateData(){
 
-        // $scope.D1T1=(Math.random()*50).toFixed(2);
-        // $scope.D1T2=(Math.random()*50).toFixed(2);
-        // $scope.D1T3=(Math.random()*50).toFixed(2);
-        // $scope.D1Amb=(Math.random()*50).toFixed(2);
-        // $scope.D1L=(Math.random()*50).toFixed(2);
+        var DAQ1IP = "http://10.17.0.92/";
+        var DAQ2IP = "";
+        var DAQ3IP = "http://10.17.10.246/";
 
-         $.getJSON("http://10.17.0.92/T1", function success(data){
+
+        //DAQ1
+         $.getJSON(DAQ1IP+"T1", function success(data){
             $scope.$apply(function () {
             console.log("DAQ1 T1 data is " + data);
             $scope.D1T1 = data;
             });
+            })
+         .error(function() { 
+            alert("error"); 
+            $scope.$apply(function () {
+            console.log("Data not found");
+            $scope.D1T1 = "N/A";
             });
-         $.getJSON("http://10.17.0.92/T2", function success(data){
+            });
+
+
+         $.getJSON(DAQ1IP+"T2", function success(data){
             $scope.$apply(function () {
             $scope.D1T2 = data;
             });
+            })
+            .error(function() { 
+            alert("error"); 
+            $scope.$apply(function () {
+            console.log("Data not found");
+            $scope.D1T2 = "N/A";
             });
-         $.getJSON("http://10.17.0.92/T3", function success(data){
+            });
+
+         $.getJSON(DAQ1IP+"T3", function success(data){
             $scope.$apply(function () {
             $scope.D1T3 = data;
             });
+            })
+            .error(function() { 
+            alert("error"); 
+            $scope.$apply(function () {
+            console.log("Data not found");
+            $scope.D1T3 = "N/A";
             });
-         $.getJSON("http://10.17.0.92/AmbientTemp", function success(data){
+            });
+
+         $.getJSON(DAQ1IP+"AmbientTemp", function success(data){
             $scope.$apply(function () {
             $scope.D1Amb = data;
             });
+            })
+            .error(function() { 
+            alert("error"); 
+            $scope.$apply(function () {
+            console.log("Data not found");
+            $scope.D1Amb = "N/A";
+            });
             }); 
-         $.getJSON("http://10.17.0.92/Light", function success(data){
+
+         $.getJSON(DAQ1IP+"Light", function success(data){
             $scope.$apply(function () {
             $scope.D1L = data;
             });
+            })
+            .error(function() { 
+            $scope.$apply(function () {
+            console.log("Data not found");
+            $scope.D1L = "N/A";
+            });
             });
 
-        $scope.D2T1 = (Math.random()*50).toFixed(2);
-        $scope.D2T2 = (Math.random()*50).toFixed(2);
-        $scope.D2T3 = (Math.random()*50).toFixed(2);
-        $scope.D2Amb = (Math.random()*50).toFixed(2);
-        $scope.D2L = (Math.random()*50).toFixed(2);
+            $.getJSON(DAQ1IP+"Humidity", function success(data){
+            $scope.$apply(function () {
+            $scope.D1H = data;
+            });
+            })
+            .error(function() { 
+            $scope.$apply(function () {
+            console.log("Data not found");
+            $scope.D1H = "N/A";
+            });
+            });
 
-        // $scope.D3T1 = (Math.random()*50).toFixed(2);
-        // $scope.D3T2 = (Math.random()*50).toFixed(2);
-        // $scope.D3T3 = (Math.random()*50).toFixed(2);
-        // $scope.D3Amb = (Math.random()*50).toFixed(2);
-        // $scope.D3L = (Math.random()*50).toFixed(2);
+         //DAQ2
+         $.getJSON(DAQ2IP+"T1", function success(data){
+            $scope.$apply(function () {
+            $scope.D2T1 = data;
+        })
+        ;
+        })
+        .error(function() { 
+            $scope.$apply(function () {
+            console.log("Data not found");
+            $scope.D2T1 = "N/A";
+            });
+            });
 
-         $.getJSON("http://10.17.10.246/T1", function success(data){
+        $.getJSON(DAQ2IP+"T2", function success(data){
+            $scope.$apply(function () {
+            $scope.D2T2 = data;
+        });
+            })
+        .error(function() { 
+            $scope.$apply(function () {
+            console.log("Data not found");
+            $scope.D2T2 = "N/A";
+            });
+            });
+
+        $.getJSON(DAQ2IP+"T3", function success(data){
+            $scope.$apply(function () {
+            $scope.D2T3 = data;
+            });
+            })
+        .error(function() { 
+            $scope.$apply(function () {
+            console.log("Data not found");
+            $scope.D2T3 = "N/A";
+            });
+            });
+
+        $.getJSON(DAQ2IP+"AmbientTemp", function success(data){
+            $scope.$apply(function () {
+            $scope.D2Amb = data;
+            });
+            })
+            .error(function() { 
+            $scope.$apply(function () {
+            console.log("Data not found");
+            $scope.D2Amb = "N/A";
+            });
+            });
+
+        $.getJSON(DAQ2IP+"Light", function success(data){
+            $scope.$apply(function () {
+            $scope.D2L = data;
+            });
+            })
+            .error(function() { 
+            $scope.$apply(function () {
+            console.log("Data not found");
+            $scope.D2L = "N/A";
+            });
+            });
+
+        $.getJSON(DAQ2IP+"Humidity", function success(data){
+            $scope.$apply(function () {
+            $scope.D2H = data;
+            });
+            })
+            .error(function() { 
+            $scope.$apply(function () {
+            console.log("Data not found");
+            $scope.D2H = "N/A";
+            });
+            });
+
+        //DAQ3
+         $.getJSON(DAQ3IP+"T1", function success(data){
             $scope.$apply(function () {
             $scope.D3T1 = data;
-        });
+        })
+        ;
+        })
+        .error(function() { 
+            $scope.$apply(function () {
+            console.log("Data not found");
+            $scope.D3T1 = "N/A";
             });
-        $.getJSON("http://10.17.10.246/T2", function success(data){
+            });
+
+        $.getJSON(DAQ3IP+"T2", function success(data){
             $scope.$apply(function () {
             $scope.D3T2 = data;
         });
+            })
+        .error(function() { 
+            $scope.$apply(function () {
+            console.log("Data not found");
+            $scope.D3T2 = "N/A";
             });
-        $.getJSON("http://10.17.10.246/T3", function success(data){
+            });
+
+        $.getJSON(DAQ3IP+"T3", function success(data){
             $scope.$apply(function () {
             $scope.D3T3 = data;
             });
+            })
+        .error(function() { 
+            $scope.$apply(function () {
+            console.log("Data not found");
+            $scope.D3T3 = "N/A";
             });
-        $.getJSON("http://10.17.10.246/AmbientTemp", function success(data){
+            });
+
+        $.getJSON(DAQ3IP+"AmbientTemp", function success(data){
             $scope.$apply(function () {
             $scope.D3Amb = data;
             });
+            })
+            .error(function() { 
+            $scope.$apply(function () {
+            console.log("Data not found");
+            $scope.D3Amb = "N/A";
             });
-        $.getJSON("http://10.17.10.246/Light", function success(data){
+            });
+
+        $.getJSON(DAQ3IP+"Light", function success(data){
             $scope.$apply(function () {
             $scope.D3L = data;
+            });
+            })
+            .error(function() { 
+            $scope.$apply(function () {
+            console.log("Data not found");
+            $scope.D3L = "N/A";
+            });
+            });
+
+        $.getJSON(DAQ3IP+"Humidity", function success(data){
+            $scope.$apply(function () {
+            $scope.D3H = data;
+            });
+            })
+            .error(function() { 
+            $scope.$apply(function () {
+            console.log("Data not found");
+            $scope.D3H = "N/A";
             });
             });
         //indicate data has changed
