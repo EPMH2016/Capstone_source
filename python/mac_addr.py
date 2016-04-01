@@ -22,7 +22,7 @@ def get_ip_from_mac(mac_addr_str):
     return "failed"
     
     
-print get_ip_from_mac("00:09:7c:d6:3d:81")
+print get_ip_from_mac("c8:3a:35:c2:a:aa")
 
 
 

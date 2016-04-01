@@ -11,8 +11,8 @@
     var data_daq2 = [];
     var data_daq3 = [];
 
-    //const SERVER_IP = "10.17.191.41";  /* UP */
-    const SERVER_IP = "192.168.1.23";
+    const SERVER_IP = "10.17.191.41";  /* UP */
+    //const SERVER_IP = "192.168.1.23";  /* HUY's house */
     const SERVER_PORT = "8435";
     const SERVER_URL = "http://" + SERVER_IP + ":" + SERVER_PORT;
 
@@ -200,13 +200,13 @@ app.controller("DAQGraphController", function($scope, $http, $q){
         {
             name: 'DAQ2',
             data: graph_array_daq2,
-            visible: !($scope.daq1Enabled),
+            visible: !($scope.daq1Enabled) && $scope.daq2Enabled,
             showInLegend: $scope.daq2Enabled
         },
         {
             name: 'DAQ3',
             data: graph_array_daq3,
-            visible: !($scope.daq1Enabled || $scope.daq2Enabled),
+            visible: !($scope.daq1Enabled || $scope.daq2Enabled) && $scope.daq3Enabled,
             showInLegend: $scope.daq3Enabled
         }
         ]
@@ -469,6 +469,7 @@ app.controller("navController", function($scope, $timeout, $mdSidenav, $log){
 app.controller("CDController", function($scope, $timeout, $mdSidenav, $log, $mdDialog){
     $scope.daq_ID = "DAQ ID";
     $scope.daq_location = "DAQ Location"; 
+    $scope.currentTimeInterval;
 
 
     $scope.getDAQInfo = function(name){
@@ -522,6 +523,17 @@ app.controller("CDController", function($scope, $timeout, $mdSidenav, $log, $mdD
         }       
 
     }
+
+    $scope.radioButtonClicked = function(daq)
+    {
+        /* send a get request to server to get the time interval for 'daq' and then set it to currentTime Interval */
+        $.get(SERVER_URL + "/getTimeInterval", {"Name" : daq}, function( data ){
+            console.log(data);
+            console.log(data[0]["Time Interval"]);
+        });
+    }
+
+    $scope.radioButtonClicked('DAQ1');
 
     
 
