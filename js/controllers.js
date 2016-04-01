@@ -469,6 +469,7 @@ app.controller("navController", function($scope, $timeout, $mdSidenav, $log){
 app.controller("CDController", function($scope, $timeout, $mdSidenav, $log, $mdDialog){
     $scope.daq_ID = "DAQ ID";
     $scope.daq_location = "DAQ Location"; 
+    $scope.currentTimeInterval;
 
 
     $scope.getDAQInfo = function(name){
@@ -522,6 +523,17 @@ app.controller("CDController", function($scope, $timeout, $mdSidenav, $log, $mdD
         }       
 
     }
+
+    $scope.radioButtonClicked = function(daq)
+    {
+        /* send a get request to server to get the time interval for 'daq' and then set it to currentTime Interval */
+        $.get(SERVER_URL + "/getTimeInterval", {"Name" : daq}, function( data ){
+            console.log(data);
+            console.log(data[0]["Time Interval"]);
+        });
+    }
+
+    $scope.radioButtonClicked('DAQ1');
 
     
 

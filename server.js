@@ -117,6 +117,23 @@ r.db('HDMI').table('DAQInformation').filter({'Name': Name}).update({'Time Interv
 });
 });
 
+app.get("/getTimeInterval", function(request, response){
+  //Body: {'Name': daqName}
+
+  var Name = request.body.Name;
+
+  r.db('HDMI').table('DAQInformation').filter({'Name': Name}).run(connection, function(err, cursor){
+    if (err) throw err;
+    cursor.toArray(function(err, result) {
+        if (err) throw err;
+
+        response.send(result);
+        console.log(result);
+        return result;
+    });
+  });
+});
+
 app.post("/updateLocation", function(request, response){
 
 //{Location: "", id: ""}
