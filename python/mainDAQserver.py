@@ -56,6 +56,7 @@ def DAQ1():
             sensorCollect("http://" + IP_DAQ1, "DAQ1", "T3", "DAQ1f", "D1T3", "C")
             sensorCollect("http://" + IP_DAQ1, "DAQ1", "AmbientTemp", "DAQ1f", "D1AT", "C")
             sensorCollect("http://" + IP_DAQ1, "DAQ1", "Light", "DAQ1f", "D1L", "lux")
+            sensorCollect("http://" + IP_DAQ1, "DAQ1", "Humidity", "DAQ1f", "D1H", "Percent")
     print "Failure to connect to DAQ 1. Ending Thread."
     return EXIT_FAILURE
 
@@ -74,6 +75,7 @@ def DAQ2():
             sensorCollect("http://" + IP_DAQ2, "DAQ2", "T3", "DAQ2f", "D2T3", "C")
             sensorCollect("http://" + IP_DAQ2, "DAQ2", "AmbientTemp", "DAQ2f", "D2AT", "C")
             sensorCollect("http://" + IP_DAQ2, "DAQ2", "Light", "DAQ2f", "D2L", "lux")
+            sensorCollect("http://" + IP_DAQ2, "DAQ2", "Humidity", "DAQ2f", "D2H", "Percent")
     print "Failure to connect to DAQ 2. Ending Thread."
     return EXIT_FAILURE
 
@@ -87,11 +89,12 @@ def DAQ3():
             time.sleep(float(timeIntervals['DAQ2']))
 
             #Collect the dataz
-            sensorCollect("http://" + IP_DAQ3, "DAQ2", "T1", "DAQ2f", "D2T1", "C")
-            sensorCollect("http://" + IP_DAQ3, "DAQ2", "T2", "DAQ2f", "D2T2", "C")
-            sensorCollect("http://" + IP_DAQ3, "DAQ2", "T3", "DAQ2f", "D2T3", "C")
-            sensorCollect("http://" + IP_DAQ3, "DAQ2", "AmbientTemp", "DAQ2f", "D2AT", "C")
-            sensorCollect("http://" + IP_DAQ3, "DAQ2", "Light", "DAQ2f", "D2L", "lux")
+            sensorCollect("http://" + IP_DAQ3, "DAQ3", "T1", "DAQ3f", "D2T1", "C")
+            sensorCollect("http://" + IP_DAQ3, "DAQ3", "T2", "DAQ3f", "D2T2", "C")
+            sensorCollect("http://" + IP_DAQ3, "DAQ3", "T3", "DAQ3f", "D2T3", "C")
+            sensorCollect("http://" + IP_DAQ3, "DAQ3", "AmbientTemp", "DAQ3f", "D3AT", "C")
+            sensorCollect("http://" + IP_DAQ3, "DAQ3", "Light", "DAQ3f", "D3L", "lux")
+            sensorCollect("http://" + IP_DAQ3, "DAQ3", "Humidity", "DAQ3f", "D3H", "Percent")
     print "Failure to connect to DAQ 2. Ending Thread."
     return EXIT_FAILURE
 
