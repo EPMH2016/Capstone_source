@@ -89,9 +89,9 @@ def DAQ3():
             time.sleep(float(timeIntervals['DAQ2']))
 
             #Collect the dataz
-            sensorCollect("http://" + IP_DAQ3, "DAQ3", "T1", "DAQ3f", "D2T1", "C")
-            sensorCollect("http://" + IP_DAQ3, "DAQ3", "T2", "DAQ3f", "D2T2", "C")
-            sensorCollect("http://" + IP_DAQ3, "DAQ3", "T3", "DAQ3f", "D2T3", "C")
+            sensorCollect("http://" + IP_DAQ3, "DAQ3", "T1", "DAQ3f", "D3T1", "C")
+            sensorCollect("http://" + IP_DAQ3, "DAQ3", "T2", "DAQ3f", "D3T2", "C")
+            sensorCollect("http://" + IP_DAQ3, "DAQ3", "T3", "DAQ3f", "D3T3", "C")
             sensorCollect("http://" + IP_DAQ3, "DAQ3", "AmbientTemp", "DAQ3f", "D3AT", "C")
             sensorCollect("http://" + IP_DAQ3, "DAQ3", "Light", "DAQ3f", "D3L", "lux")
             sensorCollect("http://" + IP_DAQ3, "DAQ3", "Humidity", "DAQ3f", "D3H", "Percent")
