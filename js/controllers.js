@@ -27,6 +27,14 @@ app.controller("DAQGraphController", function($scope, $http, $q){
     $scope.daq2Enabled = true;
     $scope.daq3Enabled = true;
 
+    $scope.printData = function(array)
+    {
+        for(i = 0; i < array.length - 2; i++)
+        {
+            console.log(array[i][0]/1000);
+        }
+    }
+
     //  make this a different function that simply collects and allocates the data  
     $scope.collect_data = function(sensorType, data_daq1, data_daq2, data_daq3, print_graph){
         if(data_daq1.length != 0)
@@ -56,7 +64,7 @@ app.controller("DAQGraphController", function($scope, $http, $q){
                 date_array_daq1.unshift(data_daq1[i]["Timestamp"]);
         }
 
-        for(i = 0; i < data_daq2.length; i++)
+        for(i = 0; i < data_daq2.length ; i++)
         {
                 data_array_daq2.unshift(data_daq2[i]["Data Value"]);
                 date_array_daq2.unshift(data_daq2[i]["Timestamp"])
@@ -64,8 +72,8 @@ app.controller("DAQGraphController", function($scope, $http, $q){
 
         for(i = 0; i < data_daq3.length; i++)
         {
-                data_array_daq3.push(data_daq3[i]["Data Value"]);
-                date_array_daq3.push(data_daq3[i]["Timestamp"])
+                data_array_daq3.unshift(data_daq3[i]["Data Value"]);
+                date_array_daq3.unshift(data_daq3[i]["Timestamp"])
         }
 
         if(print_graph)
@@ -214,16 +222,19 @@ app.controller("DAQGraphController", function($scope, $http, $q){
 
             $.get(SERVER_URL + "/DAQ1/T1", function( data ){
                 data_daq1 = data;
+                //console.log("daq1:" + data_daq1.length);
                 $scope.collect_data(typeSelected, data_daq1, data_daq2, data_daq3, false);
             });
 
             $.get(SERVER_URL + "/DAQ2/T1", function( data ){
                 data_daq2 = data;
+                //console.log("daq2:" + data_daq2.length);
                 $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, false);
             });
 
             $.get(SERVER_URL + "/DAQ3/T1", function( data ){
                 data_daq3 = data;
+                //console.log("daq3" + data_daq3.length);
                 $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, true);
             });
 
