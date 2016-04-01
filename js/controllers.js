@@ -11,7 +11,8 @@
     var data_daq2 = [];
     var data_daq3 = [];
 
-    const SERVER_IP = "10.17.191.41";
+    //const SERVER_IP = "10.17.191.41";  /* UP */
+    const SERVER_IP = "192.168.1.23";
     const SERVER_PORT = "8435";
     const SERVER_URL = "http://" + SERVER_IP + ":" + SERVER_PORT;
 
@@ -69,7 +70,7 @@ app.controller("DAQGraphController", function($scope, $http, $q){
 
         if(print_graph)
         {
-            $.get("http://10.17.191.41:8435/DAQInfoAll", function( data ){
+            $.get(SERVER_URL + "/DAQInfoAll", function( data ){
                 if(data[0]["Status"] == 'ON')
                 {
                     $scope.daq1Enabled = true;
@@ -218,7 +219,7 @@ app.controller("DAQGraphController", function($scope, $http, $q){
 
             $.get(SERVER_URL + "/DAQ2/T1", function( data ){
                 data_daq2 = data;
-                $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, true);
+                $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, false);
             });
 
             $.get(SERVER_URL + "/DAQ3/T1", function( data ){
@@ -236,7 +237,7 @@ app.controller("DAQGraphController", function($scope, $http, $q){
 
             $.get(SERVER_URL + "/DAQ2/T2", function( data ){
                 data_daq2 = data;
-                $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, true);
+                $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, false);
             });
 
             $.get(SERVER_URL + "/DAQ3/T2", function( data ){
@@ -255,7 +256,7 @@ app.controller("DAQGraphController", function($scope, $http, $q){
 
             $.get(SERVER_URL + "/DAQ2/T3", function( data ){
                 data_daq2 = data;
-                $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, true);
+                $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, false);
             });
 
             $.get(SERVER_URL + "/DAQ3/T3", function( data ){
@@ -274,7 +275,7 @@ app.controller("DAQGraphController", function($scope, $http, $q){
 
             $.get(SERVER_URL + "/DAQ2/Light", function( data ){
                 data_daq2 = data;
-                $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, true);
+                $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, false);
             });
 
             $.get(SERVER_URL + "/DAQ3/Light", function( data ){
@@ -292,7 +293,7 @@ app.controller("DAQGraphController", function($scope, $http, $q){
 
             $.get(SERVER_URL + "/DAQ2/AmbientTemp", function( data ){
                 data_daq2 = data;
-                $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, true);
+                $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, false);
             });
 
             $.get(SERVER_URL + "/DAQ3/AmbientTemp", function( data ){
@@ -309,7 +310,7 @@ app.controller("DAQGraphController", function($scope, $http, $q){
 
             $.get(SERVER_URL + "/DAQ2/Humidity", function( data ){
                 data_daq2 = data;
-                $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, true);
+                $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, false);
             });
 
             $.get(SERVER_URL + "/DAQ3/Humidity", function( data ){
