@@ -100,14 +100,17 @@ def DAQ3():
 def sensorCollect(url, DAQ, sensorType, DAQid, sensorId,  units):
     finalData = "empty"
     try:
+        print DAQ + ": Data collection success"
         finalData = float(json.load(urllib2.urlopen(url+"/"+sensorType)))
     except (urllib2.URLError,BadStatusLine):
-        finalData = float(json.load(urllib2.urlopen(url+"/"+sensorType)))
+        #finalData = float(json.load(urllib2.urlopen(url+"/"+sensorType)))
+        print "URL Error"
     if finalData != "empty":
         print DAQ + "-" + sensorType + ":" + " " + str(finalData)
         print "====================================="
         r.table(DAQ).insert({'Sensor Type': sensorType, 'DAQ ID':DAQid, 'Sensor ID': sensorId, 'Data Value': finalData, 'Units': units, 'Timestamp': r.now().in_timezone('-08:00')}).run()
-
+    else:
+        print DAQ + ": Data empty"
 
 def checkConnection(url):
     try:
