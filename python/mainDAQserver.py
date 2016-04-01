@@ -100,9 +100,11 @@ def DAQ3():
 def sensorCollect(url, DAQ, sensorType, DAQid, sensorId,  units):
     finalData = "empty"
     try:
+        print DAQ + ": Data collection success"
         finalData = float(json.load(urllib2.urlopen(url+"/"+sensorType)))
     except (urllib2.URLError,BadStatusLine):
-        finalData = float(json.load(urllib2.urlopen(url+"/"+sensorType)))
+        #finalData = float(json.load(urllib2.urlopen(url+"/"+sensorType)))
+        print "URL Error"
     if finalData != "empty":
         print DAQ + "-" + sensorType + ":" + " " + str(finalData)
         print "====================================="
