@@ -12,6 +12,10 @@ from httplib import BadStatusLine
 EXIT_SUCCESS = 0
 EXIT_FAILURE = 1
 
+IP_DAQ1 = "192.168.1.26"
+IP_DAQ2 = "192.168.1.29"
+IP_DAQ3 = "192.168.1.27"
+
 #Attempt to connect to server database
 #r.connect('rethinkdb://x:8uv1Ok3YhAVpXWZvRKDfxbVEEDlalJS8AuxvedfV05E@aws-us-east-1-portal.14.dblayer.com', port=10032, db='HDMI').repl()
 #r.connect('localhost', port=28015, db='HDMI').repl()
@@ -47,11 +51,11 @@ def DAQ1():
             time.sleep(float(timeIntervals['DAQ1']))
 
             #Collect the dataz
-            sensorCollect("http://10.17.0.92", "DAQ1", "T1", "DAQ1f", "D1T1", "C")
-            sensorCollect("http://10.17.0.92", "DAQ1", "T2", "DAQ1f", "D1T2", "C")
-            sensorCollect("http://10.17.0.92", "DAQ1", "T3", "DAQ1f", "D1T3", "C")
-            sensorCollect("http://10.17.0.92", "DAQ1", "AmbientTemp", "DAQ1f", "D1AT", "C")
-            sensorCollect("http://10.17.0.92", "DAQ1", "Light", "DAQ1f", "D1L", "lux")
+            sensorCollect("http://" + IP_DAQ1, "DAQ1", "T1", "DAQ1f", "D1T1", "C")
+            sensorCollect("http://" + IP_DAQ1, "DAQ1", "T2", "DAQ1f", "D1T2", "C")
+            sensorCollect("http://" + IP_DAQ1, "DAQ1", "T3", "DAQ1f", "D1T3", "C")
+            sensorCollect("http://" + IP_DAQ1, "DAQ1", "AmbientTemp", "DAQ1f", "D1AT", "C")
+            sensorCollect("http://" + IP_DAQ1, "DAQ1", "Light", "DAQ1f", "D1L", "lux")
     print "Failure to connect to DAQ 1. Ending Thread."
     return EXIT_FAILURE
 
@@ -65,11 +69,11 @@ def DAQ2():
             time.sleep(float(timeIntervals['DAQ2']))
 
             #Collect the dataz
-            sensorCollect("http://10.17.0.165", "DAQ2", "T1", "DAQ2f", "D2T1", "C")
-            sensorCollect("http://10.17.0.165", "DAQ2", "T2", "DAQ2f", "D2T2", "C")
-            sensorCollect("http://10.17.0.165", "DAQ2", "T3", "DAQ2f", "D2T3", "C")
-            sensorCollect("http://10.17.0.165", "DAQ2", "AmbientTemp", "DAQ2f", "D2AT", "C")
-            sensorCollect("http://10.17.0.165", "DAQ2", "Light", "DAQ2f", "D2L", "lux")
+            sensorCollect("http://" + IP_DAQ2, "DAQ2", "T1", "DAQ2f", "D2T1", "C")
+            sensorCollect("http://" + IP_DAQ2, "DAQ2", "T2", "DAQ2f", "D2T2", "C")
+            sensorCollect("http://" + IP_DAQ2, "DAQ2", "T3", "DAQ2f", "D2T3", "C")
+            sensorCollect("http://" + IP_DAQ2, "DAQ2", "AmbientTemp", "DAQ2f", "D2AT", "C")
+            sensorCollect("http://" + IP_DAQ2, "DAQ2", "Light", "DAQ2f", "D2L", "lux")
     print "Failure to connect to DAQ 2. Ending Thread."
     return EXIT_FAILURE
 
@@ -83,11 +87,11 @@ def DAQ3():
             time.sleep(float(timeIntervals['DAQ2']))
 
             #Collect the dataz
-            sensorCollect("http://10.17.131.190", "DAQ2", "T1", "DAQ2f", "D2T1", "C")
-            sensorCollect("http://10.17.131.190", "DAQ2", "T2", "DAQ2f", "D2T2", "C")
-            sensorCollect("http://10.17.131.190", "DAQ2", "T3", "DAQ2f", "D2T3", "C")
-            sensorCollect("http://10.17.131.190", "DAQ2", "AmbientTemp", "DAQ2f", "D2AT", "C")
-            sensorCollect("http://10.17.131.190", "DAQ2", "Light", "DAQ2f", "D2L", "lux")
+            sensorCollect("http://" + IP_DAQ3, "DAQ2", "T1", "DAQ2f", "D2T1", "C")
+            sensorCollect("http://" + IP_DAQ3, "DAQ2", "T2", "DAQ2f", "D2T2", "C")
+            sensorCollect("http://" + IP_DAQ3, "DAQ2", "T3", "DAQ2f", "D2T3", "C")
+            sensorCollect("http://" + IP_DAQ3, "DAQ2", "AmbientTemp", "DAQ2f", "D2AT", "C")
+            sensorCollect("http://" + IP_DAQ3, "DAQ2", "Light", "DAQ2f", "D2L", "lux")
     print "Failure to connect to DAQ 2. Ending Thread."
     return EXIT_FAILURE
 
