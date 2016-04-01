@@ -109,7 +109,8 @@ def sensorCollect(url, DAQ, sensorType, DAQid, sensorId,  units):
         print DAQ + "-" + sensorType + ":" + " " + str(finalData)
         print "====================================="
         r.table(DAQ).insert({'Sensor Type': sensorType, 'DAQ ID':DAQid, 'Sensor ID': sensorId, 'Data Value': finalData, 'Units': units, 'Timestamp': r.now().in_timezone('-08:00')}).run()
-
+    else:
+        print DAQ + ": Data empty"
 
 def checkConnection(url):
     try:
