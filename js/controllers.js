@@ -526,8 +526,9 @@ app.controller("CDController", function($scope, $timeout, $mdSidenav, $log, $mdD
 
     $scope.radioButtonClicked = function(daq)
     {
+        console.log(daq);
         /* send a get request to server to get the time interval for 'daq' and then set it to currentTime Interval */
-        $.get(SERVER_URL + "/getTimeInterval", {"Name" : daq}, function( data ){
+        $.post(SERVER_URL + "/getTimeInterval", {'Name' : daq}, function( data ){
             console.log(data);
             console.log(data[0]["Time Interval"]);
         });
