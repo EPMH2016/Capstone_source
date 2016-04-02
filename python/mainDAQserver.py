@@ -45,7 +45,7 @@ for daq in DAQlist:
 #@description: Collects data from DAQ1.
 def DAQ1():
     r.connect('localhost', port=28015, db='HDMI').repl()
-    if checkConnection("http://10.17.0.92") == EXIT_SUCCESS:
+    if checkConnection("http://" + IP_DAQ1) == EXIT_SUCCESS:
         while True:
             #Get time interval
             time.sleep(float(timeIntervals['DAQ1']))
@@ -64,7 +64,7 @@ def DAQ1():
 #@description: Collects data from DAQ2.
 def DAQ2():
     r.connect('localhost', port=28015, db='HDMI').repl()
-    if checkConnection("http://10.17.0.165") == EXIT_SUCCESS:
+    if checkConnection("http://" + IP_DAQ2) == EXIT_SUCCESS:
         while True:
             #Get time interval
             time.sleep(float(timeIntervals['DAQ2']))
@@ -83,7 +83,7 @@ def DAQ2():
 #@description: Collects data from DAQ3.
 def DAQ3():
     r.connect('localhost', port=28015, db='HDMI').repl()
-    if checkConnection("http://10.17.176.147") == EXIT_SUCCESS:
+    if checkConnection("http://" + IP_DAQ3) == EXIT_SUCCESS:
         while True:
             #Get time interval
             time.sleep(float(timeIntervals['DAQ2']))
