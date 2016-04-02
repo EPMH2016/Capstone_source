@@ -470,6 +470,7 @@ app.controller("CDController", function($scope, $timeout, $mdSidenav, $log, $mdD
     $scope.daq_ID = "DAQ ID";
     $scope.daq_location = "DAQ Location"; 
     $scope.currentTimeInterval;
+    var hidden = true;
 
 
     $scope.getDAQInfo = function(name){
@@ -480,7 +481,7 @@ app.controller("CDController", function($scope, $timeout, $mdSidenav, $log, $mdD
     }
 
 
-    $scope.newTimeInterval = "5";
+    $scope.newTimeInterval = "";
     $scope.currentDAQ = "DAQ1";
     $scope.updateTimeInterval = function(){
 
@@ -490,6 +491,15 @@ app.controller("CDController", function($scope, $timeout, $mdSidenav, $log, $mdD
         if(isNaN(numTime))
         {
             console.log("Value in text field is not a number.");
+            var errorBox = $mdDialog.alert()
+                            .title("Invalid Input!")
+                            .content("The value entered is not a valid number.")
+                            .ok('OK');
+                    $mdDialog.show( errorBox )
+                             .finally(function() 
+                             {
+                                alert = undefined;
+                             });
         }
         else
         {
@@ -526,15 +536,28 @@ app.controller("CDController", function($scope, $timeout, $mdSidenav, $log, $mdD
 
     $scope.radioButtonClicked = function(daq)
     {
-        console.log(daq);
         /* send a get request to server to get the time interval for 'daq' and then set it to currentTime Interval */
-        $.post(SERVER_URL + "/getTimeInterval", {'Name' : daq}, function( data ){
-            console.log(data);
-            console.log(data[0]["Time Interval"]);
+        $.post(SERVER_URL + "/getTimeInterval", {Name : daq}, function( data ){
+            $scope.currentTimeInterval = data[0]["Time Interval"];
         });
     }
 
     $scope.radioButtonClicked('DAQ1');
+
+    $scope.changeTimeInterval = function()
+    {
+        var changeTimeIntervalDiv = document.getElementById('changeTimeIntervalDiv');
+        if(hidden)
+        {
+            changeTimeIntervalDiv.style.display="";
+            hidden = false;
+        }
+        else
+        {
+            hidden = true;
+            changeTimeIntervalDiv.style.display="none";
+        }
+    }
 
     
 
