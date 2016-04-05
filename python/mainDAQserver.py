@@ -12,9 +12,9 @@ from httplib import BadStatusLine
 EXIT_SUCCESS = 0
 EXIT_FAILURE = 1
 
-IP_DAQ1 = "192.168.1.26"
-IP_DAQ2 = "192.168.1.29"
-IP_DAQ3 = "192.168.1.27"
+IP_DAQ1 = "10.17.0.92"
+IP_DAQ2 = "10.17.9.72"
+IP_DAQ3 = "10.17.10.246"
 
 #Attempt to connect to server database
 #r.connect('rethinkdb://x:8uv1Ok3YhAVpXWZvRKDfxbVEEDlalJS8AuxvedfV05E@aws-us-east-1-portal.14.dblayer.com', port=10032, db='HDMI').repl()
@@ -57,6 +57,7 @@ def DAQ1():
             sensorCollect("http://" + IP_DAQ1, "DAQ1", "AmbientTemp", "DAQ1f", "D1AT", "C")
             sensorCollect("http://" + IP_DAQ1, "DAQ1", "Light", "DAQ1f", "D1L", "lux")
             sensorCollect("http://" + IP_DAQ1, "DAQ1", "Humidity", "DAQ1f", "D1H", "Percent")
+            sensorCollect("http://" + IP_DAQ1, "DAQ1", "Current", "DAQ1f", "D1C", "A")
     print "Failure to connect to DAQ 1. Ending Thread."
     return EXIT_FAILURE
 
@@ -76,6 +77,7 @@ def DAQ2():
             sensorCollect("http://" + IP_DAQ2, "DAQ2", "AmbientTemp", "DAQ2f", "D2AT", "C")
             sensorCollect("http://" + IP_DAQ2, "DAQ2", "Light", "DAQ2f", "D2L", "lux")
             sensorCollect("http://" + IP_DAQ2, "DAQ2", "Humidity", "DAQ2f", "D2H", "Percent")
+            sensorCollect("http://" + IP_DAQ2, "DAQ2", "Current", "DAQ2f", "D3C", "A")
     print "Failure to connect to DAQ 2. Ending Thread."
     return EXIT_FAILURE
 
@@ -95,6 +97,7 @@ def DAQ3():
             sensorCollect("http://" + IP_DAQ3, "DAQ3", "AmbientTemp", "DAQ3f", "D3AT", "C")
             sensorCollect("http://" + IP_DAQ3, "DAQ3", "Light", "DAQ3f", "D3L", "lux")
             sensorCollect("http://" + IP_DAQ3, "DAQ3", "Humidity", "DAQ3f", "D3H", "Percent")
+            sensorCollect("http://" + IP_DAQ3, "DAQ3", "Current", "DAQ3f", "D3C", "A")
     print "Failure to connect to DAQ 2. Ending Thread."
     return EXIT_FAILURE
 

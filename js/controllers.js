@@ -312,6 +312,8 @@ app.controller("DAQGraphController", function($scope, $http, $q){
                 $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, true);
             });
 
+        break;
+        
         case "Humidity":
 
             $.get(SERVER_URL + "/DAQ1/Humidity", function( data ){
