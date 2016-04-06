@@ -109,7 +109,7 @@ def sensorCollect(url, DAQ, sensorType, DAQid, sensorId,  units):
     finalData = "empty"
     try:
        # finalData = float(json.load(mechanize.urlopen(url+"/"+sensorType)))
-       finalData = requests.get(url+"/"+sensorType, timeout=10).json()
+       finalData = requests.get(url+"/"+sensorType, timeout=5).json()
        print DAQ + ": Data collection success"
        #urllib2.URLError,BadStatusLine
     except (ValueError):
