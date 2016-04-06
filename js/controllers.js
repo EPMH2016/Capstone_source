@@ -900,7 +900,7 @@ app.controller("HomeController", function($scope, $interval, $timeout, $mdSidena
             alert("error"); 
             $scope.$apply(function () {
             console.log("Data not found");
-            $scope.D1C = "N/A";
+          //  $scope.D1C = "N/A";
             });
             });
          $.getJSON(DAQ1IP+"T1", function success(data){
@@ -912,7 +912,7 @@ app.controller("HomeController", function($scope, $interval, $timeout, $mdSidena
          .error(function() { 
             $scope.$apply(function () {
             console.log("Data not found");
-            $scope.D1T1 = "N/A";
+           // $scope.D1T1 = "N/A";
             });
             });
 
@@ -925,7 +925,7 @@ app.controller("HomeController", function($scope, $interval, $timeout, $mdSidena
             .error(function() { 
             $scope.$apply(function () {
             console.log("Data not found");
-            $scope.D1T2 = "N/A";
+          //  $scope.D1T2 = "N/A";
             });
             });
 
@@ -937,7 +937,7 @@ app.controller("HomeController", function($scope, $interval, $timeout, $mdSidena
             .error(function() { 
             $scope.$apply(function () {
             console.log("Data not found");
-            $scope.D1T3 = "N/A";
+         //   $scope.D1T3 = "N/A";
             });
             });
 
@@ -949,7 +949,7 @@ app.controller("HomeController", function($scope, $interval, $timeout, $mdSidena
             .error(function() { 
             $scope.$apply(function () {
             console.log("Data not found");
-            $scope.D1Amb = "N/A";
+         //   $scope.D1Amb = "N/A";
             });
             }); 
 
@@ -960,7 +960,7 @@ app.controller("HomeController", function($scope, $interval, $timeout, $mdSidena
             })
             .error(function() { 
             $scope.$apply(function () {
-            console.log("Data not found");
+          //  console.log("Data not found");
             $scope.D1L = "N/A";
             });
             });
@@ -972,7 +972,7 @@ app.controller("HomeController", function($scope, $interval, $timeout, $mdSidena
             })
             .error(function() { 
             $scope.$apply(function () {
-            console.log("Data not found");
+         //   console.log("Data not found");
             $scope.D1H = "N/A";
             });
             });
@@ -987,7 +987,7 @@ app.controller("HomeController", function($scope, $interval, $timeout, $mdSidena
         .error(function() { 
             $scope.$apply(function () {
             console.log("Data not found");
-            $scope.D2T1 = "N/A";
+          //  $scope.D2T1 = "N/A";
             });
             });
 
@@ -999,7 +999,7 @@ app.controller("HomeController", function($scope, $interval, $timeout, $mdSidena
         .error(function() { 
             $scope.$apply(function () {
             console.log("Data not found");
-            $scope.D2T2 = "N/A";
+           // $scope.D2T2 = "N/A";
             });
             });
 
@@ -1011,7 +1011,7 @@ app.controller("HomeController", function($scope, $interval, $timeout, $mdSidena
         .error(function() { 
             $scope.$apply(function () {
             console.log("Data not found");
-            $scope.D2T3 = "N/A";
+           // $scope.D2T3 = "N/A";
             });
             });
 
@@ -1023,7 +1023,7 @@ app.controller("HomeController", function($scope, $interval, $timeout, $mdSidena
             .error(function() { 
             $scope.$apply(function () {
             console.log("Data not found");
-            $scope.D2Amb = "N/A";
+           // $scope.D2Amb = "N/A";
             });
             });
 
@@ -1035,7 +1035,7 @@ app.controller("HomeController", function($scope, $interval, $timeout, $mdSidena
             .error(function() { 
             $scope.$apply(function () {
             console.log("Data not found");
-            $scope.D2L = "N/A";
+           // $scope.D2L = "N/A";
             });
             });
 
@@ -1047,7 +1047,7 @@ app.controller("HomeController", function($scope, $interval, $timeout, $mdSidena
             .error(function() { 
             $scope.$apply(function () {
             console.log("Data not found");
-            $scope.D2H = "N/A";
+           // $scope.D2H = "N/A";
             });
             });
 
@@ -1061,7 +1061,7 @@ app.controller("HomeController", function($scope, $interval, $timeout, $mdSidena
         .error(function() { 
             $scope.$apply(function () {
             console.log("Data not found");
-            $scope.D3T1 = "N/A";
+          //  $scope.D3T1 = "N/A";
             });
             });
 
@@ -1073,7 +1073,7 @@ app.controller("HomeController", function($scope, $interval, $timeout, $mdSidena
         .error(function() { 
             $scope.$apply(function () {
             console.log("Data not found");
-            $scope.D3T2 = "N/A";
+          //  $scope.D3T2 = "N/A";
             });
             });
 
@@ -1085,7 +1085,7 @@ app.controller("HomeController", function($scope, $interval, $timeout, $mdSidena
         .error(function() { 
             $scope.$apply(function () {
             console.log("Data not found");
-            $scope.D3T3 = "N/A";
+          //  $scope.D3T3 = "N/A";
             });
             });
 
@@ -1097,7 +1097,7 @@ app.controller("HomeController", function($scope, $interval, $timeout, $mdSidena
             .error(function() { 
             $scope.$apply(function () {
             console.log("Data not found");
-            $scope.D3Amb = "N/A";
+          //  $scope.D3Amb = "N/A";
             });
             });
 
@@ -1109,7 +1109,7 @@ app.controller("HomeController", function($scope, $interval, $timeout, $mdSidena
             .error(function() { 
             $scope.$apply(function () {
             console.log("Data not found");
-            $scope.D3L = "N/A";
+         //   $scope.D3L = "N/A";
             });
             });
 
@@ -1121,7 +1121,7 @@ app.controller("HomeController", function($scope, $interval, $timeout, $mdSidena
             .error(function() { 
             $scope.$apply(function () {
             console.log("Data not found");
-            $scope.D3H = "N/A";
+          //  $scope.D3H = "N/A";
             });
             });
         //indicate data has changed
