@@ -9,6 +9,7 @@ from threading import Thread
 from xml.dom import minidom
 from httplib import BadStatusLine
 import requests
+from requests.exceptions import ConnectionError
 
 EXIT_SUCCESS = 0
 EXIT_FAILURE = 1
@@ -114,7 +115,7 @@ def sensorCollect(url, DAQ, sensorType, DAQid, sensorId,  units):
     except (ValueError):
         #finalData = float(json.load(urllib2.urlopen(url+"/"+sensorType)))
         print "Value Error: " + DAQ
-    except(ConnectionError):
+    except ConnectionError as e:
         print "Connection Error: " + DAQ
     if finalData != "empty":
         print DAQ + "-" + sensorType + ":" + " " + str(finalData)
