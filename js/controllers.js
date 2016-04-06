@@ -897,7 +897,6 @@ app.controller("HomeController", function($scope, $interval, $timeout, $mdSidena
             });
             })
          .error(function() { 
-            alert("error"); 
             $scope.$apply(function () {
             console.log("Data not found");
           //  $scope.D1C = "N/A";
