@@ -72,10 +72,11 @@
             <div layout="column" layout-align="start center">
             	<h4>ID: {{ daq_ID }} </h4>
             	<h4>Location: {{ daq_location }}</h4>
+              <md-button class="pinkbutton" ng-click="changeTimeInterval()"> Change Time Interval </md-button>
             </div>
           </div>
 
-          <div ng-controller="CDController">
+          <div ng-controller="CDController" style="display:none" id="changeTimeIntervalDiv">
             <div>
               <md-radio-group layout="row" ng-model="currentDAQ"layout-align="end" flex="50">
                  <div>  <md-radio-button value="DAQ1" ng-click="radioButtonClicked('DAQ1')" aria-label="Label 1">DAQ1</md-radio-button></div>
@@ -88,7 +89,7 @@
            
               <form layout = "column" layout-align="start">
                 <div layout-align="center center">
-                  Old Time Interval:    old time interval here
+                  Old Time Interval:    {{currentTimeInterval}}
                 </div>
                 <div>
                   New Time Interval: <input type="text" name="fname" ng-model="newTimeInterval"><br>

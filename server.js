@@ -117,7 +117,7 @@ r.db('HDMI').table('DAQInformation').filter({'Name': Name}).update({'Time Interv
 });
 });
 
-app.get("/getTimeInterval", function(request, response){
+app.post("/getTimeInterval", function(request, response){
   //Body: {'Name': daqName}
 
   var Name = request.body.Name;
