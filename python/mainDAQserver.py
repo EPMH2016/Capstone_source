@@ -117,7 +117,7 @@ def sensorCollect(url, DAQ, sensorType, DAQid, sensorId,  units):
         print "Value Error: " + DAQ
     except ConnectionError as e:
         print "Connection Error: " + DAQ
-    except Timeout:
+    except(requests.exceptions.Timeout):
         print "Connection timed out"
     if finalData != "empty":
         print DAQ + "-" + sensorType + ":" + " " + str(finalData)
