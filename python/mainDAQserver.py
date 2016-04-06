@@ -113,7 +113,9 @@ def sensorCollect(url, DAQ, sensorType, DAQid, sensorId,  units):
        #urllib2.URLError,BadStatusLine
     except (ValueError):
         #finalData = float(json.load(urllib2.urlopen(url+"/"+sensorType)))
-        print "URL Error: " + DAQ
+        print "Value Error: " + DAQ
+    except(ConnectionError):
+        print "Connection Error: " + DAQ
     if finalData != "empty":
         print DAQ + "-" + sensorType + ":" + " " + str(finalData)
         print "====================================="
