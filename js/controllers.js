@@ -7,10 +7,6 @@
     var data_array_daq3 = [];
     var date_array_daq3 = [];
 
-    var data_daq1 = [];
-    var data_daq2 = [];
-    var data_daq3 = [];
-
     const SERVER_IP = "10.17.191.41";  /* UP */
     //const SERVER_IP = "192.168.1.23";  /* HUY's house */
     const SERVER_PORT = "8435";
@@ -37,23 +33,23 @@ app.controller("DAQGraphController", function($scope, $http, $q){
 
     //  make this a different function that simply collects and allocates the data  
     $scope.collect_data = function(sensorType, data_daq1, data_daq2, data_daq3, print_graph){
-        if(data_daq1.length != 0)
-        {
+        //if(data_daq1.length != 0)
+        //{
             data_array_daq1 = [];
             date_array_daq1 = [];
-        }
+        //}
 
-        if(data_daq2.length != 0)
-        {
+        //if(data_daq2.length != 0)
+        //{
             data_array_daq2 = [];
             date_array_daq2 = [];
-        }
+        //}
 
-        if(data_daq3.length != 0)
-        {
+        //if(data_daq3.length != 0)
+        //{
             data_array_daq3 = [];
             date_array_daq3 = [];
-        }
+        //}
 
         //console.log(data_array_daq1.length)
 
@@ -215,28 +211,34 @@ app.controller("DAQGraphController", function($scope, $http, $q){
     }
 
     $scope.changeGraphType = function(typeSelected){
-        console.log("you selected " + typeSelected)     
+        console.log("you selected " + typeSelected)
+
+        var data_daq1 = [];
+        var data_daq2 = [];
+        var data_daq3 = [];     
 
        switch (typeSelected){
         case "T1":
 
             $.get(SERVER_URL + "/DAQ1/T1", function( data ){
                 data_daq1 = data;
-                //console.log("daq1:" + data_daq1.length);
-                $scope.collect_data(typeSelected, data_daq1, data_daq2, data_daq3, false);
+                $.get(SERVER_URL + "/DAQ2/T1", function( data ){
+                    data_daq2 = data;
+                    $.get(SERVER_URL + "/DAQ3/T1", function( data ){
+                        data_daq3 = data;
+                        $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, true);
+                    });
+                });
             });
 
-            $.get(SERVER_URL + "/DAQ2/T1", function( data ){
-                data_daq2 = data;
-                //console.log("daq2:" + data_daq2.length);
-                $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, false);
-            });
+            // $.get(SERVER_URL + "/DAQ2/T1", function( data ){
+            //     data_daq2 = data;
+            // });
 
-            $.get(SERVER_URL + "/DAQ3/T1", function( data ){
-                data_daq3 = data;
-                //console.log("daq3" + data_daq3.length);
-                $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, true);
-            });
+            // $.get(SERVER_URL + "/DAQ3/T1", function( data ){
+            //     data_daq3 = data;
+            //     $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, true);
+            // });
 
 
         break;
@@ -337,16 +339,26 @@ app.controller("DAQGraphController", function($scope, $http, $q){
 
             $.get(SERVER_URL + "/DAQ1/Current", function( data ){
                 data_daq1 = data;
+
+                data_daq1 = $scope.editArrayCurrent(data_daq1);
+
                 $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, false);
             });
 
             $.get(SERVER_URL + "/DAQ2/Current", function( data ){
                 data_daq2 = data;
+
+                data_daq2 = $scope.editArrayCurrent(data_daq2);
+
                 $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, false);
             });
 
             $.get(SERVER_URL + "/DAQ3/Current", function( data ){
                 data_daq3 = data;
+
+                /* edit all three arrays for Current here */
+                data_daq3 = $scope.editArrayCurrent(data_daq3);
+
                 $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, true);
             });
 
@@ -358,6 +370,38 @@ app.controller("DAQGraphController", function($scope, $http, $q){
         break;
        }
         
+    }
+
+    $scope.editArrayCurrent = function(data)
+    {
+        for(i = 0; i < data.length; i++)
+        {
+            if(data[i]["Data Value"] < .05 || data[i]["Data Value"] > 30)
+            {
+                data[i]["Data Value"] = 0;
+            }
+            else
+            {
+                data[i]["Data Value"] = 1;
+            }
+        }
+
+        for(i = data.length - 2; i >= 0; i--)
+        {
+            /* check if consecutive values are the same */
+            /* if not, insert a new data point between the two that is a copy of the first point, with the second point's data value */
+            if(data[i+1]["Data Value"] != data[i]["Data Value"])
+            {
+                var temp = {"Data Value": data[i+1]["Data Value"], "Timestamp": data[i+1]["Timestamp"]};
+                data.splice(i+1, 0, temp);
+                data[i+1]["Data Value"] = data[i]["Data Value"];
+                // console.log(data[i + 2]);
+                // console.log(data[i + 1]);
+                // console.log(data[i]);
+            }
+        }
+
+        return data;
     }
 
     $scope.trim_array = function(array)
