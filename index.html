@@ -19,7 +19,7 @@
 		
 		<body layout="column" layout-align="start center">
 			
-			 <div flex layout="row" ng-controller="navController">
+			 <div layout="row" ng-controller="navController">
 				  	
 				  	<md-button ng-click="toggleRight()"
             		ng-hide="isOpenRight()" class="md-icon-button md-accent" aria-label="Nav">
@@ -35,7 +35,9 @@
       </md-toolbar>
       <md-content ng-controller="navController" layout-padding>
         <form>
-          
+          <md-button onclick="window.open('index.html', '_self');" ng-click="close()" class="md-primary">
+          Home
+          </md-button>
           <md-button onclick="window.open('overlay.html', '_self');" ng-click="close()" class="md-primary">
           View Data
           </md-button>
@@ -56,43 +58,131 @@
       </md-content>
     </md-sidenav>
 			  
-        <div flex>
-			<h2 class="md-display-3">DAQ Summary</h2>
+
+        
+
+        <div>
+			     <h2 class="md-display-2">Live DAQ Data</h2>
         </div>      
 
-          <div flex="50" width="100%" layout="row" layout-align="space-around center" ng-controller="HomeController">
+          <div ng-controller="HomeController">
 			
-			<div layout="column" flex="33">
-          		<h1>DAQ1</h1>
-          		<h3>T1: <br>{{ D1T1 }} &deg F</h3>
-          		<h3>T2: <br> {{ D1T2 }} &deg F</h3>
-          		<h3>T3: <br> {{ D1T3 }} &deg F</h3>
-          		<h3>Ambient: <br>{{ D1Amb }} &deg F</h3>
-              <h3> Light: <br> {{ D1L }} lux</h3>
-              <h3> Humidity: <br> {{ D1H }} %</h3>
+            <div layout="row">
+              <div>
+             <h2 class="md-display-1">   T1: &nbsp D1: {{ D1T1 }} &deg F  &nbsp &nbsp &nbsp &nbsp</h2>
+              </div>
+              <div>
+              <h2 class="md-display-1">   D2: {{ D2T1 }} &deg F &nbsp &nbsp &nbsp &nbsp </h2>
+              </div>
+              <div>
+              <h2 class="md-display-1">  D3: {{ D3T1 }} &deg F  &nbsp &nbsp &nbsp</h2>
+              </div>
+              </div> 
 
+
+            <div layout="row">
+              <div>
+              <h2 class="md-display-1">   T2: &nbsp D1: {{ D1T2 }} &deg F  &nbsp &nbsp &nbsp &nbsp </h2>
+              </div>
+              <div>
+              <h2 class="md-display-1">   D2: {{ D2T2 }} &deg F &nbsp &nbsp &nbsp &nbsp </h2>
+              </div>
+              <div>
+              <h2 class="md-display-1">  D3: {{ D3T2 }} &deg F  &nbsp &nbsp &nbsp &nbsp</h2>
+              </div>
+              </div>
+
+              <div layout="row">
+              <div>
+              <h2 class="md-display-1">   T3: &nbsp D1: {{ D1T3 }} &deg F  &nbsp &nbsp &nbsp &nbsp </h2>
+              </div>
+              <div>
+              <h2 class="md-display-1">   D2: {{ D2T3 }} &deg F &nbsp &nbsp &nbsp &nbsp </h2>
+              </div>
+              <div>
+              <h2 class="md-display-1">  D3: {{ D3T3 }} &deg F  &nbsp &nbsp &nbsp &nbsp</h2>
+              </div>
+              </div>
+
+              <div layout="row">
+              <div>
+              <h2 class="md-display-1">   Amb: &nbsp D1: {{ D1Amb }} &deg F   &nbsp &nbsp </h2>
+              </div>
+              <div>
+              <h2 class="md-display-1">   D2: {{ D2Amb }} &deg F &nbsp  &nbsp </h2>
+              </div>
+              <div>
+              <h2 class="md-display-1">  D3 {{ D3Amb }} &deg F &nbsp  &nbsp</h2>
+              </div>
+              </div>
+
+              <div layout="row">
+              <div>
+              <h2 class="md-display-1">   Light: &nbsp D1: {{ D1L }} lux  &nbsp &nbsp </h2>
+              </div>
+              <div>
+              <h2 class="md-display-1">   D2: {{ D2L }} lux   &nbsp &nbsp </h2>
+              </div>
+              <div>
+              <h2 class="md-display-1">  D3: {{ D3L }} lux   &nbsp &nbsp</h2>
+              </div>
+              </div>
+
+              <div layout="row">
+              <div>
+              <h2 class="md-display-1">   Humidity: &nbsp D1: {{ D1H }} %  &nbsp &nbsp &nbsp &nbsp </h2>
+              </div>
+              <div>
+              <h2 class="md-display-1">   D2: {{ D2H }} % &nbsp &nbsp &nbsp &nbsp </h2>
+              </div>
+              <div>
+              <h2 class="md-display-1">  D3: {{ D3H }} %  &nbsp &nbsp &nbsp &nbsp</h2>
+              </div>
+              </div>
+
+              <div layout="row">
+              <div>
+              <h2 class="md-display-1">   Current: &nbsp D1: {{ D1C }} Amps  &nbsp &nbsp &nbsp &nbsp </h2>
+              </div>
+              </div>
+
+              
+			    <!--  <div layout="column" flex="33">
+          		<h3>T1: {{ D1T1 }} &deg F</h3>
+          		<h3>T2:  {{ D1T2 }} &deg F</h3>
+          		<h3>T3:  {{ D1T3 }} &deg F</h3>
+          		<h3>Ambient: {{ D1Amb }} &deg F</h3>
+              <h3> Light:  {{ D1L }} lux</h3>
+              <h3> Humidity:  {{ D1H }} %</h3>
+              <h3>Current:  {{ D1C }} A</h3>
+              <br>
+              <br>
+              <br>
           	</div>
 
           	<div layout="column" flex="33">
-          		<h1>DAQ2</h1>
-          		<h3>T1: <br> {{ D2T1 }} &deg F</h3>
-              <h3>T2: <br> {{ D2T2 }} &deg F</h3>
-              <h3>T3: <br> {{ D2T3 }} &deg F</h3>
-              <h3>Ambient: <br> {{ D2Amb }} &deg F</h3>
-              <h3> Light: <br> {{ D2L }} lux</h3>
-              <h3> Humidity: <br> {{ D2H }} %</h3>
-
+          		<h3>T1:  {{ D2T1 }} &deg F</h3>
+              <h3>T2:  {{ D2T2 }} &deg F</h3>
+              <h3>T3:  {{ D2T3 }} &deg F</h3>
+              <h3>Ambient:  {{ D2Amb }} &deg F</h3>
+              <h3> Light:  {{ D2L }} lux</h3>
+              <h3> Humidity:  {{ D2H }} %</h3>
+              <br>
+              <br>
+              <br>
           	</div>
 
           	<div layout="column" flex="33">
-          		<h1>DAQ3</h1>
-          		<h3>T1: <br> {{ D3T1 }} &deg F</h3>
-              <h3>T2: <br> {{ D3T2 }} &deg F</h3>
-              <h3>T3: <br> {{ D3T3 }} &deg F</h3>
-              <h3>Ambient: <br> {{ D3Amb }} &deg F</h3>
-              <h3> Light: <br> {{ D3L }} lux</h3>
-              <h3> Humidity: <br> {{ D3H }} %</h3>
-          	</div>
+          		<h3>T1:  {{ D3T1 }} &deg F</h3>
+              <h3>T2:  {{ D3T2 }} &deg F</h3>
+              <h3>T3:  {{ D3T3 }} &deg F</h3>
+              <h3>Ambient:  {{ D3Amb }} &deg F</h3>
+              <h3> Light:  {{ D3L }} lux</h3>
+              <h3> Humidity:  {{ D3H }} %</h3>
+              <br>
+              <br>
+              <br>
+          	</div> -->
 
           </div>
 
