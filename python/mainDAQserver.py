@@ -8,6 +8,8 @@ import threading
 from threading import Thread
 from xml.dom import minidom
 from httplib import BadStatusLine
+import requests
+from requests.exceptions import ConnectionError
 
 EXIT_SUCCESS = 0
 EXIT_FAILURE = 1
@@ -106,11 +108,17 @@ def DAQ3():
 def sensorCollect(url, DAQ, sensorType, DAQid, sensorId,  units):
     finalData = "empty"
     try:
-        print DAQ + ": Data collection success"
-        finalData = float(json.load(urllib2.urlopen(url+"/"+sensorType)))
-    except (urllib2.URLError,BadStatusLine):
+       # finalData = float(json.load(mechanize.urlopen(url+"/"+sensorType)))
+       finalData = requests.get(url+"/"+sensorType, timeout=5).json()
+       print DAQ + ": Data collection success"
+       #urllib2.URLError,BadStatusLine
+    except (ValueError):
         #finalData = float(json.load(urllib2.urlopen(url+"/"+sensorType)))
-        print "URL Error: " + DAQ
+        print "Value Error: " + DAQ
+    except ConnectionError as e:
+        print "Connection Error: " + DAQ
+    except(requests.exceptions.Timeout):
+        print "Connection timed out"
     if finalData != "empty":
         print DAQ + "-" + sensorType + ":" + " " + str(finalData)
         print "====================================="

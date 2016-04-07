@@ -880,16 +880,26 @@ app.controller("HomeController", function($scope, $interval, $timeout, $mdSidena
     //works
     $interval(updateData, 10000);
 
-
-    
     function updateData(){
 
-        var DAQ1IP = "http://10.17.0.92/";
-        var DAQ2IP = "";
-        var DAQ3IP = "http://10.17.10.246/";
+        var DAQ1IP = "http://10.0.0.21/";
+        var DAQ2IP = "http://10.0.0.20/";
+        var DAQ3IP = "http://10.0.0.19/";
 
 
         //DAQ1
+        $.getJSON(DAQ1IP+"Current", function success(data){
+            $scope.$apply(function () {
+            console.log("DAQ1 Current data is " + data);
+            $scope.D1C = data;
+            });
+            })
+         .error(function() { 
+            $scope.$apply(function () {
+            console.log("Data not found");
+          //  $scope.D1C = "N/A";
+            });
+            });
          $.getJSON(DAQ1IP+"T1", function success(data){
             $scope.$apply(function () {
             console.log("DAQ1 T1 data is " + data);
@@ -897,10 +907,9 @@ app.controller("HomeController", function($scope, $interval, $timeout, $mdSidena
             });
             })
          .error(function() { 
-            alert("error"); 
             $scope.$apply(function () {
             console.log("Data not found");
-            $scope.D1T1 = "N/A";
+           // $scope.D1T1 = "N/A";
             });
             });
 
@@ -911,10 +920,9 @@ app.controller("HomeController", function($scope, $interval, $timeout, $mdSidena
             });
             })
             .error(function() { 
-            alert("error"); 
             $scope.$apply(function () {
             console.log("Data not found");
-            $scope.D1T2 = "N/A";
+          //  $scope.D1T2 = "N/A";
             });
             });
 
@@ -924,10 +932,9 @@ app.controller("HomeController", function($scope, $interval, $timeout, $mdSidena
             });
             })
             .error(function() { 
-            alert("error"); 
             $scope.$apply(function () {
             console.log("Data not found");
-            $scope.D1T3 = "N/A";
+         //   $scope.D1T3 = "N/A";
             });
             });
 
@@ -937,10 +944,9 @@ app.controller("HomeController", function($scope, $interval, $timeout, $mdSidena
             });
             })
             .error(function() { 
-            alert("error"); 
             $scope.$apply(function () {
             console.log("Data not found");
-            $scope.D1Amb = "N/A";
+         //   $scope.D1Amb = "N/A";
             });
             }); 
 
@@ -951,7 +957,7 @@ app.controller("HomeController", function($scope, $interval, $timeout, $mdSidena
             })
             .error(function() { 
             $scope.$apply(function () {
-            console.log("Data not found");
+          //  console.log("Data not found");
             $scope.D1L = "N/A";
             });
             });
@@ -963,7 +969,7 @@ app.controller("HomeController", function($scope, $interval, $timeout, $mdSidena
             })
             .error(function() { 
             $scope.$apply(function () {
-            console.log("Data not found");
+         //   console.log("Data not found");
             $scope.D1H = "N/A";
             });
             });
@@ -978,7 +984,7 @@ app.controller("HomeController", function($scope, $interval, $timeout, $mdSidena
         .error(function() { 
             $scope.$apply(function () {
             console.log("Data not found");
-            $scope.D2T1 = "N/A";
+          //  $scope.D2T1 = "N/A";
             });
             });
 
@@ -990,7 +996,7 @@ app.controller("HomeController", function($scope, $interval, $timeout, $mdSidena
         .error(function() { 
             $scope.$apply(function () {
             console.log("Data not found");
-            $scope.D2T2 = "N/A";
+           // $scope.D2T2 = "N/A";
             });
             });
 
@@ -1002,7 +1008,7 @@ app.controller("HomeController", function($scope, $interval, $timeout, $mdSidena
         .error(function() { 
             $scope.$apply(function () {
             console.log("Data not found");
-            $scope.D2T3 = "N/A";
+           // $scope.D2T3 = "N/A";
             });
             });
 
@@ -1014,7 +1020,7 @@ app.controller("HomeController", function($scope, $interval, $timeout, $mdSidena
             .error(function() { 
             $scope.$apply(function () {
             console.log("Data not found");
-            $scope.D2Amb = "N/A";
+           // $scope.D2Amb = "N/A";
             });
             });
 
@@ -1026,7 +1032,7 @@ app.controller("HomeController", function($scope, $interval, $timeout, $mdSidena
             .error(function() { 
             $scope.$apply(function () {
             console.log("Data not found");
-            $scope.D2L = "N/A";
+           // $scope.D2L = "N/A";
             });
             });
 
@@ -1038,7 +1044,7 @@ app.controller("HomeController", function($scope, $interval, $timeout, $mdSidena
             .error(function() { 
             $scope.$apply(function () {
             console.log("Data not found");
-            $scope.D2H = "N/A";
+           // $scope.D2H = "N/A";
             });
             });
 
@@ -1052,7 +1058,7 @@ app.controller("HomeController", function($scope, $interval, $timeout, $mdSidena
         .error(function() { 
             $scope.$apply(function () {
             console.log("Data not found");
-            $scope.D3T1 = "N/A";
+          //  $scope.D3T1 = "N/A";
             });
             });
 
@@ -1064,7 +1070,7 @@ app.controller("HomeController", function($scope, $interval, $timeout, $mdSidena
         .error(function() { 
             $scope.$apply(function () {
             console.log("Data not found");
-            $scope.D3T2 = "N/A";
+          //  $scope.D3T2 = "N/A";
             });
             });
 
@@ -1076,7 +1082,7 @@ app.controller("HomeController", function($scope, $interval, $timeout, $mdSidena
         .error(function() { 
             $scope.$apply(function () {
             console.log("Data not found");
-            $scope.D3T3 = "N/A";
+          //  $scope.D3T3 = "N/A";
             });
             });
 
@@ -1088,7 +1094,7 @@ app.controller("HomeController", function($scope, $interval, $timeout, $mdSidena
             .error(function() { 
             $scope.$apply(function () {
             console.log("Data not found");
-            $scope.D3Amb = "N/A";
+          //  $scope.D3Amb = "N/A";
             });
             });
 
@@ -1100,7 +1106,7 @@ app.controller("HomeController", function($scope, $interval, $timeout, $mdSidena
             .error(function() { 
             $scope.$apply(function () {
             console.log("Data not found");
-            $scope.D3L = "N/A";
+         //   $scope.D3L = "N/A";
             });
             });
 
@@ -1112,7 +1118,7 @@ app.controller("HomeController", function($scope, $interval, $timeout, $mdSidena
             .error(function() { 
             $scope.$apply(function () {
             console.log("Data not found");
-            $scope.D3H = "N/A";
+          //  $scope.D3H = "N/A";
             });
             });
         //indicate data has changed
