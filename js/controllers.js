@@ -7,10 +7,15 @@
     var data_array_daq3 = [];
     var date_array_daq3 = [];
 
-    const SERVER_IP = "10.0.0.22";  /* UP */
-    //const SERVER_IP = "192.168.1.23";  /* HUY's house */
+    //const SERVER_IP = "10.0.0.22";  /* Michael's House */
+    //const SERVER_IP = "192.168.1.23";  /* Huy's house */
+    const SERVER_IP = "10.17.191.41";  /* UP */
     const SERVER_PORT = "8435";
     const SERVER_URL = "http://" + SERVER_IP + ":" + SERVER_PORT;
+
+    var DAQ1IP = "http://10.17.0.92/";
+    var DAQ2IP = "http://10.17.9.72/";
+    var DAQ3IP = "http://10.17.10.246/";
 
 app.controller("DAQGraphController", function($scope, $http, $q){
     console.log("controller initialized");
@@ -882,9 +887,9 @@ app.controller("HomeController", function($scope, $interval, $timeout, $mdSidena
 
     function updateData(){
 
-        var DAQ1IP = "http://10.0.0.21/";
-        var DAQ2IP = "http://10.0.0.20/";
-        var DAQ3IP = "http://10.0.0.19/";
+        // var DAQ1IP = "http://10.0.0.21/";
+        // var DAQ2IP = "http://10.0.0.20/";
+        // var DAQ3IP = "http://10.0.0.19/";
 
 
         //DAQ1
