@@ -60,9 +60,11 @@
       </md-content>
     </md-sidenav>
 			  
-			<h2 class="md-display-3">Configure DAQs</h2>
+
+
+			<h2 class="md-display-3" style="margin:20px">Configure DAQs</h2>
             
-          <div ng-controller="CDController">
+          <div ng-controller="CDController" layout="column" layout-align="begin" class="colorNested" flex>
 			<div layout="row" layout-align="center start" class="colorNested" >
  			<div><md-button class="pinkbutton" ng-click="getDAQInfo('DAQ1')" flex="10" > DAQ 1 </md-button></div>
 			<div><md-button class="pinkbutton" ng-click="getDAQInfo('DAQ2')" flex="10"> DAQ 2 </md-button></div>
@@ -70,15 +72,15 @@
   		</div>
 
             <div layout="column" layout-align="start center">
-            	<h4>ID: {{ daq_ID }} </h4>
-            	<h4>Location: {{ daq_location }}</h4>
-              <md-button class="pinkbutton" ng-click="changeTimeInterval()"> Change Time Interval </md-button>
+            	<h4 style="margin:10px">ID: {{ daq_ID }} </h4>
+            	<h4 style="margin:10px">Location: {{ daq_location }}</h4>
+              <md-button class="pinkbutton" ng-click="changeTimeInterval()" style="margin:15px"> Change Time Interval </md-button>
             </div>
           </div>
 
-          <div ng-controller="CDController" style="display:none" id="changeTimeIntervalDiv">
+          <div ng-controller="CDController" style="display:none" id="changeTimeIntervalDiv" layout = "column" layout-align="begin" flex>
             <div>
-              <md-radio-group layout="row" ng-model="currentDAQ"layout-align="end" flex="50">
+              <md-radio-group layout="row" ng-model="currentDAQ"layout-align="end" flex="30">
                  <div>  <md-radio-button value="DAQ1" ng-click="radioButtonClicked('DAQ1')" aria-label="Label 1">DAQ1</md-radio-button></div>
                  <div>  <md-radio-button value="DAQ2" ng-click="radioButtonClicked('DAQ2')" aria-label="Label 3">DAQ2</md-radio-button></div>
                  <div>  <md-radio-button value="DAQ3" ng-click="radioButtonClicked('DAQ3')" aria-label="Label 3">DAQ3</md-radio-button></div>
@@ -87,15 +89,15 @@
             
             <div>
            
-              <form layout = "column" layout-align="start">
-                <div layout-align="center center">
-                  Old Time Interval:    {{currentTimeInterval}}
+              <form layout = "column" layout-align="center center">
+                <div layout-align="center center" style="margin:5px">
+                  <div layout = "row"><p>Current Interval:  <b>{{currentTimeInterval}}</b></p> </div>
                 </div>
-                <div>
-                  New Time Interval: <input type="text" name="fname" ng-model="newTimeInterval"><br>
+                <div flex = "30" style="margin:5px">
+                  New Time Interval:  <input type="text" name="fname" style="font-weight: bold; width: 80px" ng-model="newTimeInterval"><br>
                 </div>
-                  <div layout="row" layout-align="center center">
-                    <md-button class="pinkbutton" ng-click="updateTimeInterval()" flex="10"> SUBMIT </md-button>
+                  <div layout="row" layout-align="center center" flex = "30">
+                    <md-button class="pinkbutton" ng-click="updateTimeInterval()" flex="30"> SUBMIT </md-button>
                   </div>
               </form>
             

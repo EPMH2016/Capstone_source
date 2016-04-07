@@ -528,6 +528,7 @@ app.controller("CDController", function($scope, $timeout, $mdSidenav, $log, $mdD
         $.post(SERVER_URL + "/DAQinfo", {Name: name}, function( data ){
             $scope.daq_ID = data[0].DAQID;
             $scope.daq_location = data[0].Location;
+            $scope.$apply();
         }, "json");
     }
 
@@ -567,6 +568,7 @@ app.controller("CDController", function($scope, $timeout, $mdSidenav, $log, $mdD
                              {
                                 alert = undefined;
                              });
+                    $scope.currentTimeInterval = numTime;
                 }
                 else
                 {
@@ -581,7 +583,8 @@ app.controller("CDController", function($scope, $timeout, $mdSidenav, $log, $mdD
                              });
                 }
             });
-        }       
+        }  
+        $scope.newTimeInterval = "";     
 
     }
 
@@ -590,6 +593,7 @@ app.controller("CDController", function($scope, $timeout, $mdSidenav, $log, $mdD
         /* send a get request to server to get the time interval for 'daq' and then set it to currentTime Interval */
         $.post(SERVER_URL + "/getTimeInterval", {Name : daq}, function( data ){
             $scope.currentTimeInterval = data[0]["Time Interval"];
+            $scope.$apply();ß
         });
     }
 
