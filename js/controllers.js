@@ -880,8 +880,6 @@ app.controller("HomeController", function($scope, $interval, $timeout, $mdSidena
     //works
     $interval(updateData, 10000);
 
-
-    
     function updateData(){
 
         var DAQ1IP = "http://10.0.0.21/";
