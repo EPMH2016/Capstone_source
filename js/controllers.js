@@ -376,7 +376,7 @@ app.controller("DAQGraphController", function($scope, $http, $q){
     {
         for(i = 0; i < data.length; i++)
         {
-            if(data[i]["Data Value"] < .05 || data[i]["Data Value"] > 30)
+            if(data[i]["Data Value"] < .5 || data[i]["Data Value"] > 30)
             {
                 data[i]["Data Value"] = 0;
             }
