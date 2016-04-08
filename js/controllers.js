@@ -381,7 +381,7 @@ app.controller("DAQGraphController", function($scope, $http, $q){
     {
         for(i = 0; i < data.length; i++)
         {
-            if(data[i]["Data Value"] < .5 || data[i]["Data Value"] > 30)
+            if(data[i]["Data Value"] < .5 || data[i]["Data Value"] > 7)
             {
                 data[i]["Data Value"] = 0;
             }
@@ -421,7 +421,7 @@ app.controller("DAQGraphController", function($scope, $http, $q){
         for(i = array.length - 1; i > 0; i--)
         {
             difference = array[i][0] - array[i-1][0];
-            if( count != 0 && (difference > (4*average) || difference < (average/4)) )
+            if( count != 0 && (difference > (4*average) || (difference < (average/4) && $scope.selectedType != "Current (ON/OFF)") ))
             {
                 /* the difference is too large or too small, we only want the array above index i-1 */
                 /* get array we want */
