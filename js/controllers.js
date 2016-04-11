@@ -522,7 +522,45 @@ app.controller("CDController", function($scope, $timeout, $mdSidenav, $log, $mdD
     $scope.daq_location = "DAQ Location"; 
     $scope.currentTimeInterval;
     var hidden = true;
+    var IPMap = {"DAQ1f": DAQ1IP, "DAQ2f": DAQ2IP, "DAQ3B": DAQ3IP};
 
+    $.ajaxSetup({timeout:2000});
+
+    $scope.ping = function(){
+
+        var errorBox = $mdDialog.alert()
+                            .title("Ping Test")
+                            .content("Pinging DAQ. Please wait.")
+                            .ok('OK');
+                    $mdDialog.show( errorBox )
+
+        console.log("DAQ3IP is " + DAQ3IP);
+        console.log("pinging " + $scope.daq_ID);
+        console.log("Getting from IP " + IPMap[$scope.daq_ID]);
+        var d = $.getJSON(IPMap[$scope.daq_ID])
+        .fail(function(){
+            if(d.status==200){
+                console.log("PING SUCCESSFUL" +  d.status);
+                var errorBox = $mdDialog.alert()
+                            .title($scope.daq_ID + " is ON")
+                            .content("Ping successful!")
+                            .ok('OK')
+                    $mdDialog.show( errorBox )
+            }
+            else{
+                console.log("PING FAIURE" +  d.status);
+                var errorBox = $mdDialog.alert()
+                            .title($scope.daq_ID + " is OFF")
+                            .content("Ping failure!")
+                            .ok('OK')
+                    $mdDialog.show( errorBox )
+            }
+
+        })
+        
+       
+        
+    }
 
     $scope.getDAQInfo = function(name){
         $.post(SERVER_URL + "/DAQinfo", {Name: name}, function( data ){
