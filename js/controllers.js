@@ -907,6 +907,10 @@ app.controller("HomeController", function($scope, $interval, $timeout, $mdSidena
         // $scope.D1Amb=(Math.random()*50).toFixed(2);
         // $scope.D1L=(Math.random()*50).toFixed(2);
 
+        $scope.D1C = "OFF";
+        $scope.D2C = "OFF";
+        $scope.D3C = "OFF";
+
        updateData();
         // $scope.D2T1 = (Math.random()*50).toFixed(2);
         // $scope.D2T2 = (Math.random()*50).toFixed(2);
@@ -938,7 +942,15 @@ app.controller("HomeController", function($scope, $interval, $timeout, $mdSidena
         $.getJSON(DAQ1IP+"Current", function success(data){
             $scope.$apply(function () {
             console.log("DAQ1 Current data is " + data);
-            $scope.D1C = data;
+            if(data < .5 || data > 7)
+            {
+                $scope.D1C = "OFF";
+            }
+            else
+            {
+                $scope.D1C = "ON";
+            }
+
             });
             })
          .error(function() { 
@@ -1095,6 +1107,27 @@ app.controller("HomeController", function($scope, $interval, $timeout, $mdSidena
             });
             });
 
+        $.getJSON(DAQ2IP+"Current", function success(data){
+            $scope.$apply(function () {
+            console.log("DAQ2 Current data is " + data);
+            if(data < .5 || data > 7)
+            {
+                $scope.D2C = "OFF";
+            }
+            else
+            {
+                $scope.D2C = "ON";
+            }
+
+            });
+            })
+         .error(function() { 
+            $scope.$apply(function () {
+            console.log("Data not found");
+          //  $scope.D1C = "N/A";
+            });
+            });
+
         //DAQ3
          $.getJSON(DAQ3IP+"T1", function success(data){
             $scope.$apply(function () {
@@ -1168,6 +1201,28 @@ app.controller("HomeController", function($scope, $interval, $timeout, $mdSidena
           //  $scope.D3H = "N/A";
             });
             });
+
+        $.getJSON(DAQ3IP+"Current", function success(data){
+            $scope.$apply(function () {
+            console.log("DAQ1 Current data is " + data);
+            if(data < .5 || data > 7)
+            {
+                $scope.D3C = "OFF";
+            }
+            else
+            {
+                $scope.D3C = "ON";
+            }
+
+            });
+            })
+         .error(function() { 
+            $scope.$apply(function () {
+            console.log("Data not found");
+          //  $scope.D1C = "N/A";
+            });
+            });
+
         //indicate data has changed
         console.log("Data changed!");
     }

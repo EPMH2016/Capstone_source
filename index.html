@@ -65,24 +65,24 @@
 			     <h2 class="md-display-2">Live DAQ Data</h2>
         </div> 
 
-        <table  ng-controller="HomeController" border = "2" style="width:80%">
+        <table  ng-controller="HomeController" border = "2" style="width:95%">
           <tr>
-            <th> Sensor Type </th>
-            <th> DAQ1 </th>
-            <th> DAQ2 </th>
-            <th> DAQ3 </th>
+            <th class = "toprow"> Sensor Type </th>
+            <th class = "toprow"> DAQ1 </th>
+            <th class = "toprow"> DAQ2 </th>
+            <th class = "toprow"> DAQ3 </th>
           </tr> 
           <tr>
             <th> T1 </th>
-            <td> {{ D1T1 }} &deg C </td>
-            <td> {{ D2T1 }} &deg C </td>
-            <td> {{ D3T1 }} &deg C </td>
+            <td> {{ D1T1 }} &deg C</td>
+            <td> {{ D2T1 }} &deg C</td>
+            <td> {{ D3T1 }} &deg C</td>
           </tr>
           <tr>
             <th> T2 </th>
-            <td> {{ D1T2 }} &deg C </td>
-            <td> {{ D2T2 }} &deg C </td>
-            <td> {{ D3T2 }} &deg C </td>
+            <td> {{ D1T2 }} &deg C</td>
+            <td> {{ D2T2 }} &deg C</td>
+            <td> {{ D3T2 }} &deg C</td>
           </tr>
           <tr>
             <th> T3 </th>
@@ -109,8 +109,10 @@
             <td> {{ D3H }} % </td>
           </tr>
           <tr>
-            <th> Current </th>
-            <td> {{ D1C }} Amps </td>
+            <th> ON/OFF </th>
+            <td> {{ D1C }} </td>
+            <td> {{ D2C }} </td>
+            <td> {{ D3C }} </td>
           </tr>
         </table>     
 	  
