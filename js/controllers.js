@@ -948,7 +948,7 @@ app.controller("HomeController", function($scope, $interval, $timeout, $mdSidena
             }
             else
             {
-                $scope.D1C = "ON";
+                $scope.D1C = "OFF";
             }
 
             });
@@ -1116,7 +1116,7 @@ app.controller("HomeController", function($scope, $interval, $timeout, $mdSidena
             }
             else
             {
-                $scope.D2C = "ON";
+                $scope.D2C = "OFF";
             }
 
             });
@@ -1211,7 +1211,7 @@ app.controller("HomeController", function($scope, $interval, $timeout, $mdSidena
             }
             else
             {
-                $scope.D3C = "ON";
+                $scope.D3C = "OFF";
             }
 
             });
