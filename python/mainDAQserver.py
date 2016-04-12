@@ -51,8 +51,9 @@ def DAQ1():
     if checkConnection("http://" + IP_DAQ1) == EXIT_SUCCESS:
         while True:
             #Get time interval
+            #time.sleep(float(timeIntervals['DAQ1']))
+            print "time interval for DAQ 1 is " + timeIntervals['DAQ1']
             time.sleep(float(timeIntervals['DAQ1']))
-
             #Collect the dataz
             sensorCollect("http://" + IP_DAQ1, "DAQ1", "T1", "DAQ1f", "D1T1", "C")
             sensorCollect("http://" + IP_DAQ1, "DAQ1", "T2", "DAQ1f", "D1T2", "C")
