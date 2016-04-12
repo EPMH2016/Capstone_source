@@ -2,8 +2,8 @@
 <html ng-app = "WebApp">
 		
 		<head>
-      <title> Configure DAQ </title>
-      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+      <title> Live Data </title>
+            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 			<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
 			<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.10.0/angular-material.min.css">
 			<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.min.js"></script>
@@ -63,129 +63,56 @@
 
         <div>
 			     <h2 class="md-display-2">Live DAQ Data</h2>
-        </div>      
+        </div> 
 
-          <div ng-controller="HomeController">
-			
-            <div layout="row">
-              <div>
-             <h2 class="md-display-1">   T1: &nbsp D1: {{ D1T1 }} &deg C  &nbsp &nbsp &nbsp &nbsp</h2>
-              </div>
-              <div>
-              <h2 class="md-display-1">   D2: {{ D2T1 }} &deg C &nbsp &nbsp &nbsp &nbsp </h2>
-              </div>
-              <div>
-              <h2 class="md-display-1">  D3: {{ D3T1 }} &deg C  &nbsp &nbsp &nbsp</h2>
-              </div>
-              </div> 
-
-
-            <div layout="row">
-              <div>
-              <h2 class="md-display-1">   T2: &nbsp D1: {{ D1T2 }} &deg C  &nbsp &nbsp &nbsp &nbsp </h2>
-              </div>
-              <div>
-              <h2 class="md-display-1">   D2: {{ D2T2 }} &deg C &nbsp &nbsp &nbsp &nbsp </h2>
-              </div>
-              <div>
-              <h2 class="md-display-1">  D3: {{ D3T2 }} &deg C  &nbsp &nbsp &nbsp &nbsp</h2>
-              </div>
-              </div>
-
-              <div layout="row">
-              <div>
-              <h2 class="md-display-1">   T3: &nbsp D1: {{ D1T3 }} &deg C  &nbsp &nbsp &nbsp &nbsp </h2>
-              </div>
-              <div>
-              <h2 class="md-display-1">   D2: {{ D2T3 }} &deg C &nbsp &nbsp &nbsp &nbsp </h2>
-              </div>
-              <div>
-              <h2 class="md-display-1">  D3: {{ D3T3 }} &deg C  &nbsp &nbsp &nbsp &nbsp</h2>
-              </div>
-              </div>
-
-              <div layout="row">
-              <div>
-              <h2 class="md-display-1">   Amb: &nbsp D1: {{ D1Amb }} &deg C   &nbsp &nbsp </h2>
-              </div>
-              <div>
-              <h2 class="md-display-1">   D2: {{ D2Amb }} &deg C &nbsp  &nbsp </h2>
-              </div>
-              <div>
-              <h2 class="md-display-1">  D3 {{ D3Amb }} &deg C &nbsp  &nbsp</h2>
-              </div>
-              </div>
-
-              <div layout="row">
-              <div>
-              <h2 class="md-display-1">   Light: &nbsp D1: {{ D1L }} lux  &nbsp &nbsp </h2>
-              </div>
-              <div>
-              <h2 class="md-display-1">   D2: {{ D2L }} lux   &nbsp &nbsp </h2>
-              </div>
-              <div>
-              <h2 class="md-display-1">  D3: {{ D3L }} lux   &nbsp &nbsp</h2>
-              </div>
-              </div>
-
-              <div layout="row">
-              <div>
-              <h2 class="md-display-1">   Humidity: &nbsp D1: {{ D1H }} %  &nbsp &nbsp &nbsp &nbsp </h2>
-              </div>
-              <div>
-              <h2 class="md-display-1">   D2: {{ D2H }} % &nbsp &nbsp &nbsp &nbsp </h2>
-              </div>
-              <div>
-              <h2 class="md-display-1">  D3: {{ D3H }} %  &nbsp &nbsp &nbsp &nbsp</h2>
-              </div>
-              </div>
-
-              <div layout="row">
-              <div>
-              <h2 class="md-display-1">   Current: &nbsp D1: {{ D1C }} Amps  &nbsp &nbsp &nbsp &nbsp </h2>
-              </div>
-              </div>
-
-              
-			    <!--  <div layout="column" flex="33">
-          		<h3>T1: {{ D1T1 }} &deg F</h3>
-          		<h3>T2:  {{ D1T2 }} &deg F</h3>
-          		<h3>T3:  {{ D1T3 }} &deg F</h3>
-          		<h3>Ambient: {{ D1Amb }} &deg F</h3>
-              <h3> Light:  {{ D1L }} lux</h3>
-              <h3> Humidity:  {{ D1H }} %</h3>
-              <h3>Current:  {{ D1C }} A</h3>
-              <br>
-              <br>
-              <br>
-          	</div>
-
-          	<div layout="column" flex="33">
-          		<h3>T1:  {{ D2T1 }} &deg F</h3>
-              <h3>T2:  {{ D2T2 }} &deg F</h3>
-              <h3>T3:  {{ D2T3 }} &deg F</h3>
-              <h3>Ambient:  {{ D2Amb }} &deg F</h3>
-              <h3> Light:  {{ D2L }} lux</h3>
-              <h3> Humidity:  {{ D2H }} %</h3>
-              <br>
-              <br>
-              <br>
-          	</div>
-
-          	<div layout="column" flex="33">
-          		<h3>T1:  {{ D3T1 }} &deg F</h3>
-              <h3>T2:  {{ D3T2 }} &deg F</h3>
-              <h3>T3:  {{ D3T3 }} &deg F</h3>
-              <h3>Ambient:  {{ D3Amb }} &deg F</h3>
-              <h3> Light:  {{ D3L }} lux</h3>
-              <h3> Humidity:  {{ D3H }} %</h3>
-              <br>
-              <br>
-              <br>
-          	</div> -->
-
-          </div>
-
+        <table  ng-controller="HomeController" border = "2" style="width:80%">
+          <tr>
+            <th> Sensor Type </th>
+            <th> DAQ1 </th>
+            <th> DAQ2 </th>
+            <th> DAQ3 </th>
+          </tr> 
+          <tr>
+            <th> T1 </th>
+            <td> {{ D1T1 }} &deg C </td>
+            <td> {{ D2T1 }} &deg C </td>
+            <td> {{ D3T1 }} &deg C </td>
+          </tr>
+          <tr>
+            <th> T2 </th>
+            <td> {{ D1T2 }} &deg C </td>
+            <td> {{ D2T2 }} &deg C </td>
+            <td> {{ D3T2 }} &deg C </td>
+          </tr>
+          <tr>
+            <th> T3 </th>
+            <td> {{ D1T3 }} &deg C </td>
+            <td> {{ D2T3 }} &deg C </td>
+            <td> {{ D3T3 }} &deg C </td>
+          </tr>
+          <tr>
+            <th> Ambient </th>
+            <td> {{ D1Amb }} &deg C </td>
+            <td> {{ D2Amb }} &deg C </td>
+            <td> {{ D3Amb }} &deg C </td>
+          </tr>
+          <tr>
+            <th> Light </th>
+            <td> {{ D1L }} lux </td>
+            <td> {{ D2L }} lux </td>
+            <td> {{ D3L }} lux </td>
+          </tr>
+          <tr>
+            <th> Humidity </th>
+            <td> {{ D1H }} % </td>
+            <td> {{ D2H }} % </td>
+            <td> {{ D3H }} % </td>
+          </tr>
+          <tr>
+            <th> Current </th>
+            <td> {{ D1C }} Amps </td>
+          </tr>
+        </table>     
 	  
 			  
 </body>
