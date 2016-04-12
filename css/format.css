@@ -89,3 +89,24 @@ md-radio-button{
     text-decoration: none;
     cursor: pointer;
 }
+
+
+
+
+table, th, td {
+    border: 2px solid black;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 5px;
+    font-size: 20pt;
+    text-align: center;
+}
+
+table {
+    border-spacing: 20px;
+}
+
+
+
