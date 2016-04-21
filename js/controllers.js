@@ -15,7 +15,7 @@
 
     var DAQ1IP = "http://10.17.0.92/";
     var DAQ2IP = "http://10.17.9.72/";
-    var DAQ3IP = "http://10.17.10.246/";
+    var DAQ3IP = "http://10.17.146.170/";
 
 app.controller("DAQGraphController", function($scope, $http, $q){
     console.log("controller initialized");

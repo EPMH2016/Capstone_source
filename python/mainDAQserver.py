@@ -17,7 +17,7 @@ EXIT_FAILURE = 1
 # UP DAQ IPs
 IP_DAQ1 = "10.17.0.92"
 IP_DAQ2 = "10.17.9.72"
-IP_DAQ3 = "10.17.10.246"
+IP_DAQ3 = "10.17.146.170"
 
 #Attempt to connect to server database
 #r.connect('rethinkdb://x:8uv1Ok3YhAVpXWZvRKDfxbVEEDlalJS8AuxvedfV05E@aws-us-east-1-portal.14.dblayer.com', port=10032, db='HDMI').repl()
