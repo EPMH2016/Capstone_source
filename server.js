@@ -346,6 +346,21 @@ app.get("/DAQ3/Current", function(request, response){
 });
 
 
+/* TIME INTERVAL SENSOR REQUESTS */
+
+app.get("/DAQ1_/T1", function(request, response){
+  getDAQDataTI("DAQ1","T1", response)
+});
+
+app.get("/DAQ2_/T1", function(request, response){
+  getDAQDataTI("DAQ2","T1", response)
+});
+
+app.get("/DAQ3_/T1", function(request, response){
+  getDAQDataTI("DAQ3","T1", response)
+});
+
+
 app.listen(port, host);
 
 /*
@@ -359,6 +374,24 @@ app.listen(port, host);
  */
 function getDAQData(DAQ, sensorType, response){
     r.db('HDMI').table(DAQ).orderBy({index:r.desc('Timestamp')}).filter({'Sensor Type':sensorType}).limit(50).run(connection, function(err, cursor) {
+    if (err) throw err;
+    sensorData = "";
+    console.log("Queried");
+    cursor.toArray(function(err, result) {
+        if (err) throw err;
+        console.log("The result for sensor" + sensorType + " DAQ " + DAQ +"  is " + result);
+        response.send(result);
+        sensorData=result;
+        console.log("returning result")
+        return result
+    });
+});
+
+}
+
+function getDAQDataTI(DAQ, sensorType, response){
+    r.db('HDMI').table(DAQ).orderBy({index:r.desc('Timestamp')}).filter({'Sensor Type':sensorType}).filter(r.row('Timestamp').during(
+              r.time(2016,4,14,2,0,0,'-08:00'),r.now()).run(connection, function(err, cursor) {
     if (err) throw err;
     sensorData = "";
     console.log("Queried");

@@ -225,11 +225,22 @@ app.controller("DAQGraphController", function($scope, $http, $q){
        switch (typeSelected){
         case "T1":
 
-            $.get(SERVER_URL + "/DAQ1/T1", function( data ){
+            // $.get(SERVER_URL + "/DAQ1/T1", function( data ){
+            //     data_daq1 = data;
+            //     $.get(SERVER_URL + "/DAQ2/T1", function( data ){
+            //         data_daq2 = data;
+            //         $.get(SERVER_URL + "/DAQ3/T1", function( data ){
+            //             data_daq3 = data;
+            //             $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, true);
+            //         });
+            //     });
+            // });
+
+            $.get(SERVER_URL + "/DAQ1_/T1", function( data ){
                 data_daq1 = data;
-                $.get(SERVER_URL + "/DAQ2/T1", function( data ){
+                $.get(SERVER_URL + "/DAQ2_/T1", function( data ){
                     data_daq2 = data;
-                    $.get(SERVER_URL + "/DAQ3/T1", function( data ){
+                    $.get(SERVER_URL + "/DAQ3_/T1", function( data ){
                         data_daq3 = data;
                         $scope.collect_data($scope.selectedType, data_daq1, data_daq2, data_daq3, true);
                     });
