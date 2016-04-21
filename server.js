@@ -391,7 +391,7 @@ function getDAQData(DAQ, sensorType, response){
 
 function getDAQDataTI(DAQ, sensorType, response){
     r.db('HDMI').table(DAQ).orderBy({index:r.desc('Timestamp')}).filter({'Sensor Type':sensorType}).filter(r.row('Timestamp').during(
-              r.time(2016,4,14,2,0,0,'-08:00'),r.now()).run(connection, function(err, cursor) {
+              r.time(2016,4,14,2,0,0,'-08:00'),r.now())).run(connection, function(err, cursor) {
     if (err) throw err;
     sensorData = "";
     console.log("Queried");
