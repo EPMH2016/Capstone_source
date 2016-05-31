@@ -9,13 +9,13 @@
 
     //const SERVER_IP = "10.0.0.22";  /* Michael's House */
     //const SERVER_IP = "192.168.1.23";  /* Huy's house */
-    const SERVER_IP = "10.17.191.41";  /* UP */
+    const SERVER_IP = "192.168.1.50";  /* UP */
     const SERVER_PORT = "8435";
     const SERVER_URL = "http://" + SERVER_IP + ":" + SERVER_PORT;
 
-    var DAQ1IP = "http://10.17.0.92/";
-    var DAQ2IP = "http://10.17.9.72/";
-    var DAQ3IP = "http://10.17.146.170/";
+    var DAQ1IP = "http://192.168.1.51/";
+    var DAQ2IP = "http://192.168.1.52/";
+    var DAQ3IP = "http://192.168.1.53/";
 
 app.controller("DAQGraphController", function($scope, $http, $q){
     console.log("controller initialized");
