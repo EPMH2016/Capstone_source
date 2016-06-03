@@ -9,7 +9,7 @@
 
     //const SERVER_IP = "10.0.0.22";  /* Michael's House */
     //const SERVER_IP = "192.168.1.23";  /* Huy's house */
-    const SERVER_IP = "192.168.1.50";  /* UP */
+    const SERVER_IP = "192.168.1.191";  /* Huy Local */
     const SERVER_PORT = "8435";
     const SERVER_URL = "http://" + SERVER_IP + ":" + SERVER_PORT;
 
@@ -40,6 +40,7 @@ app.controller("DAQGraphController", function($scope, $http, $q){
     $scope.collect_data = function(sensorType, data_daq1, data_daq2, data_daq3, print_graph){
         //if(data_daq1.length != 0)
         //{
+            console.log("collect_data called");
             data_array_daq1 = [];
             date_array_daq1 = [];
         //}
@@ -79,6 +80,7 @@ app.controller("DAQGraphController", function($scope, $http, $q){
 
         if(print_graph)
         {
+             console.log("Collect_data called. Printing graph");
             $.get(SERVER_URL + "/DAQInfoAll", function( data ){
                 if(data[0]["Status"] == 'ON')
                 {
@@ -121,7 +123,7 @@ app.controller("DAQGraphController", function($scope, $http, $q){
 
 // make a function here with the only purpose to be printing the graph
     $scope.print_graph = function(units){
-
+       
         var graph_array_daq1 = [];
 
         var graph_array_daq2 = [];
