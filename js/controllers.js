@@ -40,7 +40,6 @@ app.controller("DAQGraphController", function($scope, $http, $q){
     $scope.collect_data = function(sensorType, data_daq1, data_daq2, data_daq3, print_graph){
         //if(data_daq1.length != 0)
         //{
-            console.log("collect_data called");
             data_array_daq1 = [];
             date_array_daq1 = [];
         //}
@@ -80,7 +79,6 @@ app.controller("DAQGraphController", function($scope, $http, $q){
 
         if(print_graph)
         {
-             console.log("Collect_data called. Printing graph");
             $.get(SERVER_URL + "/DAQInfoAll", function( data ){
                 if(data[0]["Status"] == 'ON')
                 {
@@ -106,7 +104,6 @@ app.controller("DAQGraphController", function($scope, $http, $q){
                 {
                     $scope.daq3Enabled = false;
                 }
-
 
                 /* send get request to server to get current units, then pass the units to the graph function */
                 $.get(SERVER_URL + "/getUnits", function( data ){
